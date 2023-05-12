@@ -1,6 +1,8 @@
 <?php
-use App\Http\Controllers\Main\IndexController;
+
 use App\Http\Controllers\Itok\ItokController;
+use App\Http\Controllers\Main\IndexController;
+use App\Http\Controllers\News\NewsController;
 use App\Http\Controllers\Glxavor\GlxavorController;
 use App\Http\Controllers\History\HistoryController;
 use Illuminate\Support\Facades\Route;
@@ -51,6 +53,10 @@ Route::group(['namespase' => 'History', 'prefix' => 'history'], function (){
 
 Route::group(['namespase' => 'Glxavor'], function (){
     Route::get('/',  GlxavorController::class)->name('glxavor.glxavor');
+});
+
+Route::group(['namespase' => 'News', 'prefix' => 'news'], function (){
+    Route::get('/',  NewsController::class)->name('news.news');
 });
 
 
