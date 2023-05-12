@@ -1,19 +1,20 @@
 <?php
 
+use App\Http\Controllers\Itok\ItokController;
+use App\Http\Controllers\Main\IndexController;
+use App\Http\Controllers\News\NewsController;
+use App\Http\Controllers\Glxavor\GlxavorController;
+use App\Http\Controllers\History\HistoryController;
+use Illuminate\Support\Facades\Route;
+
+use App\Http\Controllers\Buildings\BindexController;
+use App\Http\Controllers\Buildings\KinderController;
 use App\Http\Controllers\Buildings\Culture\AmetistController;
 use App\Http\Controllers\Buildings\Culture\CarateController;
 use App\Http\Controllers\Buildings\Culture\CultureController;
 use App\Http\Controllers\Buildings\Culture\FineartController;
 use App\Http\Controllers\Buildings\Culture\GuitarController;
 use App\Http\Controllers\Buildings\SchoolController;
-use App\Http\Controllers\Glxavor\GlxavorController;
-use App\Http\Controllers\History\HistoryController;
-use App\Models\Kindergarten;
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Main\IndexController;
-use App\Http\Controllers\Buildings\BindexController;
-use App\Http\Controllers\Buildings\KinderController;
-use App\Http\Controllers\Itok\ItokController;
 
 
 
@@ -27,7 +28,6 @@ use App\Http\Controllers\Itok\ItokController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
 
 
 Route::group(['namespase' => 'Buildings', 'prefix' => 'buildings'], function (){
@@ -55,7 +55,9 @@ Route::group(['namespase' => 'Glxavor'], function (){
     Route::get('/',  GlxavorController::class)->name('glxavor.glxavor');
 });
 
-
+Route::group(['namespase' => 'News', 'prefix' => 'news'], function (){
+    Route::get('/',  NewsController::class)->name('news.news');
+});
 
 
 Auth::routes();
