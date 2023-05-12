@@ -14,4 +14,5 @@ class AmetistController extends Controller
     {
         return view('buildings.culture.ametist');
     }
+
 }

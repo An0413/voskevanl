@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Family_Trees extends Model
 {
     use HasFactory;
+
 }

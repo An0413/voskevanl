@@ -67,8 +67,8 @@
         <br>
         Մարգարյան Գրիշա բրոնզե մեդալակիր:
     </p>
-</>
-<div class="row">
+
+    <div class="row">
 
     <div class="col-md-5 m-lg-5">
         <img src="{{asset('assets/img/carate/kollaj.jpg')}}" alt="kollaj" style="max-width: 100%; height: auto;">

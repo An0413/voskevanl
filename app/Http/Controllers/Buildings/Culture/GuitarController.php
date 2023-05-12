@@ -14,4 +14,5 @@ class GuitarController extends Controller
     {
         return view('buildings.culture.guitar');
     }
+
 }

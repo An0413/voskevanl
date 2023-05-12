@@ -14,4 +14,5 @@ class FineartController extends Controller
     {
         return view('buildings.culture.fineart');
     }
+
 }

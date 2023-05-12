@@ -4,7 +4,7 @@
 
 
 <div class="container">
-    <h1 class="text-center" style="margin-top: 6%;">Մանկապարտեզ</h1>
+    <h1 class="text-center" style="margin-top: 10%;">Մանկապարտեզ</h1>
     <div class="row mt-5 n_p p-5">
         <div class="col-6">
             <p class="text-indent:15px">

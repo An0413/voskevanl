@@ -47,5 +47,6 @@ Route::group(['namespase' => 'Itok', 'prefix' => 'itok'], function (){
 });
 
 
+
 Auth::routes();
 
