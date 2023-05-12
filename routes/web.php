@@ -1,5 +1,10 @@
 <?php
 
+use App\Http\Controllers\Buildings\Culture\AmetistController;
+use App\Http\Controllers\Buildings\Culture\CarateController;
+use App\Http\Controllers\Buildings\Culture\CultureController;
+use App\Http\Controllers\Buildings\Culture\FineartController;
+use App\Http\Controllers\Buildings\Culture\GuitarController;
 use App\Http\Controllers\Buildings\SchoolController;
 use App\Models\Kindergarten;
 use Illuminate\Support\Facades\Route;
@@ -28,10 +33,19 @@ Route::group(['namespase' => 'Buildings', 'prefix' => 'buildings'], function (){
     Route::get('/',  BindexController::class)->name('buildings.buildings');
     Route::get('/kindergarten',  KinderController::class)->name('buildings.kindergarten');
     Route::get('/school',  SchoolController::class)->name('buildings.school');
+
+    Route::group(['namespase' => 'Culture', 'prefix' => 'culture'], function (){
+        Route::get('/', CultureController::class)->name('buildings.culture');
+        Route::get('/ametist', AmetistController::class)->name('buildings.culture.ametist');
+        Route::get('/carate', CarateController::class)->name('buildings.culture.carate');
+        Route::get('/fineart', FineartController::class)->name('buildings.culture.fineart');
+        Route::get('/guitar', GuitarController::class)->name('buildings.culture.guitar');
+    });
 });
 Route::group(['namespase' => 'Itok', 'prefix' => 'itok'], function (){
     Route::get('/',  ItokController::class)->name('itok.itok');
 });
+
 
 
 Auth::routes();

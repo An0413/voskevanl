@@ -5,8 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Family_Trees extends Model
+class Culture extends Model
 {
     use HasFactory;
 
+    protected $table = 'mshakuyt';
+
+    protected $guarded = false;
 }
