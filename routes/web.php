@@ -6,12 +6,12 @@ use App\Http\Controllers\Buildings\Culture\CultureController;
 use App\Http\Controllers\Buildings\Culture\FineartController;
 use App\Http\Controllers\Buildings\Culture\GuitarController;
 use App\Http\Controllers\Buildings\SchoolController;
+use App\Http\Controllers\Itok\ItokController;
 use App\Models\Kindergarten;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Main\IndexController;
 use App\Http\Controllers\Buildings\BindexController;
 use App\Http\Controllers\Buildings\KinderController;
-use App\Http\Controllers\Itok\ItokController;
 
 
 /*
@@ -45,6 +45,7 @@ Route::group(['namespase' => 'Buildings', 'prefix' => 'buildings'], function (){
 Route::group(['namespase' => 'Itok', 'prefix' => 'itok'], function (){
     Route::get('/',  ItokController::class)->name('itok.itok');
 });
+
 
 
 Auth::routes();
