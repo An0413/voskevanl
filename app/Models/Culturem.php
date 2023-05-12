@@ -11,6 +11,5 @@ class Culturem extends Model
 
     protected $table = 'culture_members';
 
-
     protected $guarded = false;
 }

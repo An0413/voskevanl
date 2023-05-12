@@ -45,6 +45,7 @@
             Համագործակցում են 4u.am կայքի հետ:
         </p>
     </div>
+
     <div class="row">
         <div class="col-sm-3">
             <img src="{{asset('assets/img/fine_art/poqreri_xumb.jpg')}}" alt="poqer" style="width: 250px; height: 250px">

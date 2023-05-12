@@ -14,4 +14,5 @@ class CarateController extends Controller
     {
         return view('buildings.culture.carate');
     }
+
 }

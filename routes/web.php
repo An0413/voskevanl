@@ -1,17 +1,19 @@
 <?php
+use App\Http\Controllers\Main\IndexController;
+use App\Http\Controllers\Itok\ItokController;
+use App\Http\Controllers\Glxavor\GlxavorController;
+use App\Http\Controllers\History\HistoryController;
+use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\Buildings\BindexController;
+use App\Http\Controllers\Buildings\KinderController;
 use App\Http\Controllers\Buildings\Culture\AmetistController;
 use App\Http\Controllers\Buildings\Culture\CarateController;
 use App\Http\Controllers\Buildings\Culture\CultureController;
 use App\Http\Controllers\Buildings\Culture\FineartController;
 use App\Http\Controllers\Buildings\Culture\GuitarController;
 use App\Http\Controllers\Buildings\SchoolController;
-use App\Http\Controllers\Itok\ItokController;
-use App\Models\Kindergarten;
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Main\IndexController;
-use App\Http\Controllers\Buildings\BindexController;
-use App\Http\Controllers\Buildings\KinderController;
+
 
 
 /*
@@ -25,9 +27,6 @@ use App\Http\Controllers\Buildings\KinderController;
 |
 */
 
-Route::group(['namespase' => 'Main'], function (){
-    Route::get('/',  IndexController::class)->name('layouts.main');
-});
 
 Route::group(['namespase' => 'Buildings', 'prefix' => 'buildings'], function (){
     Route::get('/',  BindexController::class)->name('buildings.buildings');
@@ -46,6 +45,13 @@ Route::group(['namespase' => 'Itok', 'prefix' => 'itok'], function (){
     Route::get('/',  ItokController::class)->name('itok.itok');
 });
 
+Route::group(['namespase' => 'History', 'prefix' => 'history'], function (){
+    Route::get('/',  HistoryController::class)->name('history.history');
+});
+
+Route::group(['namespase' => 'Glxavor'], function (){
+    Route::get('/',  GlxavorController::class)->name('glxavor.glxavor');
+});
 
 
 Auth::routes();

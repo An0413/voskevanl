@@ -16,4 +16,5 @@ class CultureController extends Controller
         $culturem = Culturem::all();
         return view('buildings.culture.culture', compact('culture', 'culturem'));
     }
+
 }

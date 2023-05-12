@@ -46,7 +46,7 @@
             <?php foreach ($itok as $value) {
             ?>
             <div class="col-6  pc">
-                <div class="card profile cardi" style="width:320px; height: 300px;">
+                <div class="card profile cardi" style="width:350px; height: 320px;">
                     <img class="card-img-top mimg" src="assets/img/about/<?php echo $value['img']; ?>" alt="Card image">
                     <div class="card-body">
                         <h4 class="card-title"><?php echo $value['name'] . '   ';

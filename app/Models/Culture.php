@@ -11,6 +11,5 @@ class Culture extends Model
 
     protected $table = 'mshakuyt';
 
-
     protected $guarded = false;
 }
