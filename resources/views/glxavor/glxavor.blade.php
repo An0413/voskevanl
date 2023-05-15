@@ -15,7 +15,7 @@
     <div class="carousel-inner">
         <div class="carousel-item active">
             <div class="glxavor">
-                <h1>ԲԱՌԻ ԳԱԼՈՒՍՏ ՈՍԿԵՎԱՆ</h1>
+                <h1>ԲԱՐԻ ԳԱԼՈՒՍՏ ՈՍԿԵՎԱՆ</h1>
             </div>
             <img src="{{asset('assets/img/glxavor/voskevan.jpg')}}" alt="Los Angeles" class="d-block" style="width:100vw; height: 100vh">
             <div class="carousel-caption">
@@ -23,7 +23,7 @@
         </div>
         <div class="carousel-item">
             <div class="glxavor">
-                <h1>ԲԱՌԻ ԳԱԼՈՒՍՏ ՈՍԿԵՎԱՆ</h1>
+                <h1>ԲԱՐԻ ԳԱԼՈՒՍՏ ՈՍԿԵՎԱՆ</h1>
             </div>
             <img src="{{asset('assets/img/glxavor/voskevan1.jpg')}}" alt="Chicago" class="d-block" style="min-width:100vw; height: 100vh">
             <div class="carousel-caption">
@@ -31,7 +31,7 @@
         </div>
         <div class="carousel-item">
             <div class="glxavor">
-                <h1>ԲԱՌԻ ԳԱԼՈՒՍՏ ՈՍԿԵՎԱՆ</h1>
+                <h1>ԲԱՐԻ ԳԱԼՈՒՍՏ ՈՍԿԵՎԱՆ</h1>
             </div>
             <img src="{{asset('assets/img/glxavor/voskevan2.jpg')}}" alt="New York" class="d-block" style="min-width:100vw; height: 100vh">
             <div class="carousel-caption">
