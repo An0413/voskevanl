@@ -86,7 +86,7 @@ h6 {
   transition: all 0.5s;
   z-index: 997;
   transition: all 0.5s;
-  padding: 24px 0;
+  padding: 4px 0;
   background: rgba(103, 176, 209, 0.8);
 }
 
@@ -96,7 +96,7 @@ h6 {
 
 #header.header-scrolled {
   background: rgba(55, 142, 181, 0.9);
-  padding: 12px;
+  padding: 8px;
 }
 
 #header .logo h1 {
@@ -6209,7 +6209,7 @@ input[type="button"].btn-block {
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
-    padding: 1.25rem 2.125rem; }
+    padding: 0.5rem 2.125rem; }
 .navbar .container,
 .navbar .container-fluid, .navbar .container-sm, .navbar .container-md, .navbar .container-lg, .navbar .container-xl {
     display: flex;
@@ -11135,5 +11135,9 @@ label {
     padding-top: 90px;
     padding-bottom: 90px;
     text-align: center; }
+
+.administration_header{
+    margin-top: 200px;
+}
 
 /*# sourceMappingURL=style.css.map */
