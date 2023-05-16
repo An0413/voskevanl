@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Buildings\AdministrationController;
 
 use App\Http\Controllers\Itok\ItokController;
 use App\Http\Controllers\Main\IndexController;
@@ -36,7 +37,13 @@ Route::group(['namespase' => 'Buildings', 'prefix' => 'buildings'], function (){
     Route::get('/',  BindexController::class)->name('buildings.buildings');
     Route::get('/kindergarten',  KinderController::class)->name('buildings.kindergarten');
     Route::get('/school',  SchoolController::class)->name('buildings.school');
+
+    Route::get('/administration',  AdministrationController::class)->name('buildings.administration');
+//    Route::get('/ambulance',  AmbulanceController::class)->name('buildings.ambulance');
+//    Route::get('/mes',  MesController::class)->name('buildings.mes');
+
     Route::get('/church',  ChurchController::class)->name('buildings.church');
+
 
     Route::group(['namespase' => 'Culture', 'prefix' => 'culture'], function (){
         Route::get('/', CultureController::class)->name('buildings.culture');
