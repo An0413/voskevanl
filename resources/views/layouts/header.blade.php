@@ -7,7 +7,7 @@
 
     <title>Ոսկեվան</title>
     <meta content="" name="description">
-    <meta content="" name="keywords">
+    <meta content="" name="keywords"    >
 
     <!-- Favicons -->
     <link href="{{asset('assets/img/favicon.png')}}" rel="icon">
