@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Buildings\AdministrationController;
 
+use App\Http\Controllers\Buildings\SportsschoolController;
 use App\Http\Controllers\Buildings\AmbulanceController;
 use App\Http\Controllers\Itok\ItokController;
 use App\Http\Controllers\Main\IndexController;
@@ -43,6 +44,7 @@ Route::group(['namespase' => 'Buildings', 'prefix' => 'buildings'], function (){
     Route::get('/ambulance',  AmbulanceController::class)->name('buildings.ambulance');
 
     Route::get('/church',  ChurchController::class)->name('buildings.church');
+    Route::get('/sportsschool',  SportsschoolController::class)->name('buildings.sportsschool');
 
 
     Route::group(['namespase' => 'Culture', 'prefix' => 'culture'], function (){
