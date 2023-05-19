@@ -9,6 +9,7 @@ use App\Models\Jujevansh;
 use App\Models\Kotish;
 use App\Models\Teacher;
 use App\Models\Voskevanish;
+use App\Models\Worker;
 use Illuminate\Http\Request;
 use App\Models\School;
 
@@ -22,7 +23,7 @@ class SchoolController extends Controller
         $jujevan= Jujevansh::all();
         $koti = Kotish::all();
         $barekamavan = Barekamavansh::all();
-        $teacher = Teacher::all();
-        return view('buildings.school', compact('school', 'voskevan', 'baxanis', 'jujevan', 'koti', 'barekamavan', 'teacher'));
+        $worker = Worker::where('worker_id', '=', 3)->get();
+        return view('buildings.school', compact('school', 'voskevan', 'baxanis', 'jujevan', 'koti', 'barekamavan', 'worker'));
     }
 }
