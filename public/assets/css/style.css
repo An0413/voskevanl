@@ -31,6 +31,7 @@ h4,
 h5,
 h6 {
   font-family: "Raleway", sans-serif;
+    color: #67b0d1;
 }
 
 #main {
@@ -1466,37 +1467,4 @@ section {
 
 
 
-/*hin voskevani css*/
-/**
-* Template Name: Alstar - v4.9.1
-* Template URL: https://bootstrapmade.com/alstar-free-parallax-bootstrap-template/
-* Author: BootstrapMade.com
-* License: https://bootstrapmade.com/license/
-*/
 
-/*--------------------------------------------------------------
-# General
---------------------------------------------------------------*/
-body {
-    font-family: "Open Sans", sans-serif;
-    color: #444444;
-}
-
-a {
-    color: #00c1c1;
-    text-decoration: none;
-}
-
-a:hover {
-    color: #00f4f4;
-    text-decoration: none;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    font-family: "Raleway", sans-serif;
-}
