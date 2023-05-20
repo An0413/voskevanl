@@ -11,7 +11,7 @@ class KinderController extends Controller
 {
     public function __invoke()
     {
-        $worker = Worker::where('worker_id', '=', 3)->get();
+        $worker = Worker::where('worker_id', '=', 4)->get();
         return view('buildings.kindergarten', compact('worker'));
     }
 }
