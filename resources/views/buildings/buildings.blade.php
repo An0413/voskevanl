@@ -8,7 +8,7 @@
     <div class="mt-5">
         <h1 class="text-center" style="margin-top: 10%; font-size: 60px">Կառույցներ</h1>
     </div>
-    <div class="bul_div" >
+    <div class="bul_div">
         <nav class="navbar navbar-expand-sm bg-dark navbar-dark navbar-inverse navbar-fixed-top" id="bul_div"
              style="margin-top: 70px">
             <div class="container-fluid">
