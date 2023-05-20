@@ -15,3 +15,5 @@ class KinderController extends Controller
         return view('buildings.kindergarten', compact('worker'));
     }
 }
+
+

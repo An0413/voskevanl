@@ -69,7 +69,6 @@
             </div>
         </div>
     </section>
-
 {{--    <div class="mt-5">--}}
 {{--        <h1 class="text-center mt-5">Աշխատակազմ</h1>--}}
 {{--    </div>--}}

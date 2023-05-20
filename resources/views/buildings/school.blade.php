@@ -49,9 +49,6 @@
     </div>
 </section>
 
-
-
->>>>>>> 6ff59dc0c97c26a14679251845809ad539279461
     <section is="team" class="team">
         <div class="container">
             <div class="section-title aos-init aos-animate" data-aos="fade-in" data-aos-delay="100">
