@@ -4,65 +4,169 @@
 
 
 <div class="container">
-    <h1 class="text-center" style="margin-top: 10%;">Մանկապարտեզ</h1>
-    <div class="row mt-5 n_p p-5">
-        <div class="col-6">
-            <p class="text-indent:15px">
-                Ոսկեվանում երկար տարիներ չի գործել մանկապարտեզը։2011 թվականին նախագահի այցելության ժամանակ գյուղապետ
-                <b>Սերյոժա Ալեքսանյանը</b> բարձրաձայնում
-                է այս խնդիրը և արդեն 2012 թվականին սկսվում է շինարարությունը:Շենքը կառուցվել է Հայաստանի Սոցիալիստական
-                ներդրումների հիմնադրամի կողմից։
-                Համայնքի անունից ներդրումը կատարվել է
-                <b>Կիրակոս Վափորճյանի</b> աջակցությամբ։Շինարարական աշխատանքները կատարվում էր տեղացի Արարատ Ղազարյանի
-                գլխավորությամբ։<br>
-                2014 թվականի մայիսի 16-ին տեղի է ունենում մանկապարտեզի շենքի բացումը, որը դեռ ընդունում էր միայն
-                նախադպրոցական երեխաներին։Այժմ մանկապարտեզում գործում է 2 խումբ։
-                Մանկապարտեզ են հաճախում 46 երեխա։ Այն ունի 12 աշխատող։
-            </p>
-        </div>
-        <div class="col-6">
-            <img src="{{asset('assets/img/kindergarten/partez_shenq.jpg')}}" style="width: 90%;margin-left: 10%; margin-bottom: 6%">
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-12">
-            <img src="{{asset('assets/img/kindergarten/patez.jpg')}}" style="width: 100%">
-        </div>
-        <div class="col-12">
-            <img src="{{asset('assets/img/kindergarten/partezi.jpg')}}" style="width: 100%">
-        </div>
-        <div class="col-12">
-            <img src="{{asset('assets/img/kindergarten/mngo.jpg')}}" style="width: 100%">
-        </div>
-        <div class="col-12">
-            <img src="{{asset('assets/img/kindergarten/patez.jpg')}}" style="width: 100%">
-        </div>
-    </div>
+    <h1 class="text-center" style="margin-top: 10%; margin-bottom: 2%;">Մանկապարտեզ</h1>
+    <section id="cta" class="cta">
+        <div class="container aos-init aos-animate" data-aos="zoom-in">
 
-    <div class="mt-5">
-        <h1 class="text-center mt-5">Աշխատակազմ</h1>
-    </div>
-    <div class="row mt-5">
-        <?php
-        foreach ($kindergarten as $value) {
-        ?>
-        <div class="col-4">
-            <div class="card" style="width:350px; margin-left: 4%; margin-bottom: 4%">
-                <img class="card-img-top" src="{{asset('assets/img/kindergarten/'.$value['img'])}}" alt="Card image" style="width:100%; height: 380px">
-                <div class="card-body">
-                    <h4 class="card-title"><?php echo $value['name'] . '  ';
-                        echo $value['lastname']; ?></h4>
-                    <p class="card-text"><?php echo $value['position'] ?></p>
-                </div>
+            <div class="text-center">
+                <h3></h3>
+                <p>Ոսկեվանում երկար տարիներ չի գործել մանկապարտեզը։2011 թվականին նախագահի այցելության ժամանակ գյուղապետ
+                    <b>Սերյոժա Ալեքսանյանը</b> բարձրաձայնում
+                    է այս խնդիրը և արդեն 2012 թվականին սկսվում է շինարարությունը:Շենքը կառուցվել է Հայաստանի Սոցիալիստական
+                    ներդրումների հիմնադրամի կողմից։
+                    Համայնքի անունից ներդրումը կատարվել է
+                    <b>Կիրակոս Վափորճյանի</b> աջակցությամբ։Շինարարական աշխատանքները կատարվում էր տեղացի Արարատ Ղազարյանի
+                    գլխավորությամբ։<br>
+                    2014 թվականի մայիսի 16-ին տեղի է ունենում մանկապարտեզի շենքի բացումը, որը դեռ ընդունում էր միայն
+                    նախադպրոցական երեխաներին։Այժմ մանկապարտեզում գործում է 2 խումբ։
+                    Մանկապարտեզ են հաճախում 46 երեխա։ Այն ունի 13 աշխատող։</p>
+                <a class="cta-btn" href="#">Կարդալ ավելին</a>
             </div>
         </div>
-        <?php
-        }
-        ?>
-    </div>
-    <div class="mt-5">
-        <img src="{{asset('assets/img/kindergarten/ashxatakazm.jpg')}}" style="width: 90%; margin-left: 5%">
-    </div>
+        <img src="{{asset('assets/img/kindergarten/partez_shenq.jpg')}}"
+             style="width: 80%; margin-left: 10%; margin-top: 2%">
+
+    </section>
+
+    <section is="team" class="team">
+        <div class="container">
+            <div class="section-title aos-init aos-animate" data-aos="fade-in" data-aos-delay="100">
+                <h2>ԱՇԽԱՏԱԿԱԶՄ</h2>
+            </div>
+            <div class="row mt-5 mb-5">
+                @foreach ($worker as $value)
+                    <div class="col-lg-4 col-md-6 mt-5">
+                        <div class="member aos-init aos-animate" data-aos="fade-up">
+                            <div class="pic">
+                                <img src="{{asset('assets/img/kindergarten/'. $value['img'])}}" class="img-fluid"
+                                     alt="" style="height: 300px">
+                            </div>
+                            <div class="member-info">
+                                <h4>{{$value->name . ' '. $value->lastname}}</h4>
+                                <span>{{$value->positions->title}}</span>
+                                <div class="social">
+                                    <a href=""><i class="bi bi-twitter"></i></a>
+                                    <a href=""><i class="bi bi-facebook"></i></a>
+                                    <a href=""><i class="bi bi-instagram"></i></a>
+                                    <a href=""><i class="bi bi-linkedin"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    </section>
+
+    <section id="portfolio" class="portfolio">
+        <div class="container">
+
+            <div class="section-title aos-init aos-animate" data-aos="fade-in" data-aos-delay="100">
+                <h2>ԼՈՒՍԱՆԿԱՐՆԵՐ</h2>
+            </div>
+
+{{--            <div class="row aos-init aos-animate" data-aos="fade-in">--}}
+{{--                <div class="col-lg-12 d-flex justify-content-center">--}}
+{{--                    <ul id="portfolio-flters">--}}
+{{--                        <li data-filter="*" class="filter-active">All</li>--}}
+{{--                        <li data-filter=".filter-app">App</li>--}}
+{{--                        <li data-filter=".filter-card">Card</li>--}}
+{{--                        <li data-filter=".filter-web">Web</li>--}}
+{{--                    </ul>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+
+            <div class="row portfolio-container aos-init aos-animate" data-aos="fade-up" style="position: relative; height: 1025.96px;">
+
+                <div class="col-lg-4 col-md-6 portfolio-item filter-app" style="position: absolute; left: 0px; top: 0px;">
+                    <div class="portfolio-wrap">
+                        <img src="{{asset('assets/img/kindergarten/partez_shenq.jpg')}}" class="img-fluid" alt="">
+                        <div class="portfolio-links">
+                            <a href="{{asset('assets/img/kindergarten/partez_shenq.jpg')}}" data-gallery="portfolioGallery" class="portfolio-lightbox"><i class="bx bx-plus"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 portfolio-item filter-web" style="position: absolute; left: 439.987px; top: 0px;">
+                    <div class="portfolio-wrap">
+                        <img src="{{asset('assets/img/kindergarten/partez_erexeq.jpg')}}" class="img-fluid" alt="">
+                        <div class="portfolio-links">
+                            <a href="{{asset('assets/img/kindergarten/partez_erexeq.jpg')}}" data-gallery="portfolioGallery" class="portfolio-lightbox"><i class="bx bx-plus"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 portfolio-item filter-app" style="position: absolute; left: 879.974px; top: 0px;">
+                    <div class="portfolio-wrap">
+                        <img src="{{asset('assets/img/kindergarten/ashxatakazm.jpg')}}" class="img-fluid" alt="">
+                        <div class="portfolio-links">
+                            <a href="{{asset('assets/img/kindergarten/ashxatakazm.jpg')}}" data-gallery="portfolioGallery" class="portfolio-lightbox"><i class="bx bx-plus"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 portfolio-item filter-card" style="position: absolute; left: 0px; top: 341.987px;">
+                    <div class="portfolio-wrap">
+                        <img src="{{asset('assets/img/kindergarten/mngo.jpg')}}" class="img-fluid" alt="">
+                        <div class="portfolio-links">
+                            <a href="{{asset('assets/img/kindergarten/mngo.jpg')}}" data-gallery="portfolioGallery" class="portfolio-lightbox"><i class="bx bx-plus"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 portfolio-item filter-web" style="position: absolute; left: 439.987px; top: 341.987px;">
+                    <div class="portfolio-wrap">
+                        <img src="{{asset('assets/img/kindergarten/partezi.jpg')}}" class="img-fluid" alt="">
+                        <div class="portfolio-links">
+                            <a href="{{asset('assets/img/kindergarten/partezi.jpg')}}" data-gallery="portfolioGallery" class="portfolio-lightbox"><i class="bx bx-plus"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 portfolio-item filter-app" style="position: absolute; left: 879.974px; top: 341.987px;">
+                    <div class="portfolio-wrap">
+                        <img src="{{asset('assets/img/kindergarten/patez.jpg')}}" class="img-fluid" alt="">
+                        <div class="portfolio-links">
+                            <a href="{{asset('assets/img/kindergarten/partezi.jpg')}}" data-gallery="portfolioGallery" class="portfolio-lightbox" ><i class="bx bx-plus"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+{{--                <div class="col-lg-4 col-md-6 portfolio-item filter-card" style="position: absolute; left: 0px; top: 683.974px;">--}}
+{{--                    <div class="portfolio-wrap">--}}
+{{--                        <img src="assets/img/portfolio/portfolio-7.jpg" class="img-fluid" alt="">--}}
+{{--                        <div class="portfolio-links">--}}
+{{--                            <a href="assets/img/portfolio/portfolio-7.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 1"><i class="bx bx-plus"></i></a>--}}
+{{--                            <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+
+{{--                <div class="col-lg-4 col-md-6 portfolio-item filter-card" style="position: absolute; left: 439.987px; top: 683.974px;">--}}
+{{--                    <div class="portfolio-wrap">--}}
+{{--                        <img src="assets/img/portfolio/portfolio-8.jpg" class="img-fluid" alt="">--}}
+{{--                        <div class="portfolio-links">--}}
+{{--                            <a href="assets/img/portfolio/portfolio-8.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 3"><i class="bx bx-plus"></i></a>--}}
+{{--                            <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+
+{{--                <div class="col-lg-4 col-md-6 portfolio-item filter-web" style="position: absolute; left: 879.974px; top: 683.974px;">--}}
+{{--                    <div class="portfolio-wrap">--}}
+{{--                        <img src="assets/img/portfolio/portfolio-9.jpg" class="img-fluid" alt="">--}}
+{{--                        <div class="portfolio-links">--}}
+{{--                            <a href="assets/img/portfolio/portfolio-9.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 3"><i class="bx bx-plus"></i></a>--}}
+{{--                            <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+
+            </div>
+
+        </div>
+    </section>
+
 </div>
 
 @include('layouts.footer')

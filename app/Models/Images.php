@@ -5,12 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Itok extends Model
+class Images extends Model
 {
     use HasFactory;
 
-    protected $table = 'itok_members';
+    protected $table = 'school_img';
+    protected $guarded = [];
 
 
-    protected $guarded = false;
+
+
 }
