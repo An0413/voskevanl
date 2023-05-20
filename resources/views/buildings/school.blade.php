@@ -4,6 +4,8 @@
 
 
 
+<<<<<<< HEAD
+=======
 {{--        <div class="mt-5">--}}
 {{--            <h1 class="text-center" style="margin-top: 10%; margin-bottom: 3%">Ոսկեվանի միջնակարգ դպրոց</h1>--}}
 {{--        </div>--}}
@@ -46,8 +48,6 @@
 
     </div>
 </section>
-
-
 
     <section is="team" class="team">
         <div class="container">

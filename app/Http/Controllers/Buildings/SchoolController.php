@@ -29,3 +29,4 @@ class SchoolController extends Controller
         return view('buildings.school', compact('school', 'voskevan', 'baxanis', 'jujevan', 'koti', 'barekamavan', 'worker', 'images'));
     }
 }
+
