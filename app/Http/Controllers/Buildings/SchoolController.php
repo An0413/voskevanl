@@ -25,8 +25,7 @@ class SchoolController extends Controller
         $koti = Kotish::all();
         $barekamavan = Barekamavansh::all();
         $worker = Worker::where('worker_id', '=', 3)->get();
-        $images = Images::all();
-        return view('buildings.school', compact('school', 'voskevan', 'baxanis', 'jujevan', 'koti', 'barekamavan', 'worker', 'images'));
+        return view('buildings.school', compact('school', 'voskevan', 'baxanis', 'jujevan', 'koti', 'barekamavan', 'worker', ));
     }
 }
 
