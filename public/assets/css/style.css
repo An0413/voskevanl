@@ -1492,6 +1492,21 @@ section {
 .bul_p{
     margin: 25px!important;
 }
+.patm{
+    text-align: center;
+    color: #3f51b5;
+    margin-top: 20px;
+}
+.akumb{
+    float: left;
+    width: 280px;
+    height: 200px;
+    margin-top: 15px;
+}
+.heru{
+    padding: 25px;
+    margin: 4%;
+}
 
 
 
