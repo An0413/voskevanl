@@ -9,7 +9,7 @@ class Images extends Model
 {
     use HasFactory;
 
-    protected $table = 'school_img';
+    protected $table = 'gallery';
     protected $guarded = [];
 
 

@@ -78,60 +78,16 @@
 
             <div class="row portfolio-container aos-init aos-animate" data-aos="fade-up" style="position: relative; height: 1025.96px;">
 
-                <div class="col-lg-4 col-md-6 portfolio-item filter-app" style="position: absolute; left: 0px; top: 0px;">
-                    <div class="portfolio-wrap">
-                        <img src="{{asset('assets/img/kindergarten/partez_shenq.jpg')}}" class="img-fluid" alt="">
-                        <div class="portfolio-links">
-                            <a href="{{asset('assets/img/kindergarten/partez_shenq.jpg')}}" data-gallery="portfolioGallery" class="portfolio-lightbox"><i class="bx bx-plus"></i></a>
+                @foreach ($images as $value)
+                    <div class="col-lg-4 col-md-6 portfolio-item filter-app" style="position: absolute; left: 0px; top: 0px;">
+                        <div class="portfolio-wrap">
+                            <img src="{{asset('assets/img/kindergarten/'. $value['src'])}}" class="img-fluid">
+                            <div class="portfolio-links">
+                                <a href="{{asset('assets/img/kindergarten'. $value['src'])}}" data-gallery="portfolioGallery" class="portfolio-lightbox"><i class="bx bx-plus"></i></a>
+                            </div>
                         </div>
                     </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 portfolio-item filter-web" style="position: absolute; left: 439.987px; top: 0px;">
-                    <div class="portfolio-wrap">
-                        <img src="{{asset('assets/img/kindergarten/partez_erexeq.jpg')}}" class="img-fluid" alt="">
-                        <div class="portfolio-links">
-                            <a href="{{asset('assets/img/kindergarten/partez_erexeq.jpg')}}" data-gallery="portfolioGallery" class="portfolio-lightbox"><i class="bx bx-plus"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 portfolio-item filter-app" style="position: absolute; left: 879.974px; top: 0px;">
-                    <div class="portfolio-wrap">
-                        <img src="{{asset('assets/img/kindergarten/ashxatakazm.jpg')}}" class="img-fluid" alt="">
-                        <div class="portfolio-links">
-                            <a href="{{asset('assets/img/kindergarten/ashxatakazm.jpg')}}" data-gallery="portfolioGallery" class="portfolio-lightbox"><i class="bx bx-plus"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 portfolio-item filter-card" style="position: absolute; left: 0px; top: 341.987px;">
-                    <div class="portfolio-wrap">
-                        <img src="{{asset('assets/img/kindergarten/mngo.jpg')}}" class="img-fluid" alt="">
-                        <div class="portfolio-links">
-                            <a href="{{asset('assets/img/kindergarten/mngo.jpg')}}" data-gallery="portfolioGallery" class="portfolio-lightbox"><i class="bx bx-plus"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 portfolio-item filter-web" style="position: absolute; left: 439.987px; top: 341.987px;">
-                    <div class="portfolio-wrap">
-                        <img src="{{asset('assets/img/kindergarten/partezi.jpg')}}" class="img-fluid" alt="">
-                        <div class="portfolio-links">
-                            <a href="{{asset('assets/img/kindergarten/partezi.jpg')}}" data-gallery="portfolioGallery" class="portfolio-lightbox"><i class="bx bx-plus"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 portfolio-item filter-app" style="position: absolute; left: 879.974px; top: 341.987px;">
-                    <div class="portfolio-wrap">
-                        <img src="{{asset('assets/img/kindergarten/patez.jpg')}}" class="img-fluid" alt="">
-                        <div class="portfolio-links">
-                            <a href="{{asset('assets/img/kindergarten/partezi.jpg')}}" data-gallery="portfolioGallery" class="portfolio-lightbox" ><i class="bx bx-plus"></i></a>
-                        </div>
-                    </div>
-                </div>
-
+                @endforeach
 {{--                <div class="col-lg-4 col-md-6 portfolio-item filter-card" style="position: absolute; left: 0px; top: 683.974px;">--}}
 {{--                    <div class="portfolio-wrap">--}}
 {{--                        <img src="assets/img/portfolio/portfolio-7.jpg" class="img-fluid" alt="">--}}
