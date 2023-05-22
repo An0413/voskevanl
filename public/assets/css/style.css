@@ -1325,7 +1325,7 @@ section {
     margin-bottom: 15px;
     background: white;
     color: #2f4d5a;
-    border-top: 4px solid #67b0d1;
+    border-top: 4px solid rgb(113 206 182);
     text-align: center;
     padding: 30px 20px;
 }
