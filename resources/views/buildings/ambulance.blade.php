@@ -4,87 +4,87 @@
 
 
 {{--<div class="container-fluid">--}}
-    {{--    <h1 class="text-center administration_header">Ամբուլատորիա</h1>--}}
-    {{--    <div class="row mt-5 n_p p-5">--}}
-    {{--        <div class="col-6">--}}
-    {{--                @foreach($ambulance as $value)--}}
-    {{--                    <h3>{{ $value->title }}</h3>--}}
-    {{--                    <p>{{ $value->content }}</p>--}}
-    {{--                @endforeach--}}
+{{--    <h1 class="text-center administration_header">Ամբուլատորիա</h1>--}}
+{{--    <div class="row mt-5 n_p p-5">--}}
+{{--        <div class="col-6">--}}
+{{--                @foreach($ambulance as $value)--}}
+{{--                    <h3>{{ $value->title }}</h3>--}}
+{{--                    <p>{{ $value->content }}</p>--}}
+{{--                @endforeach--}}
 
-    {{--        </div>--}}
-    {{--        <div class="col-6">--}}
-    {{--            <img src="{{asset('assets/img/buildings/ambulatoria.jpg')}}"--}}
-    {{--                 style="width: 90%;margin-left: 10%; margin-bottom: 6%">--}}
-    {{--        </div>--}}
+{{--        </div>--}}
+{{--        <div class="col-6">--}}
+{{--            <img src="{{asset('assets/img/buildings/ambulatoria.jpg')}}"--}}
+{{--                 style="width: 90%;margin-left: 10%; margin-bottom: 6%">--}}
+{{--        </div>--}}
 
-    <div class="cross">
+<div class="cross">
 
 
-    </div>
+</div>
 
-    <div>
-        <h3 class="patm mt-5">Լուսանկարներ</h3>
-    </div>
-    <section id="portfolio" class="portfolio">
-        <div class="container">
+<div>
+    <h3 class="patm mt-5">Լուսանկարներ</h3>
+</div>
+<section id="portfolio" class="portfolio">
+    <div class="container">
 
-{{--            <div class="row" data-aos="fade-in">--}}
-{{--                <div class="col-lg-12 d-flex justify-content-center">--}}
-{{--                    <ul id="portfolio-flters">--}}
-{{--                        <li data-filter="*" class="filter-active">All</li>--}}
-{{--                        <li data-filter=".filter-app">App</li>--}}
-{{--                        <li data-filter=".filter-card">Card</li>--}}
-{{--                        <li data-filter=".filter-web">Web</li>--}}
-{{--                    </ul>--}}
-{{--                </div>--}}
-{{--            </div>--}}
+        {{--            <div class="row" data-aos="fade-in">--}}
+        {{--                <div class="col-lg-12 d-flex justify-content-center">--}}
+        {{--                    <ul id="portfolio-flters">--}}
+        {{--                        <li data-filter="*" class="filter-active">All</li>--}}
+        {{--                        <li data-filter=".filter-app">App</li>--}}
+        {{--                        <li data-filter=".filter-card">Card</li>--}}
+        {{--                        <li data-filter=".filter-web">Web</li>--}}
+        {{--                    </ul>--}}
+        {{--                </div>--}}
+        {{--            </div>--}}
 
-            <div class="row portfolio-container" data-aos="fade-up">
+        <div class="row portfolio-container" data-aos="fade-up">
 
+            @foreach($images as $value)
                 <div class="col-lg-4 col-md-6 portfolio-item filter-app">
                     <div class="portfolio-wrap">
-                        <img src="{{asset('assets/img/buildings/amb.jpg')}}" class="img-fluid" alt="">
+                        <img src="{{asset('assets/img/ambulance/'. $value['src'])}}" class="img-fluid" alt="">
                         <div class="portfolio-links">
-                            <a href="{{asset('assets/img/buildings/amb.jpg')}}" data-gallery="portfolioGallery"
+                            <a href="{{asset('assets/img/ambulance/'. $value['src'])}}" data-gallery="portfolioGallery"
                                class="portfolio-lightbox"><i class="bx bx-plus"></i></a></div>
                     </div>
                 </div>
-            </div>
-
+            @endforeach
         </div>
-    </section><!-- End Portfolio Section -->
+</section><!-- End Portfolio Section -->
 
 
-    <section is="team" class="team">
-        <div class="container">
-            <div class="section-title aos-init aos-animate" data-aos="fade-in" data-aos-delay="100">
-                <h2 class="patm mt-5"> Ոսկեվանի ամբուլատորիայի աշխատակազմը</h2>
-            </div>
-            <div class="row">
-                @foreach ($worker as $value)
-                    <div class="col-lg-4 col-md-6 mt-5">
-                        <div class="member aos-init aos-animate" data-aos="fade-up" {{--data-aos-delay="300"--}}>
-                            <div class="pic">
-                                <img src="{{asset('assets/img/kindergarten/'.$value->img)}}"
-                                                  class="img-fluid" alt="">
-                            </div>
-                            <div class="member-info">
-                                <h4>{{$value->name}}  {{$value->lastname}}</h4>
-                                <span>{{$value->positions->title}}</span>
-                                <div class="social">
-                                    <a href=""><i class="bi bi-twitter"></i></a>
-                                    <a href=""><i class="bi bi-facebook"></i></a>
-                                    <a href=""><i class="bi bi-instagram"></i></a>
-                                    <a href=""><i class="bi bi-linkedin"></i></a>
-                                </div>
+<section is="team" class="team">
+    <div class="container">
+        <div class="section-title aos-init aos-animate" data-aos="fade-in" data-aos-delay="100">
+            <h2 class="patm mt-5"> Ոսկեվանի ամբուլատորիայի աշխատակազմը</h2>
+        </div>
+        <div class="row">
+            @foreach ($worker as $value)
+                <div class="col-lg-4 col-md-6 mt-5">
+                    <div class="member aos-init aos-animate" data-aos="fade-up" {{--data-aos-delay="300"--}}>
+                        <div class="pic">
+                            <img src="{{asset('assets/img/kindergarten/'.$value->img)}}"
+                                 class="img-fluid" alt="">
+                        </div>
+                        <div class="member-info">
+                            <h4>{{$value->name}}  {{$value->lastname}}</h4>
+                            <span>{{$value->positions->title}}</span>
+                            <div class="social">
+                                <a href=""><i class="bi bi-twitter"></i></a>
+                                <a href=""><i class="bi bi-facebook"></i></a>
+                                <a href=""><i class="bi bi-instagram"></i></a>
+                                <a href=""><i class="bi bi-linkedin"></i></a>
                             </div>
                         </div>
                     </div>
-                @endforeach
-            </div>
+                </div>
+            @endforeach
         </div>
-    </section>
+    </div>
+</section>
 
 
 @include('layouts.footer')
