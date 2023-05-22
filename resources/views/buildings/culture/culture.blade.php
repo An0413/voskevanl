@@ -20,12 +20,49 @@
                             հաճախում են ոչ միայն տեղի, այլ նաև շրջակա գյուղերի երեխաները: </p>
                         <a class="cta-btn" href="#">Կարդալ ավելին</a>
                     </div>
-                    @foreach ($worker as $value)
+                    @foreach ($images as $value)
                         <img src="{{asset('assets/img/culture/'. $value['src'])}}" alt="karuyc"
-                             style="width: 90%; margin-left: 5%; ">
+                             style="width: 90%; margin-left: 5%; margin-top: 2%">
                     @endforeach
                 </div>
 
+            </section>
+
+            <section id="portfolio" class="portfolio">
+                <div class="container">
+
+                    <div class="section-title aos-init aos-animate" data-aos="fade-in" data-aos-delay="100">
+                        <h2>ՄՇԱԿՈՒՅԹ</h2>
+                    </div>
+                    <div class="row aos-init aos-animate" data-aos="fade-in">
+                        <div class="col-lg-12 d-flex justify-content-center">
+                            <ul id="portfolio-flters">
+                                <li data-filter="*" class="filter-active">ՄՇԱԿՈՒՅԹ</li>
+                                <li data-filter=".filter-app">ԱՐՎԵՍՏ</li>
+                                <li data-filter=".filter-card">ՍՊՈՐՏ</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="row portfolio-container aos-init aos-animate" data-aos="fade-up">
+                        @foreach($culturem as $value)
+                            <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+                                <div class="portfolio-wrap">
+                                    <img src="{{asset('assets/img/culture/'. $value['image'])}}" class="img-fluid"
+                                         alt="">
+                                    <div class="portfolio-links">
+                                        <a href="{{asset('assets/img/culture/'. $value['image'])}}"
+                                           data-gallery="portfolioGallery" class="portfolio-lightbox"><i
+                                                class="bx bx-plus"></i></a>
+                                        <a href="{{$value->url}}" title="More Details"><i class="bx bx-link"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+
+                    </div>
+
+                </div>
             </section>
 
 
@@ -60,29 +97,29 @@
             </section>
 
 
-            <section is="team" class="team">
-                <div class="container">
-                    <div class="section-title aos-init aos-animate" data-aos="fade-in" data-aos-delay="100">
-                        <h2>ԳՈՐԾՈՂ ԽՄԲԱԿՆԵՐ</h2>
-                    </div>
-                    <div class="row mt-5 mb-5">
-                        @foreach ($culturem as $value)
-                            <div class="col-lg-4 col-md-6 mt-5">
-                                <div class="member aos-init aos-animate" data-aos="fade-up">
-                                    <div class="pic">
-                                        <img src="{{asset('assets/img/culture/'. $value['image'])}}" class="img-fluid"
-                                             alt="" style="height: 300px">
-                                    </div>
-                                    <div class="member-info">
-                                        <h4><a href="{{$value->url}}">{{$value->name}}</a></h4>
-                                        <span>{{$value->description}}</span>
-                                    </div>
-                                </div>
-                            </div>
-                        @endforeach
-                    </div>
-                </div>
-            </section>
+{{--            <section is="team" class="team">--}}
+{{--                <div class="container">--}}
+{{--                    <div class="section-title aos-init aos-animate" data-aos="fade-in" data-aos-delay="100">--}}
+{{--                        <h2>ԳՈՐԾՈՂ ԽՄԲԱԿՆԵՐ</h2>--}}
+{{--                    </div>--}}
+{{--                    <div class="row mt-5 mb-5">--}}
+{{--                        @foreach ($culturem as $value)--}}
+{{--                            <div class="col-lg-4 col-md-6 mt-5">--}}
+{{--                                <div class="member aos-init aos-animate" data-aos="fade-up">--}}
+{{--                                    <div class="pic">--}}
+{{--                                        <img src="{{asset('assets/img/culture/'. $value['image'])}}" class="img-fluid"--}}
+{{--                                             alt="" style="height: 300px">--}}
+{{--                                    </div>--}}
+{{--                                    <div class="member-info">--}}
+{{--                                        <h4><a href="{{$value->url}}">{{$value->name}}</a></h4>--}}
+{{--                                        <span>{{$value->description}}</span>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        @endforeach--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </section>--}}
 
 
         </div>
