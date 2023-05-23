@@ -28,18 +28,6 @@
 </div>
 <section id="portfolio" class="portfolio">
     <div class="container">
-
-        {{--            <div class="row" data-aos="fade-in">--}}
-        {{--                <div class="col-lg-12 d-flex justify-content-center">--}}
-        {{--                    <ul id="portfolio-flters">--}}
-        {{--                        <li data-filter="*" class="filter-active">All</li>--}}
-        {{--                        <li data-filter=".filter-app">App</li>--}}
-        {{--                        <li data-filter=".filter-card">Card</li>--}}
-        {{--                        <li data-filter=".filter-web">Web</li>--}}
-        {{--                    </ul>--}}
-        {{--                </div>--}}
-        {{--            </div>--}}
-
         <div class="row portfolio-container" data-aos="fade-up">
 
             @foreach($images as $value)
@@ -56,15 +44,15 @@
 </section><!-- End Portfolio Section -->
 
 
-<section is="team" class="team">
+<section id="team" class="team">
     <div class="container">
         <div class="section-title aos-init aos-animate" data-aos="fade-in" data-aos-delay="100">
             <h2 class="patm mt-5"> Ոսկեվանի ամբուլատորիայի աշխատակազմը</h2>
         </div>
         <div class="row">
             @foreach ($worker as $value)
-                <div class="col-lg-4 col-md-6 mt-5">
-                    <div class="member aos-init aos-animate" data-aos="fade-up" {{--data-aos-delay="300"--}}>
+                <div class="col-lg-4 col-md-6 mt-5"  data-aos="fade-up">
+                    <div class="member aos-init aos-animate" {{--data-aos-delay="300"--}}>
                         <div class="pic">
                             <img src="{{asset('assets/img/kindergarten/'.$value->img)}}"
                                  class="img-fluid" alt="">

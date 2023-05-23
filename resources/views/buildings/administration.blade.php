@@ -5,14 +5,16 @@
 
 <div class="container">
     <h1 class="text-center administration_header mt-5">Գյուղապետարան</h1>
-    <div class="row mt-5 n_p p-5">
-        <div class="col-6">
+    <div class="row mt-5 n_p p-5 cta">
+        <div class="col-6" data-aos="zoom-in">
             @foreach($administration as $value)
                 <h3>{{ $value->title }}</h3>
+                <br>
                 <p>{{ $value->content }}</p>
             @endforeach
 
         </div>
+
         <div class="col-6">
             <img src="{{asset('assets/img/buildings/mshtakan.jpg')}}"
                  style="width: 90%;margin-left: 10%; margin-bottom: 6%">
@@ -20,40 +22,64 @@
 
     </div>
 
-    <h3 class="patm"> Ոսկեվանի գյուղապետարանի աշխատակազմը</h3>
-    <div class="row">
-        {{--        @foreach ($worker as $value)--}}
-        {{--            <div class="col-sm-3 card heru mt-4">--}}
-        {{--                <img class="card-img-top" src="{{asset('assets/img/kindergarten/'.$value->img)}}" alt="Card image"--}}
-        {{--                     style="width:100%">--}}
-        {{--                <div class="card-body">--}}
-        {{--                    <h4 class="card-title">{{$value->name}}</h4>--}}
-        {{--                    <h4 class="card-title">{{$value->lastname}}</h4>--}}
-        {{--                    <h4 class="card-title">{{$value->positions->title}}</h4>--}}
-        {{--                </div>--}}
-        {{--            </div>--}}
-        {{--        @endforeach--}}
-        {{--    </div>--}}
+    <div>
+        <h3 class="patm mt-5">Լուսանկարներ</h3>
+    </div>
+    <section id="portfolio" class="portfolio">
+        <div class="container">
+            <div class="row portfolio-container" data-aos="fade-up">
 
-        @foreach($worker as $value)
-            <div class="col-lg-4 col-md-6">
-                <div class="member" data-aos="fade-up">
-                    <div class="pic"><img src="{{asset('assets/img/kindergarten/'.$value->img)}}" class="img-fluid"
-                                          alt=""></div>
-                    <div class="member-info">
-                        <h4>{{$value->name}} {{$value->lastname}}</h4>
-                        <span>{{$value->positions->title}}</span>
-                        <div class="social">
-                            <a href=""><i class="bi bi-twitter"></i></a>
-                            <a href=""><i class="bi bi-facebook"></i></a>
-                            <a href=""><i class="bi bi-instagram"></i></a>
-                            <a href=""><i class="bi bi-linkedin"></i></a>
+                @foreach($images as $value)
+                    <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+                        <div class="portfolio-wrap">
+                            <img src="{{asset('assets/img/administration/'. $value['src'])}}" class="img-fluid" alt="">
+                            <div class="portfolio-links">
+                                <a href="{{asset('assets/img/administration/'. $value['src'])}}"
+                                   data-gallery="portfolioGallery"
+                                   class="portfolio-lightbox"><i class="bx bx-plus"></i></a></div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+    </section><!-- End Portfolio Section -->
+
+    <section id="cta" class="cta">
+        <div class="container" data-aos="zoom-in">
+
+            <div class="text-center" style="height: 200px">
+                @foreach($administration as $value)
+                <h3>{{ $value->title }}</h3>
+                <p>{{ $value->content }}</p>
+                @endforeach
+            </div>
+
+        </div>
+    </section><!-- End Cta Section -->
+    <section id="team" class="team">
+        <h3 class="patm mt-5"> Ոսկեվանի գյուղապետարանի աշխատակազմը</h3>
+        <div class="row">
+            @foreach ($worker as $value)
+                <div class="col-lg-4 col-md-6 mt-5"  data-aos="fade-up">
+                    <div class="member aos-init aos-animate" {{--data-aos-delay="300"--}}>
+                        <div class="pic">
+                            <img src="{{asset('assets/img/kindergarten/'.$value->img)}}"
+                                 class="img-fluid" alt="">
+                        </div>
+                        <div class="member-info">
+                            <h4>{{$value->name}}  {{$value->lastname}}</h4>
+                            <span>{{$value->positions->title}}</span>
+                            <div class="social">
+                                <a href=""><i class="bi bi-twitter"></i></a>
+                                <a href=""><i class="bi bi-facebook"></i></a>
+                                <a href=""><i class="bi bi-instagram"></i></a>
+                                <a href=""><i class="bi bi-linkedin"></i></a>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        @endforeach
-    </div>
+            @endforeach
+        </div>
+    </section>
 </div>
 
 
