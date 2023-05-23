@@ -1535,3 +1535,11 @@ h6 {
     height: 400px;
     object-fit: cover;
 }
+.fon{
+    background: linear-gradient(rgba(103, 176, 209, 0.6), rgba(103, 176, 209, 0.3)), url("../img/glxavor/champa.jpg") fixed center center;
+    background-size: cover;
+    padding: 60px 0;
+}
+.object_fit_cover{
+    object-fit: cover;
+}
