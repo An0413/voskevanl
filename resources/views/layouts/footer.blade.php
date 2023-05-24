@@ -17,40 +17,54 @@
                 </div>
 
                 <div class="col-lg-2 col-md-6 footer-links">
-                    <h4>Useful Links</h4>
+{{--                    <h4>Useful Links</h4>--}}
                     <ul>
-                        <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
-                        <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
-                        <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
-                        <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
-                        <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="#">Գլխավոր</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="#">Նորություններ</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="#">Կառույցներ</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="#">ITOK</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="#">Պատմություն</a></li>
                     </ul>
                 </div>
 
                 <div class="col-lg-2 col-md-6 footer-links">
-                    <h4>Our Services</h4>
+{{--                    <h4>Our Services</h4>--}}
                     <ul>
-                        <li><i class="bx bx-chevron-right"></i> <a href="#">Web Design</a></li>
-                        <li><i class="bx bx-chevron-right"></i> <a href="#">Web Development</a></li>
-                        <li><i class="bx bx-chevron-right"></i> <a href="#">Product Management</a></li>
-                        <li><i class="bx bx-chevron-right"></i> <a href="#">Marketing</a></li>
-                        <li><i class="bx bx-chevron-right"></i> <a href="#">Graphic Design</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="#">Մշակույթի տուն</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="#">Գյուղապետարան</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="#">Դպրոց</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="#">Մանկապարտեզ</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="#">Ամբուլատորիա</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="#">Եկեղեցի</a></li>
                     </ul>
                 </div>
 
-                <div class="col-lg-4 col-md-6 footer-newsletter">
-                    <h4>Our Newsletter</h4>
-                    <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
-                    <form action="" method="post">
-                        <input type="email" name="email"><input type="submit" value="Subscribe">
-                    </form>
-
+                <div class="col-lg-4 col-md-6 footer-links">
+{{--                    <h4>Մշակույթ</h4>--}}
+                    <ul>
+                        <li><i class="bx bx-chevron-right"></i> <a href="#">Ամետիստ</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="#">Գեղարվեստի դպրոց</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="#">Կավագործություն</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="#">Կիթառի խմբակ</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="#">Թեքվանդոյի խմբակ</a></li>
+                    </ul>
                 </div>
 
             </div>
         </div>
     </div>
-
+    <div class="container">
+        <div class="copyright">
+            <strong><span>Ոսկեվան</span></strong>
+        </div>
+        <div class="credits">
+            <!-- All the links in the footer should remain intact. -->
+            <!-- You can delete the links only if you purchased the pro version. -->
+            <!-- Licensing information: https://bootstrapmade.com/license/ -->
+            <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/squadfree-free-bootstrap-template-creative/ -->
+            Designed by <a href="https://itok.am" target="_blank">ITOK</a>
+        </div>
+    </div>
 
 </footer><!-- End Footer -->
 
