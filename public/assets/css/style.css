@@ -1543,3 +1543,15 @@ h6 {
 .object_fit_cover{
     object-fit: cover;
 }
+.container_c{
+    margin: 4% auto;
+    width: 210px;
+    height: 140px;
+    position: relative;
+    perspective: 1000px;
+    margin-bottom: 140px;
+}
+.gayane{
+    width: 400px;
+    height: 300px;
+}
