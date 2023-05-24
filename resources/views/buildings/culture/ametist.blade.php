@@ -3,8 +3,8 @@
 @yield('header')
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-<script src="assets/img/voskevan/https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-<script src="assets/img/voskevan/https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <link rel="stylesheet" type="text/css" href="fontawesome/css/all.css">
 <link href="{{asset('assets/css/style.css')}}" rel="stylesheet">
 
@@ -47,7 +47,7 @@
 
 <div class="container container_c">
     <div id="carousel">
-        <figure><img src="{{asset('assets/img/ametist/gorg.jpg')}}" alt="" style=""></figure>
+        <figure><img src="{{asset('assets/img/ametist/gorg.jpg')}}" alt=""></figure>
         <figure><img src="{{asset('assets/img/ametist/karmir.jpg')}}" alt=""></figure>
         <figure><img src="{{asset('assets/img/ametist/hamerg.jpg')}}" alt=""></figure>
         <figure><img src="{{asset('assets/img/ametist/mijnek.jpg')}}" alt=""></figure>
