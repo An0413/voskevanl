@@ -2,35 +2,95 @@
 
 @yield('header')
 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-<script src="assets/img/voskevan/https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-<script src="assets/img/voskevan/https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<link rel="stylesheet" type="text/css" href="fontawesome/css/all.css">
-<link href="{{asset('assets/css/style.css')}}" rel="stylesheet">
-
 <div class="container" style="margin-top: 10%; margin-bottom: 10%">
+
     <div class="row">
-        <div class="col-4"><img src="{{asset('assets/img/guitar/guitar.jpg')}}" alt="hush" class="guitar">
+        <div class="col-4 mt-5">
+            @foreach($imagesg as $value)
+                <img src="{{asset('assets/img/culture/' .$value['src'])}}" alt="hush" style="width: 100%">
+            @endforeach
+        </div>
+        <div class="col-4 mt-5">
+            <h3>Ոսկեվանի գիթառի խմբակ</h3><br><br>
+            <h4>Ուսուցչուհի՝ Կարինե Ալեքսանյան</h4>
         </div>
         <div class="col-4">
-            <h2><b>Ոսկեվանի կիթառի խմբակ</b></h2>
-            <br>
-            <br>
-            <h3>Ուսուցչուհի՝ Կարինե Ալեքսանյան</h3>
+            <section is="team" class="team" style="padding: 0%">
+                <div class="container">
+                    <div class="section-title aos-init aos-animate" data-aos="fade-in" data-aos-delay="100" style="padding-bottom: 0px; margin-bottom: 0%">
+                    </div>
+                    <div class="row mb-5">
+                        @foreach ($worker as $value)
+                            <div class="col-lg-4 col-md-6 mt-5" style="width: 100%;">
+                                <div class="member aos-init aos-animate" data-aos="fade-up">
+                                    <div class="pic">
+                                        <img src="{{asset('assets/img/guitar/'. $value['img'])}}" class="img-fluid"
+                                             alt="" style="height: 300px">
+                                    </div>
+                                    <div class="member-info">
+                                        <h4>{{$value->name . ' '. $value->lastname}}</h4>
+                                        <span>{{$value->positions->title}}</span>
+                                        <div class="social">
+                                            <a href=""><i class="bi bi-twitter"></i></a>
+                                            <a href=""><i class="bi bi-facebook"></i></a>
+                                            <a href=""><i class="bi bi-instagram"></i></a>
+                                            <a href=""><i class="bi bi-linkedin"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+            </section>
         </div>
-        <div class="col-4"><img src="{{asset('assets/img/guitar/karine.jpg')}}" alt="karine" class="karine">
+    </div>
+    <section id="cta" class="cta mt-5">
+        <div class="container aos-init aos-animate" data-aos="zoom-in">
+
+            <div class="text-center">
+                <?php foreach ($guitar as $value) { ?>
+                <div>
+                    <h3 class="text-center" style="font-family: Sofia;"><?php echo $value['name']; ?></h3>
+                </div>
+                <p style="text-indent: 3%; padding: 1%;"><?php echo $value['description'] ?></p>
+                <?php
+                }
+                ?>
+                <a class="cta-btn" href="#">Կարդալ ավելին</a>
+            </div>
         </div>
-    </div>
-    <div class="mt-5">
-        <p class="kitar mt-4">Ոսկեվանում բացվել է 2022թ. հուլիս ամսից Արթուր Մելքոնյանի և Կարինե Ալեքսանյանի
-            ջանքերով:
-            <br>
-            Խմբում սովորում են 16 աշակերտներ:
-        </p>
-    </div>
-    <div class="col-12 mt-5">
-        <img src="{{asset('assets/img/guitar/collage-guitar.jpg')}}" alt="collage-guitar.jpg" class="g_n">
-    </div>
+    </section>
+
+    <section id="portfolio" class="portfolio">
+        <div class="container">
+
+            <div class="section-title aos-init aos-animate" data-aos="fade-in" data-aos-delay="100">
+                <h2>ԼՈՒՍԱՆԿԱՐՆԵՐ</h2>
+            </div>
+
+            <div class="row portfolio-container aos-init aos-animate" data-aos="fade-up"
+                 style="position: relative; height: 1025.96px;">
+
+                @foreach ($images as $value)
+                    <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+                        <div class="portfolio-wrap">
+                            <img src="{{asset('assets/img/guitar/'. $value['src'])}}" class="img-fluid">
+                            <div class="portfolio-links">
+                                <a href="{{asset('assets/img/guitar/'. $value['src'])}}" data-gallery="portfolioGallery"
+                                   class="portfolio-lightbox"><i class="bx bx-plus"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+
+        </div>
+    </section>
+
+
+
+
 </div>
 @include('layouts.footer')
 

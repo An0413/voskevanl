@@ -1543,6 +1543,7 @@ h6 {
 .object_fit_cover{
     object-fit: cover;
 }
+
 .dasht{
 
     max-width: 100%;
@@ -1558,4 +1559,16 @@ h6 {
     background: url("../img/glxavor/bnapatker.jpg");
     background-repeat: no-repeat;
     background-size: cover;
+}
+.container_c{
+    margin: 4% auto;
+    width: 210px;
+    height: 140px;
+    position: relative;
+    perspective: 1000px;
+    margin-bottom: 140px;
+}
+.gayane{
+    width: 400px;
+    height: 300px;
 }
