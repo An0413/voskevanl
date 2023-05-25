@@ -9,7 +9,7 @@ class Culturem extends Model
 {
     use HasFactory;
 
-    protected $table = 'culture_members';
+    protected $table = 'culture';
 
     protected $guarded = false;
 }

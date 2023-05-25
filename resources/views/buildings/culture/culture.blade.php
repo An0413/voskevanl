@@ -8,18 +8,13 @@
         <div class="col-12">
             <section id="cta" class="cta">
                 <div class="container aos-init aos-animate" data-aos="zoom-in">
-
+                    @foreach($culture as $value)
                     <div class="text-center">
-                        <h3>ՈՍԿԵՎԱՆԻ ՄՇԱԿՈՒՅԹԻ ԿԵՆՏՐՈՆ</h3>
-                        <p>Ներկայումս Ոսկեվանի մշակույթի տունը զբաղվում է բավականին ակտիվ
-                            գործունեությամբ:
-                            Հաճախակի կազմակերպվում
-                            են միջոցառումներ, որոնք առանձնանում են իրենց հայկական ավանդական ոճով: Գյուղում բացվել են
-                            խմբակներ,
-                            որոնց
-                            հաճախում են ոչ միայն տեղի, այլ նաև շրջակա գյուղերի երեխաները: </p>
-                        <a class="cta-btn" href="#">Կարդալ ավելին</a>
+                        <h3>{{$value->name}}</h3>
+                        <p>{{$value->description}}</p>
+                        <a class="cta-btn" href="#portfolio">Կարդալ ավելին</a>
                     </div>
+                    @endforeach
                     @foreach ($images as $value)
                         <img src="{{asset('assets/img/culture/'. $value['src'])}}" alt="karuyc"
                              style="width: 90%; margin-left: 5%; margin-top: 2%">

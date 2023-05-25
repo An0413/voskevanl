@@ -19,7 +19,7 @@
                 <?php
                 }
                 ?>
-                <a class="cta-btn" href="#">Կարդալ ավելին</a>
+                <a class="cta-btn" href="#portfolio">Կարդալ ավելին</a>
             </div>
         </div>
         @foreach ($imagesg as $value)

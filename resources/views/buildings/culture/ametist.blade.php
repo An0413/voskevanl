@@ -2,62 +2,145 @@
 
 @yield('header')
 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<link rel="stylesheet" type="text/css" href="fontawesome/css/all.css">
-<link href="{{asset('assets/css/style.css')}}" rel="stylesheet">
 
-<div class="container" style="margin-bottom: 10%; margin-top: 10%;">
+<div class="container" style="margin-bottom: 10%; margin-top: 5%;">
+
+
     <div class="row">
-        <div class="col-4">
-            <img src="{{asset('assets/img/ametist/ametist.jpg')}}" alt="hush" class="par">
+        <div class="col-4 mt-5">
+            @foreach($imagesg as $value)
+                <img src="{{asset('assets/img/culture/' .$value['src'])}}" alt="hush" style="width: 100%">
+            @endforeach
         </div>
-        <div class="col-4"
-        <p class="small3">
-        <h2><b>Ամետիստ պարային համույթ</b></h2>
-        <br>
-        <br>
-        Գեղարվեստական ղեկավար՝ Գայանե Վարդանյան/ Նասիբյան
-        </p>
+        <div class="col-4 mt-5">
+            <h3>Ամետիստ պարային համույթ</h3><br><br>
+            <h4>Գեղարվեստական ղեկավար՝ Գայանե Վարդանյան/ Նասիբյան</h4>
+        </div>
+        <div class="col-4">
+            <section is="team" class="team" style="padding: 0%">
+                <div class="container">
+                    <div class="section-title aos-init aos-animate" data-aos="fade-in" data-aos-delay="100" style="padding-bottom: 0px; margin-bottom: 0%">
+                    </div>
+                    <div class="row mb-5">
+                        @foreach ($worker as $value)
+                            <div class="col-lg-4 col-md-6 mt-5" style="width: 100%;">
+                                <div class="member aos-init aos-animate" data-aos="fade-up">
+                                    <div class="pic">
+                                        <img src="{{asset('assets/img/ametist/'. $value['img'])}}" class="img-fluid"
+                                             alt="" style="height: 300px">
+                                    </div>
+                                    <div class="member-info">
+                                        <h4>{{$value->name . ' '. $value->lastname}}</h4>
+                                        <span>{{$value->positions->title}}</span>
+                                        <div class="social">
+                                            <a href=""><i class="bi bi-twitter"></i></a>
+                                            <a href=""><i class="bi bi-facebook"></i></a>
+                                            <a href=""><i class="bi bi-instagram"></i></a>
+                                            <a href=""><i class="bi bi-linkedin"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+            </section>
+        </div>
     </div>
-    <div class="col-4">
-        <img src="{{asset('assets/img/ametist/gayane.jpg')}}" alt="gayane" class="gayane">
-    </div>
-</div>
-<p class="small3">
-    Ոսկեվանում պարային համույթը բացվել է 2019թ հունիս ամսից: Խմբակը գործում է նաև Կողբ գյուղում. Տարին մեկ
-    անգամ երկու գյուղերի աշակերտների հետ միասին կազմակերպվում է հաշվաետու համերգ, որի ընթացքում երեխաները
-    ցույց են տալիս պարի ոլորտում իրենց ձեռքբերումները և առաջադիմությունը: Խմբերը հաճախակի մասնակցում են
-    փառատոնների և համերգների, երտեղից էլ վերադառնում են մեդալներով և պատվոգրերով:
-    <br>
-    Այժմ Ոսկեվանն ունի 3 խումբ՝ մեծեր, միջնեկներ և փոքրեր:
-    <br>
-    <br>
-    Մեծերի խումբ՝ 9 երեխա,
-    <br>
-    <br>
-    Միջնեկների խումբ՝ 9 երեխա,
-    <br>
-    <br>
-    Փոքրերի խումբ՝ 14 երեխա:
+    <section id="cta" class="cta">
+        <div class="container aos-init aos-animate" data-aos="zoom-in">
+
+            <div class="text-center">
+                <?php foreach ($ametist as $value) { ?>
+                <div>
+                    <h3 class="text-center" style="font-family: Sofia;"><?php echo $value['name']; ?></h3>
+                </div>
+                <p style="text-indent: 3%; padding: 1%;"><?php echo $value['description'] ?></p>
+                <?php
+                }
+                ?>
+                <a class="cta-btn" href="#portfolio">Կարդալ ավելին</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="portfolio" class="portfolio">
+        <div class="container">
+
+            <div class="section-title aos-init aos-animate" data-aos="fade-in" data-aos-delay="100">
+                <h2>ԼՈՒՍԱՆԿԱՐՆԵՐ</h2>
+            </div>
+
+            <div class="row portfolio-container aos-init aos-animate" data-aos="fade-up"
+                 style="position: relative; height: 1025.96px;">
+
+                @foreach ($images as $value)
+                    <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+                        <div class="portfolio-wrap">
+                            <img src="{{asset('assets/img/ametist/'. $value['src'])}}" class="img-fluid">
+                            <div class="portfolio-links">
+                                <a href="{{asset('assets/img/ametist/'. $value['src'])}}" data-gallery="portfolioGallery"
+                                   class="portfolio-lightbox"><i class="bx bx-plus"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+
+        </div>
+    </section>
 
 
-</p>
 
-<div class="container container_c">
-    <div id="carousel">
-        <figure><img src="{{asset('assets/img/ametist/gorg.jpg')}}" alt=""></figure>
-        <figure><img src="{{asset('assets/img/ametist/karmir.jpg')}}" alt=""></figure>
-        <figure><img src="{{asset('assets/img/ametist/hamerg.jpg')}}" alt=""></figure>
-        <figure><img src="{{asset('assets/img/ametist/mijnek.jpg')}}" alt=""></figure>
-        <figure><img src="{{asset('assets/img/ametist/kapuyt.jpg')}}" alt=""></figure>
-        <figure><img src="{{asset('assets/img/ametist/dexin.jpg')}}" alt=""></figure>
-        <figure><img src="{{asset('assets/img/ametist/taraz.jpg')}}" alt=""></figure>
-        <figure><img src="{{asset('assets/img/ametist/jpit.jpg')}}" alt=""></figure>
-        <figure><img src="{{asset('assets/img/ametist/porc.jpg')}}" alt=""></figure>
-    </div>
-</div>
+{{--    <div class="row">--}}
+{{--        <div class="col-4">--}}
+{{--            <img src="{{asset('assets/img/ametist/ametist.jpg')}}" alt="hush" class="par">--}}
+{{--        </div>--}}
+{{--        <div class="col-4"</div>--}}
+{{--        <p class="small3">--}}
+{{--        <h2><b>Ամետիստ պարային համույթ</b></h2>--}}
+{{--        <br>--}}
+{{--        <br>--}}
+{{--        Գեղարվեստական ղեկավար՝ Գայանե Վարդանյան/ Նասիբյան--}}
+{{--        </p>--}}
+{{--    </div>--}}
+{{--    <div class="col-4">--}}
+{{--        <img src="{{asset('assets/img/ametist/gayane.jpg')}}" alt="gayane" class="gayane">--}}
+{{--    </div>--}}
+{{--</div>--}}
+{{--<p class="small3">--}}
+{{--    Ոսկեվանում պարային համույթը բացվել է 2019թ հունիս ամսից: Խմբակը գործում է նաև Կողբ գյուղում. Տարին մեկ--}}
+{{--    անգամ երկու գյուղերի աշակերտների հետ միասին կազմակերպվում է հաշվաետու համերգ, որի ընթացքում երեխաները--}}
+{{--    ցույց են տալիս պարի ոլորտում իրենց ձեռքբերումները և առաջադիմությունը: Խմբերը հաճախակի մասնակցում են--}}
+{{--    փառատոնների և համերգների, երտեղից էլ վերադառնում են մեդալներով և պատվոգրերով:--}}
+{{--    <br>--}}
+{{--    Այժմ Ոսկեվանն ունի 3 խումբ՝ մեծեր, միջնեկներ և փոքրեր:--}}
+{{--    <br>--}}
+{{--    <br>--}}
+{{--    Մեծերի խումբ՝ 9 երեխա,--}}
+{{--    <br>--}}
+{{--    <br>--}}
+{{--    Միջնեկների խումբ՝ 9 երեխա,--}}
+{{--    <br>--}}
+{{--    <br>--}}
+{{--    Փոքրերի խումբ՝ 14 երեխա:--}}
+
+
+{{--</p>--}}
+
+{{--<div class="container container_c">--}}
+{{--    <div id="carousel">--}}
+{{--        <figure><img src="{{asset('assets/img/ametist/gorg.jpg')}}" alt=""></figure>--}}
+{{--        <figure><img src="{{asset('assets/img/ametist/karmir.jpg')}}" alt=""></figure>--}}
+{{--        <figure><img src="{{asset('assets/img/ametist/hamerg.jpg')}}" alt=""></figure>--}}
+{{--        <figure><img src="{{asset('assets/img/ametist/mijnek.jpg')}}" alt=""></figure>--}}
+{{--        <figure><img src="{{asset('assets/img/ametist/kapuyt.jpg')}}" alt=""></figure>--}}
+{{--        <figure><img src="{{asset('assets/img/ametist/dexin.jpg')}}" alt=""></figure>--}}
+{{--        <figure><img src="{{asset('assets/img/ametist/taraz.jpg')}}" alt=""></figure>--}}
+{{--        <figure><img src="{{asset('assets/img/ametist/jpit.jpg')}}" alt=""></figure>--}}
+{{--        <figure><img src="{{asset('assets/img/ametist/porc.jpg')}}" alt=""></figure>--}}
+{{--    </div>--}}
+{{--</div>--}}
 
 </div>
 @include('layouts.footer')

@@ -3,12 +3,7 @@
 @yield('header')
 
 
-
-
 <div class="container" style="margin-bottom: 10%; margin-top: 10%;">
-
-
-
 
     <div class="row">
         <div class="col-4 mt-5">
@@ -23,7 +18,8 @@
         <div class="col-4">
             <section is="team" class="team" style="padding: 0%">
                 <div class="container">
-                    <div class="section-title aos-init aos-animate" data-aos="fade-in" data-aos-delay="100" style="padding-bottom: 0px; margin-bottom: 0%">
+                    <div class="section-title aos-init aos-animate" data-aos="fade-in" data-aos-delay="100"
+                         style="padding-bottom: 0px; margin-bottom: 0%">
                     </div>
                     <div class="row mb-5">
                         @foreach ($worker as $value)
@@ -63,7 +59,7 @@
                 <?php
                 }
                 ?>
-                <a class="cta-btn" href="#">Կարդալ ավելին</a>
+                <a class="cta-btn" href="#portfolio">Կարդալ ավելին</a>
             </div>
         </div>
     </section>
@@ -83,7 +79,8 @@
                         <div class="portfolio-wrap">
                             <img src="{{asset('assets/img/fine_art/'. $value['src'])}}" class="img-fluid">
                             <div class="portfolio-links">
-                                <a href="{{asset('assets/img/fine_art/'. $value['src'])}}" data-gallery="portfolioGallery"
+                                <a href="{{asset('assets/img/fine_art/'. $value['src'])}}"
+                                   data-gallery="portfolioGallery"
                                    class="portfolio-lightbox"><i class="bx bx-plus"></i></a>
                             </div>
                         </div>
@@ -95,69 +92,68 @@
     </section>
 
 
+    {{--    <div class="row">--}}
+    {{--        <div class="col-4 mt-3">--}}
+    {{--            <img src="{{asset('assets/img/fine_art/morberd.jpg')}}" alt="nkar" class="par">--}}
+    {{--        </div>--}}
+    {{--        <div class="col-4">--}}
+    {{--            <p class="small3">--}}
+    {{--            <h3><b>Ոսկեվանի գեղարվեստի դպրոց</b></h3>--}}
+    {{--            <br>--}}
+    {{--            <br>--}}
+    {{--            <h4>Տնօրեն` Արթուր Մելքոնյան</h4>--}}
+    {{--            </p>--}}
+    {{--        </div>--}}
+    {{--        <div class="col-4">--}}
+    {{--            <img src="{{asset('assets/img/fine_art/Artur.jpg')}}" class="par">--}}
+    {{--        </div>--}}
+    {{--    </div>--}}
+    {{--    <div>--}}
+    {{--        <p class="kitar mt-4">--}}
+    {{--            Դպրոցը բացվել է 2010թ. Ապրիլի 17-ին: Նախնական շրջանում ունեցել է ավելի քան 45 աշակերտ:--}}
+    {{--            <br>--}}
+    {{--            <br>--}}
+    {{--            2010 թ. ամռանը սկսել են մասնակցել Կողբի գեղարվեստի դպրոցի կողմից կազմակերպված ամենամյա պլեներներին:--}}
+    {{--            <br>--}}
+    {{--            <br>--}}
+    {{--            2011 թ. Ապրիլի 17-ին կազմակերպվել է առաջին ցուցահանդեսը: Ցուցահանդեսները կրում են շարունակական բնույթ:--}}
+    {{--            <br>--}}
+    {{--            <br>--}}
+    {{--            2012թ. Դպրոցը տվել է առաջին շրջանավարտը, որն ընդունվել է համալսարան (ԵՊՀ Իջևանի մասնաճյուղ՝--}}
+    {{--            դիզայների մասնագիտացմամբ):--}}
+    {{--            <br>--}}
+    {{--            <br>--}}
+    {{--            2022թ. Փետրվարի 1-ից բացվել է նաև կավագործություն: Ուսուցչուհի՝ Արինա Դավթյան: Սովորում են 8 աշակերտ:--}}
+    {{--            Համագործակցում են 4u.am կայքի հետ:--}}
+    {{--        </p>--}}
+    {{--    </div>--}}
 
-{{--    <div class="row">--}}
-{{--        <div class="col-4 mt-3">--}}
-{{--            <img src="{{asset('assets/img/fine_art/morberd.jpg')}}" alt="nkar" class="par">--}}
-{{--        </div>--}}
-{{--        <div class="col-4">--}}
-{{--            <p class="small3">--}}
-{{--            <h3><b>Ոսկեվանի գեղարվեստի դպրոց</b></h3>--}}
-{{--            <br>--}}
-{{--            <br>--}}
-{{--            <h4>Տնօրեն` Արթուր Մելքոնյան</h4>--}}
-{{--            </p>--}}
-{{--        </div>--}}
-{{--        <div class="col-4">--}}
-{{--            <img src="{{asset('assets/img/fine_art/Artur.jpg')}}" class="par">--}}
-{{--        </div>--}}
-{{--    </div>--}}
-{{--    <div>--}}
-{{--        <p class="kitar mt-4">--}}
-{{--            Դպրոցը բացվել է 2010թ. Ապրիլի 17-ին: Նախնական շրջանում ունեցել է ավելի քան 45 աշակերտ:--}}
-{{--            <br>--}}
-{{--            <br>--}}
-{{--            2010 թ. ամռանը սկսել են մասնակցել Կողբի գեղարվեստի դպրոցի կողմից կազմակերպված ամենամյա պլեներներին:--}}
-{{--            <br>--}}
-{{--            <br>--}}
-{{--            2011 թ. Ապրիլի 17-ին կազմակերպվել է առաջին ցուցահանդեսը: Ցուցահանդեսները կրում են շարունակական բնույթ:--}}
-{{--            <br>--}}
-{{--            <br>--}}
-{{--            2012թ. Դպրոցը տվել է առաջին շրջանավարտը, որն ընդունվել է համալսարան (ԵՊՀ Իջևանի մասնաճյուղ՝--}}
-{{--            դիզայների մասնագիտացմամբ):--}}
-{{--            <br>--}}
-{{--            <br>--}}
-{{--            2022թ. Փետրվարի 1-ից բացվել է նաև կավագործություն: Ուսուցչուհի՝ Արինա Դավթյան: Սովորում են 8 աշակերտ:--}}
-{{--            Համագործակցում են 4u.am կայքի հետ:--}}
-{{--        </p>--}}
-{{--    </div>--}}
-
-{{--    <div class="row">--}}
-{{--        <div class="col-sm-3">--}}
-{{--            <img src="{{asset('assets/img/fine_art/poqreri_xumb.jpg')}}" alt="poqer" style="width: 250px; height: 250px">--}}
-{{--        </div>--}}
-{{--        <div class="col-sm-3">--}}
-{{--            <img src="{{asset('assets/img/fine_art/budka.jpg')}}" alt="budka" style="width: 250px; height: 250px">--}}
-{{--        </div>--}}
-{{--        <div class="col-sm-3">--}}
-{{--            <img src="{{asset('assets/img/fine_art/senyak.jpg')}}" alt="senyak" style="max-width: 100%; height: 250px">--}}
-{{--        </div>--}}
-{{--        <div class="col-sm-3">--}}
-{{--            <img src="{{asset('assets/img/fine_art/kav.jpg')}}" alt="kav" style="max-width: 100%; height: 250px"></div>--}}
-{{--    </div>--}}
-{{--    <div class="row mt-5 mb-5">--}}
-{{--        <div class="col-sm-3">--}}
-{{--            <img src="{{asset('assets/img/fine_art/pulik.jpg')}}" alt="pulik" style="width: 250px; height: 250px">--}}
-{{--        </div>--}}
-{{--        <div class="col-sm-3">--}}
-{{--            <img src="{{asset('assets/img/fine_art/qandak.jpg')}}" alt="qandak" style="width: 250px; height: 250px">--}}
-{{--        </div>--}}
-{{--        <div class="col-sm-3">--}}
-{{--            <img src="{{asset('assets/img/fine_art/bacik.jpg')}}" alt="bacik" style="max-width: 100%; height: 250px">--}}
-{{--        </div>--}}
-{{--        <div class="col-sm-3">--}}
-{{--            <img src="{{asset('assets/img/fine_art/poqrik.jpg')}}" alt="poqrik" class="poqrik"></div>--}}
-{{--    </div>--}}
+    {{--    <div class="row">--}}
+    {{--        <div class="col-sm-3">--}}
+    {{--            <img src="{{asset('assets/img/fine_art/poqreri_xumb.jpg')}}" alt="poqer" style="width: 250px; height: 250px">--}}
+    {{--        </div>--}}
+    {{--        <div class="col-sm-3">--}}
+    {{--            <img src="{{asset('assets/img/fine_art/budka.jpg')}}" alt="budka" style="width: 250px; height: 250px">--}}
+    {{--        </div>--}}
+    {{--        <div class="col-sm-3">--}}
+    {{--            <img src="{{asset('assets/img/fine_art/senyak.jpg')}}" alt="senyak" style="max-width: 100%; height: 250px">--}}
+    {{--        </div>--}}
+    {{--        <div class="col-sm-3">--}}
+    {{--            <img src="{{asset('assets/img/fine_art/kav.jpg')}}" alt="kav" style="max-width: 100%; height: 250px"></div>--}}
+    {{--    </div>--}}
+    {{--    <div class="row mt-5 mb-5">--}}
+    {{--        <div class="col-sm-3">--}}
+    {{--            <img src="{{asset('assets/img/fine_art/pulik.jpg')}}" alt="pulik" style="width: 250px; height: 250px">--}}
+    {{--        </div>--}}
+    {{--        <div class="col-sm-3">--}}
+    {{--            <img src="{{asset('assets/img/fine_art/qandak.jpg')}}" alt="qandak" style="width: 250px; height: 250px">--}}
+    {{--        </div>--}}
+    {{--        <div class="col-sm-3">--}}
+    {{--            <img src="{{asset('assets/img/fine_art/bacik.jpg')}}" alt="bacik" style="max-width: 100%; height: 250px">--}}
+    {{--        </div>--}}
+    {{--        <div class="col-sm-3">--}}
+    {{--            <img src="{{asset('assets/img/fine_art/poqrik.jpg')}}" alt="poqrik" class="poqrik"></div>--}}
+    {{--    </div>--}}
 </div>
 @include('layouts.footer')
 

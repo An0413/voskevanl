@@ -3,32 +3,24 @@
 @yield('header')
 
 
-<div class="container">
-    <h1 class="text-center" style="margin-top: 10%; margin-bottom: 2%;">Մանկապարտեզ</h1>
+<div class="container" style="margin-top: 10%">
     <section id="cta" class="cta">
         <div class="container aos-init aos-animate" data-aos="zoom-in">
-
+            @foreach($kindergarten as $value)
             <div class="text-center">
-                <h3></h3>
-                <p>Ոսկեվանում երկար տարիներ չի գործել մանկապարտեզը։2011 թվականին նախագահի այցելության ժամանակ գյուղապետ
-                    <b>Սերյոժա Ալեքսանյանը</b> բարձրաձայնում
-                    է այս խնդիրը և արդեն 2012 թվականին սկսվում է շինարարությունը:Շենքը կառուցվել է Հայաստանի Սոցիալիստական
-                    ներդրումների հիմնադրամի կողմից։
-                    Համայնքի անունից ներդրումը կատարվել է
-                    <b>Կիրակոս Վափորճյանի</b> աջակցությամբ։Շինարարական աշխատանքները կատարվում էր տեղացի Արարատ Ղազարյանի
-                    գլխավորությամբ։<br>
-                    2014 թվականի մայիսի 16-ին տեղի է ունենում մանկապարտեզի շենքի բացումը, որը դեռ ընդունում էր միայն
-                    նախադպրոցական երեխաներին։Այժմ մանկապարտեզում գործում է 2 խումբ։
-                    Մանկապարտեզ են հաճախում 46 երեխա։ Այն ունի 13 աշխատող։</p>
-                <a class="cta-btn" href="#">Կարդալ ավելին</a>
+                <h3>{{$value->name}}</h3>
+                <p>{{$value->description}}</p>
+                <a class="cta-btn" href="#team">Կարդալ ավելին</a>
             </div>
+            @endforeach
         </div>
-        <img src="{{asset('assets/img/kindergarten/partez_shenq.jpg')}}"
+        @foreach($imagesg as $value)
+        <img src="{{asset('assets/img/kindergarten/'. $value['src'])}}"
              style="width: 80%; margin-left: 10%; margin-top: 2%">
-
+        @endforeach
     </section>
 
-    <section is="team" class="team">
+    <section is="team" class="team" id="team">
         <div class="container">
             <div class="section-title aos-init aos-animate" data-aos="fade-in" data-aos-delay="100">
                 <h2>ԱՇԽԱՏԱԿԱԶՄ</h2>
