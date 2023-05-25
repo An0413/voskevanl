@@ -1543,3 +1543,19 @@ h6 {
 .object_fit_cover{
     object-fit: cover;
 }
+.dasht{
+
+    max-width: 100%;
+}
+.modal_style{
+    overflow-y: scroll;
+}
+.justifity {
+    text-align: justify;
+}
+.modal_fon{
+
+    background: url("../img/glxavor/bnapatker.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
