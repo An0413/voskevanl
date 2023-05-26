@@ -18,7 +18,7 @@ class FineartController extends Controller
     {
         $fineart = Fineart::all();
         $images = Images::where('gallery_id', '=', 53)->get();
-        $imagesg = Images::where('gallery_id', '=', 13)->get();
+        $imagesg = Images::where('gallery_id', '=', 53)->where('main_image', '=', 1)->get();
         $worker = Worker::where('worker_id', '=', 9)->get();
         return view('buildings.culture.fineart', compact('fineart', 'images', 'imagesg','worker'));
     }

@@ -2,10 +2,36 @@
 
 @yield('header')
 
-
+<div>
+    @foreach($images0 as $value)
+        <img src="{{asset('assets/img/about/'. $value['src'])}}" class="w-100 h-50">
+    @endforeach
+</div>
 <div class="container" style="margin-top: 6%; margin-bottom: 6%">
 
-    <section id="cta" class="cta">
+    <section id="services" class="services">
+        <div class="container">
+
+            <div class="section-title aos-init aos-animate" data-aos="fade-in" data-aos-delay="100">
+                <h2>ՄԵՐ ԾԱՌԱՅՈՒԹՅՈՒՆՆԵՐԸ</h2>
+            </div>
+
+            <div class="row">
+                @foreach($services as $value)
+                    <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+                        <div class="icon-box aos-init aos-animate" data-aos="fade-up">
+                            <div class="icon"><i class="{{$value->icon}}"></i></div>
+                            <h4 class="title"><a href="">{{$value->name}}</a></h4>
+                            <p class="description">{{$value->description}}</p>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+
+        </div>
+    </section>
+
+    <section id="cta" class="cta mt-5">
         <div class="container aos-init aos-animate" data-aos="zoom-in">
             @foreach($itok as $value)
                 <div class="text-center">
@@ -68,6 +94,7 @@
             @endforeach
         </div>
     </div>
+
 </div>
 @include('layouts.footer')
 

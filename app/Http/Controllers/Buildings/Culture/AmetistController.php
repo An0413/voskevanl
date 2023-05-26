@@ -17,8 +17,8 @@ class AmetistController extends Controller
     public function __invoke()
     {
         $ametist = Ametist::all();
-        $images = Images::where('gallery_id', '=', 54)->get();
-        $imagesg = Images::where('gallery_id', '=', 82)->get();
+        $images = Images::where('gallery_id', '=', 54)->where('main_image', '=', 0)->get();
+        $imagesg = Images::where('gallery_id', '=', 54)->where('main_image', '=', 1)->get();
         $worker = Worker::where('worker_id', '=', 10)->get();
         return view('buildings.culture.ametist', compact('imagesg', 'worker', 'ametist', 'images'));
     }
