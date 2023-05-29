@@ -9,6 +9,7 @@ use App\Http\Controllers\Main\IndexController;
 use App\Http\Controllers\News\NewsController;
 use App\Http\Controllers\Glxavor\GlxavorController;
 use App\Http\Controllers\History\HistoryController;
+use App\Http\Controllers\News\NewsiController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Buildings\BindexController;
@@ -69,6 +70,7 @@ Route::group(['namespase' => 'Glxavor'], function (){
 
 Route::group(['namespase' => 'News', 'prefix' => 'news'], function (){
     Route::get('/',  NewsController::class)->name('news.news');
+    Route::get('/newsi',  NewsiController::class)->name('news.newsi');
 });
 
 
