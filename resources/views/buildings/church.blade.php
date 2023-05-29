@@ -4,7 +4,7 @@
 
 <div class="container" style="margin-top: 10%">
     <h1 class="text-center">ՍՈՒՐԲ ԳԱՅԱՆԵԻ ԵԿԵՂԵՑԻ</h1>
-    <img src="{{asset('assets/img/buildings/42570319_118801399085920_1505875362872033280_n.jpg')}}" style="width: 100%; margin-top: 2%">
+    <img src="{{asset('assets/img/glxavor/seint.jpg')}}" style="width: 100%; margin-top: 2%">
 
     <div style="margin: 8%; background-color: rgb(152 202 224 / 90%); padding: 5%">
         2003 թվականին եկեղեցին հիմնովին վերակառուցվել է մոսկվայաբնակ ոսկեվանցի, բժշկական զինվորական ծառայության գնդապետ

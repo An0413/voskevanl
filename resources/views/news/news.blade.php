@@ -15,7 +15,7 @@
                 <div class="content"><p class="h-1 mt-4">{{$value->title}}</p>
                     <p class="text-muted mt-3">{{$value->description}}</p>
                     <div class="d-flex align-items-center justify-content-between mt-3 pb-3">
-                        <div class="btn btn-primary"><a href="{{$value->src}}" class="text-muted">Կարդալ ավելին</a><span class="fas fa-arrow-right"></span></div>
+                        <div class="btn btn-primary"><a href="{{$value->src}}" class="text-muted news_read_more">Կարդալ ավելին</a><span class="fas fa-arrow-right"></span></div>
                         <div class="d-flex align-items-center justify-content-center foot"><p class="admin">{{$value->autor}}</p>
                             <p class="ps-3 icon text-muted"><span class="fas fa-comment-alt pe-1">{{$value->status}}</span></p>
                         </div>

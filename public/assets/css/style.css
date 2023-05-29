@@ -1742,3 +1742,10 @@ p {
 .card .content .foot .icon {
     font-size: 12px
 }
+
+.card:hover .news_read_more {
+    color: black !important;
+}
+.team_img{
+    max-width: 83%;
+}
