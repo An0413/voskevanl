@@ -10,7 +10,7 @@
             @foreach($administration as $value)
                 <h3>{{ $value->title }}</h3>
                 <br>
-                <p>{{ $value->content }}</p>
+                <p class="justifity">{{ $value->content }}</p>
             @endforeach
 
         </div>

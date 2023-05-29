@@ -44,7 +44,6 @@
                     <ul>
                         <li><i class="bx bx-chevron-right"></i> <a href="#">Ամետիստ</a></li>
                         <li><i class="bx bx-chevron-right"></i> <a href="#">Գեղարվեստի դպրոց</a></li>
-                        <li><i class="bx bx-chevron-right"></i> <a href="#">Կավագործություն</a></li>
                         <li><i class="bx bx-chevron-right"></i> <a href="#">Կիթառի խմբակ</a></li>
                         <li><i class="bx bx-chevron-right"></i> <a href="#">Թեքվանդոյի խմբակ</a></li>
                     </ul>
