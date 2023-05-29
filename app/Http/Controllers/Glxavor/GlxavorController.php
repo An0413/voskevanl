@@ -15,7 +15,8 @@ class GlxavorController extends Controller
     {
         $worker = Worker::where('worker_id', '=', 5)->get();
         $images = Images::where('gallery_id', '=', 1)->get();
-        return view('glxavor.glxavor', compact('images', 'worker'));
+        $imagesg = Images::where('main_image', '=', 1)->where('gallery_id', '=', 1)->get();
+        return view('glxavor.glxavor', compact('images', 'worker', 'imagesg'));
 
     }
 }

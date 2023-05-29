@@ -61,7 +61,7 @@
             </div>
             <div class="row mt-5 mb-5">
                 @foreach ($worker as $value)
-                    <div class="col-lg-4 col-md-6 mt-5">
+                    <div class="col-lg-4 col-md-6 mt-5" data-aos="fade-up">
                         <div class="member aos-init aos-animate" data-aos="fade-up">
                             <div class="pic">
                                 <img src="{{asset('assets/img/school/'. $value['img'])}}" class="img-fluid"

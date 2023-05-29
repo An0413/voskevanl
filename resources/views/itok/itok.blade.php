@@ -85,7 +85,7 @@
         </div>
         @foreach($itokm as $value)
             <div class="col-4" style="margin-top: 4%">
-                <p>{{$value->description}}</p>
+                <p class="justifity">{{$value->description}}</p>
             </div>
         @endforeach
         <div class="col-4 mt-5">

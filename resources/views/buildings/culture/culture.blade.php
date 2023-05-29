@@ -67,7 +67,7 @@
                     <div class="section-title aos-init aos-animate" data-aos="fade-in" data-aos-delay="100">
                         <h2>ԱՇԽԱՏԱԿԱԶՄ</h2>
                     </div>
-                    <div class="row mt-5 mb-5">
+                    <div class="row mt-5 mb-5" data-aos="fade-up">
                         @foreach ($worker as $value)
                             <div class="col-lg-4 col-md-6 mt-5">
                                 <div class="member aos-init aos-animate" data-aos="fade-up">
