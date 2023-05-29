@@ -215,7 +215,7 @@
                 <div class="info-box  mb-4">
                     <i class="bx bx-envelope"></i>
                     <h3>Էլ․ հասցե</h3>
-                    <p>contact@example.com</p>
+                    <p>itok.llc.2021@gmail.com</p>
                 </div>
             </div>
 
@@ -223,7 +223,7 @@
                 <div class="info-box  mb-4">
                     <i class="bx bx-phone-call"></i>
                     <h3>Հեռ․</h3>
-                    <p>+1 5589 55488 55</p>
+                    <p>+374 (77) 72 52 62</p>
                 </div>
             </div>
 
