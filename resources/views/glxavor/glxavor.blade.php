@@ -175,9 +175,9 @@
         @foreach ($worker as $value)
             <div class="col-lg-3 col-md-6 mt-5"  data-aos="fade-up">
                 <div class="member aos-init aos-animate" {{--data-aos-delay="300"--}}>
-                    <div class="pic">
+                    <div class="pic" data-aos="fade-in">
                         <img src="{{asset('assets/img/about/'.$value->img)}}"
-                             class="img-fluid" alt="">
+                             class="img-fluid team_img" alt="">
                     </div>
                     <div class="member-info">
                         <h4>{{$value->name}}  {{$value->lastname}}</h4>
@@ -215,7 +215,7 @@
                 <div class="info-box  mb-4">
                     <i class="bx bx-envelope"></i>
                     <h3>Էլ․ հասցե</h3>
-                    <p>contact@example.com</p>
+                    <p>itok.llc.2021@gmail.com</p>
                 </div>
             </div>
 
@@ -223,7 +223,7 @@
                 <div class="info-box  mb-4">
                     <i class="bx bx-phone-call"></i>
                     <h3>Հեռ․</h3>
-                    <p>+1 5589 55488 55</p>
+                    <p>+374 (77) 72 52 62</p>
                 </div>
             </div>
 

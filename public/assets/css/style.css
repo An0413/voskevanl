@@ -1753,6 +1753,7 @@ p {
     font-size: 12px
 }
 
+
 .newsstyle {
     border-radius: 5%;
     background-color: rgba(103, 176, 209, 0.8);
@@ -1761,4 +1762,10 @@ p {
 }
 .newsstyle:hover{
     background-color: #7eb5d5;
+}
+.card:hover .news_read_more {
+    color: black !important;
+}
+.team_img{
+    max-width: 83%;
 }
