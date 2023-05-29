@@ -32,7 +32,7 @@
     </section>
 
     <section id="cta" class="cta mt-5">
-        <div class="container aos-init aos-animate" data-aos="zoom-in">
+        <div data-aos="zoom-in">
             @foreach($itok as $value)
                 <div class="text-center">
                     <h3>{{$value->name}}</h3>
