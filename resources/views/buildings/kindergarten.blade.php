@@ -5,7 +5,7 @@
 
 <div class="container" style="margin-top: 10%">
     <section id="cta" class="cta">
-        <div class="container aos-init aos-animate" data-aos="zoom-in">
+        <div data-aos="zoom-in">
             @foreach($kindergarten as $value)
             <div class="text-center">
                 <h3>{{$value->name}}</h3>

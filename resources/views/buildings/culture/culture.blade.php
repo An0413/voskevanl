@@ -5,9 +5,9 @@
 
 <div class="container" style="margin-top: 6%; margin-bottom: 6%">
     <div class="row mt-5">
-        <div class="col-12">
-            <section id="cta" class="cta">
-                <div class="container aos-init aos-animate" data-aos="zoom-in">
+        <div class="col-12" >
+            <section id="cta" class="cta" >
+                <div data-aos="zoom-in">
                     @foreach($culture as $value)
                     <div class="text-center">
                         <h3>{{$value->name}}</h3>

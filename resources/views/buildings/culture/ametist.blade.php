@@ -48,7 +48,7 @@
         </div>
     </div>
     <section id="cta" class="cta">
-        <div class="container aos-init aos-animate" data-aos="zoom-in">
+        <div data-aos="zoom-in">
 
             <div class="text-center">
                 <?php foreach ($ametist as $value) { ?>
