@@ -257,8 +257,12 @@
 {{--                        <input type="text" class="form-control" name="subject" id="subject" placeholder="Թեմա" required>--}}
 {{--                        <label for="sel1" class="form-label">ՈՒմ</label>--}}
                         <select class="form-select" id="sel1" name="sellist1">
-                            <option>Admin</option>
-                            <option>User</option>
+                            @php
+                                $user = \App\Models\Role::all();
+                            @endphp
+                            @foreach($user as $value)
+                            <option>{{$value->name_arm}}</option>
+                                @endforeach
                         </select>
                     </div>
                     <div class="form-group mt-3">
