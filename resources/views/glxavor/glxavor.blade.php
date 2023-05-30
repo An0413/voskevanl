@@ -244,7 +244,7 @@
             </div>
 
             <div class="col-lg-6">
-                <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+                <form action="/message_to_user" method="post" role="form" class="php-email-form">
                     <div class="row">
                         <div class="col-md-6 form-group">
                             <input type="text" name="name" class="form-control" id="name" placeholder="Ձեր անունը" required>
@@ -254,11 +254,15 @@
                         </div>
                     </div>
                     <div class="form-group mt-3">
-{{--                        <input type="text" class="form-control" name="subject" id="subject" placeholder="Թեմա" required>--}}
-{{--                        <label for="sel1" class="form-label">ՈՒմ</label>--}}
-                        <select class="form-select" id="sel1" name="sellist1">
-                            <option>Admin</option>
-                            <option>User</option>
+
+                        <select class="form-select" id="sel1" name="sellist1" required>
+                            <option value="">Ընտրել հասցեատիրջը</option>
+                            @php
+                                $user = \App\Models\Role::all();
+                            @endphp
+                            @foreach($user as $value)
+                                <option value="{{$value->id}}">{{$value->name_arm}}</option>
+                            @endforeach
                         </select>
                     </div>
                     <div class="form-group mt-3">

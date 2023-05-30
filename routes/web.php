@@ -65,7 +65,7 @@ Route::group(['namespase' => 'History', 'prefix' => 'history'], function (){
 });
 
 Route::group(['namespase' => 'Glxavor'], function (){
-    Route::get('/',  GlxavorController::class)->name('glxavor.glxavor');
+    Route::get('/',  [GlxavorController::class, 'index'])->name('glxavor.glxavor');
 });
 
 Route::group(['namespase' => 'News', 'prefix' => 'news'], function (){
@@ -73,6 +73,7 @@ Route::group(['namespase' => 'News', 'prefix' => 'news'], function (){
     Route::get('/newsi',  NewsiController::class)->name('news.newsi');
 });
 
+Route::post('/message_to_user', [GlxavorController::class, 'email_to_user']);
 
 Auth::routes();
 
