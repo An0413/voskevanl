@@ -19,34 +19,37 @@
                 <div class="col-lg-2 col-md-6 footer-links">
 {{--                    <h4>Useful Links</h4>--}}
                     <ul>
-                        <li><i class="bx bx-chevron-right"></i> <a href="#">Գլխավոր</a></li>
-                        <li><i class="bx bx-chevron-right"></i> <a href="#">Նորություններ</a></li>
-                        <li><i class="bx bx-chevron-right"></i> <a href="#">Կառույցներ</a></li>
-                        <li><i class="bx bx-chevron-right"></i> <a href="#">ITOK</a></li>
-                        <li><i class="bx bx-chevron-right"></i> <a href="#">Պատմություն</a></li>
+                        @php
+                            $footer_menu = \App\Models\Menu::all();
+                        @endphp
+                    @foreach($footer_menu as $value)
+                        @if($value->parent_id == 0 && $value->is_drop == 0)
+                        <li><i class="bx bx-chevron-right"></i> <a href="{{ $value->url }}">{{$value->name}}</a></li>
+                        @endif
+                    @endforeach
                     </ul>
                 </div>
 
                 <div class="col-lg-2 col-md-6 footer-links">
 {{--                    <h4>Our Services</h4>--}}
                     <ul>
-                        <li><i class="bx bx-chevron-right"></i> <a href="#">Մշակույթի տուն</a></li>
-                        <li><i class="bx bx-chevron-right"></i> <a href="#">Գյուղապետարան</a></li>
-                        <li><i class="bx bx-chevron-right"></i> <a href="#">Դպրոց</a></li>
-                        <li><i class="bx bx-chevron-right"></i> <a href="#">Մանկապարտեզ</a></li>
-                        <li><i class="bx bx-chevron-right"></i> <a href="#">Ամբուլատորիա</a></li>
-                        <li><i class="bx bx-chevron-right"></i> <a href="#">Եկեղեցի</a></li>
+                        @php
+                            $footer_drop = \App\Models\Menu::where('parent_id', '=', 4)->get();
+                        @endphp
+                        @foreach($footer_drop as $value)
+                            <li><i class="bx bx-chevron-right"></i> <a href="{{ $value->url }}">{{$value->name}}</a></li>
+                        @endforeach
                     </ul>
                 </div>
 
                 <div class="col-lg-4 col-md-6 footer-links">
-{{--                    <h4>Մշակույթ</h4>--}}
                     <ul>
-                        <li><i class="bx bx-chevron-right"></i> <a href="#">Ամետիստ</a></li>
-                        <li><i class="bx bx-chevron-right"></i> <a href="#">Գեղարվեստի դպրոց</a></li>
-                        <li><i class="bx bx-chevron-right"></i> <a href="#">Կավագործություն</a></li>
-                        <li><i class="bx bx-chevron-right"></i> <a href="#">Կիթառի խմբակ</a></li>
-                        <li><i class="bx bx-chevron-right"></i> <a href="#">Թեքվանդոյի խմբակ</a></li>
+                        @php
+                            $footer_drop = \App\Models\Culturex::all();
+                        @endphp
+                        @foreach($footer_drop as $drop_menu)
+                            <li><i class="bx bx-chevron-right"></i> <a href="/buildings/{{ $drop_menu->url }}">{{ $drop_menu->name }}</a></li>
+                        @endforeach
                     </ul>
                 </div>
 

@@ -1698,7 +1698,8 @@ p {
 
 .card .date .day {
     font-size: 14px;
-    font-weight: 600
+    font-weight: 600;
+    padding-left: 7px;
 }
 
 .card .date .month,

@@ -135,10 +135,18 @@
                         <h4>{{$value->name}}  {{$value->lastname}}</h4>
                         <span>{{$value->positions->title}}</span>
                         <div class="social">
-                            <a href=""><i class="bi bi-twitter"></i></a>
-                            <a href=""><i class="bi bi-facebook"></i></a>
-                            <a href=""><i class="bi bi-instagram"></i></a>
-                            <a href=""><i class="bi bi-linkedin"></i></a>
+                            @if($value->mail_link)
+                                <a href="{{$value->mail_link}}" target="_blank"><i class="bx bx-envelope"></i></a>
+                            @endif
+                            @if($value->fb_link)
+                                <a href="{{$value->fb_link}}" target="_blank"><i class="bi bi-facebook"></i></a>
+                            @endif
+                            @if($value->insta_link)
+                                <a href="{{$value->insta_link}}" target="_blank"><i class="bi bi-instagram"></i></a>
+                            @endif
+                            @if($value->in_link)
+                                <a href="{{$value->in_link}}" target="_blank"><i class="bi bi-linkedin"></i></a>
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -192,7 +200,7 @@
             </div>
 
             <div class="col-lg-6">
-                <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+                <form action="/message_to_user" method="post" role="form" class="php-email-form">
                     <div class="row">
                         <div class="col-md-6 form-group">
                             <input type="text" name="name" class="form-control" id="name" placeholder="Ձեր անունը"
@@ -204,11 +212,15 @@
                         </div>
                     </div>
                     <div class="form-group mt-3">
-                        {{--                        <input type="text" class="form-control" name="subject" id="subject" placeholder="Թեմա" required>--}}
-                        {{--                        <label for="sel1" class="form-label">ՈՒմ</label>--}}
-                        <select class="form-select" id="sel1" name="sellist1">
-                            <option>Admin</option>
-                            <option>User</option>
+
+                        <select class="form-select" id="sel1" name="sellist1" required>
+                            <option value="">Ընտրել հասցեատիրջը</option>
+                            @php
+                                $user = \App\Models\Role::all();
+                            @endphp
+                            @foreach($user as $value)
+                                <option value="{{$value->id}}">{{$value->name_arm}}</option>
+                            @endforeach
                         </select>
                     </div>
                     <div class="form-group mt-3">
