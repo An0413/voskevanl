@@ -70,7 +70,7 @@ Route::group(['namespase' => 'Glxavor'], function (){
 
 Route::group(['namespase' => 'News', 'prefix' => 'news'], function (){
     Route::get('/',  NewsController::class)->name('news.news');
-    Route::get('/newsi',  NewsiController::class)->name('news.newsi');
+    Route::get('/{news_id}',  NewsiController::class)->where('news_id', '[0-9]+');
 });
 
 

@@ -13,7 +13,9 @@ class NewsController extends Controller
 {
     public function __invoke()
     {
-        $news = Newsm::all();
-        return view('news.news', compact('news'));
+        $count_per_page = 4;
+        $news = News::where('status', 1)->orderBy('id', 'desc')->paginate($count_per_page);
+
+        return view('news.news', compact('news', 'count_per_page'));
     }
 }

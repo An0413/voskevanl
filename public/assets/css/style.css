@@ -1613,8 +1613,8 @@ p {
 }
 
 .card {
-    width: 280px;
-    height: 520px;
+    /*width: 280px;*/
+    /*height: 520px;*/
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     background: #fff;
     transition: all 0.5s ease;
@@ -1737,35 +1737,80 @@ p {
 
 .card .content .btn .fas {
     font-size: 10px;
-    padding-left: 5px
+    padding-left: 5px;
 }
 
 .card .content .foot .admin {
     color: #1b9ce3;
-    font-size: 12px
+    font-size: 12px;
 }
 
 .card:hover .content .foot .admin {
-    color: #fff
+    color: #fff;
 }
 
 .card .content .foot .icon {
-    font-size: 12px
+    font-size: 12px;
 }
 
 
 .newsstyle {
-    border-radius: 5%;
+    border-radius: 15px;
     background-color: rgba(103, 176, 209, 0.8);
     color: white;
-    height: 50%;
 }
-.newsstyle:hover{
+
+.newsstyle:hover {
     background-color: #7eb5d5;
 }
+
 .card:hover .news_read_more {
     color: black !important;
 }
-.team_img{
+
+.team_img {
     max-width: 83%;
+}
+
+.testimonial-item .news_desc {
+    height: 160px !important;
+}
+
+.news_p {
+    height: 80px;
+}
+
+.news_title {
+    height: 50px;
+}
+.news_but{
+    padding: 0;
+    background-color: rgba(103, 176, 209, 0.8);;
+    width: 120px;
+    height: 30px;
+}
+.news_but:hover{
+    background-color: #7eb5d5;
+}
+.news_f{
+    font-size: 12px;
+}
+
+.mt_2r {
+    margin-top: 2rem !important;
+}
+
+.img_w_100 {
+    width: 100%;
+    height: 60px;
+    object-fit: cover;
+}
+
+.hidden {
+    display: none;
+}
+
+.active_page {
+    background: rgba(55, 142, 181, 0.9);
+    color: white;
 }

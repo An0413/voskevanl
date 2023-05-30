@@ -13,4 +13,9 @@ class News extends Model
 
 
     protected $guarded = false;
+
+    public function user_info()
+    {
+        return $this->hasOne(UserInfo::class, 'user_id', 'user_id');
+    }
 }
