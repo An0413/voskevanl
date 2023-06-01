@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\Main\IndexaController;
 use App\Http\Controllers\Buildings\AdministrationController;
 
 use App\Http\Controllers\Buildings\SportsschoolController;
@@ -74,6 +75,10 @@ Route::group(['namespase' => 'News', 'prefix' => 'news'], function (){
 });
 
 Route::post('/message_to_user', [GlxavorController::class, 'email_to_user']);
+
+Route::group(['namespase' => 'Admin', 'prefix' => 'admin'], function (){
+    Route::get('/',  IndexaController::class);
+});
 
 Auth::routes();
 

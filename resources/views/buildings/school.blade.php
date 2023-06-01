@@ -61,7 +61,7 @@
             </div>
             <div class="row mt-5 mb-5">
                 @foreach ($worker as $value)
-                    <div class="col-lg-4 col-md-6 mt-5" data-aos="fade-up">
+                    <div class="col-lg-4 col-md-6 mt-5">
                         <div class="member aos-init aos-animate" data-aos="fade-up">
                             <div class="pic">
                                 <img src="{{asset('assets/img/school/'. $value['img'])}}" class="img-fluid"
@@ -71,18 +71,10 @@
                                 <h4>{{$value->name . ' '. $value->lastname}}</h4>
                                 <span>{{$value->positions->title}}</span>
                                 <div class="social">
-                                    @if($value->mail_link)
-                                        <a href="{{$value->mail_link}}" target="_blank"><i class="bx bx-envelope"></i></a>
-                                    @endif
-                                    @if($value->fb_link)
-                                        <a href="{{$value->fb_link}}" target="_blank"><i class="bi bi-facebook"></i></a>
-                                    @endif
-                                    @if($value->insta_link)
-                                        <a href="{{$value->insta_link}}" target="_blank"><i class="bi bi-instagram"></i></a>
-                                    @endif
-                                    @if($value->in_link)
-                                        <a href="{{$value->in_link}}" target="_blank"><i class="bi bi-linkedin"></i></a>
-                                    @endif
+                                    <a href=""><i class="bi bi-twitter"></i></a>
+                                    <a href=""><i class="bi bi-facebook"></i></a>
+                                    <a href=""><i class="bi bi-instagram"></i></a>
+                                    <a href=""><i class="bi bi-linkedin"></i></a>
                                 </div>
                             </div>
                         </div>
