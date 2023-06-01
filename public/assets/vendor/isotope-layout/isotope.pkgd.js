@@ -2961,7 +2961,7 @@ return Vertical;
         'fizzy-ui-utils/utils',
         'isotope-layout/js/item',
         'isotope-layout/js/layout-mode',
-        // include default layout modes
+        // includes default layout modes
         'isotope-layout/js/layout-modes/masonry',
         'isotope-layout/js/layout-modes/fit-rows',
         'isotope-layout/js/layout-modes/vertical'
@@ -2979,7 +2979,7 @@ return Vertical;
       require('fizzy-ui-utils'),
       require('isotope-layout/js/item'),
       require('isotope-layout/js/layout-mode'),
-      // include default layout modes
+      // includes default layout modes
       require('isotope-layout/js/layout-modes/masonry'),
       require('isotope-layout/js/layout-modes/fit-rows'),
       require('isotope-layout/js/layout-modes/vertical')
