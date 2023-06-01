@@ -2207,7 +2207,7 @@ class Dropdown extends BaseComponent {
 
     if (parentDropdown.classList.contains(CLASS_NAME_DROPDOWN_CENTER)) {
       return PLACEMENT_BOTTOMCENTER;
-    } // We need to trim the value because custom properties can also include spaces
+    } // We need to trim the value because custom properties can also includes spaces
 
 
     const isEnd = getComputedStyle(this._menu).getPropertyValue('--bs-position').trim() === 'end';
