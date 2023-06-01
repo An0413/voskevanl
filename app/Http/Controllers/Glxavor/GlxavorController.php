@@ -5,10 +5,12 @@ namespace App\Http\Controllers\Glxavor;
 use App\Http\Controllers\Controller;
 use App\Models\Images;
 use App\Models\Itok;
+use App\Models\Messages;
 use App\Models\News;
 use App\Models\Worker;
 use Illuminate\Http\Request;
 use App\Models\Buildings;
+use App\Http\Requests\Main\MessageRequest;
 
 class GlxavorController extends Controller
 {
@@ -25,8 +27,12 @@ class GlxavorController extends Controller
 
     }
 
-    public function email_to_user(){
+    public function email_to_user(MessageRequest $request){
 
+        $data = $request->validated();
 
+        Messages::create($data);
+
+        return json_encode(['ok' => 'Շնորհակալություն']);
     }
 }

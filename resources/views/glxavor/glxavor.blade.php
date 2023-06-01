@@ -200,7 +200,8 @@
             </div>
 
             <div class="col-lg-6">
-                <form action="/message_to_user" method="post" role="form" class="php-email-form">
+                <form action="{{ route('message_to_user') }}" method="post" role="form" class="php-email-form">
+                    @csrf
                     <div class="row">
                         <div class="col-md-6 form-group">
                             <input type="text" name="name" class="form-control" id="name" placeholder="Ձեր անունը"
@@ -213,7 +214,7 @@
                     </div>
                     <div class="form-group mt-3">
 
-                        <select class="form-select" id="sel1" name="sellist1" required>
+                        <select class="form-select" id="message_to" name="message_to" required>
                             <option value="">Ընտրել հասցեատիրջը</option>
                             @php
                                 $user = \App\Models\Role::all();
@@ -224,7 +225,7 @@
                         </select>
                     </div>
                     <div class="form-group mt-3">
-                        <textarea class="form-control" name="message" rows="5" placeholder="Հաղորդագրություն"
+                        <textarea class="form-control" name="message" id="message" rows="5" placeholder="Հաղորդագրություն"
                                   required></textarea>
                     </div>
                     <div class="my-3">

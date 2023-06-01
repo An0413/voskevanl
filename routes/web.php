@@ -74,7 +74,7 @@ Route::group(['namespase' => 'News', 'prefix' => 'news'], function (){
     Route::get('/{news_id}',  NewsiController::class)->where('news_id', '[0-9]+');
 });
 
-Route::post('/message_to_user', [GlxavorController::class, 'email_to_user']);
+Route::post('/message_to_user', [GlxavorController::class, 'email_to_user'])->name('message_to_user');
 
 Route::group(['namespase' => 'Admin', 'prefix' => 'admin'], function (){
     Route::get('/',  IndexaController::class);
