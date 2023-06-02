@@ -1817,5 +1817,19 @@ p {
 }
 
 #workers_table td{
-    vertical-align: inherit;
+    vertical-align: initial;
+}
+
+.w_20{
+    width: 50px;
+}
+
+.custom-file-input:lang(en)~.custom-file-label::after {
+    content: "Բեռնել";
+}
+
+#preview_worker_img{
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
 }
