@@ -39,7 +39,7 @@
                 </a>
             </li>
             <li class="nav-item" style="margin-left: 1150px">
-                <a class="nav-link" data-widget="pushmenu" href="#" role="button">Ելք</a>
+                    <a class="nav-link" data-widget="pushmenu" href="#" role="button">Ելք</a>
             </li>
         </ul>
     </nav>

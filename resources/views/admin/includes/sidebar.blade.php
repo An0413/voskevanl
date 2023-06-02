@@ -18,7 +18,7 @@
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <li class="nav-item menu-open">
-                    <a href="#" class="nav-link active">
+                    <a href="{{route('worker_info', 4)}}" class="nav-link active">
                         <img src="{{asset('assets/img/culture/karuyc.jpg')}}" class="brand-image img-circle elevation-3" style="opacity: .8; width: 40px; height: 40px; object-fit: cover">
                         <p>
                             Մշակույթի տուն
@@ -27,7 +27,7 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="./index.html" class="nav-link">
+                            <a href="{{route('worker_info', 4)}}" class="nav-link">
                                 <img src="{{asset('assets/img/ametist/ametist.jpg')}}" class="brand-image img-circle elevation-3" style="opacity: .8; width: 40px; height: 40px; object-fit: cover">
                                 <p>Ամետիստ</p>
                             </a>

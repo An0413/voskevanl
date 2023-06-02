@@ -57,17 +57,6 @@
                 <h2>ԼՈՒՍԱՆԿԱՐՆԵՐ</h2>
             </div>
 
-{{--            <div class="row aos-init aos-animate" data-aos="fade-in">--}}
-{{--                <div class="col-lg-12 d-flex justify-content-center">--}}
-{{--                    <ul id="portfolio-flters">--}}
-{{--                        <li data-filter="*" class="filter-active">All</li>--}}
-{{--                        <li data-filter=".filter-app">App</li>--}}
-{{--                        <li data-filter=".filter-card">Card</li>--}}
-{{--                        <li data-filter=".filter-web">Web</li>--}}
-{{--                    </ul>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-
             <div class="row portfolio-container aos-init aos-animate" data-aos="fade-up" style="position: relative; height: 1025.96px;">
 
                 @foreach ($images as $value)
@@ -75,40 +64,11 @@
                         <div class="portfolio-wrap">
                             <img src="{{asset('assets/img/kindergarten/'. $value['src'])}}" class="img-fluid">
                             <div class="portfolio-links">
-                                <a href="{{asset('assets/img/kindergarten'. $value['src'])}}" data-gallery="portfolioGallery" class="portfolio-lightbox"><i class="bx bx-plus"></i></a>
+                                <a href="{{asset('assets/img/kindergarten/'. $value['src'])}}" data-gallery="portfolioGallery" class="portfolio-lightbox"><i class="bx bx-plus"></i></a>
                             </div>
                         </div>
                     </div>
                 @endforeach
-{{--                <div class="col-lg-4 col-md-6 portfolio-item filter-card" style="position: absolute; left: 0px; top: 683.974px;">--}}
-{{--                    <div class="portfolio-wrap">--}}
-{{--                        <img src="assets/img/portfolio/portfolio-7.jpg" class="img-fluid" alt="">--}}
-{{--                        <div class="portfolio-links">--}}
-{{--                            <a href="assets/img/portfolio/portfolio-7.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 1"><i class="bx bx-plus"></i></a>--}}
-{{--                            <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-
-{{--                <div class="col-lg-4 col-md-6 portfolio-item filter-card" style="position: absolute; left: 439.987px; top: 683.974px;">--}}
-{{--                    <div class="portfolio-wrap">--}}
-{{--                        <img src="assets/img/portfolio/portfolio-8.jpg" class="img-fluid" alt="">--}}
-{{--                        <div class="portfolio-links">--}}
-{{--                            <a href="assets/img/portfolio/portfolio-8.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 3"><i class="bx bx-plus"></i></a>--}}
-{{--                            <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-
-{{--                <div class="col-lg-4 col-md-6 portfolio-item filter-web" style="position: absolute; left: 879.974px; top: 683.974px;">--}}
-{{--                    <div class="portfolio-wrap">--}}
-{{--                        <img src="assets/img/portfolio/portfolio-9.jpg" class="img-fluid" alt="">--}}
-{{--                        <div class="portfolio-links">--}}
-{{--                            <a href="assets/img/portfolio/portfolio-9.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 3"><i class="bx bx-plus"></i></a>--}}
-{{--                            <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
 
             </div>
 

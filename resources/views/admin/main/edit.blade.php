@@ -1,80 +1,111 @@
 @extends('admin.layouts.main')
 @section('content')
-<!-- Content Wrapper. Contains page content -->
-<div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <div class="content-header">
-        <div class="container-fluid">
-{{--            <ul class="nav justify-content-center">--}}
-{{--                <li class="nav-item">--}}
-{{--                    <a class="nav-link active" aria-current="page" href="#">Աշխատակիցներ</a>--}}
-{{--                </li>--}}
-{{--                <li class="nav-item">--}}
-{{--                    <a class="nav-link" href="#">Ինֆո</a>--}}
-{{--                </li>--}}
-{{--                <li class="nav-item">--}}
-{{--                    <a class="nav-link" href="#">Լուսանկարներ</a>--}}
-{{--                </li>--}}
-{{--            </ul>--}}
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1 class="m-0">Աշխատակցի խմբագրում / {{$worker->name . " " . $worker->lastname}}</h1>
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </div>
+        <!-- /.content-header -->
 
-            <ul class="nav nav-tabs justify-content-center text-muted">
-                <li class="active"><a data-toggle="tab" href="#home">Աշխատակիցներ</a></li>
-                <li style="margin-left: 70px"><a data-toggle="tab" href="#menu1">Ինֆո</a></li>
-                <li style="margin-left: 70px"><a data-toggle="tab" href="#menu2">Լուսանկարներ</a></li>
-            </ul>
+        <!-- Main content -->
+        <section class="content">
+            <form action="{{route('worker_update', $worker->id)}}" method="POST">
+                @csrf
+                <div class="card card-primary">
+                    <div class="card-header">
+                    </div>
+                    <div class="row">
+                        <div class="col-4">
+                            <div class="card-body w-100">
+                                <div class="form-group">
+                                    <label for="name">Անուն</label>
+                                    <input type="text" class="form-control" id="name" value="{{$worker->name}}" name="name">
+                                </div>
+                                <div class="form-group">
+                                    <label for="seq">Հերթականություն</label>
+                                    <input type="number" class="form-control" id="seq" value="{{$worker->seq}}" min="1" max="100"  name="seq">
+                                </div>
+                                <div class="form-group">
+                                    <label for="insta">Instagram</label>
+                                    <input type="url" id="insta" class="form-control"  value="{{$worker->insta_link}}"  name="insta_link">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="card-body w-100">
+                                <div class="form-group">
+                                    <label for="lastname">Ազգանուն</label>
+                                    <input type="text" class="form-control" id="lastname" value="{{$worker->lastname}}"  name="lastname">
+                                </div>
+                                <div class="form-group">
+                                    <div class="form-group">
+                                        <label for="fb">Facebook</label>
+                                        <input type="url" id="fb" class="form-control" value="{{$worker->fb_link}}"  name="fb_link">
+                                    </div>
+                                </div>
+                                <div class="form-group">
 
-            <div class="tab-content">
-                <div id="home" class="tab-pane fade in active">
-                    <h3>Աշխատակիցներ</h3>
-                    <table class="table">
-                        <thead class="thead-dark">
-                        <tr>
-                            <th scope="col">Լուսանկար</th>
-                            <th scope="col">Անուն</th>
-                            <th scope="col">Ազգանուն</th>
-                            <th scope="col">Պաշտոն</th>
-                            <th scope="col">Հերթականություն</th>
-                            <th scope="col">Խմբագրել</th>
-                            <th scope="col">Ջնջել</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        @foreach($worker as $value)
-                        <tr>
-                            <th scope="row"><img src="{{asset('assets/img/about/'. $value->img)}}" style="width: 90px; height: 90px; object-fit: cover"></th>
-                            <td>{{$value->name}}</td>
-                            <td>{{$value->lastname}}</td>
-                            <td>{{$value->positions->title}}</td>
-                            <td>{{$value->seq}}</td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        @endforeach
-                        </tbody>
-                    </table>
+                                    <div class="form-group">
+                                        <label for="in">LinkedIn</label>
+                                        <input type="url" id="in" class="form-control" value="{{$worker->in_link}}"  name="in_link">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="card-body w-100">
+                                <div class="form-group">
+                                    <label>Պաշտոն</label>
+                                    <select class="form-control" name="position">
+                                        @foreach($worker_positions as $value)
+                                            <option value="{{$value->id}}" {{($value->id == $worker->position) ? ' selected' : ''}}>{{$value->title}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="form-group">
+                                        <label for="email">Email</label>
+                                        <input type="url" id="email" class="form-control" value="{{$worker->mail_link}}"  name="mail_link">
+                                    </div>
+                                <div class="form-group">
+                                    <label for="exampleInputFile">Լուսանկար</label>
+                                    <div class="input-group">
+                                        <div class="custom-file">
+                                            <input type="file" class="custom-file-input" id="imgInp" name="img">
+                                            <label class="custom-file-label" for="exampleInputFile"></label>
+                                        </div>
+                                        <img src="{{asset('assets/img/about/' . $worker->img)}}" alt=""
+                                             id="preview_worker_img">
+                                    </div>
+                                    <div class="card-footer">
+                                        <button type="submit" class="btn btn-primary">Հաստատել</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div id="menu1" class="tab-pane fade">
-                    <h3>Menu 1</h3>
-                    <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                </div>
-                <div id="menu2" class="tab-pane fade">
-                    <h3>Menu 2</h3>
-                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
-                </div>
-                <div id="menu3" class="tab-pane fade">
-                    <h3>Menu 3</h3>
-                    <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
-                </div>
-            </div>
-        </div><!-- /.container-fluid -->
+            </form>
+        </section>
+        <!-- /.content -->
     </div>
-    <!-- /.content-header -->
-
-    <!-- Main content -->
-    <section class="content">
-
-    </section>
-    <!-- /.content -->
-</div>
-<!-- /.content-wrapper -->
+    <!-- /.content-wrapper -->
+    <script>
+        imgInp = document.querySelector('#imgInp');
+        myImg = document.querySelector('#preview_worker_img');
+        imgInp.onchange = evt => {
+            const [file] = imgInp.files
+            if (file) {
+                myImg.src = URL.createObjectURL(file)
+            }
+        }
+    </script>
 @endsection
