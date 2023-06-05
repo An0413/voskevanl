@@ -7,6 +7,7 @@ use App\Models\Carate;
 use App\Models\Culture;
 use App\Models\Culturem;
 use App\Models\Images;
+use App\Models\Main_info;
 use App\Models\Worker;
 use Illuminate\Http\Request;
 use App\Models\Buildings;
@@ -19,7 +20,9 @@ class CarateController extends Controller
         $images = Images::where('gallery_id', '=', 51)->get();
         $imagesg = Images::where('main_image', '=', 1)->where('gallery_id', '=', 51)->get();
         $worker = Worker::where('worker_id', '=', 7)->get();
-        return view('buildings.culture.carate', compact('worker', 'imagesg', 'carate', 'images'));
+        $info = Main_info::where('group_id', '=', 4 )->get();
+
+        return view('buildings.culture.carate', compact('worker', 'imagesg', 'carate', 'images', 'info'));
     }
 
 }

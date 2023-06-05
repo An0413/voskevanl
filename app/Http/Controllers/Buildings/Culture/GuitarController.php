@@ -8,6 +8,7 @@ use App\Models\Culture;
 use App\Models\Culturem;
 use App\Models\Guitar;
 use App\Models\Images;
+use App\Models\Main_info;
 use App\Models\Worker;
 use Illuminate\Http\Request;
 use App\Models\Buildings;
@@ -20,7 +21,8 @@ class GuitarController extends Controller
         $images = Images::where('gallery_id', '=', 52)->get();
         $imagesg = Images::where('gallery_id', '=', 52)->where('main_image', '=', 1)->get();
         $worker = Worker::where('worker_id', '=', 8)->get();
-        return view('buildings.culture.guitar', compact('guitar', 'images', 'imagesg','worker'));
+        $info = Main_info::where('group_id', '=', 4 )->get();
+        return view('buildings.culture.guitar', compact('guitar', 'images', 'imagesg','worker', 'info'));
     }
 
 }
