@@ -16,13 +16,13 @@ class CarateController extends Controller
 {
     public function __invoke()
     {
-        $carate = Carate::all();
+
         $images = Images::where('gallery_id', '=', 51)->get();
         $imagesg = Images::where('main_image', '=', 1)->where('gallery_id', '=', 51)->get();
         $worker = Worker::where('worker_id', '=', 7)->get();
         $info = Main_info::where('group_id', '=', 4 )->get();
 
-        return view('buildings.culture.carate', compact('worker', 'imagesg', 'carate', 'images', 'info'));
+        return view('buildings.culture.carate', compact('worker', 'imagesg', 'images', 'info'));
     }
 
 }

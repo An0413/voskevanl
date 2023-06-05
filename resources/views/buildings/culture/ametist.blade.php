@@ -59,11 +59,11 @@
         <div data-aos="zoom-in">
 
             <div class="text-center">
-                <?php foreach ($ametist as $value) { ?>
+                <?php foreach ($info as $value) { ?>
                 <div>
                     <h3 class="text-center" style="font-family: Sofia;"><?php echo $value['name']; ?></h3>
                 </div>
-                <p style="text-indent: 3%; padding: 1%;"><?php echo $value['description'] ?></p>
+                <p style="text-indent: 3%; padding: 1%;"><?php echo $value['content'] ?></p>
                 <?php
                 }
                 ?>
@@ -71,7 +71,6 @@
             </div>
         </div>
     </section>
-
     <section id="portfolio" class="portfolio">
         <div class="container">
 

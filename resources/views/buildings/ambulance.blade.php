@@ -41,6 +41,7 @@
                 </div>
             @endforeach
         </div>
+    </div>
 </section><!-- End Portfolio Section -->
 
 

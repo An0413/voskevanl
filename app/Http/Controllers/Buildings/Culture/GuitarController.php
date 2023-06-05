@@ -17,12 +17,12 @@ class GuitarController extends Controller
 {
     public function __invoke()
     {
-        $guitar = Guitar::all();
         $images = Images::where('gallery_id', '=', 52)->get();
         $imagesg = Images::where('gallery_id', '=', 52)->where('main_image', '=', 1)->get();
         $worker = Worker::where('worker_id', '=', 8)->get();
-        $info = Main_info::where('group_id', '=', 4 )->get();
-        return view('buildings.culture.guitar', compact('guitar', 'images', 'imagesg','worker', 'info'));
+        $info = Main_info::where('group_id', '=', 3 )->get();
+
+        return view('buildings.culture.guitar', compact( 'images', 'imagesg','worker', 'info'));
     }
 
 }

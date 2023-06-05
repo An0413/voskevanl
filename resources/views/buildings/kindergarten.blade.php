@@ -2,14 +2,13 @@
 
 @yield('header')
 
-
 <div class="container" style="margin-top: 10%">
     <section id="cta" class="cta">
         <div data-aos="zoom-in">
-            @foreach($kindergarten as $value)
+            @foreach($info as $value)
             <div class="text-center">
                 <h3>{{$value->name}}</h3>
-                <p>{{$value->description}}</p>
+                <p>{{$value->content}}</p>
                 <a class="cta-btn" href="#team">Կարդալ ավելին</a>
             </div>
             @endforeach

@@ -20,8 +20,8 @@ class CultureController extends Controller
         $culturem = Culturex::all();
         $images = Images::where('gallery_id', '=', 2)->get();
         $info = Main_info::where('menu_id', '=', 2)->get();
-        $culture = Culturem::all();
-        return view('buildings.culture.culture', compact('worker', 'culturem', 'images', 'culture', 'info'));
+
+        return view('buildings.culture.culture', compact('worker', 'culturem', 'images', 'info'));
     }
 
 }

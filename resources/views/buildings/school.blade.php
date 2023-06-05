@@ -5,17 +5,16 @@
     <div class="mt-5">
         <h1 class="text-center" style="margin-top: 10%">Ոսկեվանի միջնակարգ դպրոց</h1>
     </div>
-
-
+    
     <section id="cta" class="cta">
         <div data-aos="zoom-in">
 
             <div class="text-center">
-                <?php foreach ($school as $value) { ?>
+                <?php foreach ($info as $value) { ?>
                 <div>
                     <h3 class="text-center" style="font-family: Sofia;"><?php echo $value['name']; ?></h3>
                 </div>
-                <p style="text-indent: 3%; padding: 1%;"><?php echo $value['description'] ?></p>
+                <p style="text-indent: 3%; padding: 1%;"><?php echo $value['content'] ?></p>
                 <?php
                 }
                 ?>

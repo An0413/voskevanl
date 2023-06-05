@@ -14,11 +14,11 @@ class KinderController extends Controller
     public function __invoke()
     {
         $imagesg = Images::where('gallery_id', '=', 9)->where('main_image', '=', 1)->get();
-        $kindergarten = Kindergarten::all();
         $images = Images::where('gallery_id', '=', 9)->where('main_image', '=', 0)->get();
         $info = Main_info::where('menu_id', '=', 9)->get();
         $worker = Worker::where('worker_id', '=', 4)->get();
-        return view('buildings.kindergarten', compact('worker', 'images', 'kindergarten', 'imagesg', 'info'));
+
+        return view('buildings.kindergarten', compact('worker', 'images', 'imagesg', 'info'));
     }
 }
 
