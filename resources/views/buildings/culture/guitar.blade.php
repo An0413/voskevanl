@@ -57,14 +57,12 @@
         <div data-aos="zoom-in">
 
             <div class="text-center">
-                <?php foreach ($info as $value) { ?>
+                @foreach ($info as $value)
                 <div>
                     <h3 class="text-center" style="font-family: Sofia;"><?php echo $value['name']; ?></h3>
                 </div>
                 <p style="text-indent: 3%; padding: 1%;"><?php echo $value['content'] ?></p>
-                <?php
-                }
-                ?>
+                @endforeach
                 <a class="cta-btn" href="#portfolio">Կարդալ ավելին</a>
             </div>
         </div>

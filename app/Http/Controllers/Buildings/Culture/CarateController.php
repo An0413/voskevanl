@@ -16,6 +16,7 @@ class CarateController extends Controller
 {
     public function __invoke()
     {
+
         $images = Images::where('gallery_id', '=', 51)->get();
         $imagesg = Images::where('main_image', '=', 1)->where('gallery_id', '=', 51)->get();
         $worker = Worker::where('worker_id', '=', 7)->get();

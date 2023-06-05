@@ -71,7 +71,6 @@
             </div>
         </div>
     </section>
-
     <section id="portfolio" class="portfolio">
         <div class="container">
 

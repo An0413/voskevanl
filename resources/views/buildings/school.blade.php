@@ -5,8 +5,7 @@
     <div class="mt-5">
         <h1 class="text-center" style="margin-top: 10%">Ոսկեվանի միջնակարգ դպրոց</h1>
     </div>
-
-
+    
     <section id="cta" class="cta">
         <div data-aos="zoom-in">
 

@@ -57,7 +57,6 @@
     </div>
     <section id="cta" class="cta mt-5">
         <div data-aos="zoom-in">
-
             <div class="text-center">
                 <?php foreach ($info as $value) { ?>
                 <div>

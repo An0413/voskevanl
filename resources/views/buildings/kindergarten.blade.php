@@ -2,7 +2,6 @@
 
 @yield('header')
 
-
 <div class="container" style="margin-top: 10%">
     <section id="cta" class="cta">
         <div data-aos="zoom-in">

@@ -21,6 +21,7 @@ class AmetistController extends Controller
         $imagesg = Images::where('gallery_id', '=', 54)->where('main_image', '=', 1)->get();
         $worker = Worker::where('worker_id', '=', 10)->get();
         $info = Main_info::where('group_id', '=', 1)->get();
+
         return view('buildings.culture.ametist', compact('imagesg', 'worker', 'images', 'info'));
     }
 
