@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Main\UpdateWorkerRequest;
 use App\Models\Images;
 use App\Models\Itok;
+use App\Models\Main_info;
 use App\Models\Worker;
 use App\Models\WorkerPosition;
 use Illuminate\Http\Request;
@@ -13,11 +14,11 @@ use Illuminate\Support\Facades\DB;
 
 class MainController extends Controller
 {
-    public function index($worker_id)
+    public function index($worker_id,$group_id = 0)
     {
-        $worker = Worker::where('worker_id', '=', $worker_id)->where('status', 1)->get();
-        $images = Images::where('gallery_id', '=', $worker_id)->get();
-        $info = Itok::all();
+        $worker = Worker::where('worker_id',  $worker_id)->where('status', 1)->get();
+        $images = Images::where('gallery_id',  $worker_id)->get();
+        $info = Main_info::where('menu_id', $worker_id)->where('group_id', $group_id)->get();
         return view('admin.main.show', compact('worker', 'images', 'info'));
     }
 

@@ -17,7 +17,7 @@
                         <div class="row mt-3">
                             <div class="col-11"><h3>Աշխատակիցներ</h3></div>
                             <div class="col-1 mt-1">
-                                <button class="btn-success">Ավելացնել</button>
+                                <button class="btn-success">+Ավելացնել</button>
                             </div>
                         </div>
                         <table class="table mt-3" id="workers_table">
@@ -70,7 +70,7 @@
                                 <tr>
                                     <td>{{$key+1}}</td>
                                     <th scope="col">{{$value->name}}</th>
-                                    <th scope="col">{{$value->description}}</th>
+                                    <th scope="col">{{$value->content}}</th>
                                     <td><a href="{{route('info_edit', $value->id)}}"><i class="nav-icon fas fa-edit text-primary"></i></a></td>
                                     <td><a href="{{route('info_delete', $value->id)}}"><i class="nav-icon fas fa-trash text-danger"></i></a></td>
                                 </tr>

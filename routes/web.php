@@ -81,6 +81,7 @@ Route::post('/message_to_user', [GlxavorController::class, 'email_to_user'])->na
 Route::group(['namespase' => 'Admin', 'prefix' => 'admin'], function (){
     Route::get('/',  [IndexaController::class, 'index']);
     Route::get('/info/{id}',  [MainController::class, 'index'])->where('id', '[0-9]+')->name('worker_info');
+    Route::get('/info/{id}/{group_id}',  [MainController::class, 'index'])->where('id', '[0-9]+')->where('group_id', '[0-9]+')->name('worker_info');
     Route::get('/worker/edit/{worker_id}',  [MainController::class, 'edit_worker'])->where('worker_id', '[0-9]+')->name('worker_edit');
     Route::post('/worker/update/{worker_id}',  [MainController::class, 'update'])->where('worker_id', '[0-9]+')->name('worker_update');
     Route::get('/worker/delete/{worker_id}',  [MainController::class, 'delete'])->where('worker_id', '[0-9]+')->name('worker_delete');
@@ -89,9 +90,9 @@ Route::group(['namespase' => 'Admin', 'prefix' => 'admin'], function (){
     Route::post('/info/update/{info_id}',  [InfoController::class, 'update'])->where('info_id', '[0-9]+')->name('info_update');
     Route::get('/info/delete/{info_id}',  [InfoController::class, 'delete'])->where('info_id', '[0-9]+')->name('info_delete');
 
-    Route::get('/gallery/edit/{worker_id}',  [GalleryController::class, 'edit'])->where('gallery_id', '[0-9]+')->name('gallery_edit');
-    Route::post('/gallery/update/{worker_id}',  [GalleryController::class, 'update'])->where('gallery_id', '[0-9]+')->name('gallery_update');
-    Route::get('/gallery/delete/{worker_id}',  [GalleryController::class, 'delete'])->where('gallery_id', '[0-9]+')->name('gallery_delete');
+//    Route::get('/gallery/edit/{worker_id}',  [GalleryController::class, 'edit'])->where('gallery_id', '[0-9]+')->name('gallery_edit');
+//    Route::post('/gallery/update/{worker_id}',  [GalleryController::class, 'update'])->where('gallery_id', '[0-9]+')->name('gallery_update');
+//    Route::get('/gallery/delete/{worker_id}',  [GalleryController::class, 'delete'])->where('gallery_id', '[0-9]+')->name('gallery_delete');
 });
 
 Auth::routes();

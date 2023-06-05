@@ -24,7 +24,7 @@ class UpdateInfoRequest extends FormRequest
     {
         return [
             'name' => 'required|string',
-            'description' => 'required|string',
+            'content' => 'required|string',
             'seq' => 'required|integer',
         ];
     }
