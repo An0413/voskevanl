@@ -16,7 +16,7 @@
 
         <!-- Main content -->
         <section class="content">
-            <form action="{{route('worker_update', $worker->id)}}" method="POST">
+            <form action="{{route('worker_update', $worker->id)}}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="card card-primary">
                     <div class="card-header">
