@@ -17,12 +17,12 @@ class FineartController extends Controller
 {
     public function __invoke()
     {
-        $fineart = Fineart::all();
+
         $images = Images::where('gallery_id', '=', 53)->get();
         $imagesg = Images::where('gallery_id', '=', 53)->where('main_image', '=', 1)->get();
         $worker = Worker::where('worker_id', '=', 9)->get();
         $info = Main_info::where('group_id', '=', 2 )->get();
-        return view('buildings.culture.fineart', compact('fineart', 'images', 'imagesg','worker', 'info'));
+        return view('buildings.culture.fineart', compact( 'images', 'imagesg','worker', 'info'));
     }
 
 }

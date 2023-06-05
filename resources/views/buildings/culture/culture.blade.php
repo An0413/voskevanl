@@ -8,10 +8,10 @@
         <div class="col-12" >
             <section id="cta" class="cta" >
                 <div data-aos="zoom-in">
-                    @foreach($culture as $value)
+                    @foreach($info as $value)
                     <div class="text-center">
                         <h3>{{$value->name}}</h3>
-                        <p>{{$value->description}}</p>
+                        <p>{{$value->content}}</p>
                         <a class="cta-btn" href="#portfolio">Կարդալ ավելին</a>
                     </div>
                     @endforeach

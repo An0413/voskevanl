@@ -33,12 +33,14 @@
 
     <section id="cta" class="cta mt-5">
         <div data-aos="zoom-in">
-            @foreach($itok as $value)
-                <div class="text-center">
-                    <h3>{{$value->name}}</h3>
-                    <p>{{$value->description}}</p>
-                    <a class="cta-btn" href="#about">Կարդալ ավելին</a>
-                </div>
+            @foreach($info as $value)
+                @if($value->seq == 1)
+                    <div class="text-center">
+                        <h3>{{$value->name}}</h3>
+                        <p>{{$value->content}}</p>
+                        <a class="cta-btn" href="#about">Կարդալ ավելին</a>
+                    </div>
+                @endif
             @endforeach
         </div>
 
@@ -83,10 +85,12 @@
                 <img src="{{asset('assets/img/about/'  .$value['src'])}}" class="w-100">
             @endforeach
         </div>
-        @foreach($itokm as $value)
-            <div class="col-4" style="margin-top: 4%">
-                <p>{{$value->description}}</p>
-            </div>
+        @foreach($info as $value)
+            @if($value->seq > 1)
+                <div class="col-4" style="margin-top: 4%">
+                    <p>{{$value->content}}</p>
+                </div>
+            @endif
         @endforeach
         <div class="col-4 mt-5">
             @foreach($imagesg1 as $value)
