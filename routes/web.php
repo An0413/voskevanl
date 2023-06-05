@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\Main\IndexaController;
 use App\Http\Controllers\Admin\Main\MainController;
+use App\Http\Controllers\Admin\Main\InfoController;
 use App\Http\Controllers\Buildings\AdministrationController;
 
 use App\Http\Controllers\Buildings\SportsschoolController;
@@ -84,9 +85,9 @@ Route::group(['namespase' => 'Admin', 'prefix' => 'admin'], function (){
     Route::post('/worker/update/{worker_id}',  [MainController::class, 'update'])->where('worker_id', '[0-9]+')->name('worker_update');
     Route::get('/worker/delete/{worker_id}',  [MainController::class, 'delete'])->where('worker_id', '[0-9]+')->name('worker_delete');
 
-    Route::get('/info/edit/{worker_id}',  [InfoController::class, 'edit'])->where('info_id', '[0-9]+')->name('info_edit');
-    Route::post('/info/update/{worker_id}',  [InfoController::class, 'update'])->where('info_id', '[0-9]+')->name('info_update');
-    Route::get('/info/delete/{worker_id}',  [InfoController::class, 'delete'])->where('info_id', '[0-9]+')->name('info_delete');
+    Route::get('/info/edit/{info_id}',  [InfoController::class, 'edit'])->where('info_id', '[0-9]+')->name('info_edit');
+    Route::post('/info/update/{info_id}',  [InfoController::class, 'update'])->where('info_id', '[0-9]+')->name('info_update');
+    Route::get('/info/delete/{info_id}',  [InfoController::class, 'delete'])->where('info_id', '[0-9]+')->name('info_delete');
 
     Route::get('/gallery/edit/{worker_id}',  [GalleryController::class, 'edit'])->where('gallery_id', '[0-9]+')->name('gallery_edit');
     Route::post('/gallery/update/{worker_id}',  [GalleryController::class, 'update'])->where('gallery_id', '[0-9]+')->name('gallery_update');

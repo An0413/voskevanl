@@ -71,8 +71,8 @@
                                     <td>{{$key+1}}</td>
                                     <th scope="col">{{$value->name}}</th>
                                     <th scope="col">{{$value->description}}</th>
-                                    <td><i class="nav-icon fas fa-edit text-primary"></i></td>
-                                    <td><i class="nav-icon fas fa-trash text-danger"></i></td>
+                                    <td><a href="{{route('info_edit', $value->id)}}"><i class="nav-icon fas fa-edit text-primary"></i></a></td>
+                                    <td><a href="{{route('info_delete', $value->id)}}"><i class="nav-icon fas fa-trash text-danger"></i></a></td>
                                 </tr>
                             @endforeach
                             </tbody>
