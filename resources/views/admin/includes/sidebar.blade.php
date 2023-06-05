@@ -1,10 +1,10 @@
-
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
 
     <!-- Sidebar -->
     <div class="sidebar">
         <a href="" class="brand-link">
-            <img src="{{asset('assets/img/about/logo.jpg')}}" class="brand-image img-circle elevation-3" style="opacity: .8">
+            <img src="{{asset('assets/img/about/logo.jpg')}}" class="brand-image img-circle elevation-3"
+                 style="opacity: .8">
             <span class="brand-text font-weight-light">ՈՍԿԵՎԱՆ</span>
         </a>
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
@@ -15,91 +15,25 @@
                 <a href="#" class="d-block">Անի Ալեքսանյան</a>
             </div>
         </div>
+        @php
+            $menu = \App\Models\Menu::where('id', '>', 1)->where('is_drop', 0)->get();
+            $role = 2;  //stanal loginic heto
+
+        @endphp
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                <li class="nav-item menu-open">
-                    <a href="{{route('worker_info', 4)}}" class="nav-link active">
-                        <img src="{{asset('assets/img/culture/karuyc.jpg')}}" class="brand-image img-circle elevation-3" style="opacity: .8; width: 40px; height: 40px; object-fit: cover">
-                        <p>
-                            Մշակույթի տուն
-                            <i class="right fas fa-angle-left"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
+                @foreach($menu as $value)
+                    @if($role = 0 || $role == $value->id)
                         <li class="nav-item">
-                            <a href="{{route('worker_info', 4)}}" class="nav-link">
-                                <img src="{{asset('assets/img/ametist/ametist.jpg')}}" class="brand-image img-circle elevation-3" style="opacity: .8; width: 40px; height: 40px; object-fit: cover">
-                                <p>Ամետիստ</p>
+                            <a href="{{route('worker_info', [$value->id, 0])}}" class="nav-link">
+                                {{--                        <img src="{{asset('assets/img/ambulance/ambulance.jpg')}}" class="brand-image img-circle elevation-3 admin_menu_img">--}}
+                                <p>
+                                    {{$value->name}}
+                                </p>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="./index2.html" class="nav-link">
-                                <img src="{{asset('assets/img/fine_art/morberd.jpg')}}" class="brand-image img-circle elevation-3" style="opacity: .8; width: 40px; height: 40px; object-fit: cover">
-                                <p>Գեղարվեստի դպրոց</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="./index3.html" class="nav-link">
-                                <img src="{{asset('assets/img/guitar/guitar.jpg')}}" class="brand-image img-circle elevation-3" style="opacity: .8; width: 40px; height: 40px; object-fit: cover">
-                                <p>Կիթառ</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="./index3.html" class="nav-link">
-                                <img src="{{asset('assets/img/carate/karate.jpg')}}" class="brand-image img-circle elevation-3" style="opacity: .8; width: 40px; height: 40px; object-fit: cover">
-                                <p>Կարատե</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="nav-item">
-                    <a href="" class="nav-link">
-                        <img src="{{asset('assets/img/news/newsf.png')}}" class="brand-image img-circle elevation-3" style="opacity: .8; width: 40px; height: 40px; object-fit: cover">
-                        <p>
-                             Նորություններ
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="" class="nav-link">
-                        <img src="{{asset('assets/img/about/logo.jpg')}}" class="brand-image img-circle elevation-3" style="opacity: .8; width: 40px; height: 40px; object-fit: cover">
-                        <p>
-                            IT OK
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="" class="nav-link">
-                        <img src="{{asset('assets/img/administration/dasht.jpg')}}" class="brand-image img-circle elevation-3" style="opacity: .8; width: 40px; height: 40px; object-fit: cover">
-                        <p>
-                            Գյուղապետարան
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="" class="nav-link">
-                        <img src="{{asset('assets/img/school/dproc.jpg')}}" class="brand-image img-circle elevation-3" style="opacity: .8; width: 40px; height: 40px; object-fit: cover">
-                        <p>
-                            Դպրոց
-                        </p>
-                    </a>
-                </li><li class="nav-item">
-                    <a href="" class="nav-link">
-                        <img src="{{asset('assets/img/kindergarten/partez_shenq.jpg')}}" class="brand-image img-circle elevation-3" style="opacity: .8; width: 40px; height: 40px; object-fit: cover">
-                        <p>
-                            Մանկապարտեզ
-                        </p>
-                    </a>
-                </li>
-                </li><li class="nav-item">
-                    <a href="" class="nav-link">
-                        <img src="{{asset('assets/img/ambulance/ambulance.jpg')}}" class="brand-image img-circle elevation-3" style="opacity: .8; width: 40px; height: 40px; object-fit: cover">
-                        <p>
-                            Ամբուլատորիա
-                        </p>
-                    </a>
-                </li>
-
+                    @endif
+                @endforeach
             </ul>
         </nav>
     </div>

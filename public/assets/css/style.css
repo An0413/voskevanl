@@ -1784,16 +1784,19 @@ p {
 .news_title {
     height: 50px;
 }
-.news_but{
+
+.news_but {
     padding: 0;
     background-color: rgba(103, 176, 209, 0.8);;
     width: 120px;
     height: 30px;
 }
-.news_but:hover{
+
+.news_but:hover {
     background-color: #7eb5d5;
 }
-.news_f{
+
+.news_f {
     font-size: 12px;
 }
 
@@ -1816,20 +1819,27 @@ p {
     color: white;
 }
 
-#workers_table td{
+#workers_table td {
     vertical-align: initial;
 }
 
-.w_20{
+.w_20 {
     width: 50px;
 }
 
-.custom-file-input:lang(en)~.custom-file-label::after {
+.custom-file-input:lang(en) ~ .custom-file-label::after {
     content: "Բեռնել";
 }
 
-#preview_worker_img{
+#preview_worker_img {
     width: 80px;
     height: 80px;
     object-fit: contain;
+}
+
+.admin_menu_img {
+    opacity: .8;
+    width: 40px;
+    height: 40px;
+    object-fit: cover
 }

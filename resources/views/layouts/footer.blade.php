@@ -20,7 +20,7 @@
 {{--                    <h4>Useful Links</h4>--}}
                     <ul>
                         @php
-                            $footer_menu = \App\Models\Menu::all();
+                            $footer_menu = \App\Models\Menu::where('main_menu', 1)->get();
                         @endphp
                     @foreach($footer_menu as $value)
                         @if($value->parent_id == 0 && $value->is_drop == 0)

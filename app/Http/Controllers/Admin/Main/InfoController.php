@@ -7,6 +7,7 @@ use App\Http\Requests\Main\UpdateInfoRequest;
 use App\Http\Requests\Main\UpdateWorkerRequest;
 use App\Models\Images;
 use App\Models\Itok;
+use App\Models\Main_info;
 use App\Models\Worker;
 use App\Models\WorkerPosition;
 use Illuminate\Http\Request;
@@ -24,21 +25,22 @@ class InfoController extends Controller
 
     public function edit($info_id)
     {
-        $info = Itok::where('id', $info_id)->first();
+        $info = Main_info::where('id', $info_id)->first();
 
         return view('admin.main.editi', compact('info'));
     }
 
-    public function update($info_id, UpdateInfoRequest $request, $worker_id)
+    public function update($info_id, UpdateInfoRequest $request)
     {
-        $info = Itok::where('id', $info_id)->first();
+        $info = Main_info::where('id', $info_id)->first();
         $data = $request->validated();
-        DB::table('itok')
+        DB::table('main_infos')
             ->where('id', $info_id)
             ->update($data);
 
 
-        return redirect(route('worker_info', $info, $worker_id));
+
+        return redirect(route('worker_info', $info['menu_id']));
     }
 
     public function delete($info_id)

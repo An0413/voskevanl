@@ -36,7 +36,7 @@
                         <div class="col-6">
                             <div class="form-group">
                                 <label for="description">Տեղեկություն</label>
-                                <textarea class="form-control" rows="5" style="height: 180px;" name="description" id="description">{{$info->description}}</textarea>
+                                <textarea class="form-control" rows="5" style="height: 180px;" name="content" id="description">{{$info->content}}</textarea>
                             </div>
                             <div class="card-footer">
                                 <button type="submit" class="btn btn-primary">Հաստատել</button>
