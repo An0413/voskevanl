@@ -59,5 +59,9 @@ class MainController extends Controller
 
         return redirect(route('worker_info', $worker->worker_id));
     }
+    public function create(){
+        $worker_positions = WorkerPosition::all();
+        return view('admin.main.create', compact('worker_positions'));
+    }
 
 }

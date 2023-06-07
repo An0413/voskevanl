@@ -9,49 +9,55 @@
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <link rel="stylesheet" href="{{asset('login/css/style.css')}}">
+    <link rel="stylesheet" href="{{asset('/login/css/style.css')}}">
 
 </head>
-<body class="img js-fullheight" style="background-image: url(images/bg.jpg);">
-<section class="ftco-section">
+<body>
+<section class="fon">
+    <img src="{{asset('assets/img/gallery/seint.jpg')}}" class="fon_img">
     <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-6 text-center mb-5">
-                <h2 class="heading-section">Login #10</h2>
+        <div class="loginp">
+            <div class="justify-content-center">
+                <div class="text-center mb-5" style="margin-left: 58%">
+                    <h2 class="heading-section">ՈՍԿԵՎԱՆ</h2>
+                </div>
             </div>
-        </div>
-        <div class="row justify-content-center">
-            <div class="col-md-6 col-lg-4">
+            <div class="row justify-content-center w-100">
                 <div class="login-wrap p-0">
-                    <h3 class="mb-4 text-center">Have an account?</h3>
-                    <form action="#" class="signin-form">
+                    <form action="{{route('login_check')}}" class="signin-form" method="POST" style="width: 250%">
+                        @csrf
+                        @if(Session::has('message'))
+                            <div class="form-group">
+                                <p class="text-danger">{{ Session::get('message') }}</p>
+                            </div>
+                        @endif
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Username" required>
+                            <input type="text" class="form-control adit" placeholder="Username" name="username"
+                                   required>
                         </div>
                         <div class="form-group">
-                            <input id="password-field" type="password" class="form-control" placeholder="Password" required>
-                            <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+                            <input id="password-field" type="password" class="form-control adit" name="password"
+                                   placeholder="Password"
+                                   required>
+                            <span toggle="#password-field"
+                                  class="fa fa-fw fa-eye field-icon toggle-password"></span>
                         </div>
-                        <div class="form-group">
-                            <button type="submit" class="form-control btn btn-primary submit px-3">Sign In</button>
-                        </div>
-                        <div class="form-group d-md-flex">
-                            <div class="w-50">
+                        <div class="form-group d-md-flex justify-content-center">
+                            <div>
+                                <input type="hidden" id="remember" name="remember" value="1">
                                 <label class="checkbox-wrap checkbox-primary">Remember Me
-                                    <input type="checkbox" checked>
+                                    <input type="checkbox" id="check" checked>
                                     <span class="checkmark"></span>
                                 </label>
                             </div>
-                            <div class="w-50 text-md-right">
-                                <a href="#" style="color: #fff">Forgot Password</a>
-                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <button type="submit" class="form-control btn btn-primary submit px-3">Sign In
+                            </button>
                         </div>
                     </form>
-                    <p class="w-100 text-center">&mdash; Or Sign In With &mdash;</p>
-                    <div class="social d-flex text-center">
-                        <a href="#" class="px-2 py-2 mr-md-1 rounded"><span class="ion-logo-facebook mr-2"></span> Facebook</a>
-                        <a href="#" class="px-2 py-2 ml-md-1 rounded"><span class="ion-logo-twitter mr-2"></span> Twitter</a>
-                    </div>
                 </div>
             </div>
         </div>
@@ -62,6 +68,18 @@
 <script src="{{asset('login/js/popper.js')}}"></script>
 <script src="{{asset('login/js/bootstrap.min.js')}}"></script>
 <script src="{{asset('login/js/main.js')}}"></script>
+<script>
 
+    $('#check').on('change', function () {
+
+        if ($(this).is(':checked')) {
+            $('#remember').val(1);
+        } else {
+            $('#remember').val(0);
+        }
+
+    })
+
+</script>
 </body>
 </html>
