@@ -12,6 +12,7 @@ use App\Http\Controllers\Buildings\AmbulanceController;
 use App\Http\Controllers\Itok\ItokController;
 use App\Http\Controllers\Main\IndexController;
 use App\Http\Controllers\News\NewsController;
+use App\Http\Controllers\Admin\AdminNewsController;
 use App\Http\Controllers\Glxavor\GlxavorController;
 use App\Http\Controllers\History\HistoryController;
 use App\Http\Controllers\News\NewsiController;
@@ -102,6 +103,12 @@ Route::group(['namespase' => 'Admin', 'prefix' => 'admin'], function (){
     Route::get('/login',  [LoginController::class, 'index'])->name('login');
     Route::post('/login',  [LoginController::class, 'login'])->name('login_check');
 
+    Route::get('/news/create', [AdminNewsController::class, 'create'])->name('news_create');
+    Route::post('/news/store', [AdminNewsController::class, 'store'])->name('news_store');
+    Route::get('/news/show/',  [AdminNewsController::class, 'index'])->name('news_list');
+    Route::get('/news/edit/{news_id}',  [AdminNewsController::class, 'edit'])->where('news_id', '[0-9]+')->name('news_edit');
+    Route::post('/news/update/{news_id}',  [AdminNewsController::class, 'update'])->where('news_id', '[0-9]+')->name('news_update');
+    Route::post('/news/delete/{news_id}',  [AdminNewsController::class, 'delete'])->where('news_id', '[0-9]+')->name('news_delete');
 });
 
 Auth::routes();
