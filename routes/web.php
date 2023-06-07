@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\Main\IndexaController;
 use App\Http\Controllers\Admin\Main\MainController;
 use App\Http\Controllers\Admin\Main\InfoController;
 use App\Http\Controllers\Admin\Main\GalleryController;
+use App\Http\Controllers\Admin\Main\LoginController;
 use App\Http\Controllers\Buildings\AdministrationController;
 
 use App\Http\Controllers\Buildings\SportsschoolController;
@@ -81,8 +82,9 @@ Route::group(['namespase' => 'News', 'prefix' => 'news'], function (){
 Route::post('/message_to_user', [GlxavorController::class, 'email_to_user'])->name('message_to_user');
 
 Route::group(['namespase' => 'Admin', 'prefix' => 'admin'], function (){
-    Route::get('/',  [IndexaController::class, 'index']);
+    Route::get('/',  [IndexaController::class, 'index'])->name('admin');
     Route::get('/info/{id}',  [MainController::class, 'index'])->where('id', '[0-9]+')->name('worker_info');
+    Route::get('/create/{id}',  [MainController::class, 'create'])->where('id', '[0-9]+')->name('worker_create');
     Route::get('/info/{id}/{group_id}',  [MainController::class, 'index'])->where('id', '[0-9]+')->where('group_id', '[0-9]+')->name('worker_info');
     Route::get('/worker/edit/{worker_id}',  [MainController::class, 'edit_worker'])->where('worker_id', '[0-9]+')->name('worker_edit');
     Route::post('/worker/update/{worker_id}',  [MainController::class, 'update'])->where('worker_id', '[0-9]+')->name('worker_update');
@@ -95,6 +97,11 @@ Route::group(['namespase' => 'Admin', 'prefix' => 'admin'], function (){
     Route::get('/gallery/edit/{gallery_id}',  [GalleryController::class, 'edit'])->where('gallery_id', '[0-9]+')->name('gallery_edit');
     Route::post('/gallery/update/{gallery_id}',  [GalleryController::class, 'update'])->where('gallery_id', '[0-9]+')->name('gallery_update');
     Route::get('/gallery/delete/{gallery_id}',  [GalleryController::class, 'delete'])->where('gallery_id', '[0-9]+')->name('gallery_delete');
+
+    Route::get('/registr',  [LoginController::class, 'registr'])->name('registr');
+
+    Route::get('/login',  [LoginController::class, 'index'])->name('login');
+    Route::post('/login',  [LoginController::class, 'login'])->name('login_check');
 
     Route::get('/news/create', [AdminNewsController::class, 'create'])->name('news_create');
     Route::post('/news/store', [AdminNewsController::class, 'store'])->name('news_store');

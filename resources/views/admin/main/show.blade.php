@@ -17,7 +17,7 @@
                         <div class="row mt-3">
                             <div class="col-11"><h3>Աշխատակիցներ</h3></div>
                             <div class="col-1 mt-1">
-                                <button class="btn-success">+Ավելացնել</button>
+                                <button class="btn-success"><a href="{{route('worker_create')}}">+Ավելացնել</a></button>
                             </div>
                         </div>
                         <table class="table mt-3" id="workers_table">
