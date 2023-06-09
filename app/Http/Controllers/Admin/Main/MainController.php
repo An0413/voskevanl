@@ -46,7 +46,7 @@ class MainController extends Controller
             ->update($data);
 
 
-        return redirect(route('worker_info', $worker->worker_id));
+        return redirect()->route('worker_info', $worker->worker_id);
     }
 
     public function delete($worker_id)
@@ -57,7 +57,7 @@ class MainController extends Controller
             ->update(['status' => 0]);
 
 
-        return redirect(route('worker_info', $worker->worker_id));
+        return redirect()->route('worker_info', $worker->worker_id);
     }
     public function create(){
         $worker_positions = WorkerPosition::all();

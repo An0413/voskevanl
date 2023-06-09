@@ -6,7 +6,7 @@
         <div class="content-header">
             <div class="container-fluid">
                 <div class="row mt-3">
-                    <div class="col-11"><h3>Աշխատակիցներ</h3></div>
+                    <div class="col-11"><h3>Նորություններ</h3></div>
                     <div class="col-1 mt-1">
                         <a href="{{route('news_create')}}">
                             <button class="btn-success">+Ավելացնել</button>
@@ -20,6 +20,7 @@
                         <th scope="col">Լուսանկար</th>
                         <th scope="col">Վերնագիր</th>
                         <th scope="col">Կարճ նկարագրություն</th>
+                        <th scope="col">Ստատուս</th>
                         <th scope="col">Խմբագրել</th>
                         <th scope="col">Ջնջել</th>
                     </tr>
@@ -32,10 +33,23 @@
                                                  style="width: 90px; height: 90px; object-fit: cover"></td>
                             <td>{{$value->title}}</td>
                             <td>{{$value->short_description}}</td>
-                            <td><a href="{{route('news_edit', $value->id)}}"><i
-                                        class="nav-icon fas fa-edit text-primary"></i></a></td>
-                            <td><a href="{{route('news_delete', $value->id)}}"><i
-                                        class="nav-icon fas fa-trash text-danger"></i></a></td>
+                            <td>{{$value->news_status->status }}</td>
+                            <td>
+                                @if($value->status == 1)
+                                    <a href="{{route('news_edit', $value->id)}}"><i
+                                            class="nav-icon fas fa-edit text-primary"></i></a></td>
+                            @endif
+                            <td>
+                                @if($value->status == 1)
+                                    <form action="{{route('news_delete', $value->id)}}" method="post">
+                                        @csrf
+                                        @method('delete')
+                                        <button type="submit" class="border-0 bg-transparent">
+                                            <i class="nav-icon fas fa-trash text-danger" role="button"></i>
+                                        </button>
+                                    </form>
+                                @endif
+                            </td>
                         </tr>
                     @endforeach
                     </tbody>
