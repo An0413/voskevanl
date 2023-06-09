@@ -7,9 +7,11 @@ use App\Http\Requests\Main\LoginRequset;
 use App\Http\Requests\Main\UpdateGalleryRequest;
 use App\Http\Requests\Main\UpdateInfoRequest;
 use App\Http\Requests\Main\UpdateWorkerRequest;
+use App\Http\Requests\Main\UserRegister;
 use App\Models\Images;
 use App\Models\Itok;
 use App\Models\Main_info;
+use App\Models\Role;
 use App\Models\User;
 use App\Models\Worker;
 use App\Models\WorkerPosition;
@@ -36,7 +38,21 @@ class LoginController extends Controller
             return redirect()->back();
         }
     }
-    public function registr(){
-        return view('admin.login.registr');
+    public function register(){
+        $roles = Role::all();
+        $worker = Worker::all();
+        return view('admin.login.register', compact('roles','worker'));
     }
+
+    public function registerUser(UserRegister $request){
+        $data = $request->validated();
+
+    }
+
+    public function get_workers(Request $request){
+        $role = $request->get('role');
+        $workers = Worker::where('worker_id', $role)->get();
+        return view('admin.login.workers_list', compact('workers'));
+    }
+
 }

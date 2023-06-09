@@ -5,18 +5,6 @@
     <!-- Content Header (Page header) -->
     <div class="content-header">
         <div class="container-fluid">
-{{--            <ul class="nav justify-content-center">--}}
-{{--                <li class="nav-item">--}}
-{{--                    <a class="nav-link active" aria-current="page" href="#">Աշխատակիցներ</a>--}}
-{{--                </li>--}}
-{{--                <li class="nav-item">--}}
-{{--                    <a class="nav-link" href="#">Ինֆո</a>--}}
-{{--                </li>--}}
-{{--                <li class="nav-item">--}}
-{{--                    <a class="nav-link" href="#">Լուսանկարներ</a>--}}
-{{--                </li>--}}
-{{--            </ul>--}}
-
             <form action="{{ route('news_store') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="mb-3 mt-3 w-50">

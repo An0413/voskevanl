@@ -3,10 +3,14 @@
 namespace App\Http\Controllers\Admin\Main;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\StoreRequest;
+use App\Http\Requests\Admin\StorewRequest;
+use App\Http\Requests\Admin\StoreiRequest;
 use App\Http\Requests\Main\UpdateWorkerRequest;
 use App\Models\Images;
 use App\Models\Itok;
 use App\Models\Main_info;
+use App\Models\News;
 use App\Models\Worker;
 use App\Models\WorkerPosition;
 use Illuminate\Http\Request;
@@ -14,12 +18,12 @@ use Illuminate\Support\Facades\DB;
 
 class MainController extends Controller
 {
-    public function index($worker_id,$group_id = 0)
+    public function index($worker_id)
     {
         $worker = Worker::where('worker_id',  $worker_id)->where('status', 1)->get();
         $images = Images::where('gallery_id',  $worker_id)->get();
-        $info = Main_info::where('menu_id', $worker_id)->where('group_id', $group_id)->get();
-        return view('admin.main.show', compact('worker', 'images', 'info'));
+        $info = Main_info::where('menu_id', $worker_id)->get();
+        return view('admin.main.show', compact('worker', 'images', 'info', 'worker_id'));
     }
 
     public function edit_worker($worker_id)
@@ -59,9 +63,37 @@ class MainController extends Controller
 
         return redirect()->route('worker_info', $worker->worker_id);
     }
-    public function create(){
-        $worker_positions = WorkerPosition::all();
-        return view('admin.main.create', compact('worker_positions'));
+
+    public function create($area, $tab){
+
+        $worker_positions = WorkerPosition::whereIn('area', [0, $area])->get();
+
+        return view('admin.main.create', compact(['worker_positions', 'tab', 'area']));
+    }
+
+    public function store(StorewRequest $request,$worker_id)
+    {
+
+        $data = $request->validated();
+
+        $data['worker_id'] = $worker_id;
+        $data['img'] = $request->file('img')->store('public/assets/img/worker');
+        DB::table('workers')->insert($data);
+        return redirect()->route('worker_info', $worker_id);
+    }
+
+    public function storeInfo(StoreiRequest $request,$worker_id)
+    {
+        $data = $request->validated();
+        Main_info::firstOrCreate($data);
+        return redirect()->route('worker_info', compact('worker_id'));
+    }
+
+    public function storeGallery(StoreiRequest $request,$worker_id)
+    {
+        $data = $request->validated();
+        Images::firstOrCreate($data);
+        return redirect()->route('worker_info', compact('worker_id'));
     }
 
 }

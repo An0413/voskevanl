@@ -1,23 +1,19 @@
 @extends('admin.layouts.main')
 @section('content')
-    <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
-        <!-- Content Header (Page header) -->
         <div class="content-header">
             <div class="container-fluid">
-
                 <ul class="nav nav-tabs justify-content-center text-muted">
-                    <li class="active"><a data-toggle="tab" href="#home">Աշխատակիցներ</a></li>
-                    <li style="margin-left: 70px"><a data-toggle="tab" href="#menu1">Ինֆո</a></li>
-                    <li style="margin-left: 70px"><a data-toggle="tab" href="#menu2">Լուսանկարներ</a></li>
+                    <li class="active"><a data-toggle="tab" href="#user">Աշխատակիցներ</a></li>
+                    <li style="margin-left: 70px"><a data-toggle="tab" href="#info">Ինֆո</a></li>
+                    <li style="margin-left: 70px"><a data-toggle="tab" href="#image">Լուսանկարներ</a></li>
                 </ul>
-
                 <div class="tab-content">
-                    <div id="home" class="tab-pane fade in active show">
+                    <div id="user" class="tab-pane fade in active show">
                         <div class="row mt-3">
                             <div class="col-11"><h3>Աշխատակիցներ</h3></div>
                             <div class="col-1 mt-1">
-                                <button class="btn-success"><a href="{{route('worker_create')}}">+Ավելացնել</a></button>
+                                <button class="btn-success add_new"><a href="{{route('worker_create', [$worker_id, 'user'])}}">+Ավելացնել</a></button>
                             </div>
                         </div>
                         <table class="table mt-3" id="workers_table">
@@ -48,11 +44,11 @@
                             </tbody>
                         </table>
                     </div>
-                    <div id="menu1" class="tab-pane fade">
+                    <div id="info" class="tab-pane fade">
                         <div class="row mt-3">
                             <div class="col-11"><h3>Ինֆո</h3></div>
                             <div class="col-1 mt-1">
-                                <button class="btn-success">+Ավելացնել</button>
+                                <button class="btn-success add_new"><a href="{{route('worker_create', [$worker_id, 'info'])}}">+Ավելացնել</a></button>
                             </div>
                         </div>
                         <table class="table mt-3" id="workers_table">
@@ -78,11 +74,11 @@
                             </tbody>
                         </table>
                     </div>
-                    <div id="menu2" class="tab-pane fade">
+                    <div id="image" class="tab-pane fade">
                         <div class="row mt-3">
                             <div class="col-11"><h3>Լուսանկարներ</h3></div>
                             <div class="col-1 mt-1">
-                                <button class="btn-success">Ավելացնել</button>
+                                <button class="btn-success add_new"><a href="{{route('worker_create', [$worker_id, 'image'])}}">+Ավելացնել</a></button>
                             </div>
                         </div>
                         <table class="table mt-3 w-50" id="workers_table">
@@ -108,15 +104,7 @@
                         </table>
                     </div>
                 </div>
-            </div><!-- /.container-fluid -->
+            </div>
         </div>
-        <!-- /.content-header -->
-
-        <!-- Main content -->
-        <section class="content">
-
-        </section>
-        <!-- /.content -->
     </div>
-    <!-- /.content-wrapper -->
 @endsection
