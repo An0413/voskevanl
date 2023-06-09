@@ -19,8 +19,8 @@ class GuitarController extends Controller
     {
         $images = Images::where('gallery_id', '=', 52)->get();
         $imagesg = Images::where('gallery_id', '=', 52)->where('main_image', '=', 1)->get();
-        $worker = Worker::where('worker_id', '=', 8)->get();
-        $info = Main_info::where('group_id', '=', 3 )->get();
+        $worker = Worker::where('worker_id', '=', 14)->get();
+        $info = Main_info::where('menu_id', '=', 14 )->get();
 
         return view('buildings.culture.guitar', compact( 'images', 'imagesg','worker', 'info'));
     }
