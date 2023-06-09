@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Admin\Main;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\StoreRequest;
-use App\Http\Requests\Admin\StorewRequest;
-use App\Http\Requests\Admin\StoreiRequest;
+use App\Http\Requests\Admin\StoreWorkerRequest;
+use App\Http\Requests\Admin\StoreInfoRequest;
 use App\Http\Requests\Main\UpdateWorkerRequest;
 use App\Models\Images;
 use App\Models\Itok;
@@ -71,29 +71,41 @@ class MainController extends Controller
         return view('admin.main.create', compact(['worker_positions', 'tab', 'area']));
     }
 
-    public function store(StorewRequest $request,$worker_id)
+    public function store(StoreWorkerRequest $request,$worker_id)
     {
 
         $data = $request->validated();
 
         $data['worker_id'] = $worker_id;
-        $data['img'] = $request->file('img')->store('public/assets/img/worker');
+        $imagePath = $request->file('img')->store('public/assets/img/worker');
+        $path_arr = explode('/', $imagePath);
+        $imageName = end($path_arr);
+        $request->img->move(public_path('assets/img/worker'), $imageName);
+        $data['img'] = $imageName;
         DB::table('workers')->insert($data);
         return redirect()->route('worker_info', $worker_id);
     }
 
-    public function storeInfo(StoreiRequest $request,$worker_id)
+    public function storeInfo(StoreInfoRequest $request,$worker_id, $tab)
     {
         $data = $request->validated();
-        Main_info::firstOrCreate($data);
-        return redirect()->route('worker_info', compact('worker_id'));
+        $data['menu_id'] = $worker_id;
+        $data['user_id'] = 1;
+        DB::table('main_infos')->insert($data);
+        return redirect()->route('worker_info', $worker_id);
     }
 
-    public function storeGallery(StoreiRequest $request,$worker_id)
+    public function storeGallery(StoreInfoRequest $request, $worker_id, $tab)
     {
         $data = $request->validated();
-        Images::firstOrCreate($data);
-        return redirect()->route('worker_info', compact('worker_id'));
+
+
+        $imagePath = $request->file('img')->store('public/assets/img/about');
+        $path_arr = explode('/', $imagePath);
+        $imageName = end($path_arr);
+        $request->img->move(public_path('assets/img/about'), $imageName);
+        $data['img'] = $imageName;
+        return redirect()->route('worker_info', $worker_id);
     }
 
 }

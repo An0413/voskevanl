@@ -5,9 +5,8 @@
             <div class="container-fluid">
                 <h1 class="text-center">ԳՐԱՆՑՈՒՄ</h1>
                 <section class="content">
-                    <form action="" method="POST">
+                    <form action="{{route('register_user')}}" method="POST">
                         @csrf
-
                         <div class="row">
                             <div class="col-6 offset-3">
                                 <div class="form-group">
@@ -56,7 +55,7 @@
                     role: role
                 },
                 success: function (data) {
-                    $("#worker").html(dataa );
+                    $("#worker").html(data);
                 }
             });
         })

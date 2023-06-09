@@ -9,7 +9,7 @@
                     <li style="margin-left: 70px"><a data-toggle="tab" href="#image">Լուսանկարներ</a></li>
                 </ul>
                 <div class="tab-content">
-                    <div id="user" class="tab-pane fade {{$tab == 'user' ? 'in active show' : ''}}">
+                    <div id="user" class="tab-pane fade {{$tab == 'user' ? 'in active show' : ''}}" >
                         <h3>Ավելացնել աշխատակից</h3>
                         <form action="{{route('worker_store', $area)}}" method="POST" enctype="multipart/form-data">
                             @csrf
@@ -79,10 +79,10 @@
                                                                    name="img" required>
                                                             <label class="custom-file-label"
                                                                    for="wimg"></label>
-                                                            <img src="" id="worker_img" width="100px" height="100px">
                                                         </div>
                                                         <img src="" alt="" id="">
                                                     </div>
+                                                    <img src="" id="worker_img" width="100px" height="100px" class="create_img">
                                                     <div class="card-footer">
                                                         <button type="submit" class="btn btn-primary">Հաստատել</button>
                                                     </div>
@@ -96,7 +96,7 @@
                     </div>
                     <div id="info" class="tab-pane fade {{$tab == 'info' ? 'in active show' : ''}}">
                         <h3>Ավելացնել Ինֆո</h3>
-                        <form action="{{route('info_store')}}" method="POST">
+                        <form action="{{route('info_store', [$area, 'info'])}}" method="POST">
                             @csrf
                             <div class="card card-primary">
                                 <div class="card-header">
@@ -133,7 +133,7 @@
                     </div>
                     <div id="image" class="tab-pane fade {{$tab == 'image' ? 'in active show' : ''}}">
                         <h3>Ավելացնել լուսանկար</h3>
-                        <form action="{{route('gallery_store')}}" method="POST" enctype="multipart/form-data">
+                        <form action="{{route('gallery_store', [$area, 'image'])}}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="card card-primary">
                                 <div class="card-header">
@@ -150,7 +150,7 @@
                                                                    name="image">
                                                             <label class="custom-file-label"
                                                                    for="image"></label>
-                                                            <img src="" id="img" width="100px" height="100px">
+                                                            <img src="" id="img" width="100px" height="100px" class="create_img">
                                                         </div>
                                                     </div>
                                                     <div class="card-footer">
@@ -174,7 +174,8 @@
         worker_image.onchange = evt => {
             const [file] = worker_image.files
             if (file) {
-                myImg.src = URL.createObjectURL(file)
+                myImg.src = URL.createObjectURL(file);
+                myImg.style.visibility = 'visible';
             }
         }
 
@@ -184,6 +185,8 @@
             const [file] = image.files
             if (file) {
                 img.src = URL.createObjectURL(file)
+                img.style.visibility = 'visible';
+
             }
         }
     </script>
