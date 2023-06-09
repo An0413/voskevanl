@@ -22,9 +22,10 @@ class UserRegister extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|string',
-            'password' => 'required|string',
-            'remember' => 'required|integer',
+            'role' => 'required|integer',
+            'worker' => 'required|integer',
+            'username' => 'required|string',
+            'password' => 'required|min:6',
         ];
     }
 }

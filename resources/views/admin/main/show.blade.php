@@ -32,7 +32,7 @@
                             @foreach($worker as $key=>$value)
                                 <tr>
                                     <td>{{$key+1}}</td>
-                                    <td scope="row"><img src="{{asset('assets/img/about/'. $value->img)}}"
+                                    <td scope="row"><img src="{{asset('assets/img/worker/'. $value->img)}}"
                                                          style="width: 90px; height: 90px; object-fit: cover"></td>
                                     <td>{{$value->name}}</td>
                                     <td>{{$value->lastname}}</td>

@@ -1858,3 +1858,11 @@ form .card-footer{
     padding-left: 0;
     background-color: unset;
 }
+#img{
+    visibility: hidden;
+    object-fit:cover;
+}
+#worker_img{
+    visibility: hidden;
+    object-fit:cover;
+}
