@@ -1,21 +1,17 @@
 @extends('admin.layouts.main')
 @section('content')
-    <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
-        <!-- Content Header (Page header) -->
         <div class="content-header">
             <div class="container-fluid">
                 <ul class="nav nav-tabs justify-content-center text-muted">
-                    <li class="active"><a data-toggle="tab" href="#home">Աշխատակիցներ</a></li>
-                    <li style="margin-left: 70px"><a data-toggle="tab" href="#menu1">Ինֆո</a></li>
-                    <li style="margin-left: 70px"><a data-toggle="tab" href="#menu2">Լուսանկարներ</a></li>
+                    <li class="active"><a data-toggle="tab" href="#user">Աշխատակիցներ</a></li>
+                    <li style="margin-left: 70px"><a data-toggle="tab" href="#info">Ինֆո</a></li>
+                    <li style="margin-left: 70px"><a data-toggle="tab" href="#image">Լուսանկարներ</a></li>
                 </ul>
-
                 <div class="tab-content">
-                    <div id="home" class="tab-pane fade in active show">
+                    <div id="user" class="tab-pane fade {{$tab == 'user' ? 'in active show' : ''}}">
                         <h3>Ավելացնել աշխատակից</h3>
-                        <form action="" method="POST"
-                              enctype="multipart/form-data">
+                        <form action="{{route('worker_store', $area)}}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="card card-primary">
                                 <div class="card-header">
@@ -25,11 +21,12 @@
                                         <div class="card-body w-100">
                                             <div class="form-group">
                                                 <label for="name">Անուն</label>
-                                                <input type="text" class="form-control" id="name" name="name">
+                                                <input type="text" class="form-control" id="name" name="name" required>
                                             </div>
                                             <div class="form-group">
                                                 <label for="seq">Հերթականություն</label>
-                                                <input type="number" class="form-control" id="seq" min="1" max="100" name="seq">
+                                                <input type="number" class="form-control" id="seq" min="1" max="100"
+                                                       name="seq" required>
                                             </div>
                                             <div class="form-group">
                                                 <label for="insta">Instagram</label>
@@ -41,7 +38,7 @@
                                         <div class="card-body w-100">
                                             <div class="form-group">
                                                 <label for="lastname">Ազգանուն</label>
-                                                <input type="text" class="form-control" id="lastname" name="lastname">
+                                                <input type="text" class="form-control" id="lastname" name="lastname" required>
                                             </div>
                                             <div class="form-group">
                                                 <div class="form-group">
@@ -62,9 +59,9 @@
                                         <div class="card-body w-100">
                                             <div class="form-group">
                                                 <label>Պաշտոն</label>
-                                                <select class="form-control" name="position">
+                                                <select class="form-control" name="position" required>
                                                     @foreach($worker_positions as $value)
-                                                        <option value="{{$value->id}}">{{$value->title}}</option>
+                                                        <option value="{{$value->id}}">{{$value ->title}}</option>
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -78,13 +75,13 @@
                                                     <label for="exampleInputFile">Լուսանկար</label>
                                                     <div class="input-group">
                                                         <div class="custom-file">
-                                                            <input type="file" class="custom-file-input" id="imgInp"
-                                                                   name="img">
+                                                            <input type="file" class="custom-file-input" id="wimg"
+                                                                   name="img" required>
                                                             <label class="custom-file-label"
-                                                                   for="exampleInputFile"></label>
+                                                                   for="wimg"></label>
+                                                            <img src="" id="worker_img" width="100px" height="100px">
                                                         </div>
-                                                        <img src="" alt=""
-                                                             id="preview_worker_img">
+                                                        <img src="" alt="" id="">
                                                     </div>
                                                     <div class="card-footer">
                                                         <button type="submit" class="btn btn-primary">Հաստատել</button>
@@ -97,20 +94,97 @@
                             </div>
                         </form>
                     </div>
-                    <div id="menu1" class="tab-pane fade">
+                    <div id="info" class="tab-pane fade {{$tab == 'info' ? 'in active show' : ''}}">
                         <h3>Ավելացնել Ինֆո</h3>
+                        <form action="{{route('info_store')}}" method="POST">
+                            @csrf
+                            <div class="card card-primary">
+                                <div class="card-header">
+                                </div>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="card-body w-100">
+                                            <div class="form-group">
+                                                <label for="name">Վերնագիր</label>
+                                                <input type="text" class="form-control" id="name"
+                                                       value="" required name="name">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="seq">Հերթականություն</label>
+                                                <input type="number" class="form-control" id="seq"
+                                                       value="" min="1" required
+                                                       max="100" name="seq">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-group">
+                                            <label for="description">Տեղեկություն</label>
+                                            <textarea class="form-control" rows="5" style="height: 180px;"
+                                                      name="content" id="description" required></textarea>
+                                        </div>
+                                        <div class="card-footer">
+                                            <button type="submit" class="btn btn-primary">Հաստատել</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
                     </div>
-                    <div id="menu2" class="tab-pane fade">
+                    <div id="image" class="tab-pane fade {{$tab == 'image' ? 'in active show' : ''}}">
                         <h3>Ավելացնել լուսանկար</h3>
-
+                        <form action="{{route('gallery_store')}}" method="POST" enctype="multipart/form-data">
+                            @csrf
+                            <div class="card card-primary">
+                                <div class="card-header">
+                                </div>
+                                <div class="row">
+                                    <div class="col-4">
+                                        <div class="card-body w-100">
+                                            <div class="form-group">
+                                                <div class="form-group">
+                                                    <label for="exampleInputFile">Լուսանկար</label>
+                                                    <div class="input-group">
+                                                        <div class="custom-file">
+                                                            <input type="file" class="custom-file-input" id="image"
+                                                                   name="image">
+                                                            <label class="custom-file-label"
+                                                                   for="image"></label>
+                                                            <img src="" id="img" width="100px" height="100px">
+                                                        </div>
+                                                    </div>
+                                                    <div class="card-footer">
+                                                        <button type="submit" class="btn btn-primary">Հաստատել</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
-            </div><!-- /.container-fluid -->
+            </div>
         </div>
-        <!-- /.content-header -->
-
-        <!-- Main content -->
-        <!-- /.content -->
     </div>
-    <!-- /.content-wrapper -->
+    <script>
+        let worker_image = document.querySelector('#wimg');
+        let myImg = document.querySelector('#worker_img');
+        worker_image.onchange = evt => {
+            const [file] = worker_image.files
+            if (file) {
+                myImg.src = URL.createObjectURL(file)
+            }
+        }
+
+        let image = document.querySelector('#image');
+        let img = document.querySelector('#img');
+        image.onchange = evt => {
+            const [file] = image.files
+            if (file) {
+                img.src = URL.createObjectURL(file)
+            }
+        }
+    </script>
 @endsection

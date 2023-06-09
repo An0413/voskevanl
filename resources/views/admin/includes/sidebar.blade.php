@@ -25,7 +25,7 @@
                 @foreach($menu as $value)
                     @if($role = 0 || $role == $value->id)
                         <li class="nav-item">
-                            <a href="{{route('worker_info', [$value->id, 0])}}" class="nav-link">
+                            <a href="{{route('worker_info', $value->id)}}" class="nav-link">
                                 {{--                        <img src="{{asset('assets/img/ambulance/ambulance.jpg')}}" class="brand-image img-circle elevation-3 admin_menu_img">--}}
                                 <p>
                                     {{$value->name}}

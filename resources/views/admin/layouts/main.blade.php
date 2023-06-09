@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Ոսկեվան</title>
 
     <!-- Google Font: Source Sans Pro -->
@@ -22,7 +23,8 @@
     <!-- Daterange picker -->
     <link rel="stylesheet" href="{{asset('plugins/daterangepicker/daterangepicker.css')}}">
     <link href="{{asset('assets/css/style.css')}}" rel="stylesheet">
-
+    <script src="{{asset('/assets/vendor/bootstrap/js/bootstrap.min.js')}}"></script>
+    <script src="{{asset('plugins/jquery/jquery.min.js')}}"></script>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -62,8 +64,8 @@
 <!-- ./wrapper -->
 
 <!-- jQuery -->
-<script src="{{asset('/assets/vendor/bootstrap/js/bootstrap.min.js')}}"></script>
-<script src="{{asset('plugins/jquery/jquery.min.js')}}"></script>
+{{--<script src="{{asset('/assets/vendor/bootstrap/js/bootstrap.min.js')}}"></script>--}}
+{{--<script src="{{asset('plugins/jquery/jquery.min.js')}}"></script>--}}
 <!-- jQuery UI 1.11.4 -->
 <script src="{{asset('plugins/jquery-ui/jquery-ui.min.js')}}"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->

@@ -81,11 +81,15 @@ Route::group(['namespase' => 'News', 'prefix' => 'news'], function (){
 
 Route::post('/message_to_user', [GlxavorController::class, 'email_to_user'])->name('message_to_user');
 
+Route::post('/get_workers', [LoginController::class, 'get_workers']);
+
 Route::group(['namespase' => 'Admin', 'prefix' => 'admin'], function (){
     Route::get('/',  [IndexaController::class, 'index'])->name('admin');
     Route::get('/info/{id}',  [MainController::class, 'index'])->where('id', '[0-9]+')->name('worker_info');
-    Route::get('/create/{id}',  [MainController::class, 'create'])->where('id', '[0-9]+')->name('worker_create');
-    Route::get('/info/{id}/{group_id}',  [MainController::class, 'index'])->where('id', '[0-9]+')->where('group_id', '[0-9]+')->name('worker_info');
+    Route::get('/create/{id}/{tab}',  [MainController::class, 'create'])->where('id', '[0-9]+')->where('tab', '[a-zA-Z]+')->name('worker_create');
+    Route::post('/worker/store/{id}', [MainController::class, 'store'])->where('id', '[0-9]+')->name('worker_store');
+    Route::post('/info/store', [MainController::class, 'storei'])->name('info_store');
+    Route::post('/gallery/store', [MainController::class, 'storeg'])->name('gallery_store');
     Route::get('/worker/edit/{worker_id}',  [MainController::class, 'edit_worker'])->where('worker_id', '[0-9]+')->name('worker_edit');
     Route::post('/worker/update/{worker_id}',  [MainController::class, 'update'])->where('worker_id', '[0-9]+')->name('worker_update');
     Route::get('/worker/delete/{worker_id}',  [MainController::class, 'delete'])->where('worker_id', '[0-9]+')->name('worker_delete');
@@ -98,7 +102,8 @@ Route::group(['namespase' => 'Admin', 'prefix' => 'admin'], function (){
     Route::post('/gallery/update/{gallery_id}',  [GalleryController::class, 'update'])->where('gallery_id', '[0-9]+')->name('gallery_update');
     Route::get('/gallery/delete/{gallery_id}',  [GalleryController::class, 'delete'])->where('gallery_id', '[0-9]+')->name('gallery_delete');
 
-    Route::get('/registr',  [LoginController::class, 'registr'])->name('registr');
+    Route::get('/register',  [LoginController::class, 'register'])->name('register');
+    Route::post('/register_user',  [LoginController::class, 'registerUser'])->name('register_user');
 
     Route::get('/login',  [LoginController::class, 'index'])->name('login');
     Route::post('/login',  [LoginController::class, 'login'])->name('login_check');
