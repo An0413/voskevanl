@@ -14,6 +14,7 @@ use App\Models\Status;
 use App\Models\Worker;
 use App\Models\WorkerPosition;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use function Sodium\compare;
 
@@ -21,8 +22,7 @@ class AdminNewsController extends Controller
 {
     public function index()
     {
-        $user_id = 1;
-//        $user_id = auth()->user()->getAuthIdentifier();
+        $user_id = auth()->user()->getAuthIdentifier();
         $news = News::where('user_id', $user_id)->orderBy('id', 'desc')->get();
 
         return view('admin.news.show', compact('user_id', 'news'));
@@ -88,7 +88,7 @@ class AdminNewsController extends Controller
     public function store(StoreRequest $request)
     {
         $data = $request->validated();
-        $data['user_id'] = 1;
+        $data['user_id'] = Auth::user()->id;
         $data['status'] = 2;
         $data['url'] = '';
         $imagePath = $request->file('img')->store('public/assets/img/news');

@@ -32,10 +32,11 @@ class LoginController extends Controller
     public function login(LoginRequset $request)
     {
 //        $data = $request->validated();
-        $data = $request->only('name', 'password');
+        $data = $request->only('username', 'password');
         if (Auth::attempt($data)) {
-            return redirect(route('admin'));
+            return redirect()->route('admin');
         } else {
+
             Session::flash('message', 'Խնդրում ենք լրացնել ճիշտ տվյալներ');
             return redirect()->back();
         }

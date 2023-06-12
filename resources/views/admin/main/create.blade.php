@@ -9,7 +9,7 @@
                     <li style="margin-left: 70px"><a data-toggle="tab" href="#image">Լուսանկարներ</a></li>
                 </ul>
                 <div class="tab-content">
-                    <div id="user" class="tab-pane fade {{$tab == 'user' ? 'in active show' : ''}}" >
+                    <div id="user" class="tab-pane fade {{$tab == 'user' ? 'in active show' : ''}}">
                         <h3>Ավելացնել աշխատակից</h3>
                         <form action="{{route('worker_store', $area)}}" method="POST" enctype="multipart/form-data">
                             @csrf
@@ -38,7 +38,8 @@
                                         <div class="card-body w-100">
                                             <div class="form-group">
                                                 <label for="lastname">Ազգանուն</label>
-                                                <input type="text" class="form-control" id="lastname" name="lastname" required>
+                                                <input type="text" class="form-control" id="lastname" name="lastname"
+                                                       required>
                                             </div>
                                             <div class="form-group">
                                                 <div class="form-group">
@@ -82,7 +83,8 @@
                                                         </div>
                                                         <img src="" alt="" id="">
                                                     </div>
-                                                    <img src="" id="worker_img" width="100px" height="100px" class="create_img">
+                                                    <img src="" id="worker_img" width="100px" height="100px"
+                                                         class="create_img">
                                                     <div class="card-footer">
                                                         <button type="submit" class="btn btn-primary">Հաստատել</button>
                                                     </div>
@@ -133,7 +135,8 @@
                     </div>
                     <div id="image" class="tab-pane fade {{$tab == 'image' ? 'in active show' : ''}}">
                         <h3>Ավելացնել լուսանկար</h3>
-                        <form action="{{route('gallery_store', [$area, 'image'])}}" method="POST" enctype="multipart/form-data">
+                        <form action="{{route('gallery_store', [$area, 'image'])}}" method="POST"
+                              enctype="multipart/form-data">
                             @csrf
                             <div class="card card-primary">
                                 <div class="card-header">
@@ -143,19 +146,33 @@
                                         <div class="card-body w-100">
                                             <div class="form-group">
                                                 <div class="form-group">
-                                                    <label for="exampleInputFile">Լուսանկար</label>
+                                                    <label for="image_view">Լուսանկար</label>
                                                     <div class="input-group">
                                                         <div class="custom-file">
-                                                            <input type="file" class="custom-file-input" id="image"
+                                                            <input type="file" class="custom-file-input" id="image_view"
                                                                    name="image">
                                                             <label class="custom-file-label"
                                                                    for="image"></label>
-                                                            <img src="" id="img" width="100px" height="100px" class="create_img">
                                                         </div>
                                                     </div>
                                                     <div class="card-footer">
+                                                        <img src="" id="img" width="100px" height="100px"
+                                                             class="create_img">
                                                         <button type="submit" class="btn btn-primary">Հաստատել</button>
                                                     </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="card-body w-100">
+                                            <div class="form-group">
+                                                <div class="form-group">
+                                                    <label>Նկարի դիրքը</label>
+                                                    <select class="form-control" name="main_image">
+                                                        <option value="1">Գլխավոր</option>
+                                                        <option value="0" selected>Պատկերասրահ</option>
+                                                    </select>
                                                 </div>
                                             </div>
                                         </div>
@@ -179,14 +196,13 @@
             }
         }
 
-        let image = document.querySelector('#image');
+        let image = document.querySelector('#image_view');
         let img = document.querySelector('#img');
         image.onchange = evt => {
             const [file] = image.files
             if (file) {
-                img.src = URL.createObjectURL(file)
+                img.src = URL.createObjectURL(file);
                 img.style.visibility = 'visible';
-
             }
         }
     </script>
