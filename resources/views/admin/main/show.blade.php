@@ -94,7 +94,7 @@
                             @foreach($images as $key=>$value)
                                 <tr>
                                     <td>{{$key+1}}</td>
-                                    <td scope="row"><img src="{{asset('assets/img/about/'. $value->src)}}"
+                                    <td scope="row"><img src="{{asset('assets/img/gallery/'. $value->src)}}"
                                                          style="width: 90px; height: 90px; object-fit: cover"></td>
                                     <td style="width: 15px"><a href="{{route('gallery_edit', $value->id)}}"><i class="nav-icon fas fa-edit text-primary"></i></a></td>
                                     <td style="width: 15px"><a href="{{route('gallery_delete', $value->id)}}"><i class="nav-icon fas fa-trash text-danger"></i></a></td>

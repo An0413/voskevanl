@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin\Main;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\StoreGalleryRequest;
 use App\Http\Requests\Admin\StoreRequest;
 use App\Http\Requests\Admin\StoreWorkerRequest;
 use App\Http\Requests\Admin\StoreInfoRequest;
@@ -14,14 +15,15 @@ use App\Models\News;
 use App\Models\Worker;
 use App\Models\WorkerPosition;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class MainController extends Controller
 {
     public function index($worker_id)
     {
-        $worker = Worker::where('worker_id',  $worker_id)->where('status', 1)->get();
-        $images = Images::where('gallery_id',  $worker_id)->get();
+        $worker = Worker::where('worker_id', $worker_id)->where('status', 1)->get();
+        $images = Images::where('gallery_id', $worker_id)->get();
         $info = Main_info::where('menu_id', $worker_id)->get();
         return view('admin.main.show', compact('worker', 'images', 'info', 'worker_id'));
     }
@@ -64,14 +66,15 @@ class MainController extends Controller
         return redirect()->route('worker_info', $worker->worker_id);
     }
 
-    public function create($area, $tab){
+    public function create($area, $tab)
+    {
 
         $worker_positions = WorkerPosition::whereIn('area', [0, $area])->get();
 
         return view('admin.main.create', compact(['worker_positions', 'tab', 'area']));
     }
 
-    public function store(StoreWorkerRequest $request,$worker_id)
+    public function store(StoreWorkerRequest $request, $worker_id)
     {
 
         $data = $request->validated();
@@ -86,25 +89,27 @@ class MainController extends Controller
         return redirect()->route('worker_info', $worker_id);
     }
 
-    public function storeInfo(StoreInfoRequest $request,$worker_id, $tab)
+    public function storeInfo(StoreInfoRequest $request, $worker_id, $tab)
     {
         $data = $request->validated();
         $data['menu_id'] = $worker_id;
-        $data['user_id'] = 1;
+        $data['user_id'] = Auth::user()->id;
         DB::table('main_infos')->insert($data);
         return redirect()->route('worker_info', $worker_id);
     }
 
-    public function storeGallery(StoreInfoRequest $request, $worker_id, $tab)
+    public function storeGallery(StoreGalleryRequest $request, $worker_id, $tab)
     {
         $data = $request->validated();
-
-
-        $imagePath = $request->file('img')->store('public/assets/img/about');
+        $data['gallery_id'] = $worker_id;
+        $data['user_id'] = Auth::user()->id;
+        $imagePath = $request->file('image')->store('public/assets/img/gallery');
         $path_arr = explode('/', $imagePath);
         $imageName = end($path_arr);
-        $request->img->move(public_path('assets/img/about'), $imageName);
-        $data['img'] = $imageName;
+        $request->image->move(public_path('assets/img/gallery'), $imageName);
+        $data['src'] = $imageName;
+        unset($data['image']);
+        DB::table('gallery')->insert($data);
         return redirect()->route('worker_info', $worker_id);
     }
 

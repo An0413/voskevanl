@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Login 10</title>
+    <title>Ոսկեվան</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -45,7 +45,7 @@
                         <div class="form-group d-md-flex justify-content-center">
                             <div>
                                 <input type="hidden" id="remember" name="remember" value="1">
-                                <label class="checkbox-wrap checkbox-primary">Remember Me
+                                <label class="checkbox-wrap checkbox-primary">Հիշել
                                     <input type="checkbox" id="check" checked>
                                     <span class="checkmark"></span>
                                 </label>
@@ -54,7 +54,7 @@
 
 
                         <div class="form-group">
-                            <button type="submit" class="form-control btn btn-primary submit px-3">Sign In
+                            <button type="submit" class="form-control btn btn-primary submit px-3">Մուտք
                             </button>
                         </div>
                     </form>
