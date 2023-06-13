@@ -15,6 +15,7 @@ use App\Http\Controllers\News\NewsController;
 use App\Http\Controllers\Admin\AdminNewsController;
 use App\Http\Controllers\Glxavor\GlxavorController;
 use App\Http\Controllers\History\HistoryController;
+use App\Http\Controllers\Admin\AdminHistoryController;
 use App\Http\Controllers\News\NewsiController;
 use Illuminate\Support\Facades\Route;
 
@@ -85,6 +86,17 @@ Route::post('/get_workers', [LoginController::class, 'get_workers']);
 
 Route::group(['namespase' => 'Admin', 'prefix' => 'admin'], function (){
     Route::get('/',  [IndexaController::class, 'index'])->name('admin');
+    Route::get('/news',  [AdminNewsController::class, 'index'])->name('admin_news');
+
+    Route::get('/history/create', [AdminHistoryController::class, 'create'])->name('history_create');
+    Route::post('/history/store', [AdminHistoryController::class, 'store'])->name('history_store');
+    Route::get('/history',  [AdminHistoryController::class, 'index'])->name('admin_history');
+    Route::get('/history/edit/{history_id}',  [AdminHistoryController::class, 'edit'])->where('history_id', '[0-9]+')->name('history_edit');
+    Route::post('/history/update/{history_id}',  [AdminHistoryController::class, 'update'])->where('history_id', '[0-9]+')->name('history_update');
+    Route::delete('/history/delete/{history_id}',  [AdminHistoryController::class, 'delete'])->where('history_id', '[0-9]+')->name('history_delete');
+
+    Route::get('/buildings',  [BuildingsController::class, 'index'])->name('admin_buildings');
+    Route::get('/church',  [ChurchController::class, 'index'])->name('admin_church');
     Route::get('/info/{id}',  [MainController::class, 'index'])->where('id', '[0-9]+')->name('worker_info');
     Route::get('/create/{id}/{tab}',  [MainController::class, 'create'])->where('id', '[0-9]+')->where('tab', '[a-zA-Z]+')->name('worker_create');
     Route::post('/worker/store/{id}', [MainController::class, 'store'])->where('id', '[0-9]+')->name('worker_store');
