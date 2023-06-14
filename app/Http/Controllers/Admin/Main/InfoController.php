@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin\Main;
 
-use     App\Http\Controllers\Controller;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\Main\UpdateInfoRequest;
 use App\Http\Requests\Main\UpdateWorkerRequest;
 use App\Models\Images;
@@ -13,6 +13,8 @@ use App\Models\WorkerPosition;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use App\Helper;
+
 
 class InfoController extends Controller
 {
@@ -30,8 +32,10 @@ class InfoController extends Controller
             return redirect('admin/login');
         }
         $info = Main_info::where('id', $info_id)->first();
+        $admin_info = Helper::getAdmin();
 
-        return view('admin.main.editi', compact('info'));
+
+        return view('admin.main.editi', compact('info',admin_info));
     }
 
     public function update($info_id, UpdateInfoRequest $request)

@@ -118,6 +118,7 @@ Route::group(['namespase' => 'Admin', 'prefix' => 'admin'], function (){
     Route::post('/register_user',  [LoginController::class, 'registerUser'])->name('register_user');
 
     Route::get('/login',  [LoginController::class, 'index'])->name('login');
+    Route::post('/logout',  [LoginController::class, 'logout'])->name('admin_logout');
     Route::post('/login_check',  [LoginController::class, 'login'])->name('login_check');
 
     Route::get('/news/create', [AdminNewsController::class, 'create'])->name('news_create');

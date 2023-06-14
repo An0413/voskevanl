@@ -17,7 +17,8 @@ use App\Models\WorkerPosition;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-//use App\Helpers\helpers.php;
+use App\Helper;
+
 
 
 
@@ -35,7 +36,9 @@ class MainController extends Controller
         $images = Images::where('gallery_id',  $worker_id)->get();
 
         $info = Main_info::where('menu_id', $worker_id)->get();
-        return view('admin.main.show', compact('worker', 'images', 'info', 'worker_id'));
+        $admin_info = Helper::getAdmin();
+
+        return view('admin.main.show', compact('worker', 'images', 'info', 'worker_id','admin_info'));
     }
 
     public function edit_worker($worker_id)
@@ -45,7 +48,10 @@ class MainController extends Controller
         }
         $worker = Worker::where('id', $worker_id)->first();
         $worker_positions = WorkerPosition::whereIn('area', [0, $worker->worker_id])->get();
-        return view('admin.main.edit', compact('worker', 'worker_positions'));
+
+        $admin_info = Helper::getAdmin();
+
+        return view('admin.main.edit', compact('worker', 'worker_positions','admin_info'));
     }
 
     public function update($worker_id, UpdateWorkerRequest $request)
@@ -92,7 +98,10 @@ class MainController extends Controller
 
         $worker_positions = WorkerPosition::whereIn('area', [0, $area])->get();
 
-        return view('admin.main.create', compact(['worker_positions', 'tab', 'area']));
+        $admin_info = Helper::getAdmin();
+
+
+        return view('admin.main.create', compact(['worker_positions', 'tab', 'area','admin_info']));
     }
 
     public function store(StoreWorkerRequest $request, $worker_id)
