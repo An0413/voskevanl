@@ -12,6 +12,7 @@ use App\Models\Main_info;
 use App\Models\Worker;
 use App\Models\WorkerPosition;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class GalleryController extends Controller
@@ -26,6 +27,9 @@ class GalleryController extends Controller
 
     public function edit($gallery_id)
     {
+        if (!Auth::user()){
+            return redirect('admin/login');
+        }
         $images = Images::where('id', $gallery_id)->first();
 
         return view('admin.main.editgallery', compact('images'));
@@ -33,6 +37,9 @@ class GalleryController extends Controller
 
     public function update($gallery_id, UpdateGalleryRequest $request)
     {
+        if (!Auth::user()){
+            return redirect('admin/login');
+        }
         $images = Images::where('id', $gallery_id)->first();
         $data = $request->validated();
         DB::table('gallery')
@@ -46,6 +53,9 @@ class GalleryController extends Controller
 
     public function delete($info_id)
     {
+        if (!Auth::user()){
+            return redirect('admin/login');
+        }
         $worker = Worker::where('id', $info_id)->first();
         DB::table('workers')
             ->where('id', $info_id)

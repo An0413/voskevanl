@@ -13,4 +13,10 @@ class History extends Model
 
 
     protected $guarded = false;
+
+
+
+    public function patm_status(){
+        return $this->hasOne(Status::class, 'status_id', 'history_status');
+    }
 }
