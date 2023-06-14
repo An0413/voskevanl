@@ -22,6 +22,10 @@ class AdminNewsController extends Controller
 {
     public function index()
     {
+        if (!Auth::user()){
+            return redirect('admin/login');
+        }
+
         $user_id = auth()->user()->getAuthIdentifier();
         $news = News::where('user_id', $user_id)->orderBy('id', 'desc')->get();
 
@@ -31,7 +35,9 @@ class AdminNewsController extends Controller
 
     public function create()
     {
-
+        if (!Auth::user()){
+            return redirect('admin/login');
+        }
 
         return view('admin.news.create');
 
@@ -40,13 +46,18 @@ class AdminNewsController extends Controller
 
     public function edit($news_id)
     {
-
+        if (!Auth::user()){
+            return redirect('admin/login');
+        }
         $news = News::where('id', $news_id)->first();
         return view('admin.news.edit', compact('news'));
     }
 
     public function update(UpdateRequest $request, $news_id)
     {
+        if (!Auth::user()){
+            return redirect('admin/login');
+        }
         $news = News::where('id', $news_id)->first();
         $data = $request->validated();
 
@@ -76,6 +87,9 @@ class AdminNewsController extends Controller
 
     public function delete($news_id)
     {
+        if (!Auth::user()){
+            return redirect('admin/login');
+        }
         $news = News::where('id', $news_id)->first();
         DB::table('news')
             ->where('id', $news_id)
@@ -87,6 +101,9 @@ class AdminNewsController extends Controller
 
     public function store(StoreRequest $request)
     {
+        if (!Auth::user()){
+            return redirect('admin/login');
+        }
         $data = $request->validated();
         $data['user_id'] = Auth::user()->id;
         $data['status'] = 2;

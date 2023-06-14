@@ -22,14 +22,21 @@ class MainController extends Controller
 {
     public function index($worker_id)
     {
-        $worker = Worker::where('worker_id', $worker_id)->where('status', 1)->get();
-        $images = Images::where('gallery_id', $worker_id)->get();
+        if (!Auth::user()){
+            return redirect('admin/login');
+        }
+        $worker = Worker::where('worker_id',  $worker_id)->where('status', 1)->get();
+        $images = Images::where('gallery_id',  $worker_id)->get();
+
         $info = Main_info::where('menu_id', $worker_id)->get();
         return view('admin.main.show', compact('worker', 'images', 'info', 'worker_id'));
     }
 
     public function edit_worker($worker_id)
     {
+        if (!Auth::user()){
+            return redirect('admin/login');
+        }
         $worker = Worker::where('id', $worker_id)->first();
         $worker_positions = WorkerPosition::whereIn('area', [0, $worker->worker_id])->get();
         return view('admin.main.edit', compact('worker', 'worker_positions'));
@@ -37,6 +44,9 @@ class MainController extends Controller
 
     public function update($worker_id, UpdateWorkerRequest $request)
     {
+        if (!Auth::user()){
+            return redirect('admin/login');
+        }
         $worker = Worker::where('id', $worker_id)->first();
         $data = $request->validated();
         if (isset($data['img'])) {
@@ -57,6 +67,9 @@ class MainController extends Controller
 
     public function delete($worker_id)
     {
+        if (!Auth::user()){
+            return redirect('admin/login');
+        }
         $worker = Worker::where('id', $worker_id)->first();
         DB::table('workers')
             ->where('id', $worker_id)
@@ -66,8 +79,10 @@ class MainController extends Controller
         return redirect()->route('worker_info', $worker->worker_id);
     }
 
-    public function create($area, $tab)
-    {
+    public function create($area, $tab){
+        if (!Auth::user()){
+            return redirect('admin/login');
+        }
 
         $worker_positions = WorkerPosition::whereIn('area', [0, $area])->get();
 
@@ -76,7 +91,9 @@ class MainController extends Controller
 
     public function store(StoreWorkerRequest $request, $worker_id)
     {
-
+        if (!Auth::user()){
+            return redirect('admin/login');
+        }
         $data = $request->validated();
 
         $data['worker_id'] = $worker_id;
@@ -91,6 +108,9 @@ class MainController extends Controller
 
     public function storeInfo(StoreInfoRequest $request, $worker_id, $tab)
     {
+        if (!Auth::user()){
+            return redirect('admin/login');
+        }
         $data = $request->validated();
         $data['menu_id'] = $worker_id;
         $data['user_id'] = Auth::user()->id;
@@ -100,6 +120,9 @@ class MainController extends Controller
 
     public function storeGallery(StoreGalleryRequest $request, $worker_id, $tab)
     {
+        if (!Auth::user()){
+            return redirect('admin/login');
+        }
         $data = $request->validated();
         $data['gallery_id'] = $worker_id;
         $data['user_id'] = Auth::user()->id;

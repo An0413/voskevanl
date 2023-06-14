@@ -12,6 +12,9 @@ class IndexaController extends Controller
 {
     public function index()
     {
+        if (!Auth::user()){
+            return redirect('admin/login');
+        }
         $admin_info = $this->getAdmin();
         $worker = Worker::where('worker_id', '=', 5)->get();
         return view('admin.main.index', compact('worker', 'admin_info'));
