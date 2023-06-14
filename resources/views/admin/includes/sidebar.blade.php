@@ -9,16 +9,15 @@
         </a>
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
-                <img src="{{asset('assets/img/users/ani.jpg')}}" class="img-circle elevation-2" alt="User Image">
+{{--                <img src="{{asset('assets/img/worker/' .$admin_info['img'])}}" class="img-circle elevation-2" alt="User Image">--}}
             </div>
             <div class="info">
-                <a href="#" class="d-block">Անի Ալեքսանյան</a>
+{{--                <a href="#" class="d-block">{{$admin_info['name'] . ' ' . $admin_info['lastname']}}</a>--}}
             </div>
         </div>
         @php
             $menu = \App\Models\Menu::where('id', '>', 1)->where('is_drop', 0)->get();
             $role = 2;  //stanal loginic heto
-
         @endphp
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">

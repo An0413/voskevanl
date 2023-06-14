@@ -17,6 +17,12 @@ use App\Models\WorkerPosition;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+//use App\Helpers\helpers.php;
+
+
+
+
+
 
 class MainController extends Controller
 {
@@ -68,7 +74,7 @@ class MainController extends Controller
 
     public function create($area, $tab)
     {
-
+        dde();
         $worker_positions = WorkerPosition::whereIn('area', [0, $area])->get();
 
         return view('admin.main.create', compact(['worker_positions', 'tab', 'area']));
