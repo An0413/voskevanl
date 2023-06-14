@@ -11,6 +11,7 @@ use App\Models\Main_info;
 use App\Models\Worker;
 use App\Models\WorkerPosition;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class InfoController extends Controller
@@ -25,6 +26,9 @@ class InfoController extends Controller
 
     public function edit($info_id)
     {
+        if (!Auth::user()){
+            return redirect('admin/login');
+        }
         $info = Main_info::where('id', $info_id)->first();
 
         return view('admin.main.editi', compact('info'));
@@ -32,6 +36,9 @@ class InfoController extends Controller
 
     public function update($info_id, UpdateInfoRequest $request)
     {
+        if (!Auth::user()){
+            return redirect('admin/login');
+        }
         $info = Main_info::where('id', $info_id)->first();
         $data = $request->validated();
         DB::table('main_infos')
@@ -45,6 +52,9 @@ class InfoController extends Controller
 
     public function delete($info_id)
     {
+        if (!Auth::user()){
+            return redirect('admin/login');
+        }
         $worker = Worker::where('id', $info_id)->first();
         DB::table('workers')
             ->where('id', $info_id)

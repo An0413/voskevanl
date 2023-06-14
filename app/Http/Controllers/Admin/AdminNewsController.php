@@ -14,6 +14,7 @@ use App\Models\Status;
 use App\Models\Worker;
 use App\Models\WorkerPosition;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use function Sodium\compare;
 
@@ -21,8 +22,10 @@ class AdminNewsController extends Controller
 {
     public function index()
     {
-        $user_id = 1;
-//        $user_id = auth()->user()->getAuthIdentifier();
+        if (!Auth::user()){
+            return redirect('admin/login');
+        }
+        $user_id = auth()->user()->getAuthIdentifier();
         $news = News::where('user_id', $user_id)->orderBy('id', 'desc')->get();
 
         return view('admin.news.show', compact('user_id', 'news'));
@@ -31,7 +34,9 @@ class AdminNewsController extends Controller
 
     public function create()
     {
-
+        if (!Auth::user()){
+            return redirect('admin/login');
+        }
 
         return view('admin.news.create');
 
@@ -40,13 +45,18 @@ class AdminNewsController extends Controller
 
     public function edit($news_id)
     {
-
+        if (!Auth::user()){
+            return redirect('admin/login');
+        }
         $news = News::where('id', $news_id)->first();
         return view('admin.news.edit', compact('news'));
     }
 
     public function update(UpdateRequest $request, $news_id)
     {
+        if (!Auth::user()){
+            return redirect('admin/login');
+        }
         $news = News::where('id', $news_id)->first();
         $data = $request->validated();
 
@@ -76,6 +86,9 @@ class AdminNewsController extends Controller
 
     public function delete($news_id)
     {
+        if (!Auth::user()){
+            return redirect('admin/login');
+        }
         $news = News::where('id', $news_id)->first();
         DB::table('news')
             ->where('id', $news_id)
@@ -87,6 +100,9 @@ class AdminNewsController extends Controller
 
     public function store(StoreRequest $request)
     {
+        if (!Auth::user()){
+            return redirect('admin/login');
+        }
         $data = $request->validated();
         $data['user_id'] = 1;
         $data['status'] = 2;

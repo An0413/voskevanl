@@ -14,12 +14,16 @@ use App\Models\News;
 use App\Models\Worker;
 use App\Models\WorkerPosition;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class MainController extends Controller
 {
     public function index($worker_id)
     {
+        if (!Auth::user()){
+            return redirect('admin/login');
+        }
         $worker = Worker::where('worker_id',  $worker_id)->where('status', 1)->get();
         $images = Images::where('gallery_id',  $worker_id)->get();
         $info = Main_info::where('menu_id', $worker_id)->get();
@@ -28,6 +32,9 @@ class MainController extends Controller
 
     public function edit_worker($worker_id)
     {
+        if (!Auth::user()){
+            return redirect('admin/login');
+        }
         $worker = Worker::where('id', $worker_id)->first();
         $worker_positions = WorkerPosition::whereIn('area', [0, $worker->worker_id])->get();
         return view('admin.main.edit', compact('worker', 'worker_positions'));
@@ -35,6 +42,9 @@ class MainController extends Controller
 
     public function update($worker_id, UpdateWorkerRequest $request)
     {
+        if (!Auth::user()){
+            return redirect('admin/login');
+        }
         $worker = Worker::where('id', $worker_id)->first();
         $data = $request->validated();
         if (isset($data['img'])) {
@@ -55,6 +65,9 @@ class MainController extends Controller
 
     public function delete($worker_id)
     {
+        if (!Auth::user()){
+            return redirect('admin/login');
+        }
         $worker = Worker::where('id', $worker_id)->first();
         DB::table('workers')
             ->where('id', $worker_id)
@@ -65,7 +78,9 @@ class MainController extends Controller
     }
 
     public function create($area, $tab){
-
+        if (!Auth::user()){
+            return redirect('admin/login');
+        }
         $worker_positions = WorkerPosition::whereIn('area', [0, $area])->get();
 
         return view('admin.main.create', compact(['worker_positions', 'tab', 'area']));
@@ -73,7 +88,9 @@ class MainController extends Controller
 
     public function store(StorewRequest $request,$worker_id)
     {
-
+        if (!Auth::user()){
+            return redirect('admin/login');
+        }
         $data = $request->validated();
 
         $data['worker_id'] = $worker_id;
@@ -84,6 +101,9 @@ class MainController extends Controller
 
     public function storeInfo(StoreiRequest $request,$worker_id)
     {
+        if (!Auth::user()){
+            return redirect('admin/login');
+        }
         $data = $request->validated();
         Main_info::firstOrCreate($data);
         return redirect()->route('worker_info', compact('worker_id'));
@@ -91,6 +111,9 @@ class MainController extends Controller
 
     public function storeGallery(StoreiRequest $request,$worker_id)
     {
+        if (!Auth::user()){
+            return redirect('admin/login');
+        }
         $data = $request->validated();
         Images::firstOrCreate($data);
         return redirect()->route('worker_info', compact('worker_id'));

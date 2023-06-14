@@ -10,12 +10,16 @@ use App\Models\Images;
 use App\Models\Itok;
 use Illuminate\Http\Request;
 use App\Models\Buildings;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class AdminHistoryController extends Controller
 {
     public function index()
     {
+        if (!Auth::user()){
+            return redirect('admin/login');
+        }
         $history = History::all();
         $images = Images::where('gallery_id', '=', 6)->get();
         return view('admin.main.history', compact('history', 'images'));
@@ -23,21 +27,26 @@ class AdminHistoryController extends Controller
 
     public function create()
     {
-
-
+        if (!Auth::user()){
+            return redirect('admin/login');
+        }
         return view('admin.main.historycreate');
 
     }
     public function edit($history_id)
     {
-
+        if (!Auth::user()){
+            return redirect('admin/login');
+        }
         $history = History::where('id', $history_id)->first();
         return view('admin.main.historyedit', compact('history'));
     }
 
     public function update(UpdatehRequest $request, $history_id)
     {
-
+        if (!Auth::user()){
+            return redirect('admin/login');
+        }
         $history = History::where('id', $history_id)->first();
         $data = $request->validated();
         $data['history_status'] = 3;
@@ -66,6 +75,9 @@ class AdminHistoryController extends Controller
 
     public function delete($history_id)
     {
+        if (!Auth::user()){
+            return redirect('admin/login');
+        }
         $history = History::where('id', $history_id)->first();
         DB::table('history')
             ->where('id', $history_id)
@@ -75,6 +87,9 @@ class AdminHistoryController extends Controller
     }
     public function store(StorehRequest $request)
     {
+        if (!Auth::user()){
+            return redirect('admin/login');
+        }
         $data = $request->validated();
         $data['seq']=1;
         $data['history_status'] = 2;
