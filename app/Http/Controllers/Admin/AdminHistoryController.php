@@ -12,6 +12,8 @@ use Illuminate\Http\Request;
 use App\Models\Buildings;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use App\Helper;
+
 
 class AdminHistoryController extends Controller
 {
@@ -22,7 +24,10 @@ class AdminHistoryController extends Controller
         }
         $history = History::all();
         $images = Images::where('gallery_id', '=', 6)->get();
-        return view('admin.main.history', compact('history', 'images'));
+
+        $admin_info = Helper::getAdmin();
+
+        return view('admin.main.history', compact('history', 'images','admin_info'));
     }
 
     public function create()
@@ -30,7 +35,10 @@ class AdminHistoryController extends Controller
         if (!Auth::user()){
             return redirect('admin/login');
         }
-        return view('admin.main.historycreate');
+
+        $admin_info = Helper::getAdmin();
+
+        return view('admin.main.historycreate', compact('admin_info'));
 
     }
     public function edit($history_id)
@@ -39,7 +47,10 @@ class AdminHistoryController extends Controller
             return redirect('admin/login');
         }
         $history = History::where('id', $history_id)->first();
-        return view('admin.main.historyedit', compact('history'));
+
+        $admin_info = Helper::getAdmin();
+
+        return view('admin.main.historyedit', compact('history','admin_info'));
     }
 
     public function update(UpdatehRequest $request, $history_id)

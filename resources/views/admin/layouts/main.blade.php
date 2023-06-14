@@ -41,7 +41,10 @@
                 </a>
             </li>
             <li class="nav-item" style="margin-left: 1150px">
-                    <a class="nav-link" data-widget="pushmenu" href="#" role="button">Ելք</a>
+                <form action="{{route('admin_logout')}}" method="post">
+                    @csrf
+                    <a class="nav-link"  href="" role="button"><button class="logout_btn" type="submit">Ելք</button></a>
+                </form>
             </li>
         </ul>
     </nav>

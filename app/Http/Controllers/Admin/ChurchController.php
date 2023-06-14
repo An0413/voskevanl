@@ -9,6 +9,8 @@ use App\Models\Itok;
 use Illuminate\Http\Request;
 use App\Models\Buildings;
 use Illuminate\Support\Facades\Auth;
+use App\Helper;
+
 
 class ChurchController extends Controller
 {
@@ -17,6 +19,8 @@ class ChurchController extends Controller
         if (!Auth::user()){
             return redirect('admin/login');
         }
-        return view('admin.main.church');
+        $admin_info = Helper::getAdmin();
+
+        return view('admin.main.church', compact('admin_info'));
     }
 }
