@@ -25,6 +25,7 @@ class AdminNewsController extends Controller
         if (!Auth::user()){
             return redirect('admin/login');
         }
+
         $user_id = auth()->user()->getAuthIdentifier();
         $news = News::where('user_id', $user_id)->orderBy('id', 'desc')->get();
 
@@ -104,7 +105,7 @@ class AdminNewsController extends Controller
             return redirect('admin/login');
         }
         $data = $request->validated();
-        $data['user_id'] = 1;
+        $data['user_id'] = Auth::user()->id;
         $data['status'] = 2;
         $data['url'] = '';
         $imagePath = $request->file('img')->store('public/assets/img/news');

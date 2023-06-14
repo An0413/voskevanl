@@ -4,7 +4,7 @@ namespace App\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StorewRequest extends FormRequest
+class StoreGalleryRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,15 +22,8 @@ class StorewRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|string',
-            'lastname' => 'required|string',
-            'position' => 'required|integer',
-            'seq' => 'required|integer',
-            'img' => 'nullable|mimes:jpg,bmp,png',
-            'mail_link' => 'email|nullable|string',
-            'fb_link' => 'url|nullable|string',
-            'insta_link' => 'url|nullable|string',
-            'in_link' => 'url|nullable|string',
+            'image' => 'nullable|mimes:jpg,bmp,png',
+            'main_image' => 'integer',
         ];
     }
 }

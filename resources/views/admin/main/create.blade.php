@@ -38,7 +38,8 @@
                                         <div class="card-body w-100">
                                             <div class="form-group">
                                                 <label for="lastname">Ազգանուն</label>
-                                                <input type="text" class="form-control" id="lastname" name="lastname" required>
+                                                <input type="text" class="form-control" id="lastname" name="lastname"
+                                                       required>
                                             </div>
                                             <div class="form-group">
                                                 <div class="form-group">
@@ -79,10 +80,11 @@
                                                                    name="img" required>
                                                             <label class="custom-file-label"
                                                                    for="wimg"></label>
-                                                            <img src="" id="worker_img" width="100px" height="100px">
                                                         </div>
                                                         <img src="" alt="" id="">
                                                     </div>
+                                                    <img src="" id="worker_img" width="100px" height="100px"
+                                                         class="create_img">
                                                     <div class="card-footer">
                                                         <button type="submit" class="btn btn-primary">Հաստատել</button>
                                                     </div>
@@ -96,7 +98,7 @@
                     </div>
                     <div id="info" class="tab-pane fade {{$tab == 'info' ? 'in active show' : ''}}">
                         <h3>Ավելացնել Ինֆո</h3>
-                        <form action="{{route('info_store')}}" method="POST">
+                        <form action="{{route('info_store', [$area, 'info'])}}" method="POST">
                             @csrf
                             <div class="card card-primary">
                                 <div class="card-header">
@@ -133,7 +135,8 @@
                     </div>
                     <div id="image" class="tab-pane fade {{$tab == 'image' ? 'in active show' : ''}}">
                         <h3>Ավելացնել լուսանկար</h3>
-                        <form action="{{route('gallery_store')}}" method="POST" enctype="multipart/form-data">
+                        <form action="{{route('gallery_store', [$area, 'image'])}}" method="POST"
+                              enctype="multipart/form-data">
                             @csrf
                             <div class="card card-primary">
                                 <div class="card-header">
@@ -143,19 +146,33 @@
                                         <div class="card-body w-100">
                                             <div class="form-group">
                                                 <div class="form-group">
-                                                    <label for="exampleInputFile">Լուսանկար</label>
+                                                    <label for="image_view">Լուսանկար</label>
                                                     <div class="input-group">
                                                         <div class="custom-file">
-                                                            <input type="file" class="custom-file-input" id="image"
+                                                            <input type="file" class="custom-file-input" id="image_view"
                                                                    name="image">
                                                             <label class="custom-file-label"
                                                                    for="image"></label>
-                                                            <img src="" id="img" width="100px" height="100px">
                                                         </div>
                                                     </div>
                                                     <div class="card-footer">
+                                                        <img src="" id="img" width="100px" height="100px"
+                                                             class="create_img">
                                                         <button type="submit" class="btn btn-primary">Հաստատել</button>
                                                     </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="card-body w-100">
+                                            <div class="form-group">
+                                                <div class="form-group">
+                                                    <label>Նկարի դիրքը</label>
+                                                    <select class="form-control" name="main_image">
+                                                        <option value="1">Գլխավոր</option>
+                                                        <option value="0" selected>Պատկերասրահ</option>
+                                                    </select>
                                                 </div>
                                             </div>
                                         </div>
@@ -174,16 +191,18 @@
         worker_image.onchange = evt => {
             const [file] = worker_image.files
             if (file) {
-                myImg.src = URL.createObjectURL(file)
+                myImg.src = URL.createObjectURL(file);
+                myImg.style.visibility = 'visible';
             }
         }
 
-        let image = document.querySelector('#image');
+        let image = document.querySelector('#image_view');
         let img = document.querySelector('#img');
         image.onchange = evt => {
             const [file] = image.files
             if (file) {
-                img.src = URL.createObjectURL(file)
+                img.src = URL.createObjectURL(file);
+                img.style.visibility = 'visible';
             }
         }
     </script>

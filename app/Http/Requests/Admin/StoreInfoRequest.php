@@ -4,7 +4,7 @@ namespace App\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreiRequest extends FormRequest
+class StoreInfoRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +24,7 @@ class StoreiRequest extends FormRequest
         return [
             'name' => 'required|string',
             'seq' => 'required|integer',
-            'description' => 'required|string',
+            'content' => 'required|string',
         ];
     }
 }

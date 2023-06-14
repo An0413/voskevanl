@@ -28,28 +28,41 @@ class LoginController extends Controller
     {
         return view('admin.login.login');
     }
-    public function login(LoginRequset $request){
+
+    public function login(LoginRequset $request)
+    {
 //        $data = $request->validated();
-        $data = $request->only('name', 'password');
-        if (Auth::attempt($data)){
-            return redirect(route('admin'));
-        }else{
+        $data = $request->only('username', 'password');
+        if (Auth::attempt($data)) {
+            return redirect()->route('admin');
+        } else {
+
             Session::flash('message', 'Խնդրում ենք լրացնել ճիշտ տվյալներ');
             return redirect()->back();
         }
     }
-    public function register(){
+
+    public function register()
+    {
         $roles = Role::all();
         $worker = Worker::all();
-        return view('admin.login.register', compact('roles','worker'));
+        return view('admin.login.register', compact('roles', 'worker'));
     }
 
-    public function registerUser(UserRegister $request){
+    public function registerUser(UserRegister $request)
+    {
         $data = $request->validated();
+        $data['worker_id'] = $data['worker'];
+        unset($data['worker']);
 
+        $user = User::create($data);
+
+        auth()->login($user);
+        return redirect()->route('admin');
     }
 
-    public function get_workers(Request $request){
+    public function get_workers(Request $request)
+    {
         $role = $request->get('role');
         $workers = Worker::where('worker_id', $role)->get();
         return view('admin.login.workers_list', compact('workers'));
