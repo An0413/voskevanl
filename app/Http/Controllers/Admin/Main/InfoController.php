@@ -59,13 +59,13 @@ class InfoController extends Controller
         if (!Auth::user()){
             return redirect('admin/login');
         }
-        $worker = Worker::where('id', $info_id)->first();
-        DB::table('workers')
+        $info = Main_info::where('id', $info_id)->first();
+//        $worker = Worker::where('id', $info_id)->first();
+        DB::table('main_infos')
             ->where('id', $info_id)
             ->update(['status' => 0]);
 
-
-        return redirect(route('worker_info', $worker->worker_id));
+        return redirect(route('worker_info',  $info['menu_id']));
     }
 
 }

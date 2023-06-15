@@ -12,11 +12,11 @@
                 <a class="cta-btn" href="#team">Կարդալ ավելին</a>
             </div>
             @endforeach
+                @foreach($imagesg as $value)
+                    <img src="{{asset('assets/img/kindergarten/'. $value['src'])}}"
+                         style="width: 80%; margin-left: 10%; margin-top: 2%">
+                @endforeach
         </div>
-        @foreach($imagesg as $value)
-        <img src="{{asset('assets/img/kindergarten/'. $value['src'])}}"
-             style="width: 80%; margin-left: 10%; margin-top: 2%">
-        @endforeach
     </section>
 
     <section is="team" class="team" id="team">

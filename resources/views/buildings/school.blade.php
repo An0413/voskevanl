@@ -5,7 +5,7 @@
     <div class="mt-5">
         <h1 class="text-center" style="margin-top: 10%">Ոսկեվանի միջնակարգ դպրոց</h1>
     </div>
-    
+
     <section id="cta" class="cta">
         <div data-aos="zoom-in">
 
@@ -20,11 +20,11 @@
                 ?>
                 <a class="cta-btn" href="#portfolio">Կարդալ ավելին</a>
             </div>
+            @foreach ($imagesg as $value)
+                <img src="{{asset('assets/img/school/'. $value['src'])}}"
+                     style="width: 80%; margin-left: 10%; margin-top: 2%">
+            @endforeach
         </div>
-        @foreach ($imagesg as $value)
-            <img src="{{asset('assets/img/school/'. $value['src'])}}"
-                 style="width: 80%; margin-left: 10%; margin-top: 2%">
-        @endforeach
     </section>
 
     <section id="portfolio" class="portfolio">
@@ -63,7 +63,7 @@
                     <div class="col-lg-4 col-md-6 mt-5">
                         <div class="member aos-init aos-animate" data-aos="fade-up">
                             <div class="pic">
-                                <img src="{{asset('assets/img/school/'. $value['img'])}}" class="img-fluid"
+                                <img src="{{asset('assets/img/worker/'. $value['img'])}}" class="img-fluid"
                                      alt="" style="height: 300px">
                             </div>
                             <div class="member-info">
