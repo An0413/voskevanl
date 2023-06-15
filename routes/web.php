@@ -51,7 +51,7 @@ Route::group(['namespase' => 'Buildings', 'prefix' => 'buildings'], function (){
     Route::get('/administration',  AdministrationController::class)->name('buildings.administration');
     Route::get('/ambulance',  AmbulanceController::class)->name('buildings.ambulance');
 
-    Route::get('/church',  ChurchController::class)->name('buildings.church');
+    Route::get('/church',  [ChurchController::class, 'index'])->name('buildings.church');
     Route::get('/sportsschool',  SportsschoolController::class)->name('buildings.sportsschool');
 
 
