@@ -7,7 +7,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Լուսանկարի խմբագրում / {{$images->src}}</h1>
+                        <h1 class="m-0">Լուսանկարի խմբագրում </h1>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
             </div><!-- /.container-fluid -->
@@ -32,7 +32,7 @@
                                             <input type="file" class="custom-file-input" id="imgInp" name="img">
                                             <label class="custom-file-label" for="exampleInputFile"></label>
                                         </div>
-                                        <img src="{{asset('assets/img/about/' . $images->src)}}" alt=""
+                                        <img src="{{asset('assets/img/gallery/' . $images->src)}}" alt=""
                                              id="preview_worker_img">
                                     </div>
                                     <div class="card-footer">

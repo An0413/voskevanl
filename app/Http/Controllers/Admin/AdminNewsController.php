@@ -27,7 +27,6 @@ class AdminNewsController extends Controller
         if (!Auth::user()){
             return redirect('admin/login');
         }
-
         $user_id = auth()->user()->getAuthIdentifier();
         $news = News::where('user_id', $user_id)->orderBy('id', 'desc')->get();
         $admin_info = Helper::getAdmin();

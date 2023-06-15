@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers\Admin\Main;
 
-use     App\Http\Controllers\Controller;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\Main\UpdateGalleryRequest;
 use App\Http\Requests\Main\UpdateInfoRequest;
 use App\Http\Requests\Main\UpdateWorkerRequest;
 use App\Models\Images;
 use App\Models\Itok;
+use App\Models\Gallery;
 use App\Models\Main_info;
 use App\Models\Worker;
 use App\Models\WorkerPosition;
@@ -45,27 +46,38 @@ class GalleryController extends Controller
         }
         $images = Images::where('id', $gallery_id)->first();
         $data = $request->validated();
+
+        $imagePath = $request->file('img')->store('public/assets/img/gallery');
+        $path_arr = explode('/', $imagePath);
+        $imageName = end($path_arr);
+        $request->img->move(public_path('assets/img/gallery'), $imageName);
+        $data['src'] = $imageName;
+        unset($data['img']);
+
         DB::table('gallery')
             ->where('id', $gallery_id)
             ->update($data);
 
 
-
+        if ($images['gallery_id'] == 6){
+            return redirect()->route('admin_history');
+        }
         return redirect(route('worker_info', $images['menu_id']));
     }
 
-    public function delete($info_id)
+    public function delete($gallery_id)
     {
         if (!Auth::user()){
             return redirect('admin/login');
         }
-        $worker = Worker::where('id', $info_id)->first();
-        DB::table('workers')
-            ->where('id', $info_id)
-            ->update(['status' => 0]);
+        $gallery = Gallery::where('id', $gallery_id)->first();
+
+        DB::table('gallery')
+            ->where('id', $gallery_id)
+            ->update(['status' => 3]);
 
 
-        return redirect(route('worker_info', $worker->worker_id));
+        return redirect()->route('admin_history');
     }
 
 }
