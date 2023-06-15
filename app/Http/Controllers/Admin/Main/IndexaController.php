@@ -20,7 +20,6 @@ class IndexaController extends Controller
         if (!Auth::user()){
             return redirect('admin/login');
         }
-        if (Auth::)
         $worker = Worker::where('worker_id',  $worker_id)->where('status', 2)->get();
 
         $images = Images::where('gallery_id',  $worker_id)->where('status', 2)->get();

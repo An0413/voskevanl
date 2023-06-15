@@ -13,6 +13,7 @@ use App\Http\Controllers\Itok\ItokController;
 use App\Http\Controllers\Main\IndexController;
 use App\Http\Controllers\News\NewsController;
 use App\Http\Controllers\Admin\AdminNewsController;
+use App\Http\Controllers\Admin\AdminChurchController;
 use App\Http\Controllers\Glxavor\GlxavorController;
 use App\Http\Controllers\History\HistoryController;
 use App\Http\Controllers\Admin\AdminHistoryController;
@@ -96,7 +97,14 @@ Route::group(['namespase' => 'Admin', 'prefix' => 'admin'], function (){
     Route::delete('/history/delete/{history_id}',  [AdminHistoryController::class, 'delete'])->where('history_id', '[0-9]+')->name('history_delete');
 
     Route::get('/buildings',  [BuildingsController::class, 'index'])->name('admin_buildings');
-    Route::get('/church',  [ChurchController::class, 'index'])->name('admin_church');
+
+    Route::get('/church/create', [AdminChurchController::class, 'create'])->name('church_create');
+    Route::post('/church/store', [AdminChurchController::class, 'store'])->name('church_store');
+    Route::get('/church',  [AdminChurchController::class, 'index'])->name('admin_church');
+    Route::get('/church/edit/{church_id}',  [AdminChurchController::class, 'edit'])->where('church_id', '[0-9]+')->name('church_edit');
+    Route::post('/church/update/{church_id}',  [AdminChurchController::class, 'update'])->where('church_id', '[0-9]+')->name('church_update');
+    Route::delete('/church/delete/{church_id}',  [AdminChurchController::class, 'delete'])->where('church_id', '[0-9]+')->name('church_delete');
+
     Route::get('/info/{id}',  [MainController::class, 'index'])->where('id', '[0-9]+')->name('worker_info');
     Route::get('/create/{id}/{tab}',  [MainController::class, 'create'])->where('id', '[0-9]+')->where('tab', '[a-zA-Z]+')->name('worker_create');
     Route::post('/worker/store/{id}', [MainController::class, 'store'])->where('id', '[0-9]+')->name('worker_store');

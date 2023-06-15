@@ -8,11 +8,6 @@ use App\Http\Requests\Admin\StorehRequest;
 use App\Http\Requests\Admin\UpdatehRequest;
 use App\Models\History;
 use App\Models\Gallery;
-use App\Models\Itok;
-use App\Models\Main_info;
-use App\Models\Worker;
-use Illuminate\Http\Request;
-use App\Models\Buildings;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Helper;
@@ -32,7 +27,7 @@ class AdminHistoryController extends Controller
 
         $admin_info = Helper::getAdmin();
 
-        return view('admin.main.history', compact('history', 'images','admin_info'));
+        return view('admin.main.history', compact('history', 'worker_id', 'images','admin_info'));
     }
 
     public function create()

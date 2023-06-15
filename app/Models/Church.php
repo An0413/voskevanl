@@ -11,4 +11,8 @@ class Church extends Model
 
     protected $table = 'churches';
     protected $guarded = [];
+
+    public function church_status(){
+        return $this->hasOne(Status::class, 'status_id', 'status');
+    }
 }
