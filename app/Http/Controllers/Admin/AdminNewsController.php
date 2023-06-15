@@ -17,6 +17,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use function Sodium\compare;
+use App\Helper;
+
 
 class AdminNewsController extends Controller
 {
@@ -27,8 +29,9 @@ class AdminNewsController extends Controller
         }
         $user_id = auth()->user()->getAuthIdentifier();
         $news = News::where('user_id', $user_id)->orderBy('id', 'desc')->get();
+        $admin_info = Helper::getAdmin();
 
-        return view('admin.news.show', compact('user_id', 'news'));
+        return view('admin.news.show', compact('user_id', 'news','admin_info'));
     }
 
 
@@ -38,7 +41,9 @@ class AdminNewsController extends Controller
             return redirect('admin/login');
         }
 
-        return view('admin.news.create');
+        $admin_info = Helper::getAdmin();
+
+        return view('admin.news.create', compact('admin_info'));
 
     }
 
@@ -49,7 +54,9 @@ class AdminNewsController extends Controller
             return redirect('admin/login');
         }
         $news = News::where('id', $news_id)->first();
-        return view('admin.news.edit', compact('news'));
+        $admin_info = Helper::getAdmin();
+
+        return view('admin.news.edit', compact('news', 'admin_info'));
     }
 
     public function update(UpdateRequest $request, $news_id)

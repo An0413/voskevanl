@@ -1866,3 +1866,8 @@ form .card-footer{
     visibility: hidden;
     object-fit:cover;
 }
+
+.logout_btn {
+    border: none;
+    background: none;
+}

@@ -85,7 +85,7 @@ Route::post('/message_to_user', [GlxavorController::class, 'email_to_user'])->na
 Route::post('/get_workers', [LoginController::class, 'get_workers']);
 
 Route::group(['namespase' => 'Admin', 'prefix' => 'admin'], function (){
-    Route::get('/',  [IndexaController::class, 'index'])->name('admin');
+    Route::get('/{worker_id}',  [IndexaController::class, 'index'])->where('worker_id', '[0-9]+')->name('admin');
     Route::get('/news',  [AdminNewsController::class, 'index'])->name('admin_news');
 
     Route::get('/history/create', [AdminHistoryController::class, 'create'])->name('history_create');
@@ -119,6 +119,7 @@ Route::group(['namespase' => 'Admin', 'prefix' => 'admin'], function (){
     Route::post('/register_user',  [LoginController::class, 'registerUser'])->name('register_user');
 
     Route::get('/login',  [LoginController::class, 'index'])->name('login');
+    Route::post('/logout',  [LoginController::class, 'logout'])->name('admin_logout');
     Route::post('/login_check',  [LoginController::class, 'login'])->name('login_check');
 
     Route::get('/news/create', [AdminNewsController::class, 'create'])->name('news_create');

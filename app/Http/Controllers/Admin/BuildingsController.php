@@ -9,6 +9,8 @@ use App\Models\Itok;
 use Illuminate\Http\Request;
 use App\Models\Buildings;
 use Illuminate\Support\Facades\Auth;
+use App\Helper;
+
 
 class BuildingsController extends Controller
 {
@@ -17,6 +19,7 @@ class BuildingsController extends Controller
         if (!Auth::user()){
             return redirect('admin/login');
         }
-        return view('admin.main.buildings');
+        $admin_info = Helper::getAdmin();
+        return view('admin.main.buildings', compact('admin_info'));
     }
 }

@@ -15,6 +15,8 @@ use App\Models\WorkerPosition;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use App\Helper;
+
 
 class GalleryController extends Controller
 {
@@ -32,8 +34,9 @@ class GalleryController extends Controller
             return redirect('admin/login');
         }
         $images = Images::where('id', $gallery_id)->first();
+        $admin_info = Helper::getAdmin();
 
-        return view('admin.main.editgallery', compact('images'));
+        return view('admin.main.editgallery', compact('images', 'admin_info'));
     }
 
     public function update($gallery_id, UpdateGalleryRequest $request)

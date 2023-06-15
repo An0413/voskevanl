@@ -2,6 +2,10 @@
 
 use Illuminate\Support\Facades\Facade;
 use Illuminate\Support\ServiceProvider;
+//use App\Helpers::class,
+//‘UserHelper’ => App\Helpers\Helper::class,
+
+
 
 return [
 
@@ -183,6 +187,7 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         // 'Example' => App\Facades\Example::class,
+        'UserHelper' => App\Helpers\Helper::class, //<<this line
     ])->toArray(),
 
 ];

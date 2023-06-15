@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin\Main;
 
-use     App\Http\Controllers\Controller;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\Main\LoginRequset;
 use App\Http\Requests\Main\UpdateGalleryRequest;
 use App\Http\Requests\Main\UpdateInfoRequest;
@@ -20,6 +20,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
+use App\Helper;
 
 
 class LoginController extends Controller
@@ -40,6 +41,7 @@ class LoginController extends Controller
             Session::flash('message', 'Խնդրում ենք լրացնել ճիշտ տվյալներ');
             return redirect()->back();
         }
+
     }
 
     public function register()
@@ -49,7 +51,8 @@ class LoginController extends Controller
         }
         $roles = Role::all();
         $worker = Worker::all();
-        return view('admin.login.register', compact('roles', 'worker'));
+        $admin_info = Helper::getAdmin();
+        return view('admin.login.register', compact('roles', 'worker', 'admin_info'));
     }
 
     public function registerUser(UserRegister $request)
@@ -64,7 +67,9 @@ class LoginController extends Controller
         $user = User::create($data);
 
         auth()->login($user);
-        return redirect()->route('admin');
+        $admin_info = Helper::getAdmin();
+
+        return redirect()->route('admin', 'admin_info');
     }
 
     public function get_workers(Request $request)
@@ -74,7 +79,18 @@ class LoginController extends Controller
         }
         $role = $request->get('role');
         $workers = Worker::where('worker_id', $role)->get();
-        return view('admin.login.workers_list', compact('workers'));
+
+        $admin_info = Helper::getAdmin();
+
+        return view('admin.login.workers_list', compact('workers','admin_info'));
+    }
+
+    public function logout(){
+        if (!Auth::user()){
+            return redirect('admin/login');
+        }
+        Auth::logout();
+        return redirect('admin/login');
     }
 
 }
