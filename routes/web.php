@@ -101,6 +101,7 @@ Route::group(['namespase' => 'Admin', 'prefix' => 'admin'], function (){
     Route::get('/create/{id}/{tab}',  [MainController::class, 'create'])->where('id', '[0-9]+')->where('tab', '[a-zA-Z]+')->name('worker_create');
     Route::post('/worker/store/{id}', [MainController::class, 'store'])->where('id', '[0-9]+')->name('worker_store');
     Route::post('/info/store/{id}/{tab}', [MainController::class, 'storeInfo'])->where('id', '[0-9]+')->where('tab', '[a-zA-Z]+')->name('info_store');
+    Route::get('/gallery/create/{id}/{tab}', [MainController::class, 'createGallery'])->where('id', '[0-9]+')->where('tab', '[a-zA-Z]+')->name('gallery_create');
     Route::post('/gallery/store/{id}/{tab}', [MainController::class, 'storeGallery'])->where('id', '[0-9]+')->where('tab', '[a-zA-Z]+')->name('gallery_store');
     Route::get('/worker/edit/{worker_id}',  [MainController::class, 'edit_worker'])->where('worker_id', '[0-9]+')->name('worker_edit');
     Route::post('/worker/update/{worker_id}',  [MainController::class, 'update'])->where('worker_id', '[0-9]+')->name('worker_update');
@@ -112,7 +113,7 @@ Route::group(['namespase' => 'Admin', 'prefix' => 'admin'], function (){
 
     Route::get('/gallery/edit/{gallery_id}',  [GalleryController::class, 'edit'])->where('gallery_id', '[0-9]+')->name('gallery_edit');
     Route::post('/gallery/update/{gallery_id}',  [GalleryController::class, 'update'])->where('gallery_id', '[0-9]+')->name('gallery_update');
-    Route::get('/gallery/delete/{gallery_id}',  [GalleryController::class, 'delete'])->where('gallery_id', '[0-9]+')->name('gallery_delete');
+    Route::delete('/gallery/delete/{gallery_id}',  [GalleryController::class, 'delete'])->where('gallery_id', '[0-9]+')->name('gallery_delete');
 
     Route::get('/register',  [LoginController::class, 'register'])->name('register');
     Route::post('/register_user',  [LoginController::class, 'registerUser'])->name('register_user');

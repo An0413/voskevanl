@@ -19,6 +19,7 @@ class ChurchController extends Controller
         if (!Auth::user()){
             return redirect('admin/login');
         }
+
         $admin_info = Helper::getAdmin();
 
         return view('admin.main.church', compact('admin_info'));
