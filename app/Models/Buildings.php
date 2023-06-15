@@ -13,4 +13,8 @@ class Buildings extends Model
 
 
     protected $guarded = false;
+
+    public function buildings_status(){
+        return $this->hasOne(Status::class, 'status_id', 'status');
+    }
 }
