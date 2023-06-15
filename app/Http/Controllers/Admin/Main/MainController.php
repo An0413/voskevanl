@@ -118,6 +118,15 @@ class MainController extends Controller
         return redirect()->route('worker_info', $worker_id);
     }
 
+    public function createGallery($area, $tab){
+        if (!Auth::user()){
+            return redirect('admin/login');
+        }
+
+        return view('admin.main.createGallery', compact(['tab', 'area']));
+
+    }
+
     public function storeGallery(StoreGalleryRequest $request, $worker_id, $tab)
     {
         if (!Auth::user()){
@@ -133,7 +142,7 @@ class MainController extends Controller
         $data['src'] = $imageName;
         unset($data['image']);
         DB::table('gallery')->insert($data);
-        return redirect()->route('worker_info', $worker_id);
+        return redirect()->route('admin_history');
     }
 
 }

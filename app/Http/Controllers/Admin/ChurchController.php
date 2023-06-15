@@ -17,6 +17,7 @@ class ChurchController extends Controller
         if (!Auth::user()){
             return redirect('admin/login');
         }
+
         return view('admin.main.church');
     }
 }

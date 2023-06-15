@@ -3,11 +3,14 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\StoreGalleryRequest;
 use App\Http\Requests\Admin\StorehRequest;
 use App\Http\Requests\Admin\UpdatehRequest;
 use App\Models\History;
-use App\Models\Images;
+use App\Models\Gallery;
 use App\Models\Itok;
+use App\Models\Main_info;
+use App\Models\Worker;
 use Illuminate\Http\Request;
 use App\Models\Buildings;
 use Illuminate\Support\Facades\Auth;
@@ -20,9 +23,10 @@ class AdminHistoryController extends Controller
         if (!Auth::user()){
             return redirect('admin/login');
         }
+        $worker_id = 6;
         $history = History::all();
-        $images = Images::where('gallery_id', '=', 6)->get();
-        return view('admin.main.history', compact('history', 'images'));
+        $images = Gallery::where('gallery_id', $worker_id)->get();
+        return view('admin.main.history', compact('history', 'images', 'worker_id'));
     }
 
     public function create()
@@ -85,7 +89,7 @@ class AdminHistoryController extends Controller
 
         return redirect()->route('admin_history', $history->history_id);
     }
-    public function store(StorehRequest $request)
+    public function store(StorehRequest $request, $worker_id)
     {
         if (!Auth::user()){
             return redirect('admin/login');
@@ -94,6 +98,8 @@ class AdminHistoryController extends Controller
         $data['seq']=1;
         $data['history_status'] = 2;
         $data['url'] = '';
+        $data['menu_id'] = $worker_id;
+        $data['user_id'] = Auth::user()->id;
         $imagePath = $request->file('image')->store('public/assets/img/history');
         $path_arr = explode('/', $imagePath);
         $imageName = end($path_arr);
@@ -101,6 +107,25 @@ class AdminHistoryController extends Controller
         $data['image'] = $imageName;
         History::firstOrCreate($data);
         return redirect()->route('admin_history');
+    }
+
+    public function storeGallery(StoreGalleryRequest $request, $worker_id, $tab)
+    {
+        if (!Auth::user()){
+            return redirect('admin/login');
+        }
+        $data = $request->validated();
+        $data['gallery_id'] = $worker_id;
+        $data['user_id'] = Auth::user()->id;
+//        $data['status'] = 2;
+        $imagePath = $request->file('image')->store('public/assets/img/gallery');
+        $path_arr = explode('/', $imagePath);
+        $imageName = end($path_arr);
+        $request->image->move(public_path('assets/img/gallery'), $imageName);
+        $data['src'] = $imageName;
+        unset($data['image']);
+        DB::table('gallery')->insert($data);
+        return redirect()->route('worker_info', $worker_id);
     }
 
 }

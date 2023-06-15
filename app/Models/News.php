@@ -20,6 +20,11 @@ class News extends Model
         return $this->hasOne(UserInfo::class, 'user_id', 'user_id');
     }
 
+    public function worker_info()
+    {
+        return $this->hasOne(Worker::class, 'id', 'user_id');
+    }
+
     public function news_status(){
         return $this->hasOne(Status::class, 'status_id', 'status');
     }

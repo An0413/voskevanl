@@ -44,6 +44,9 @@ class LoginController extends Controller
 
     public function register()
     {
+        if (!Auth::user()){
+            return redirect('admin/login');
+        }
         $roles = Role::all();
         $worker = Worker::all();
         return view('admin.login.register', compact('roles', 'worker'));
@@ -51,6 +54,9 @@ class LoginController extends Controller
 
     public function registerUser(UserRegister $request)
     {
+        if (!Auth::user()){
+            return redirect('admin/login');
+        }
         $data = $request->validated();
         $data['worker_id'] = $data['worker'];
         unset($data['worker']);
@@ -63,6 +69,9 @@ class LoginController extends Controller
 
     public function get_workers(Request $request)
     {
+        if (!Auth::user()){
+            return redirect('admin/login');
+        }
         $role = $request->get('role');
         $workers = Worker::where('worker_id', $role)->get();
         return view('admin.login.workers_list', compact('workers'));
