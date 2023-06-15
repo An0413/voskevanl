@@ -11,8 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('family__trees', function (Blueprint $table) {
+        Schema::create('churches', function (Blueprint $table) {
             $table->id();
+            $table->integer('seq');
+            $table->string('title');
+            $table->text('description');
+            $table->string('img');
+            $table->integer('status');
+
             $table->timestamps();
         });
     }
@@ -22,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('family__trees');
+        Schema::dropIfExists('churches');
     }
 };

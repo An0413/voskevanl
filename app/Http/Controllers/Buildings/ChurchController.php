@@ -3,13 +3,18 @@
 namespace App\Http\Controllers\Buildings;
 
 use App\Http\Controllers\Controller;
+use App\Models\Church;
+use App\Models\Images;
 use Illuminate\Http\Request;
 use App\Models\Kindergarten;
 
 class ChurchController extends Controller
 {
-    public function __invoke()
+    public function index()
     {
-        return view('buildings.church');
+
+        $church = Church::all();
+        $images = Images::where('gallery_id', '=', 11)->get();
+        return view('buildings.church', compact('church', 'images'));
     }
 }
