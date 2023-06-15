@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminBuildingsController;
 use App\Http\Controllers\Admin\Main\IndexaController;
 use App\Http\Controllers\Admin\Main\MainController;
 use App\Http\Controllers\Admin\Main\InfoController;
@@ -96,7 +97,13 @@ Route::group(['namespase' => 'Admin', 'prefix' => 'admin'], function (){
     Route::post('/history/update/{history_id}',  [AdminHistoryController::class, 'update'])->where('history_id', '[0-9]+')->name('history_update');
     Route::delete('/history/delete/{history_id}',  [AdminHistoryController::class, 'delete'])->where('history_id', '[0-9]+')->name('history_delete');
 
-    Route::get('/buildings',  [BuildingsController::class, 'index'])->name('admin_buildings');
+    Route::get('/buildings/create', [AdminBuildingsController::class, 'create'])->name('buildings_create');
+    Route::post('/buildings/store', [AdminBuildingsController::class, 'store'])->name('buildings_store');
+    Route::get('/buildings',  [AdminBuildingsController::class, 'index'])->name('admin_buildings');
+    Route::get('/buildings/edit/{buildings_id}',  [AdminBuildingsController::class, 'edit'])->where('buildings_id', '[0-9]+')->name('buildings_edit');
+    Route::post('/buildings/update/{buildings_id}',  [AdminBuildingsController::class, 'update'])->where('buildings_id', '[0-9]+')->name('buildings_update');
+    Route::delete('/buildings/delete/{buildings_id}',  [AdminBuildingsController::class, 'delete'])->where('buildings_id', '[0-9]+')->name('buildings_delete');
+
 
     Route::get('/church/create', [AdminChurchController::class, 'create'])->name('church_create');
     Route::post('/church/store', [AdminChurchController::class, 'store'])->name('church_store');

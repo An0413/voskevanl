@@ -16,7 +16,7 @@
             </div>
         </div>
         @php
-            $menu = \App\Models\Menu::where('id', '>', 1)->where('is_drop', 0)->get();
+            $menu = \App\Models\Menu::where('id', '>', 1)->get();
             $role = 2;  //stanal loginic heto
         @endphp
         <nav class="mt-2">
