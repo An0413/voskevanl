@@ -66,11 +66,23 @@
             @foreach($images as $value)
                 <div class="col-lg-4 col-md-6 portfolio-item filter-app">
                     <div class="portfolio-wrap">
+                        @if(is_file(asset('assets/img/history/'. $value['src'])))
                         <img src="{{asset('assets/img/history/'. $value['src'])}}" class="img-fluid" alt="">
                         <div class="portfolio-links">
                             <a href="{{asset('assets/img/history/'. $value['src'])}}"
                                data-gallery="portfolioGallery"
-                               class="portfolio-lightbox"><i class="bx bx-plus"></i></a></div>
+                               class="portfolio-lightbox"><i class="bx bx-plus"></i>
+                            </a>
+                        </div>
+                        @else
+                            <img src="{{asset('assets/img/gallery/'. $value['src'])}}" class="img-fluid" alt="">
+                            <div class="portfolio-links">
+                                <a href="{{asset('assets/img/gallery/'. $value['src'])}}"
+                                   data-gallery="portfolioGallery"
+                                   class="portfolio-lightbox"><i class="bx bx-plus"></i>
+                                </a>
+                            </div>
+                        @endif
                     </div>
                 </div>
             @endforeach

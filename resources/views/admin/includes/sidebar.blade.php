@@ -2,7 +2,7 @@
 
     <!-- Sidebar -->
     <div class="sidebar">
-        <a href="" class="brand-link">
+        <a href="{{route('glxavor.glxavor')}}" class="brand-link">
             <img src="{{asset('assets/img/about/logo.jpg')}}" class="brand-image img-circle elevation-3"
                  style="opacity: .8">
             <span class="brand-text font-weight-light">ՈՍԿԵՎԱՆ</span>
