@@ -15,7 +15,7 @@ class HistoryController extends Controller
     {
 
         $history = History::all();
-        $images = Images::where('gallery_id', '=', 6)->get();
+        $images = Images::where('gallery_id', '=', 6)->where('status', 1)->get();
         return view('history.history', compact('history', 'images'));
     }
 }
