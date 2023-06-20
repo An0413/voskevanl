@@ -25,9 +25,10 @@
                                 <th scope="col">Անուն</th>
                                 <th scope="col">Ազգանուն</th>
                                 <th scope="col">Պաշտոն</th>
+                                <th scope="col">Ադմին</th>
                                 <th scope="col">Տեսնել</th>
                                 <th scope="col">Հաստատել</th>
-                                <th scope="col">Ջնջել</th>
+                                <th scope="col">Մերժել</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -39,9 +40,10 @@
                                     <td>{{$value->name}}</td>
                                     <td>{{$value->lastname}}</td>
                                     <td>{{$value->positions->title}}</td>
-                                    <td><a href="{{route('worker_edit', $value->id)}}"><i class="nav-icon fas fa-edit text-primary"></i></a></td>
+                                    <td></td>
+                                    <td><a href="{{route('workered', $value->id)}}"><i class="nav-icon fas fa-edit text-primary"></i></a></td>
                                     <td  class="text-center"><a href=""><i class="nav-icon fas fa-check text-success"></i></a></td>
-                                    <td><a href="{{route('worker_delete', $value->id)}}"><i class="nav-icon fas fa-trash text-danger"></i></a></td>
+                                    <td><a href="{{route('worker_delete', $value->id)}}" class="text-danger text-bold">X</a></td>
                                 </tr>
                             @endforeach
                             </tbody>
@@ -60,9 +62,10 @@
                                 <th scope="col" class="w_20">Հ/հ</th>
                                 <th scope="col">Վերնագիր</th>
                                 <th scope="col">Տեղեկություն</th>
+                                <th scope="col">Ադմին</th>
                                 <th scope="col">Խմբագրել</th>
                                 <th scope="col">Հաստատել</th>
-                                <th scope="col">Ջնջել</th>
+                                <th scope="col">Մերժել</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -71,9 +74,10 @@
                                     <td>{{$key+1}}</td>
                                     <th scope="col">{{$value->name}}</th>
                                     <th scope="col">{{$value->content}}</th>
+                                    <td></td>
                                     <td><a href="{{route('info_edit', $value->id)}}"><i class="nav-icon fas fa-edit text-primary"></i></a></td>
-                                    <td  class="text-center"><a href=""><i class="nav-icon fas fa-check text-success"></i></a></td>
-                                    <td><a href="{{route('info_delete', $value->id)}}"><i class="nav-icon fas fa-trash text-danger"></i></a></td>
+                                    <td class="text-center"><a href=""><i class="nav-icon fas fa-check text-success"></i></a></td>
+                                    <td><a href="{{route('worker_delete', $value->id)}}" class="text-danger text-bold">X</a></td>
                                 </tr>
                             @endforeach
                             </tbody>
@@ -91,9 +95,11 @@
                             <tr>
                                 <th scope="col">Հ/հ</th>
                                 <th scope="col">Լուսանկար</th>
+                                <th scope="col">Նկարի դիրքը</th>
+                                <th scope="col">Ադմին</th>
                                 <th scope="col">Խմբագրել</th>
                                 <th scope="col">Հաստատել</th>
-                                <th scope="col">Ջնջել</th>
+                                <th scope="col">Մերժել</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -102,9 +108,10 @@
                                     <td>{{$key+1}}</td>
                                     <td scope="row"><img src="{{asset('assets/img/gallery/'. $value->src)}}"
                                                          style="width: 90px; height: 90px; object-fit: cover"></td>
+                                    <td></td>
                                     <td style="width: 15px"><a href="{{route('gallery_edit', $value->id)}}"><i class="nav-icon fas fa-edit text-primary"></i></a></td>
                                     <td class="text-center"><a href=""><i class="nav-icon fas fa-check text-success"></i></a></td>
-                                    <td style="width: 15px"><a href="{{route('gallery_delete', $value->id)}}"><i class="nav-icon fas fa-trash text-danger"></i></a></td>
+                                    <td><a href="{{route('worker_delete', $value->id)}}" class="text-danger text-bold">X</a></td>
                                 </tr>
                             @endforeach
                             </tbody>
