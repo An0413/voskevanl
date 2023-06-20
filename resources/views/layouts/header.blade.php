@@ -52,7 +52,7 @@
             <nav id="navbar" class="navbar">
                 <ul>
                     @php
-                        $menu = \App\Models\Menu::where('main_menu', 1)->get();
+                        $menu = \App\Models\Menu::where('main_menu', 1)->orderBy('seq', 'asc')->get();
                     @endphp
                     @foreach($menu as $value)
                         @if($_SERVER['REQUEST_URI'] == $value->url)

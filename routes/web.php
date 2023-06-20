@@ -19,6 +19,7 @@ use App\Http\Controllers\Glxavor\GlxavorController;
 use App\Http\Controllers\History\HistoryController;
 use App\Http\Controllers\Admin\AdminHistoryController;
 use App\Http\Controllers\News\NewsiController;
+use App\Http\Controllers\Sights\SightsController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Buildings\BindexController;
@@ -71,6 +72,9 @@ Route::group(['namespase' => 'Itok', 'prefix' => 'itok'], function (){
 
 Route::group(['namespase' => 'History', 'prefix' => 'history'], function (){
     Route::get('/',  HistoryController::class)->name('history.history');
+});
+Route::group(['namespase' => 'Sights', 'prefix' => 'sights'], function (){
+    Route::get('/',  SightsController::class)->name('sights.sights');
 });
 
 Route::group(['namespase' => 'Glxavor'], function (){
