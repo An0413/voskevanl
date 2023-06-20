@@ -35,7 +35,8 @@ class LoginController extends Controller
 //        $data = $request->validated();
         $data = $request->only('username', 'password');
         if (Auth::attempt($data)) {
-            return redirect()->route('admin');
+            $worker_id = Helper::getAdmin()['worker_id'];
+            return redirect()->route('admin', $worker_id);
         } else {
 
             Session::flash('message', 'Խնդրում ենք լրացնել ճիշտ տվյալներ');

@@ -17,7 +17,7 @@
         </div>
         @php
             $menu = \App\Models\Menu::where('id', '>', 1)->get();
-            $role = 2;  //stanal loginic heto
+            $role = 0;  //stanal loginic heto
         @endphp
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
