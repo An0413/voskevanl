@@ -1871,3 +1871,9 @@ form .card-footer{
     border: none;
     background: none;
 }
+.sights_fon {
+
+    background: url("../img/glxavor/voskevan2.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
