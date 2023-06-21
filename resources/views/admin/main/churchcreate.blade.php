@@ -13,7 +13,8 @@
                 </div>
                 <div class="mb-3 mt-3 w-50">
                     <label for="description">Նկարագրություն</label>
-                    <textarea class="form-control" rows="5" id="comment" name="description"></textarea>
+                    <br>
+                    <textarea id="summernote" name="description"></textarea>
                 </div>
                 <div>
                 <input type="file" id="image" name="img"><br><br>

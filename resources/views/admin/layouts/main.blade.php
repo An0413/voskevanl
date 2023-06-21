@@ -22,9 +22,14 @@
     <link rel="stylesheet" href="{{asset('plugins/overlayScrollbars/css/OverlayScrollbars.min.css')}}">
     <!-- Daterange picker -->
     <link rel="stylesheet" href="{{asset('plugins/daterangepicker/daterangepicker.css')}}">
+
+    <link href="{{asset('plugins/summernote/summernote-bs4.min.css')}}" rel="stylesheet">
+
     <link href="{{asset('assets/css/style.css')}}" rel="stylesheet">
+
     <script src="{{asset('/assets/vendor/bootstrap/js/bootstrap.min.js')}}"></script>
     <script src="{{asset('plugins/jquery/jquery.min.js')}}"></script>
+
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -81,10 +86,32 @@
 <!-- ChartJS -->
 <!-- daterangepicker -->
 <script src="{{asset('plugins/moment/moment.min.js')}}"></script>
+
 <script src="{{asset('plugins/daterangepicker/daterangepicker.js')}}"></script>
 <!-- overlayScrollbars -->
 <script src="{{asset('plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js')}}"></script>
 <!-- AdminLTE App -->
+{{--<script src="{{asset('plugins/summernote/summernote-bs5.min.js')}}"></script>--}}
 <script src="{{asset('dist/js/adminlte.js')}}"></script>
+{{--<script>--}}
+{{--    $(document).ready(function() {--}}
+{{--        $('textarea').summernote();--}}
+{{--    });--}}
+{{--</script>--}}
+
+<script src="{{asset('plugins/tinymce/tinymce.min.js')}}" referrerpolicy="origin"></script>
+<script>
+    tinymce.init({
+        selector: 'textarea',
+        plugins: [
+            'a11ychecker','advlist','advcode','advtable','autolink','checklist','export',
+            'lists','link','image','charmap','preview','anchor','searchreplace','visualblocks',
+            'powerpaste','fullscreen','formatpainter','insertdatetime','media','table','help','wordcount'
+        ],
+        toolbar: 'undo redo | a11ycheck casechange blocks | bold italic backcolor | alignleft aligncenter alignright alignjustify |' +
+            'bullist numlist checklist outdent indent | removeformat | code table help'
+    })
+</script>
+
 </body>
 </html>

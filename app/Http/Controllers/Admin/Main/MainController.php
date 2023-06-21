@@ -129,6 +129,8 @@ class MainController extends Controller
         $data = $request->validated();
         $data['menu_id'] = $worker_id;
         $data['user_id'] = Auth::user()->id;
+        $data['status'] = 1;
+        $data['edit_user_id'] = 0;
         DB::table('main_infos')->insert($data);
         return redirect()->route('worker_info', $worker_id);
     }
