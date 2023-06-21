@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminBuildingsController;
+use App\Http\Controllers\Admin\AdminSightsController;
 use App\Http\Controllers\Admin\Main\IndexaController;
 use App\Http\Controllers\Admin\Main\MainController;
 use App\Http\Controllers\Admin\Main\InfoController;
@@ -147,6 +148,14 @@ Route::group(['namespase' => 'Admin', 'prefix' => 'admin'], function (){
     Route::get('/news/edit/{news_id}',  [AdminNewsController::class, 'edit'])->where('news_id', '[0-9]+')->name('news_edit');
     Route::post('/news/update/{news_id}',  [AdminNewsController::class, 'update'])->where('news_id', '[0-9]+')->name('news_update');
     Route::delete('/news/delete/{news_id}',  [AdminNewsController::class, 'delete'])->where('news_id', '[0-9]+')->name('news_delete');
+
+    Route::get('/sights/create', [AdminSightsController::class, 'create'])->name('sights_create');
+    Route::post('/sights/store', [AdminSightsController::class, 'store'])->name('sights_store');
+    Route::get('/sights/show/',  [AdminSightsController::class, 'index'])->name('admin_sights');
+    Route::get('/sights/edit/{sights_id}',  [AdminSightsController::class, 'edit'])->where('sights_id', '[0-9]+')->name('sights_edit');
+    Route::post('/sights/update/{sights_id}',  [AdminSightsController::class, 'update'])->where('sights_id', '[0-9]+')->name('sights_update');
+    Route::delete('/sights/delete/{sights_id}',  [AdminSightsController::class, 'delete'])->where('sights_id', '[0-9]+')->name('sights_delete');
+
 });
 
 Auth::routes();
