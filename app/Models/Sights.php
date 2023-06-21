@@ -11,4 +11,8 @@ class Sights extends Model
 
     protected $table = 'sights';
     protected $guarded = [];
+
+    public function sights_status(){
+        return $this->hasOne(Status::class, 'status_id', 'status');
+    }
 }
