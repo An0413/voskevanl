@@ -93,7 +93,10 @@ Route::post('/get_workers', [LoginController::class, 'get_workers']);
 
 Route::group(['namespase' => 'Admin', 'prefix' => 'admin'], function (){
     Route::get('/{worker_id}',  [IndexaController::class, 'index'])->where('worker_id', '[0-9]+')->name('admin');
+    Route::post('/confirm_worker/{worker_id}',  [IndexaController::class, 'changestatus'])->where('worker_id', '[0-9]+')->name('confirm_worker');
     Route::get('/{worker_id}/worker',  [IndexaController::class, 'worker'])->where('worker_id', '[0-9]+')->name('workered');
+    Route::get('/{worker_id}/info',  [IndexaController::class, 'info'])->where('worker_id', '[0-9]+')->name('info_show');
+    Route::get('/{worker_id}/gallery',  [IndexaController::class, 'gallery'])->where('worker_id', '[0-9]+')->name('gallery_show');
     Route::get('/news',  [AdminNewsController::class, 'index'])->name('admin_news');
 
     Route::get('/history/create', [AdminHistoryController::class, 'create'])->name('history_create');
