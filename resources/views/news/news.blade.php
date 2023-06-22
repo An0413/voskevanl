@@ -20,7 +20,7 @@
                                                             class="text-muted news_read_more">Կարդալ
                                     ավելին</a><span class="fas fa-arrow-right"></span></div>
                             <div class="d-flex align-items-center justify-content-center foot">
-                                <p class="admin">{{$value->user_info->name.' '.$value->user_info->lastname}}</p>
+                                <p class="admin">{{$users[$value->user_id]['workers']['name'].' '.$users[$value->user_id]['workers']['lastname']}}</p>
                             </div>
                         </div>
                     </div>

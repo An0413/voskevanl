@@ -16,7 +16,7 @@
                                 <h1 class="text-center" style="color:white;">{{$value->title}}</h1><br>
                                 <p>{{$value->description}}</p>
                                 <p class="mt-5">Հեղինակ՝
-                                    <span>{{$value->user_info->name.' '.$value->user_info->lastname}}</span></p>
+                                    <span>{{$users[$value->user_id]['workers']['name'].' '.$users[$value->user_id]['workers']['lastname']}}</span></p>
                             </div>
                             <div class="col-4 mt-5">
                                 <img src="{{asset('assets/img/news/' .$value->img)}}" class="w-100"

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\News;
 
+use App\Helper;
 use App\Http\Controllers\Controller;
 use App\Models\Itok;
 use App\Models\News;
@@ -14,6 +15,7 @@ class NewsiController extends Controller
     {
         $news = News::where('id', $news_id)->where('status', 1)->get();
         $recent_news = News::where('id', '!=', $news_id)->where('status', 1)->orderBy('id', 'desc')->limit(5)->get();
-        return view('news.newsi', compact('news', 'recent_news'));
+        $users = Helper::getUsers();
+        return view('news.newsi', compact('news', 'recent_news', 'users'));
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Glxavor;
 
+use App\Helper;
 use App\Http\Controllers\Controller;
 use App\Models\Images;
 use App\Models\Itok;
@@ -19,12 +20,8 @@ class GlxavorController extends Controller
         $news = News::where('status', 1)->orderBy('id', 'desc')->limit(6)->get();
         $worker = Worker::where('worker_id', '=', 5)->get();
         $images = Images::where('gallery_id', '=', 1)->get();
-
-        return view('glxavor.glxavor', compact('images', 'worker', 'news'));
-
-        $imagesg = Images::where('main_image', '=', 1)->where('gallery_id', '=', 1)->get();
-        return view('glxavor.glxavor', compact('images', 'worker', 'imagesg'));
-
+        $users = Helper::getUsers();
+        return view('glxavor.glxavor', compact('images', 'worker', 'news', 'users'));
     }
 
     public function email_to_user(MessageRequest $request){

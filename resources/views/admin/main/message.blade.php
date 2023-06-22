@@ -31,6 +31,7 @@
                                             <td>{{$key+1}}</td>
                                             <td>{{$value->name}}</td>
                                             <td>{{$value->email}}</td>
+
                                             <td>{{$roles[$value->message_to]}}</td>
                                             <td>{{$value->message}}</td>
                                         </tr>
