@@ -92,10 +92,10 @@
                                 {{$value->short_description}}
                                 <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                             </p>
-                            <img src="{{asset('assets/img/users/' .$value->user_info->img)}}" class="testimonial-img"
+                            <img src="{{asset('assets/img/gallery/' . $users[$value->user_id]['workers']['img'])}}" class="testimonial-img"
                                  style="width: 100px; height: 100px; object-fit: cover">
                             <h3><a href="/news/{{$value->id}}">{{$value->title}}</a></h3>
-                            <h4>{{$value->user_info->name.' '.$value->user_info->lastname}}</h4>
+                            <h4>{{$users[$value->user_id]['workers']['name'].' '.$users[$value->user_id]['workers']['lastname']}}</h4>
                         </div>
                     </div><!-- End testimonial item -->
                 @endforeach

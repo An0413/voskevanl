@@ -45,5 +45,21 @@ class Helper {
         }
         return [];
     }
+
+    public static function getUsers(){
+        if (Auth::user()) {
+            $admin_info = User::with('workers')->get()->toArray();
+            if (!$admin_info) {
+                header("Location: login");
+            }
+            $res = [];
+            foreach ($admin_info as $value){
+                $res[$value['id']] = $value;
+            }
+
+            return $res;
+        }
+        return [];
+    }
 }
 ?>
