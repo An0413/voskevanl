@@ -169,7 +169,7 @@ h6 {
 
 .navbar a i,
 .navbar a:focus i {
-    font-size: 12px;
+    font-size: 20px;
     line-height: 0;
     margin-left: 5px;
 }
@@ -1876,4 +1876,8 @@ form .card-footer{
     background: url("../img/glxavor/voskevan2.jpg");
     background-repeat: no-repeat;
     background-size: cover;
+}
+.message {
+    float: left;
+    font-size: 18px;
 }

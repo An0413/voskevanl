@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminBuildingsController;
+use App\Http\Controllers\Admin\AdminMessageController;
 use App\Http\Controllers\Admin\AdminSightsController;
 use App\Http\Controllers\Admin\Main\IndexaController;
 use App\Http\Controllers\Admin\Main\MainController;
@@ -142,6 +143,9 @@ Route::group(['namespase' => 'Admin', 'prefix' => 'admin'], function (){
     Route::get('/login',  [LoginController::class, 'index'])->name('login');
     Route::post('/logout',  [LoginController::class, 'logout'])->name('admin_logout');
     Route::post('/login_check',  [LoginController::class, 'login'])->name('login_check');
+
+    Route::get('/message',  [AdminMessageController::class, 'index'])->name('admin_message');
+
 
     Route::get('/news/create', [AdminNewsController::class, 'create'])->name('news_create');
     Route::post('/news/store', [AdminNewsController::class, 'store'])->name('news_store');

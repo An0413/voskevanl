@@ -12,6 +12,8 @@
 
     <link href="{{asset('/assets/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
 
+    <link href="{{asset('/assets/vendor/boxicons/css/boxicons.min.css')}}" rel="stylesheet">
+
     <!-- Font Awesome -->
     <link rel="stylesheet" href="{{asset('plugins/fontawesome-free/css/all.min.css')}}">
     <!-- Ionicons -->
@@ -39,24 +41,29 @@
     <!-- Navbar -->
     <nav class="main-header navbar navbar-expand navbar-white navbar-light">
         <!-- Left navbar links -->
-        <ul class="navbar-nav">
+        <ul class="navbar-nav me-auto">
             <li class="nav-item">
                 <a class="nav-link" data-widget="pushmenu" href="#" role="button">
                     <i class="fas fa-bars"></i>
                 </a>
             </li>
-            <li class="nav-item" style="margin-left: 1150px">
-                <form action="{{route('admin_logout')}}" method="post">
-                    @csrf
-                    <a class="nav-link"  href="" role="button"><button class="logout_btn" type="submit">Ելք</button></a>
-                </form>
-            </li>
         </ul>
+        <form class="d-flex">
+            <a class="nav-link" href="{{route('admin_message')}}" >
+                <button class="logout_btn" type="button"><i class="bx bx-envelope"></i></button>
+            </a>
+            <form action="{{route('admin_logout')}}" method="post">
+                @csrf
+                <a class="nav-link" href="" role="button">
+                    <button class="logout_btn" type="submit">Ելք</button>
+                </a>
+            </form>
+        </form>
     </nav>
     <!-- /.navbar -->
 
     <!-- Main Sidebar Container -->
-   @include('admin.includes.sidebar')
+    @include('admin.includes.sidebar')
 
     @yield('content')
     <footer class="main-footer">
@@ -104,9 +111,9 @@
     tinymce.init({
         selector: 'textarea',
         plugins: [
-            'a11ychecker','advlist','advcode','advtable','autolink','checklist','export',
-            'lists','link','image','charmap','preview','anchor','searchreplace','visualblocks',
-            'powerpaste','fullscreen','formatpainter','insertdatetime','media','table','help','wordcount'
+            'a11ychecker', 'advlist', 'advcode', 'advtable', 'autolink', 'checklist', 'export',
+            'lists', 'link', 'image', 'charmap', 'preview', 'anchor', 'searchreplace', 'visualblocks',
+            'powerpaste', 'fullscreen', 'formatpainter', 'insertdatetime', 'media', 'table', 'help', 'wordcount'
         ],
         toolbar: 'undo redo | a11ycheck casechange blocks | bold italic backcolor | alignleft aligncenter alignright alignjustify |' +
             'bullist numlist checklist outdent indent | removeformat | code table help'
