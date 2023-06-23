@@ -21,11 +21,11 @@ class AdminSightsController extends Controller
         if (!Auth::user()){
             return redirect('admin/login');
         }
-        $worker_id = 6;
+        $worker_id = 31;
         $sights = Sights::all();
 
-        $images = Gallery::where('gallery_id', $worker_id)->get();
-
+//        $images = Sights::where('gallery_id', $worker_id)->get();
+$images = [];
         $admin_info = Helper::getAdmin();
 
         return view('admin.main.sights', compact('sights', 'worker_id', 'images', 'admin_info'));
@@ -106,11 +106,14 @@ class AdminSightsController extends Controller
         $data['seq']=1;
         $data['status'] = 2;
         $data['user_id'] = Auth::user()->id;
-        $imagePath = $request->file('image')->store('public/assets/img/sights');
-        $path_arr = explode('/', $imagePath);
-        $imageName = end($path_arr);
-        $request->image->move(public_path('assets/img/sights'), $imageName);
-        $data['image'] = $imageName;
+        $data['image'] = '';
+        if ($request->file('image')) {
+            $imagePath = $request->file('image')->store('public/assets/img/sights');
+            $path_arr = explode('/', $imagePath);
+            $imageName = end($path_arr);
+            $request->image->move(public_path('assets/img/sights'), $imageName);
+            $data['image'] = $imageName;
+        }
         Sights::firstOrCreate($data);
         return redirect()->route('admin_sights');
     }
