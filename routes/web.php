@@ -22,6 +22,7 @@ use App\Http\Controllers\History\HistoryController;
 use App\Http\Controllers\Admin\AdminHistoryController;
 use App\Http\Controllers\News\NewsiController;
 use App\Http\Controllers\Sights\SightsController;
+use App\Http\Controllers\Sights\SightsiController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Buildings\BindexController;
@@ -77,6 +78,7 @@ Route::group(['namespase' => 'History', 'prefix' => 'history'], function (){
 });
 Route::group(['namespase' => 'Sights', 'prefix' => 'sights'], function (){
     Route::get('/',  SightsController::class)->name('sights.sights');
+    Route::get('/{sights_id}',  SightsiController::class)->where('sights_id', '[0-9]+');
 });
 
 Route::group(['namespase' => 'Glxavor'], function (){
@@ -159,7 +161,7 @@ Route::group(['namespase' => 'Admin', 'prefix' => 'admin'], function (){
 
     Route::get('/sights/create', [AdminSightsController::class, 'create'])->name('sights_create');
     Route::post('/sights/store', [AdminSightsController::class, 'store'])->name('sights_store');
-    Route::get('/sights/show/',  [AdminSightsController::class, 'index'])->name('admin_sights');
+        Route::get('/sights/show/',  [AdminSightsController::class, 'index'])->name('admin_sights');
     Route::get('/sights/edit/{sights_id}',  [AdminSightsController::class, 'edit'])->where('sights_id', '[0-9]+')->name('sights_edit');
     Route::post('/sights/update/{sights_id}',  [AdminSightsController::class, 'update'])->where('sights_id', '[0-9]+')->name('sights_update');
     Route::delete('/sights/delete/{sights_id}',  [AdminSightsController::class, 'delete'])->where('sights_id', '[0-9]+')->name('sights_delete');

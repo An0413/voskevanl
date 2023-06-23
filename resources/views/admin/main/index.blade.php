@@ -43,10 +43,7 @@
                                     <td>{{$value->lastname}}</td>
                                     <td>{{$value->positions->title}}</td>
                                     <td>
-                                        @php
-                                            $user_info = App\Helper::getUserInfo($value['user_id']);
-                                        @endphp
-                                        {{$user_info['name'] . ' ' . $user_info['lastname']}}
+                                        {{$value->name . ' ' . $value->lastname}}
                                     </td>
                                     <td><a href="{{route('workered', $value->id)}}"><i
                                                 class="nav-icon fas fa-edit text-primary"></i></a></td>
