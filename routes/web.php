@@ -100,6 +100,8 @@ Route::group(['namespase' => 'Admin', 'prefix' => 'admin'], function (){
     Route::get('/{worker_id}/worker',  [IndexaController::class, 'worker'])->where('worker_id', '[0-9]+')->name('workered');
     Route::get('/{worker_id}/info',  [IndexaController::class, 'info'])->where('worker_id', '[0-9]+')->name('info_show');
     Route::get('/{worker_id}/gallery',  [IndexaController::class, 'gallery'])->where('worker_id', '[0-9]+')->name('gallery_show');
+    Route::get('/{worker_id}/news',  [IndexaController::class, 'news'])->where('worker_id', '[0-9]+')->name('news_show');
+    Route::get('/submit/{id}/{table_id}',  [IndexaController::class, 'submit'])->where('id', '[0-9]+')->where('table_id', '[0-9]+')->name('submit');
     Route::get('/news',  [AdminNewsController::class, 'index'])->name('admin_news');
 
     Route::get('/history/create', [AdminHistoryController::class, 'create'])->name('history_create');
