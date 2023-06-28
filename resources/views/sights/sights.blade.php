@@ -19,7 +19,7 @@
                                    data-gallery="portfolioGallery"
                                    class="portfolio-lightbox"><i class="bx bx-plus"></i>
                                 </a>
-                                <a type="button" data-bs-toggle="modal" data-bs-target="#myModal_{{ $value['id'] }}">
+                                <a type="button" href="{{ route('sights_detail', $value['id']) }}">
                                     <i class="bx bx-link"></i>
                                 </a>
                             </div>
