@@ -2,7 +2,7 @@
 
 @yield('header')
 
-<div id="demo" class="carousel slide" data-bs-ride="carousel">
+<div id="demo" class="carousel slide mt48" data-bs-ride="carousel">
 
     <!-- Indicators/dots -->
     <div class="carousel-indicators">

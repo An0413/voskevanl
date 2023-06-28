@@ -78,7 +78,7 @@ Route::group(['namespase' => 'History', 'prefix' => 'history'], function (){
 });
 Route::group(['namespase' => 'Sights', 'prefix' => 'sights'], function (){
     Route::get('/',  SightsController::class)->name('sights.sights');
-    Route::get('/{sights_id}',  SightsiController::class)->where('sights_id', '[0-9]+');
+    Route::get('/{sights_id}',  SightsiController::class)->where('sights_id', '[0-9]+')->name('sights_detail');
 });
 
 Route::group(['namespase' => 'Glxavor'], function (){
