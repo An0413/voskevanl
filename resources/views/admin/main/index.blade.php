@@ -11,6 +11,7 @@
                     <li class="active"><a data-toggle="tab" href="#user">Աշխատակիցներ</a></li>
                     <li style="margin-left: 70px"><a data-toggle="tab" href="#info">Ինֆո</a></li>
                     <li style="margin-left: 70px"><a data-toggle="tab" href="#image">Լուսանկարներ</a></li>
+                    <li style="margin-left: 70px"><a data-toggle="tab" href="#news">Նորություններ</a></li>
                 </ul>
                 <div class="tab-content">
                     <div id="user" class="tab-pane fade in active show">
@@ -27,6 +28,7 @@
                                 <th scope="col">Անուն</th>
                                 <th scope="col">Ազգանուն</th>
                                 <th scope="col">Պաշտոն</th>
+                                <td scope="col">Գործողություն</td>
                                 <th scope="col">Ադմին</th>
                                 <th scope="col">Տեսնել</th>
                                 <th scope="col">Հաստատել</th>
@@ -41,16 +43,19 @@
                                                          style="width: 90px; height: 90px; object-fit: cover"></td>
                                     <td>{{$value->name}}</td>
                                     <td>{{$value->lastname}}</td>
-                                    <td>{{$value->positions->title}}</td>
+                                    <td>{{$positions[$value->position]}}</td>
+                                    <td></td>
                                     <td>
                                         {{$value->name . ' ' . $value->lastname}}
                                     </td>
                                     <td><a href="{{route('workered', $value->id)}}"><i
                                                 class="nav-icon fas fa-edit text-primary"></i></a></td>
-{{--                                    <form action="{{route('worker_store')}}" method="POST" enctype="multipart/form-data">--}}
-                                        <td class="text-center"><a href="" id="confirm"><i
-                                                    class="nav-icon fas fa-check text-success"></i></a></td>
-{{--                                    </form>--}}
+
+                                    <td class="text-center">
+                                            <a href="{{route('submit', [$value->id, 0])}}" id="confirm">
+                                                <i class="nav-icon fas fa-check text-success"></i>
+                                            </a>
+                                    </td>
                                     <td><a href="" id="refuse" class="text-danger text-bold">X</a></td>
                                 </tr>
                             @endforeach
@@ -89,10 +94,12 @@
                                     </td>
                                     <td><a href="{{route('info_show', $value->id)}}"><i
                                                 class="nav-icon fas fa-edit text-primary"></i></a></td>
-                                    <td class="text-center"><a href=""><i
-                                                class="nav-icon fas fa-check text-success"></i></a></td>
-                                    <td><a href="{{route('worker_delete', $value->id)}}"
-                                           class="text-danger text-bold">X</a></td>
+                                    <td class="text-center">
+                                        <a href="{{route('submit', [$value->id, 1])}}" id="confirm">
+                                            <i class="nav-icon fas fa-check text-success"></i>
+                                        </a>
+                                    </td>
+                                    <td><a href="" id="refuse" class="text-danger text-bold">X</a></td>
                                 </tr>
                             @endforeach
                             </tbody>
@@ -133,10 +140,51 @@
                                     </td>
                                     <td style="width: 15px"><a href="{{route('gallery_show', $value->id)}}"><i
                                                 class="nav-icon fas fa-edit text-primary"></i></a></td>
-                                    <td class="text-center"><a href=""><i
-                                                class="nav-icon fas fa-check text-success"></i></a></td>
-                                    <td><a href="{{route('worker_delete', $value->id)}}"
-                                           class="text-danger text-bold">X</a></td>
+                                    <td class="text-center">
+                                        <a href="{{route('submit', [$value->id, 2])}}" id="confirm">
+                                            <i class="nav-icon fas fa-check text-success"></i>
+                                        </a>
+                                    </td>
+                                    <td><a href="" id="refuse" class="text-danger text-bold">X</a></td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                    <div id="news" class="tab-pane fade">
+                        <div class="row mt-3">
+                            <div class="col-11"><h3>Նորություններ</h3></div>
+                            <div class="col-1 mt-1">
+                            </div>
+                        </div>
+                        <table class="table mt-3" id="workers_table">
+                            <thead class="thead-dark">
+                            <tr>
+                                <th scope="col" class="w_20">Հ/հ</th>
+                                <th scope="col">Լուսանկար</th>
+                                <th scope="col">Վերնագիր</th>
+                                <th scope="col">Կարճ նկարագրություն</th>
+                                <th scope="col">Տեսնել</th>
+                                <th scope="col">Հաստատել</th>
+                                <th scope="col">Մերժել</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @foreach($news as $key=>$value)
+                                <tr>
+                                    <td>{{$key+1}}</td>
+                                    <td scope="row"><img src="{{asset('assets/img/news/'. $value->img)}}"
+                                                         style="width: 90px; height: 90px; object-fit: cover"></td>
+                                    <td>{{$value->title}}</td>
+                                    <td>{{$value->short_description}}</td>
+                                    <td style="width: 15px"><a href="{{route('news_show', $value->id)}}"><i
+                                                class="nav-icon fas fa-edit text-primary"></i></a></td>
+                                    <td class="text-center">
+                                        <a href="{{route('submit', [$value->id, 3])}}" id="confirm">
+                                            <i class="nav-icon fas fa-check text-success"></i>
+                                        </a>
+                                    </td>
+                                    <td><a href="" id="refuse" class="text-danger text-bold">X</a></td>
                                 </tr>
                             @endforeach
                             </tbody>

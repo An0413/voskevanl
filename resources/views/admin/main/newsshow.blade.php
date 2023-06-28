@@ -13,16 +13,24 @@
                                 <div class="col-4">
                                     <div class="card-body w-100">
                                         <div class="form-group">
-                                            <label for="name">Լուսանկար - <img src="{{asset('assets/img/gallery/'. $images->src)}}" width="150px"></label>
+                                            <label for="name">Լուսանկար - <img src="{{asset('assets/img/news/'. $news->img)}}"
+                                                                               style="width: 90px; height: 90px; object-fit: cover"></label>
                                         </div>
                                         <div class="form-group">
-                                            <label for="seq">Նկարի դիրքը - {{$imgPosition[$images->main_image]}} </label>
+                                            <label for="seq">Վերնագիր - {{$news->title}} </label>
                                         </div>
                                         <div class="form-group">
                                             @php
-                                                $user_info = App\Helper::getUserInfo($images->user_id);
+                                                $user_info = App\Helper::getUserInfo($news->user_id);
                                             @endphp
                                             <label for="insta">Ադմին -  {{$user_info['name'] . ' ' . $user_info['lastname']}}</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="card-body w-100">
+                                        <div class="form-group">
+                                            <label for="name">Նկարագրություն - {{$news->description}}</label>
                                         </div>
                                     </div>
                                 </div>
