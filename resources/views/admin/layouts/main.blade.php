@@ -52,12 +52,9 @@
             <a class="nav-link" href="{{route('admin_message')}}" >
                 <button class="logout_btn" type="button"><i class="bx bx-envelope"></i></button>
             </a>
-            <form action="{{route('admin_logout')}}" method="post">
-                @csrf
-                <a class="nav-link" href="" role="button">
-                    <button class="logout_btn" type="submit">Ելք</button>
+                <a class="nav-link" href="{{route('admin_logout')}}" role="button">
+                    <button class="logout_btn" type="button">Ելք</button>
                 </a>
-            </form>
         </form>
     </nav>
     <!-- /.navbar -->
