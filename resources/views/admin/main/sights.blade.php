@@ -42,7 +42,7 @@
                                                                  style="width: 90px; height: 90px; object-fit: cover">
                                             </td>
                                             <td>{{$value->name}}</td>
-                                            <td>{{substr($value['description'], 0, 1400) . "..."}}</td>
+                                            <td>{{substr($value['description'], 0, 1000) . "..."}}</td>
                                             <td>{{$value->sights_status->status}}</td>
                                             <td>
                                                 @if($value->status == 1)

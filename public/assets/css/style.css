@@ -1944,4 +1944,8 @@ form .card-footer{
     width: 100%;
     object-fit: cover;
 }
-
+.church {
+    margin: 8%;
+    background-color: rgb(152 202 224 / 90%);
+    padding: 5%
+}

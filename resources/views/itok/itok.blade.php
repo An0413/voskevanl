@@ -2,7 +2,7 @@
 
 @yield('header')
 
-<div>
+<div class="mt48">
     @foreach($images0 as $value)
         <img src="{{asset('assets/img/about/'. $value['src'])}}" class="w-100 h-50">
     @endforeach
@@ -88,7 +88,7 @@
         @foreach($info as $value)
             @if($value->seq > 1)
                 <div class="col-4" style="margin-top: 4%">
-                    <p>{{$value->content}}</p>
+                    <p class="justifity">{{$value->content}}</p>
                 </div>
             @endif
         @endforeach
