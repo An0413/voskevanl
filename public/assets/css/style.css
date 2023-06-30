@@ -1945,3 +1945,6 @@ form .card-footer{
     object-fit: cover;
 }
 
+.tox.tox-silver-sink.tox-tinymce-aux{
+    display: none!important;
+}
