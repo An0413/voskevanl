@@ -7,8 +7,8 @@
     <h1 class="text-center">{{$value->title}}</h1>
     <img src="{{asset('assets/img/church/'.$value['img'] )}}" style="width: 100%; margin-top: 2%">
 
-    <div style="margin: 8%; background-color: rgb(152 202 224 / 90%); padding: 5%">
-        {{$value->description}}
+    <div class="church">
+       <p  data-aos="fade-up"> {{$value->description}} </p>
     </div>
     @endforeach
 </div>

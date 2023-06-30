@@ -63,7 +63,7 @@
                 <div class="col-lg-4 col-md-6 mt-5"  data-aos="fade-up">
                     <div class="member aos-init aos-animate" {{--data-aos-delay="300"--}}>
                         <div class="pic">
-                            <img src="{{asset('assets/img/kindergarten/'.$value->img)}}"
+                            <img src="{{asset('assets/img/worker/'.$value->img)}}"
                                  class="img-fluid" alt="">
                         </div>
                         <div class="member-info">
