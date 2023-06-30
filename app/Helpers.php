@@ -56,6 +56,7 @@ class Helper
         $res = [];
         foreach ($admin_info as $value) {
             $res[$value['id']] = $value;
+            $res[$value['id']]['admin_id'] = $value['workers']['worker_id'];
         }
 
         return $res;

@@ -1944,6 +1944,11 @@ form .card-footer{
     width: 100%;
     object-fit: cover;
 }
+
+
+.tox.tox-silver-sink.tox-tinymce-aux{
+    display: none!important;
+}
 .church {
     margin: 8%;
     background-color: rgb(152 202 224 / 90%);

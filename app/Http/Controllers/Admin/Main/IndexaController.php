@@ -9,6 +9,8 @@ use App\Models\News;
 use App\Models\User;
 use App\Models\Worker;
 use App\Models\WorkerPosition;
+use Dotenv\Validator;
+use http\Message;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Helper;
@@ -104,5 +106,36 @@ class IndexaController extends Controller
         $news = News::where('id', $id)->first();
 
         return view('admin.main.newsshow', compact('id', 'admin_info', 'news'));
+    }
+
+    public function refuse(Request $request, $id, $table_id){
+        $data = $request->validate([
+            'message' => 'required',
+        ]);
+        $message = $data['message'];
+
+        $tables = ['workers', 'main_infos', 'gallery', 'news'];
+
+        $info = DB::table($tables[$table_id])->where('id', $id)->first();
+
+        if ($info->status === 3) {
+            $update_status = 5;
+        }elseif ($info->status === 2){
+            $update_status = 4;
+        }
+
+        DB::table($tables[$table_id])->where('id', $id)->update(['status' => $update_status]);
+
+
+        $insert_array = array(
+            'name' => 'Admin',
+            'email' => 'Admin',
+            'message_to' => $info->user_id,
+            'message' => $message,
+        );
+        DB::table('messages')
+            ->insert($insert_array);
+
+        return redirect()->back();
     }
 }
