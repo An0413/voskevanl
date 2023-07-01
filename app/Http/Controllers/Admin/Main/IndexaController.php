@@ -28,7 +28,7 @@ class IndexaController extends Controller
             return redirect('admin/login');
         }
         $positions = [];
-        if ($admin_info['role'] === 0) {
+        if ($admin_info['role'] === 1) {
             $worker = DB::table('workers')->whereIn('status', [2, 3])->get();
 
             $images = DB::table('gallery')->whereIn('status', [2, 3])->get();;
@@ -126,11 +126,11 @@ class IndexaController extends Controller
 
         DB::table($tables[$table_id])->where('id', $id)->update(['status' => $update_status]);
 
-
+        $user = Helper::getUserInfo($info->user_id);
         $insert_array = array(
             'name' => 'Admin',
             'email' => 'Admin',
-            'message_to' => $info->user_id,
+            'message_to' => $user['worker_id'],
             'message' => $message,
         );
         DB::table('messages')

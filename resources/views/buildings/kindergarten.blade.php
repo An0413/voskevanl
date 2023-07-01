@@ -13,7 +13,7 @@
             </div>
             @endforeach
                 @foreach($imagesg as $value)
-                    <img src="{{asset('assets/img/kindergarten/'. $value['src'])}}"
+                    <img src="{{asset('assets/img/gallery/'. $value['src'])}}"
                          style="width: 80%; margin-left: 10%; margin-top: 2%">
                 @endforeach
         </div>
@@ -29,17 +29,24 @@
                     <div class="col-lg-4 col-md-6 mt-5">
                         <div class="member aos-init aos-animate" data-aos="fade-up">
                             <div class="pic">
-                                <img src="{{asset('assets/img/kindergarten/'. $value['img'])}}" class="img-fluid"
-                                     alt="" style="height: 300px">
+                                <img src="{{asset('assets/img/worker/'. $value['img'])}}" class="img-fluid team_img">
                             </div>
                             <div class="member-info">
                                 <h4>{{$value->name . ' '. $value->lastname}}</h4>
                                 <span>{{$value->positions->title}}</span>
                                 <div class="social">
-                                    <a href=""><i class="bi bi-twitter"></i></a>
-                                    <a href=""><i class="bi bi-facebook"></i></a>
-                                    <a href=""><i class="bi bi-instagram"></i></a>
-                                    <a href=""><i class="bi bi-linkedin"></i></a>
+                                    @if($value->mail_link)
+                                        <a href="{{$value->mail_link}}" target="_blank"><i class="bx bx-envelope"></i></a>
+                                    @endif
+                                    @if($value->fb_link)
+                                        <a href="{{$value->fb_link}}" target="_blank"><i class="bi bi-facebook"></i></a>
+                                    @endif
+                                    @if($value->insta_link)
+                                        <a href="{{$value->insta_link}}" target="_blank"><i class="bi bi-instagram"></i></a>
+                                    @endif
+                                    @if($value->in_link)
+                                        <a href="{{$value->in_link}}" target="_blank"><i class="bi bi-linkedin"></i></a>
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -61,9 +68,9 @@
                 @foreach ($images as $value)
                     <div class="col-lg-4 col-md-6 portfolio-item filter-app" style="position: absolute; left: 0px; top: 0px;">
                         <div class="portfolio-wrap">
-                            <img src="{{asset('assets/img/kindergarten/'. $value['src'])}}" class="img-fluid">
+                            <img src="{{asset('assets/img/gallery/'. $value['src'])}}" class="img-fluid">
                             <div class="portfolio-links">
-                                <a href="{{asset('assets/img/kindergarten/'. $value['src'])}}" data-gallery="portfolioGallery" class="portfolio-lightbox"><i class="bx bx-plus"></i></a>
+                                <a href="{{asset('assets/img/gallery/'. $value['src'])}}" data-gallery="portfolioGallery" class="portfolio-lightbox"><i class="bx bx-plus"></i></a>
                             </div>
                         </div>
                     </div>

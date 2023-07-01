@@ -26,15 +26,18 @@
                             <div class="card-body w-100">
                                 <div class="form-group">
                                     <label for="name">Անուն</label>
-                                    <input type="text" class="form-control" id="name" value="{{$worker->name}}" name="name">
+                                    <input type="text" class="form-control" id="name" value="{{$worker->name}}"
+                                           name="name">
                                 </div>
                                 <div class="form-group">
                                     <label for="seq">Հերթականություն</label>
-                                    <input type="number" class="form-control" id="seq" value="{{$worker->seq}}" min="1" max="100"  name="seq">
+                                    <input type="number" class="form-control" id="seq" value="{{$worker->seq}}" min="1"
+                                           max="100" name="seq">
                                 </div>
                                 <div class="form-group">
                                     <label for="insta">Instagram</label>
-                                    <input type="url" id="insta" class="form-control"  value="{{$worker->insta_link}}"  name="insta_link">
+                                    <input type="url" id="insta" class="form-control" value="{{$worker->insta_link}}"
+                                           name="insta_link">
                                 </div>
                             </div>
                         </div>
@@ -42,19 +45,22 @@
                             <div class="card-body w-100">
                                 <div class="form-group">
                                     <label for="lastname">Ազգանուն</label>
-                                    <input type="text" class="form-control" id="lastname" value="{{$worker->lastname}}"  name="lastname">
+                                    <input type="text" class="form-control" id="lastname" value="{{$worker->lastname}}"
+                                           name="lastname">
                                 </div>
                                 <div class="form-group">
                                     <div class="form-group">
                                         <label for="fb">Facebook</label>
-                                        <input type="url" id="fb" class="form-control" value="{{$worker->fb_link}}"  name="fb_link">
+                                        <input type="url" id="fb" class="form-control" value="{{$worker->fb_link}}"
+                                               name="fb_link">
                                     </div>
                                 </div>
                                 <div class="form-group">
 
                                     <div class="form-group">
                                         <label for="in">LinkedIn</label>
-                                        <input type="url" id="in" class="form-control" value="{{$worker->in_link}}"  name="in_link">
+                                        <input type="url" id="in" class="form-control" value="{{$worker->in_link}}"
+                                               name="in_link">
                                     </div>
                                 </div>
                             </div>
@@ -65,7 +71,8 @@
                                     <label>Պաշտոն</label>
                                     <select class="form-control" name="position">
                                         @foreach($worker_positions as $value)
-                                            <option value="{{$value->id}}" {{($value->id == $worker->position) ? ' selected' : ''}}>{{$value->title}}</option>
+                                            <option
+                                                value="{{$value->id}}" {{($value->id == $worker->position) ? ' selected' : ''}}>{{$value->title}}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -73,20 +80,22 @@
                                 <div class="form-group">
                                     <div class="form-group">
                                         <label for="email">Email</label>
-                                        <input type="url" id="email" class="form-control" value="{{$worker->mail_link}}"  name="mail_link">
+                                        <input type="url" id="email" class="form-control" value="{{$worker->mail_link}}"
+                                               name="mail_link">
                                     </div>
-                                <div class="form-group">
-                                    <label for="exampleInputFile">Լուսանկար</label>
-                                    <div class="input-group">
-                                        <div class="custom-file">
-                                            <input type="file" class="custom-file-input" id="imgInp" name="img">
-                                            <label class="custom-file-label" for="exampleInputFile"></label>
+                                    <div class="form-group">
+                                        <label for="exampleInputFile">Լուսանկար</label>
+                                        <div class="input-group">
+                                            <div class="custom-file">
+                                                <input type="file" class="custom-file-input" id="imgInp" name="img">
+                                                <label class="custom-file-label" for="exampleInputFile"></label>
+                                            </div>
+                                            <img src="{{asset('assets/img/worker/' . $worker->img)}}" alt=""
+                                                 id="preview_worker_img">
                                         </div>
-                                        <img src="{{asset('assets/img/about/' . $worker->img)}}" alt=""
-                                             id="preview_worker_img">
-                                    </div>
-                                    <div class="card-footer">
-                                        <button type="submit" class="btn btn-primary">Հաստատել</button>
+                                        <div class="card-footer">
+                                            <button type="submit" class="btn btn-primary">Հաստատել</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
