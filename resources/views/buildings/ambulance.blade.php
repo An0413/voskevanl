@@ -3,21 +3,6 @@
 @yield('header')
 
 
-{{--<div class="container-fluid">--}}
-{{--    <h1 class="text-center administration_header">Ամբուլատորիա</h1>--}}
-{{--    <div class="row mt-5 n_p p-5">--}}
-{{--        <div class="col-6">--}}
-{{--                @foreach($ambulance as $value)--}}
-{{--                    <h3>{{ $value->title }}</h3>--}}
-{{--                    <p>{{ $value->content }}</p>--}}
-{{--                @endforeach--}}
-
-{{--        </div>--}}
-{{--        <div class="col-6">--}}
-{{--            <img src="{{asset('assets/img/buildings/ambulatoria.jpg')}}"--}}
-{{--                 style="width: 90%;margin-left: 10%; margin-bottom: 6%">--}}
-{{--        </div>--}}
-
 <div class="cross">
 
 

@@ -9,7 +9,7 @@
     <div class="row">
         <div class="col-4 mt-5">
             @foreach($imagesg as $value)
-                <img src="{{asset('assets/img/carate/' .$value['src'])}}" alt="hush" style="width: 100%">
+                <img src="{{asset('assets/img/gallery/' .$value['src'])}}" alt="hush" style="width: 100%">
             @endforeach
         </div>
         <div class="col-4 mt-5">
@@ -26,7 +26,7 @@
                             <div class="col-lg-4 col-md-6 mt-5" style="width: 100%;">
                                 <div class="member aos-init aos-animate" data-aos="fade-up">
                                     <div class="pic">
-                                        <img src="{{asset('assets/img/school/'. $value['img'])}}" class="img-fluid"
+                                        <img src="{{asset('assets/img/worker/'. $value['img'])}}" class="img-fluid"
                                              alt="" style="height: 300px">
                                     </div>
                                     <div class="member-info">
@@ -84,9 +84,9 @@
                 @foreach ($images as $value)
                     <div class="col-lg-4 col-md-6 portfolio-item filter-app">
                         <div class="portfolio-wrap">
-                            <img src="{{asset('assets/img/carate/'. $value['src'])}}" class="img-fluid">
+                            <img src="{{asset('assets/img/gallery/'. $value['src'])}}" class="img-fluid">
                             <div class="portfolio-links">
-                                <a href="{{asset('assets/img/carate/'. $value['src'])}}" data-gallery="portfolioGallery"
+                                <a href="{{asset('assets/img/gallery/'. $value['src'])}}" data-gallery="portfolioGallery"
                                    class="portfolio-lightbox"><i class="bx bx-plus"></i></a>
                             </div>
                         </div>

@@ -1770,7 +1770,9 @@ p {
 }
 
 .team_img {
-    max-width: 83%;
+    max-width: 83%!important;
+    object-fit: cover;
+    height: 400px
 }
 
 .testimonial-item .news_desc {
@@ -1953,4 +1955,10 @@ form .card-footer{
     margin: 8%;
     background-color: rgb(152 202 224 / 90%);
     padding: 5%
+}
+.admin_foto{
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 50%;
 }

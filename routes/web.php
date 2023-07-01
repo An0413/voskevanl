@@ -93,6 +93,7 @@ Route::group(['namespase' => 'News', 'prefix' => 'news'], function (){
 Route::post('/message_to_user', [GlxavorController::class, 'email_to_user'])->name('message_to_user');
 
 Route::post('/get_workers', [LoginController::class, 'get_workers']);
+Route::post('/change_message_status',  [AdminMessageController::class, 'change_status']);
 
 Route::group(['namespase' => 'Admin', 'prefix' => 'admin'], function (){
     Route::get('/{worker_id}',  [IndexaController::class, 'index'])->where('worker_id', '[0-9]+')->name('admin');
@@ -154,7 +155,6 @@ Route::group(['namespase' => 'Admin', 'prefix' => 'admin'], function (){
     Route::post('/login_check',  [LoginController::class, 'login'])->name('login_check');
 
     Route::get('/message',  [AdminMessageController::class, 'index'])->name('admin_message');
-
 
     Route::get('/news/create', [AdminNewsController::class, 'create'])->name('news_create');
     Route::post('/news/store', [AdminNewsController::class, 'store'])->name('news_store');

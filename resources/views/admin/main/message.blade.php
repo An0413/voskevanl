@@ -5,7 +5,8 @@
         <div class="content-header">
             <div class="container-fluid">
                 <ul class="nav nav-tabs justify-content-center text-muted">
-                    <li style="margin-left: 70px" class="active"><a data-toggle="tab" href="#user">Հաղորդագրություն</a></li>
+                    <li style="margin-left: 70px" class="active"><a data-toggle="tab" href="#user">Հաղորդագրություններ</a>
+                    </li>
                 </ul>
                 <div class="tab-content">
                     <div id="user" class="tab-pane fade in active show">
@@ -13,7 +14,7 @@
                         <div class="content-header">
                             <div class="container-fluid">
                                 <div class="row mt-3">
-                                    <div class="col-11"><h3>ՀԱՂՈՐԴԱԳՐՈՒԹՅՈՒՆ</h3></div>
+                                    <div class="col-11"><h3>ՀԱՂՈՐԴԱԳՐՈՒԹՅՈՒՆԵՐ</h3></div>
                                 </div>
                                 <table class="table mt-3" id="workers_table">
                                     <thead class="thead-dark">
@@ -23,17 +24,24 @@
                                         <th scope="col">Էլ․ հասցե</th>
                                         <th scope="col">Հասցեատեր</th>
                                         <th scope="col">Հաղորդագրություն</th>
+                                        <th scope="col">Տեսնել</th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     @foreach($message as $key=>$value)
                                         <tr>
                                             <td>{{$key+1}}</td>
-                                            <td>{{$value->name}}</td>
+                                            <td class="name">{{$value->name}}</td>
                                             <td>{{$value->email}}</td>
 
                                             <td>{{$roles[$value->message_to]}}</td>
-                                            <td>{{$value->message}}</td>
+                                            <td class="message">{!! $value->message !!}</td>
+                                            <td style="width: 15px">
+                                                <a href="javascript:void(0);" data-value="{{$value->id}}"
+                                                   class="view_message" data-bs-target="#message"
+                                                   data-bs-toggle="modal" data-status="{{$value->status}}"><i
+                                                        class="nav-icon fas fa-eye text-primary"></i></a>
+                                            </td>
                                         </tr>
                                     @endforeach
                                     </tbody>
@@ -48,25 +56,51 @@
     </div>
 
 
+    <div class="modal fade" id="message" tabindex="-1" aria-labelledby="refuse_modalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="refuse_modalLabel">Տեսնել հաղորդագրությունը</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <b>Ուղարկող՝</b>
+                    <span class="sender"></span><br>
+                    <b>Հաղորդագրություն՝</b><br>
+                    <div class="message_text"></div>
+                </div>
+                <div class="modal-footer">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
     <script>
-        $(".small2").each(function () {
-            let text = $(this).text();
-            if (text.length > 270) {
-                console.log(text.length);
-                $(this).html(text.substr(0, 256) + '<span class="elipsis">' +
-                    '</span>...');
+        $('.view_message').on('click', function (e) {
+            // jqueryov gnal tvyal toxic merel uma uxarkvel, ev text@ u dnel sender u message_text classnerov elementneri mej hamapatasxanabar
+            let user = $(this).parent().parent().find('.name').text();
+            let namak = $(this).parent().parent().find('.message').html();
+
+            $('.sender').text('name') === user;
+            $('.message_text').text('namak') === namak;
+
+            e.preventDefault();
+            let message = $(this).data('value');
+            if ($(this).data('status') == 1) {
+                $(this).data('status', 0);
+
+                $.ajax({
+                    type: 'POST',
+                    url: '/change_message_status',
+                    data: {
+                        _token: '<?php echo csrf_token() ?>',
+                        message: message
+                    }
+                });
             }
         });
-
-        let image = document.querySelector('#image_view');
-        let img = document.querySelector('#img');
-        image.onchange = evt => {
-            const [file] = image.files
-            if (file) {
-                img.src = URL.createObjectURL(file);
-                img.style.visibility = 'visible';
-            }
-        }
     </script>
 @endsection
 
