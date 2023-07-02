@@ -12,7 +12,7 @@
                 <img src="{{asset('assets/img/worker/' .$admin_info['img'])}}" class="img-circle elevation-2 admin_foto" alt="User Image">
             </div>
             <div class="info">
-                <a href="{{route('admin', $worker_id)}}" class="d-block">{{$admin_info['name'] . ' ' . $admin_info['lastname']}}</a>
+                <a href="" class="d-block">{{$admin_info['name'] . ' ' . $admin_info['lastname']}}</a>
             </div>
         </div>
         @php

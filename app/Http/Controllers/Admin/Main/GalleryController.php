@@ -20,13 +20,6 @@ use App\Helper;
 
 class GalleryController extends Controller
 {
-//    public function index($worker_id)
-//    {
-//        $worker = Worker::where('worker_id', '=', $worker_id)->where('status', 1)->get();
-//        $images = Images::where('gallery_id', '=', $worker_id)->get();
-//        $info = Itok::all();
-//        return view('admin.main.show', compact('worker', 'images', 'info'));
-//    }
 
     public function edit($gallery_id)
     {
@@ -56,7 +49,7 @@ class GalleryController extends Controller
 
         DB::table('gallery')
             ->where('id', $gallery_id)
-            ->update($data);
+            ->update(['status' => 2]);
 
 
         if ($images['gallery_id'] == 6){

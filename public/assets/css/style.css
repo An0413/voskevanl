@@ -1962,3 +1962,13 @@ form .card-footer{
     object-fit: cover;
     border-radius: 50%;
 }
+.guitar_main_image{
+    width: 80%;
+    height: 70%;
+    object-fit: cover;
+}
+.guitar_worker_img{
+    width:95%;
+    height: 350px;
+    object-fit: cover;
+}

@@ -7,7 +7,7 @@
     <div class="row">
         <div class="col-4 mt-5">
             @foreach($imagesg as $value)
-                <img src="{{asset('assets/img/galllery/' .$value['src'])}}" alt="hush" style="width: 100%">
+                <img src="{{asset('assets/img/gallery/' .$value['src'])}}" alt="hush" class="guitar_main_image">
             @endforeach
         </div>
         <div class="col-4 mt-5">
@@ -24,8 +24,7 @@
                             <div class="col-lg-4 col-md-6 mt-5" style="width: 100%;">
                                 <div class="member aos-init aos-animate" data-aos="fade-up">
                                     <div class="pic">
-                                        <img src="{{asset('assets/img/worker/'. $value['img'])}}" class="img-fluid"
-                                             alt="" style="height: 300px">
+                                        <img src="{{asset('assets/img/worker/'. $value['img'])}}" class="img-fluid guitar_worker_img">
                                     </div>
                                     <div class="member-info">
                                         <h4>{{$value->name . ' '. $value->lastname}}</h4>
