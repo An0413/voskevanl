@@ -17,7 +17,7 @@ class GuitarController extends Controller
 {
     public function __invoke()
     {
-        $images = Images::where('gallery_id', '=', 14)->get();
+        $images = Images::where('gallery_id', '=', 14)->where('main_image', '=', 0)->get();
         $imagesg = Images::where('gallery_id', '=', 14)->where('main_image', '=', 1)->get();
         $worker = Worker::where('worker_id', '=', 14)->get();
         $info = Main_info::where('menu_id', '=', 14 )->get();

@@ -71,7 +71,7 @@ class MainController extends Controller
 
         DB::table('workers')
             ->where('id', $worker_id)
-            ->update($data);
+            ->update(['status' => 2]);
 
 
         return redirect()->route('worker_info', $worker->worker_id);
@@ -85,7 +85,7 @@ class MainController extends Controller
         $worker = Worker::where('id', $worker_id)->first();
         DB::table('workers')
             ->where('id', $worker_id)
-            ->update(['status' => 0]);
+            ->update(['status' => 3]);
 
 
         return redirect()->route('worker_info', $worker->worker_id);
