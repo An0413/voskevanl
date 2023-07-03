@@ -23,7 +23,7 @@ class StoreGalleryRequest extends FormRequest
     {
         return [
             'image' => 'nullable|mimes:jpg,bmp,png',
-            'main_image' => 'integer',
+            'main_image' => 'nullable|integer',
         ];
     }
 }

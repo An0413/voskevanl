@@ -22,7 +22,7 @@
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 @foreach($menu as $value)
-                    @if($role == 0 || $role == $value->id)
+                    @if($role == 1 || $role == $value->id)
                         <li class="nav-item">
                             <a href="{{($value->is_worker) ? route('worker_info', $value->id) : route($value->admin_url)}}" class="nav-link">
                                 <p>

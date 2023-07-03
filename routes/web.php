@@ -36,7 +36,6 @@ use App\Http\Controllers\Buildings\SchoolController;
 use App\Http\Controllers\Buildings\ChurchController;
 
 
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -49,19 +48,19 @@ use App\Http\Controllers\Buildings\ChurchController;
 */
 
 
-Route::group(['namespase' => 'Buildings', 'prefix' => 'buildings'], function (){
-    Route::get('/',  BindexController::class)->name('buildings.buildings');
-    Route::get('/kindergarten',  KinderController::class)->name('buildings.kindergarten');
-    Route::get('/school',  SchoolController::class)->name('buildings.school');
+Route::group(['namespase' => 'Buildings', 'prefix' => 'buildings'], function () {
+    Route::get('/', BindexController::class)->name('buildings.buildings');
+    Route::get('/kindergarten', KinderController::class)->name('buildings.kindergarten');
+    Route::get('/school', SchoolController::class)->name('buildings.school');
 
-    Route::get('/administration',  AdministrationController::class)->name('buildings.administration');
-    Route::get('/ambulance',  AmbulanceController::class)->name('buildings.ambulance');
+    Route::get('/administration', AdministrationController::class)->name('buildings.administration');
+    Route::get('/ambulance', AmbulanceController::class)->name('buildings.ambulance');
 
-    Route::get('/church',  [ChurchController::class, 'index'])->name('buildings.church');
-    Route::get('/sportsschool',  SportsschoolController::class)->name('buildings.sportsschool');
+    Route::get('/church', [ChurchController::class, 'index'])->name('buildings.church');
+    Route::get('/sportsschool', SportsschoolController::class)->name('buildings.sportsschool');
 
 
-    Route::group(['namespase' => 'Culture', 'prefix' => 'culture'], function (){
+    Route::group(['namespase' => 'Culture', 'prefix' => 'culture'], function () {
         Route::get('/', CultureController::class)->name('buildings.culture');
         Route::get('/ametist', AmetistController::class)->name('buildings.culture.ametist');
         Route::get('/carate', CarateController::class)->name('buildings.culture.carate');
@@ -69,104 +68,112 @@ Route::group(['namespase' => 'Buildings', 'prefix' => 'buildings'], function (){
         Route::get('/guitar', GuitarController::class)->name('buildings.culture.guitar');
     });
 });
-Route::group(['namespase' => 'Itok', 'prefix' => 'itok'], function (){
-    Route::get('/',  ItokController::class)->name('itok.itok');
+Route::group(['namespase' => 'Itok', 'prefix' => 'itok'], function () {
+    Route::get('/', ItokController::class)->name('itok.itok');
 });
 
-Route::group(['namespase' => 'History', 'prefix' => 'history'], function (){
-    Route::get('/',  HistoryController::class)->name('history.history');
+Route::group(['namespase' => 'History', 'prefix' => 'history'], function () {
+    Route::get('/', HistoryController::class)->name('history.history');
 });
-Route::group(['namespase' => 'Sights', 'prefix' => 'sights'], function (){
-    Route::get('/',  SightsController::class)->name('sights.sights');
-    Route::get('/{sights_id}',  SightsiController::class)->where('sights_id', '[0-9]+')->name('sights_detail');
-});
-
-Route::group(['namespase' => 'Glxavor'], function (){
-    Route::get('/',  [GlxavorController::class, 'index'])->name('glxavor.glxavor');
+Route::group(['namespase' => 'Sights', 'prefix' => 'sights'], function () {
+    Route::get('/', SightsController::class)->name('sights.sights');
+    Route::get('/{sights_id}', SightsiController::class)->where('sights_id', '[0-9]+')->name('sights_detail');
 });
 
-Route::group(['namespase' => 'News', 'prefix' => 'news'], function (){
-    Route::get('/',  NewsController::class)->name('news.news');
-    Route::get('/{news_id}',  NewsiController::class)->where('news_id', '[0-9]+');
+Route::group(['namespase' => 'Glxavor'], function () {
+    Route::get('/', [GlxavorController::class, 'index'])->name('glxavor.glxavor');
+});
+
+Route::group(['namespase' => 'News', 'prefix' => 'news'], function () {
+    Route::get('/', NewsController::class)->name('news.news');
+    Route::get('/{news_id}', NewsiController::class)->where('news_id', '[0-9]+');
 });
 
 Route::post('/message_to_user', [GlxavorController::class, 'email_to_user'])->name('message_to_user');
 
 Route::post('/get_workers', [LoginController::class, 'get_workers']);
 
-Route::group(['namespase' => 'Admin', 'prefix' => 'admin'], function (){
-    Route::get('/{worker_id}',  [IndexaController::class, 'index'])->where('worker_id', '[0-9]+')->name('admin');
-    Route::post('/confirm_worker/{worker_id}',  [IndexaController::class, 'changestatus'])->where('worker_id', '[0-9]+')->name('confirm_worker');
-    Route::get('/{worker_id}/worker',  [IndexaController::class, 'worker'])->where('worker_id', '[0-9]+')->name('workered');
-    Route::get('/{worker_id}/info',  [IndexaController::class, 'info'])->where('worker_id', '[0-9]+')->name('info_show');
-    Route::get('/{worker_id}/gallery',  [IndexaController::class, 'gallery'])->where('worker_id', '[0-9]+')->name('gallery_show');
-    Route::get('/{worker_id}/news',  [IndexaController::class, 'news'])->where('worker_id', '[0-9]+')->name('news_show');
-    Route::get('/submit/{id}/{table_id}',  [IndexaController::class, 'submit'])->where('id', '[0-9]+')->where('table_id', '[0-9]+')->name('submit');
-    Route::get('/news',  [AdminNewsController::class, 'index'])->name('admin_news');
+Route::group(['namespase' => 'Admin', 'prefix' => 'admin'], function () {
+    Route::get('/{worker_id}', [IndexaController::class, 'index'])->where('worker_id', '[0-9]+')->name('admin');
+    Route::post('/confirm_worker/{worker_id}', [IndexaController::class, 'changestatus'])->where('worker_id', '[0-9]+')->name('confirm_worker');
+    Route::get('/{worker_id}/worker', [IndexaController::class, 'worker'])->where('worker_id', '[0-9]+')->name('workered');
+    Route::get('/{worker_id}/info', [IndexaController::class, 'info'])->where('worker_id', '[0-9]+')->name('info_show');
+    Route::get('/{worker_id}/gallery', [IndexaController::class, 'gallery'])->where('worker_id', '[0-9]+')->name('gallery_show');
+    Route::get('/{worker_id}/news', [IndexaController::class, 'news'])->where('worker_id', '[0-9]+')->name('news_show');
+    Route::get('/submit/{id}/{table_id}', [IndexaController::class, 'submit'])->where('id', '[0-9]+')->where('table_id', '[0-9]+')->name('submit');
+    Route::get('/news', [AdminNewsController::class, 'index'])->name('admin_news');
 
     Route::get('/history/create', [AdminHistoryController::class, 'create'])->name('history_create');
     Route::post('/history/store', [AdminHistoryController::class, 'store'])->name('history_store');
-    Route::get('/history',  [AdminHistoryController::class, 'index'])->name('admin_history');
-    Route::get('/history/edit/{history_id}',  [AdminHistoryController::class, 'edit'])->where('history_id', '[0-9]+')->name('history_edit');
-    Route::post('/history/update/{history_id}',  [AdminHistoryController::class, 'update'])->where('history_id', '[0-9]+')->name('history_update');
-    Route::delete('/history/delete/{history_id}',  [AdminHistoryController::class, 'delete'])->where('history_id', '[0-9]+')->name('history_delete');
+    Route::get('/history', [AdminHistoryController::class, 'index'])->name('admin_history');
+    Route::get('/history/edit/{history_id}', [AdminHistoryController::class, 'edit'])->where('history_id', '[0-9]+')->name('history_edit');
+    Route::post('/history/update/{history_id}', [AdminHistoryController::class, 'update'])->where('history_id', '[0-9]+')->name('history_update');
+    Route::delete('/history/delete/{history_id}', [AdminHistoryController::class, 'delete'])->where('history_id', '[0-9]+')->name('history_delete');
 
     Route::get('/buildings/create', [AdminBuildingsController::class, 'create'])->name('buildings_create');
     Route::post('/buildings/store', [AdminBuildingsController::class, 'store'])->name('buildings_store');
-    Route::get('/buildings',  [AdminBuildingsController::class, 'index'])->name('admin_buildings');
-    Route::get('/buildings/edit/{buildings_id}',  [AdminBuildingsController::class, 'edit'])->where('buildings_id', '[0-9]+')->name('buildings_edit');
-    Route::post('/buildings/update/{buildings_id}',  [AdminBuildingsController::class, 'update'])->where('buildings_id', '[0-9]+')->name('buildings_update');
-    Route::delete('/buildings/delete/{buildings_id}',  [AdminBuildingsController::class, 'delete'])->where('buildings_id', '[0-9]+')->name('buildings_delete');
+    Route::get('/buildings', [AdminBuildingsController::class, 'index'])->name('admin_buildings');
+    Route::get('/buildings/edit/{buildings_id}', [AdminBuildingsController::class, 'edit'])->where('buildings_id', '[0-9]+')->name('buildings_edit');
+    Route::post('/buildings/update/{buildings_id}', [AdminBuildingsController::class, 'update'])->where('buildings_id', '[0-9]+')->name('buildings_update');
+    Route::delete('/buildings/delete/{buildings_id}', [AdminBuildingsController::class, 'delete'])->where('buildings_id', '[0-9]+')->name('buildings_delete');
 
 
     Route::get('/church/create', [AdminChurchController::class, 'create'])->name('church_create');
     Route::post('/church/store', [AdminChurchController::class, 'store'])->name('church_store');
-    Route::get('/church',  [AdminChurchController::class, 'index'])->name('admin_church');
-    Route::get('/church/edit/{church_id}',  [AdminChurchController::class, 'edit'])->where('church_id', '[0-9]+')->name('church_edit');
-    Route::post('/church/update/{church_id}',  [AdminChurchController::class, 'update'])->where('church_id', '[0-9]+')->name('church_update');
-    Route::delete('/church/delete/{church_id}',  [AdminChurchController::class, 'delete'])->where('church_id', '[0-9]+')->name('church_delete');
+    Route::get('/church', [AdminChurchController::class, 'index'])->name('admin_church');
+    Route::get('/church/edit/{church_id}', [AdminChurchController::class, 'edit'])->where('church_id', '[0-9]+')->name('church_edit');
+    Route::post('/church/update/{church_id}', [AdminChurchController::class, 'update'])->where('church_id', '[0-9]+')->name('church_update');
+    Route::delete('/church/delete/{church_id}', [AdminChurchController::class, 'delete'])->where('church_id', '[0-9]+')->name('church_delete');
 
-    Route::get('/info/{id}',  [MainController::class, 'index'])->where('id', '[0-9]+')->name('worker_info');
-    Route::get('/create/{id}/{tab}',  [MainController::class, 'create'])->where('id', '[0-9]+')->where('tab', '[a-zA-Z]+')->name('worker_create');
+    Route::get('/info/{id}', [MainController::class, 'index'])->where('id', '[0-9]+')->name('worker_info');
+    Route::get('/create/{id}/{tab}', [MainController::class, 'create'])->where('id', '[0-9]+')->where('tab', '[a-zA-Z]+')->name('worker_create');
     Route::post('/worker/store/{id}', [MainController::class, 'store'])->where('id', '[0-9]+')->name('worker_store');
     Route::post('/info/store/{id}/{tab}', [MainController::class, 'storeInfo'])->where('id', '[0-9]+')->where('tab', '[a-zA-Z]+')->name('info_store');
     Route::get('/gallery/create/{id}/{tab}', [MainController::class, 'createGallery'])->where('id', '[0-9]+')->where('tab', '[a-zA-Z]+')->name('gallery_create');
     Route::post('/gallery/store/{id}/{tab}', [MainController::class, 'storeGallery'])->where('id', '[0-9]+')->where('tab', '[a-zA-Z]+')->name('gallery_store');
-    Route::get('/worker/edit/{worker_id}',  [MainController::class, 'edit_worker'])->where('worker_id', '[0-9]+')->name('worker_edit');
-    Route::post('/worker/update/{worker_id}',  [MainController::class, 'update'])->where('worker_id', '[0-9]+')->name('worker_update');
-    Route::get('/worker/delete/{worker_id}',  [MainController::class, 'delete'])->where('worker_id', '[0-9]+')->name('worker_delete');
+    Route::get('/worker/edit/{worker_id}', [MainController::class, 'edit_worker'])->where('worker_id', '[0-9]+')->name('worker_edit');
+    Route::post('/worker/update/{worker_id}', [MainController::class, 'update'])->where('worker_id', '[0-9]+')->name('worker_update');
+    Route::get('/worker/delete/{worker_id}', [MainController::class, 'delete'])->where('worker_id', '[0-9]+')->name('worker_delete');
 
-    Route::get('/info/edit/{info_id}',  [InfoController::class, 'edit'])->where('info_id', '[0-9]+')->name('info_edit');
-    Route::post('/info/update/{info_id}',  [InfoController::class, 'update'])->where('info_id', '[0-9]+')->name('info_update');
-    Route::get('/info/delete/{info_id}',  [InfoController::class, 'delete'])->where('info_id', '[0-9]+')->name('info_delete');
+    Route::get('/info/edit/{info_id}', [InfoController::class, 'edit'])->where('info_id', '[0-9]+')->name('info_edit');
+    Route::post('/info/update/{info_id}', [InfoController::class, 'update'])->where('info_id', '[0-9]+')->name('info_update');
+    Route::get('/info/delete/{info_id}', [InfoController::class, 'delete'])->where('info_id', '[0-9]+')->name('info_delete');
 
-    Route::get('/gallery/edit/{gallery_id}',  [GalleryController::class, 'edit'])->where('gallery_id', '[0-9]+')->name('gallery_edit');
-    Route::post('/gallery/update/{gallery_id}',  [GalleryController::class, 'update'])->where('gallery_id', '[0-9]+')->name('gallery_update');
-    Route::delete('/gallery/delete/{gallery_id}',  [GalleryController::class, 'delete'])->where('gallery_id', '[0-9]+')->name('gallery_delete');
+    Route::get('/gallery/edit/{gallery_id}', [GalleryController::class, 'edit'])->where('gallery_id', '[0-9]+')->name('gallery_edit');
+    Route::post('/gallery/update/{gallery_id}', [GalleryController::class, 'update'])->where('gallery_id', '[0-9]+')->name('gallery_update');
+    Route::delete('/gallery/delete/{gallery_id}', [GalleryController::class, 'delete'])->where('gallery_id', '[0-9]+')->name('gallery_delete');
 
-    Route::get('/register',  [LoginController::class, 'register'])->name('register');
-    Route::post('/register_user',  [LoginController::class, 'registerUser'])->name('register_user');
+    Route::get('/register', [LoginController::class, 'register'])->name('register');
+    Route::post('/register_user', [LoginController::class, 'registerUser'])->name('register_user');
 
-    Route::get('/login',  [LoginController::class, 'index'])->name('login');
-    Route::get('/logout',  [LoginController::class, 'logout'])->name('admin_logout');
-    Route::post('/login_check',  [LoginController::class, 'login'])->name('login_check');
+    Route::get('/login', [LoginController::class, 'index'])->name('login');
+    Route::get('/logout', [LoginController::class, 'logout'])->name('admin_logout');
+    Route::post('/login_check', [LoginController::class, 'login'])->name('login_check');
 
-    Route::get('/message',  [AdminMessageController::class, 'index'])->name('admin_message');
+    Route::get('/message', [AdminMessageController::class, 'index'])->name('admin_message');
 
 
     Route::get('/news/create', [AdminNewsController::class, 'create'])->name('news_create');
     Route::post('/news/store', [AdminNewsController::class, 'store'])->name('news_store');
-    Route::get('/news/show/',  [AdminNewsController::class, 'index'])->name('news_list');
-    Route::get('/news/edit/{news_id}',  [AdminNewsController::class, 'edit'])->where('news_id', '[0-9]+')->name('news_edit');
-    Route::post('/news/update/{news_id}',  [AdminNewsController::class, 'update'])->where('news_id', '[0-9]+')->name('news_update');
-    Route::delete('/news/delete/{news_id}',  [AdminNewsController::class, 'delete'])->where('news_id', '[0-9]+')->name('news_delete');
+    Route::get('/news/show/', [AdminNewsController::class, 'index'])->name('news_list');
+    Route::get('/news/edit/{news_id}', [AdminNewsController::class, 'edit'])->where('news_id', '[0-9]+')->name('news_edit');
+    Route::post('/news/update/{news_id}', [AdminNewsController::class, 'update'])->where('news_id', '[0-9]+')->name('news_update');
+    Route::delete('/news/delete/{news_id}', [AdminNewsController::class, 'delete'])->where('news_id', '[0-9]+')->name('news_delete');
 
     Route::get('/sights/create', [AdminSightsController::class, 'create'])->name('sights_create');
     Route::post('/sights/store', [AdminSightsController::class, 'store'])->name('sights_store');
-        Route::get('/sights/show/',  [AdminSightsController::class, 'index'])->name('admin_sights');
-    Route::get('/sights/edit/{sights_id}',  [AdminSightsController::class, 'edit'])->where('sights_id', '[0-9]+')->name('sights_edit');
-    Route::post('/sights/update/{sights_id}',  [AdminSightsController::class, 'update'])->where('sights_id', '[0-9]+')->name('sights_update');
-    Route::delete('/sights/delete/{sights_id}',  [AdminSightsController::class, 'delete'])->where('sights_id', '[0-9]+')->name('sights_delete');
+    Route::get('/sights/show/', [AdminSightsController::class, 'index'])->name('admin_sights');
+
+    Route::get('/sights/gallery/{id}', [AdminSightsController::class, 'gallery'])->where('id', '[0-9]+')->name('sights_gallery');
+    Route::get('/sights/gallery_create/{id}', [AdminSightsController::class, 'gallery_create'])->where('id', '[0-9]+')->name('sights_gallery_create');
+    Route::post('/sights/gallery_store/{id}', [AdminSightsController::class, 'gallery_store'])->where('id', '[0-9]+')->name('sights_gallery_store');
+    Route::get('/sights/gallery_edit/{id}', [AdminSightsController::class, 'gallery_edit'])->where('id', '[0-9]+')->name('sights_gallery_edit');
+    Route::post('/sights/gallery_update/{id}', [AdminSightsController::class, 'gallery_update'])->where('id', '[0-9]+')->name('sights_gallery_update');
+    Route::delete('/sights/gallery_delete/{id}', [AdminSightsController::class, 'gallery_delete'])->where('id', '[0-9]+')->name('sights_gallery_delete');
+
+    Route::get('/sights/edit/{sights_id}', [AdminSightsController::class, 'edit'])->where('sights_id', '[0-9]+')->name('sights_edit');
+    Route::post('/sights/update/{sights_id}', [AdminSightsController::class, 'update'])->where('sights_id', '[0-9]+')->name('sights_update');
+    Route::delete('/sights/delete/{sights_id}', [AdminSightsController::class, 'delete'])->where('sights_id', '[0-9]+')->name('sights_delete');
 
 });
 

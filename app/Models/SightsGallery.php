@@ -11,4 +11,8 @@ class SightsGallery extends Model
 
     protected $table = 'sights_galleries';
     protected $guarded = [];
+
+    public function gallery_status(){
+        return $this->hasOne(Status::class, 'status_id', 'status');
+    }
 }
