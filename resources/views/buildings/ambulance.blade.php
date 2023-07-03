@@ -3,21 +3,6 @@
 @yield('header')
 
 
-{{--<div class="container-fluid">--}}
-{{--    <h1 class="text-center administration_header">Ամբուլատորիա</h1>--}}
-{{--    <div class="row mt-5 n_p p-5">--}}
-{{--        <div class="col-6">--}}
-{{--                @foreach($ambulance as $value)--}}
-{{--                    <h3>{{ $value->title }}</h3>--}}
-{{--                    <p>{{ $value->content }}</p>--}}
-{{--                @endforeach--}}
-
-{{--        </div>--}}
-{{--        <div class="col-6">--}}
-{{--            <img src="{{asset('assets/img/buildings/ambulatoria.jpg')}}"--}}
-{{--                 style="width: 90%;margin-left: 10%; margin-bottom: 6%">--}}
-{{--        </div>--}}
-
 <div class="cross">
 
 
@@ -62,10 +47,18 @@
                             <h4>{{$value->name}}  {{$value->lastname}}</h4>
                             <span>{{$value->positions->title}}</span>
                             <div class="social">
-                                <a href=""><i class="bi bi-twitter"></i></a>
-                                <a href=""><i class="bi bi-facebook"></i></a>
-                                <a href=""><i class="bi bi-instagram"></i></a>
-                                <a href=""><i class="bi bi-linkedin"></i></a>
+                                @if($value->mail_link)
+                                    <a href="{{$value->mail_link}}" target="_blank"><i class="bx bx-envelope"></i></a>
+                                @endif
+                                @if($value->fb_link)
+                                    <a href="{{$value->fb_link}}" target="_blank"><i class="bi bi-facebook"></i></a>
+                                @endif
+                                @if($value->insta_link)
+                                    <a href="{{$value->insta_link}}" target="_blank"><i class="bi bi-instagram"></i></a>
+                                @endif
+                                @if($value->in_link)
+                                    <a href="{{$value->in_link}}" target="_blank"><i class="bi bi-linkedin"></i></a>
+                                @endif
                             </div>
                         </div>
                     </div>

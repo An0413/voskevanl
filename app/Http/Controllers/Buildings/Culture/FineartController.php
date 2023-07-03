@@ -18,7 +18,7 @@ class FineartController extends Controller
     public function __invoke()
     {
 
-        $images = Images::where('gallery_id', '=', 13)->get();
+        $images = Images::where('gallery_id', '=', 13)->where('main_image', '=', 0)->get();
         $imagesg = Images::where('gallery_id', '=', 13)->where('main_image', '=', 1)->get();
         $worker = Worker::where('worker_id', '=', 13)->get();
         $info = Main_info::where('menu_id', '=', 13 )->get();

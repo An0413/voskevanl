@@ -57,17 +57,25 @@
                     <div class="col-lg-3 col-md-4 mt-5">
                         <div class="member aos-init aos-animate" data-aos="fade-up">
                             <div class="pic">
-                                <img src="{{asset('assets/img/about/'. $value['img'])}}" class="img-fluid"
+                                <img src="{{asset('assets/img/worker/'. $value['img'])}}" class="img-fluid"
                                      alt="" style="height: 300px">
                             </div>
                             <div class="member-info">
                                 <h4>{{$value->name . ' '. $value->lastname}}</h4>
                                 <span>{{$value->positions->title}}</span>
                                 <div class="social">
-                                    <a href=""><i class="bi bi-twitter"></i></a>
-                                    <a href=""><i class="bi bi-facebook"></i></a>
-                                    <a href=""><i class="bi bi-instagram"></i></a>
-                                    <a href=""><i class="bi bi-linkedin"></i></a>
+                                    @if($value->mail_link)
+                                        <a href="{{$value->mail_link}}" target="_blank"><i class="bx bx-envelope"></i></a>
+                                    @endif
+                                    @if($value->fb_link)
+                                        <a href="{{$value->fb_link}}" target="_blank"><i class="bi bi-facebook"></i></a>
+                                    @endif
+                                    @if($value->insta_link)
+                                        <a href="{{$value->insta_link}}" target="_blank"><i class="bi bi-instagram"></i></a>
+                                    @endif
+                                    @if($value->in_link)
+                                        <a href="{{$value->in_link}}" target="_blank"><i class="bi bi-linkedin"></i></a>
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -82,7 +90,7 @@
         <h2 class="text-center mt-5">Մեր մասին</h2>
         <div class="col-4">
             @foreach($imagesg as $value)
-                <img src="{{asset('assets/img/about/'  .$value['src'])}}" class="w-100">
+                <img src="{{asset('assets/img/gallery/'  .$value['src'])}}" class="w-100">
             @endforeach
         </div>
         @foreach($info as $value)
@@ -94,7 +102,7 @@
         @endforeach
         <div class="col-4 mt-5">
             @foreach($imagesg1 as $value)
-                <img src="{{asset('assets/img/about/'  .$value['src'])}}" class="w-100">
+                <img src="{{asset('assets/img/gallery/'  .$value['src'])}}" class="w-100">
             @endforeach
         </div>
     </div>

@@ -46,17 +46,5 @@
                 </div>
             </form>
         </section>
-        <!-- /.content -->
     </div>
-    <!-- /.content-wrapper -->
-    {{--    <script>--}}
-    {{--        imgInp = document.querySelector('#imgInp');--}}
-    {{--        myImg = document.querySelector('#preview_worker_img');--}}
-    {{--        imgInp.onchange = evt => {--}}
-    {{--            const [file] = imgInp.files--}}
-    {{--            if (file) {--}}
-    {{--                myImg.src = URL.createObjectURL(file)--}}
-    {{--            }--}}
-    {{--        }--}}
-    {{--    </script>--}}
 @endsection

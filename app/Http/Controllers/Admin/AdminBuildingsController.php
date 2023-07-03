@@ -75,7 +75,7 @@ class AdminBuildingsController extends Controller
 
         DB::table('buildings')
             ->where('id', $buildings_id)
-            ->update($data);
+            ->update(['status' => 2]);
 
         return redirect()->route('admin_buildings');
 
