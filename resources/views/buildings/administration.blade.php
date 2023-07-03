@@ -16,7 +16,7 @@
         </div>
 
         <div class="col-6">
-            <img src="{{asset('assets/img/buildings/mshtakan.jpg')}}"
+            <img src="{{asset('assets/img/gallery/mshtakan.jpg')}}"
                  style="width: 90%;margin-left: 10%; margin-bottom: 6%">
         </div>
 
@@ -32,9 +32,9 @@
                 @foreach($images as $value)
                     <div class="col-lg-4 col-md-6 portfolio-item filter-app">
                         <div class="portfolio-wrap">
-                            <img src="{{asset('assets/img/administration/'. $value['src'])}}" class="img-fluid" alt="">
+                            <img src="{{asset('assets/img/gallery/'. $value['src'])}}" class="img-fluid" alt="">
                             <div class="portfolio-links">
-                                <a href="{{asset('assets/img/administration/'. $value['src'])}}"
+                                <a href="{{asset('assets/img/gallery/'. $value['src'])}}"
                                    data-gallery="portfolioGallery"
                                    class="portfolio-lightbox"><i class="bx bx-plus"></i></a></div>
                         </div>

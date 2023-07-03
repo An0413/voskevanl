@@ -5,17 +5,20 @@
         $status = [
             2 => 'Ավելացման հարցում',
             3 => 'Ջնջելու հարցում'
-];
+        ];
     @endphp
     <div class="content-wrapper">
         <h3 class="text-center">Հաստատման սպասող փոփոխություններ</h3>
         <div class="content-header">
             <div class="container-fluid">
                 <ul class="nav nav-tabs justify-content-center text-muted">
-                    <li class="active"><a data-toggle="tab" href="#user">Աշխատակիցներ</a></li>
-                    <li style="margin-left: 70px"><a data-toggle="tab" href="#info">Ինֆո</a></li>
-                    <li style="margin-left: 70px"><a data-toggle="tab" href="#image">Լուսանկարներ</a></li>
-                    <li style="margin-left: 70px"><a data-toggle="tab" href="#news">Նորություններ</a></li>
+                    <li class="active"><a class="{{count($worker) ? 'text-warning' : ''}}" data-toggle="tab" href="#user">Աշխատակիցներ</a></li>
+                    <li style="margin-left: 70px"><a class="{{count($info) ? 'text-warning' : ''}}" data-toggle="tab" href="#info">Ինֆո</a></li>
+                    <li style="margin-left: 70px"><a class="{{count($images) ? 'text-warning' : ''}}" data-toggle="tab" href="#image">Լուսանկարներ</a></li>
+                    <li style="margin-left: 70px"><a class="{{count($news) ? 'text-warning' : ''}}" data-toggle="tab" href="#news">Նորություններ</a></li>
+                    <li style="margin-left: 70px"><a data-toggle="tab" class="{{count($sights) ? 'text-warning' : ''}}" href="#sights">Տեսարժան վայրեր</a></li>
+                    <li style="margin-left: 70px"><a data-toggle="tab" class="{{count($sights_galleries) ? 'text-warning' : ''}}" href="#sights_galleries">Տ/վ լուսանկարներ</a>
+                    </li>
                 </ul>
                 <div class="tab-content">
                     <div id="user" class="tab-pane fade in active show">
@@ -53,7 +56,7 @@
                                         {{$value->name . ' ' . $value->lastname}}
                                     </td>
                                     <td><a href="{{route('workered', $value->id)}}"><i
-                                                class="nav-icon fas fa-edit text-primary"></i></a></td>
+                                                class="nav-icon fas fa-eye text-primary"></i></a></td>
 
                                     <td class="text-center">
                                         <a href="{{route('submit', [$value->id, 0])}}" id="confirm">
@@ -61,7 +64,8 @@
                                         </a>
                                     </td>
                                     <td><a href="" class="refuse text-danger text-bold" data-bs-toggle="modal"
-                                           data-bs-target="#refuse_modal" data-row="{{$value->id}}" data-action="0">X</a></td>
+                                           data-bs-target="#refuse_modal" data-row="{{$value->id}}"
+                                           data-action="0">X</a></td>
                                 </tr>
                             @endforeach
                             </tbody>
@@ -94,20 +98,21 @@
                                     <th scope="col">{{$value->content}}</th>
                                     <td>
                                         @php
-                                            $user_info = App\Helper::getUserInfo($value['user_id']);
+                                            $user_info = App\Helper::getUserInfo($value->user_id);
                                         @endphp
                                         {{$user_info['name'] . ' ' . $user_info['lastname']}}
                                     </td>
                                     <td>{{$status[$value->status]}}</td>
                                     <td><a href="{{route('info_show', $value->id)}}"><i
-                                                class="nav-icon fas fa-edit text-primary"></i></a></td>
+                                                class="nav-icon fas fa-eye text-primary"></i></a></td>
                                     <td class="text-center">
                                         <a href="{{route('submit', [$value->id, 1])}}" id="confirm">
                                             <i class="nav-icon fas fa-check text-success"></i>
                                         </a>
                                     </td>
                                     <td><a href="" class="refuse text-danger text-bold" data-bs-toggle="modal"
-                                           data-bs-target="#refuse_modal" data-row="{{$value->id}}" data-action="1">X</a></td>
+                                           data-bs-target="#refuse_modal" data-row="{{$value->id}}"
+                                           data-action="1">X</a></td>
                                 </tr>
                             @endforeach
                             </tbody>
@@ -127,7 +132,7 @@
                                 <th scope="col">Նկարի դիրքը</th>
                                 <th scope="col">Գործողություն</th>
                                 <th scope="col">Ադմին</th>
-                                <th scope="col">Խմբագրել</th>
+                                <th scope="col">Տեսնել</th>
                                 <th scope="col">Հաստատել</th>
                                 <th scope="col">Մերժել</th>
                             </tr>
@@ -143,20 +148,21 @@
                                     </td>
                                     <td>
                                         @php
-                                            $user_info = App\Helper::getUserInfo($value['user_id']);
+                                            $user_info = App\Helper::getUserInfo($value->user_id);
                                         @endphp
                                         {{$user_info['name'] . ' ' . $user_info['lastname']}}
                                     </td>
                                     <td>{{$status[$value->status]}}</td>
                                     <td style="width: 15px"><a href="{{route('gallery_show', $value->id)}}"><i
-                                                class="nav-icon fas fa-edit text-primary"></i></a></td>
+                                                class="nav-icon fas fa-eye text-primary"></i></a></td>
                                     <td class="text-center">
                                         <a href="{{route('submit', [$value->id, 2])}}" id="confirm">
                                             <i class="nav-icon fas fa-check text-success"></i>
                                         </a>
                                     </td>
                                     <td><a href="" class="refuse text-danger text-bold" data-bs-toggle="modal"
-                                           data-bs-target="#refuse_modal" data-row="{{$value->id}}" data-action="2">X</a></td>
+                                           data-bs-target="#refuse_modal" data-row="{{$value->id}}"
+                                           data-action="2">X</a></td>
                                 </tr>
                             @endforeach
                             </tbody>
@@ -191,14 +197,97 @@
                                     <td>{{$value->short_description}}</td>
                                     <td>{{$status[$value->status]}}</td>
                                     <td style="width: 15px"><a href="{{route('news_show', $value->id)}}"><i
-                                                class="nav-icon fas fa-edit text-primary"></i></a></td>
+                                                class="nav-icon fas fa-eye text-primary"></i></a></td>
                                     <td class="text-center">
                                         <a href="{{route('submit', [$value->id, 3])}}" class="confirm">
                                             <i class="nav-icon fas fa-check text-success"></i>
                                         </a>
                                     </td>
                                     <td><a href="" class="refuse text-danger text-bold" data-bs-toggle="modal"
-                                           data-bs-target="#refuse_modal" data-row="{{$value->id}}" data-action="3">X</a></td>
+                                           data-bs-target="#refuse_modal" data-row="{{$value->id}}"
+                                           data-action="3">X</a></td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                    <div id="sights" class="tab-pane fade">
+                        <div class="row mt-3">
+                            <div class="col-11"><h3>Տեսարժան վայրեր</h3></div>
+                            <div class="col-1 mt-1">
+                            </div>
+                        </div>
+                        <table class="table mt-3" id="workers_table">
+                            <thead class="thead-dark">
+                            <tr>
+                                <th scope="col" class="w_20">Հ/հ</th>
+                                <th scope="col">Լուսանկար</th>
+                                <th scope="col">Վերնագիր</th>
+                                <th scope="col">Կարճ նկարագրություն</th>
+                                <th scope="col">Գործողություն</th>
+                                <th scope="col">Տեսնել</th>
+                                <th scope="col">Հաստատել</th>
+                                <th scope="col">Մերժել</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @foreach($sights as $key=>$value)
+                                <tr>
+                                    <td>{{$key+1}}</td>
+                                    <td scope="row"><img src="{{asset('assets/img/sights/'. $value->image)}}"
+                                                         style="width: 90px; height: 90px; object-fit: cover"></td>
+                                    <td>{{$value->name}}</td>
+                                    <td>{{$value->description}}</td>
+                                    <td>{{$status[$value->status]}}</td>
+                                    <td style="width: 15px"><a href="{{route('sights_show', $value->id)}}"><i
+                                                class="nav-icon fas fa-eye text-primary"></i></a></td>
+                                    <td class="text-center">
+                                        <a href="{{route('submit', [$value->id, 4])}}" class="confirm">
+                                            <i class="nav-icon fas fa-check text-success"></i>
+                                        </a>
+                                    </td>
+                                    <td><a href="" class="refuse text-danger text-bold" data-bs-toggle="modal"
+                                           data-bs-target="#refuse_modal" data-row="{{$value->id}}"
+                                           data-action="4">X</a></td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                    <div id="sights_galleries" class="tab-pane fade">
+                        <div class="row mt-3">
+                            <div class="col-11"><h3>Տեսարժան վայրերի լուսանկարներ</h3></div>
+                            <div class="col-1 mt-1">
+                            </div>
+                        </div>
+                        <table class="table mt-3" id="workers_table">
+                            <thead class="thead-dark">
+                            <tr>
+                                <th scope="col" class="w_20">Հ/հ</th>
+                                <th scope="col">Լուսանկար</th>
+                                <th scope="col">Գործողություն</th>
+                                <th scope="col">Տեսնել</th>
+                                <th scope="col">Հաստատել</th>
+                                <th scope="col">Մերժել</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @foreach($sights_galleries as $key=>$value)
+                                <tr>
+                                    <td>{{$key+1}}</td>
+                                    <td scope="row"><img src="{{asset('assets/img/sights/'. $value->image)}}"
+                                                         style="width: 90px; height: 90px; object-fit: cover"></td>
+                                    <td>{{$status[$value->status]}}</td>
+                                    <td style="width: 15px"><a href="{{route('sights_gallery_show', $value->id)}}"><i
+                                                class="nav-icon fas fa-eye text-primary"></i></a></td>
+                                    <td class="text-center">
+                                        <a href="{{route('submit', [$value->id, 5])}}" class="confirm">
+                                            <i class="nav-icon fas fa-check text-success"></i>
+                                        </a>
+                                    </td>
+                                    <td><a href="" class="refuse text-danger text-bold" data-bs-toggle="modal"
+                                           data-bs-target="#refuse_modal" data-row="{{$value->id}}"
+                                           data-action="5">X</a></td>
                                 </tr>
                             @endforeach
                             </tbody>
@@ -233,8 +322,8 @@
 
     <script>
         let refuse = document.querySelectorAll('.refuse');
-        for (let tag of refuse){
-            tag.addEventListener('click', function (){
+        for (let tag of refuse) {
+            tag.addEventListener('click', function () {
                 let row = this.dataset.row;
                 let dateAction = this.dataset.action;
 

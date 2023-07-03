@@ -12,7 +12,7 @@
                 <img src="{{asset('assets/img/worker/' .$admin_info['img'])}}" class="img-circle elevation-2 admin_foto" alt="User Image">
             </div>
             <div class="info">
-                <a href="" class="d-block">{{$admin_info['name'] . ' ' . $admin_info['lastname']}}</a>
+                <a href="{{($admin_info['role'] == 1) ? route('admin', 1) : route('worker_info', $admin_info['worker_id'])}}" class="d-block">{{$admin_info['name'] . ' ' . $admin_info['lastname']}}</a>
             </div>
         </div>
         @php
@@ -22,7 +22,7 @@
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 @foreach($menu as $value)
-                    @if($role == 1 || $role == $value->id)
+                    @if($role == 1 || $role == $value->id || $value->show_for_all)
                         <li class="nav-item">
                             <a href="{{($value->is_worker) ? route('worker_info', $value->id) : route($value->admin_url)}}" class="nav-link">
                                 <p>

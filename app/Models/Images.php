@@ -12,8 +12,10 @@ class Images extends Model
     protected $table = 'gallery';
     protected $guarded = [];
 
-
-
+    public function gallery_status()
+    {
+        return $this->hasOne(Status::class, 'status_id', 'status');
+    }
 
 
 }

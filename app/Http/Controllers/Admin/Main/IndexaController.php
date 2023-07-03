@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Images;
 use App\Models\Main_info;
 use App\Models\News;
+use App\Models\Sights;
+use App\Models\SightsGallery;
 use App\Models\User;
 use App\Models\Worker;
 use App\Models\WorkerPosition;
@@ -37,6 +39,10 @@ class IndexaController extends Controller
 
             $news = DB::table('news')->whereIn('status', [2, 3])->get();
 
+            $sights = DB::table('sights')->whereIn('status', [2, 3])->get();
+
+            $sights_galleries = DB::table('sights_galleries')->whereIn('status', [2, 3])->get();
+
             $positions_arr = WorkerPosition::all()->toArray();
             foreach ($positions_arr as $item) {
                 $positions[$item['id']] = $item['title'];
@@ -44,7 +50,7 @@ class IndexaController extends Controller
         }
 
 
-        return view('admin.main.index', compact('worker', 'admin_info', 'images', 'info', 'worker_id', 'news','positions'));
+        return view('admin.main.index', compact('worker', 'admin_info', 'images', 'info', 'worker_id', 'news','positions', 'sights', 'sights_galleries'));
     }
 
     public function worker($worker_id)
@@ -65,7 +71,7 @@ class IndexaController extends Controller
     {
         $update_status = 1;
 
-        $tables = ['workers', 'main_infos', 'gallery', 'news'];
+        $tables = ['workers', 'main_infos', 'gallery', 'news', 'sights', 'sights_galleries'];
 
         $info = DB::table($tables[$table_id])->where('id', $id)->first();
 
@@ -93,9 +99,19 @@ class IndexaController extends Controller
 
         $admin_info = Helper::getAdmin();
 
-        $images = Images::where('id', $worker_id)->where('status', 1)->first();
+        $images = Images::where('id', $worker_id)->whereIn('status', [2,3])->first();
 
         return view('admin.main.galleryshow', compact('worker_id', 'admin_info', 'images'));
+    }
+
+    public function sights_gallery($sight_id)
+    {
+
+        $admin_info = Helper::getAdmin();
+
+        $images = SightsGallery::where('id', $sight_id)->whereIn('status', [2,3])->first();
+
+        return view('admin.main.sightsgalleryshow', compact('sight_id', 'admin_info', 'images'));
     }
 
     public function news($id)
@@ -108,18 +124,29 @@ class IndexaController extends Controller
         return view('admin.main.newsshow', compact('id', 'admin_info', 'news'));
     }
 
+    public function sights($id)
+    {
+
+        $admin_info = Helper::getAdmin();
+
+        $sights = Sights::where('id', $id)->first();
+
+        return view('admin.main.sightsshow', compact('id', 'admin_info', 'sights'));
+    }
+
     public function refuse(Request $request, $id, $table_id){
         $data = $request->validate([
             'message' => 'required',
         ]);
         $message = $data['message'];
 
-        $tables = ['workers', 'main_infos', 'gallery', 'news'];
+        $tables = ['workers', 'main_infos', 'gallery', 'news', 'sights', 'sights_galleries'];
 
         $info = DB::table($tables[$table_id])->where('id', $id)->first();
 
         if ($info->status === 3) {
-            $update_status = 5;
+//            ջնջելը մերժելը նշանակում է, որ ինքը կերևա
+            $update_status = 1;
         }elseif ($info->status === 2){
             $update_status = 4;
         }
