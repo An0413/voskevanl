@@ -100,7 +100,9 @@ Route::group(['namespase' => 'Admin', 'prefix' => 'admin'], function (){
     Route::get('/{worker_id}/worker',  [IndexaController::class, 'worker'])->where('worker_id', '[0-9]+')->name('workered');
     Route::get('/{worker_id}/info',  [IndexaController::class, 'info'])->where('worker_id', '[0-9]+')->name('info_show');
     Route::get('/{worker_id}/gallery',  [IndexaController::class, 'gallery'])->where('worker_id', '[0-9]+')->name('gallery_show');
+    Route::get('/{worker_id}/sights_gallery',  [IndexaController::class, 'sights_gallery'])->where('worker_id', '[0-9]+')->name('sights_gallery_show');
     Route::get('/{worker_id}/news',  [IndexaController::class, 'news'])->where('worker_id', '[0-9]+')->name('news_show');
+    Route::get('/{worker_id}/sights',  [IndexaController::class, 'sights'])->where('worker_id', '[0-9]+')->name('sights_show');
     Route::get('/submit/{id}/{table_id}',  [IndexaController::class, 'submit'])->where('id', '[0-9]+')->where('table_id', '[0-9]+')->name('submit');
     Route::post('/refuse/{id}/{table_id}',  [IndexaController::class, 'refuse'])->where('id', '[0-9]+')->where('table_id', '[0-9]+')->name('refuse');
     Route::get('/refuse',  [IndexaController::class, 'refuse'])->name('refuse_sample');

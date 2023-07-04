@@ -18,10 +18,11 @@
             @foreach($images as $value)
                 <div class="col-lg-4 col-md-6 portfolio-item filter-app">
                     <div class="portfolio-wrap">
-                        <img src="{{asset('assets/img/ambulance/'. $value['src'])}}" class="img-fluid" alt="">
+                        <img src="{{asset('assets/img/gallery/'. $value['src'])}}" class="img-fluid" alt="">
                         <div class="portfolio-links">
-                            <a href="{{asset('assets/img/ambulance/'. $value['src'])}}" data-gallery="portfolioGallery"
-                               class="portfolio-lightbox"><i class="bx bx-plus"></i></a></div>
+                            <a href="{{asset('assets/img/gallery/'. $value['src'])}}" data-gallery="portfolioGallery"
+                               class="portfolio-lightbox"><i class="bx bx-plus"></i></a>
+                        </div>
                     </div>
                 </div>
             @endforeach
@@ -40,7 +41,7 @@
                 <div class="col-lg-4 col-md-6 mt-5"  data-aos="fade-up">
                     <div class="member aos-init aos-animate" {{--data-aos-delay="300"--}}>
                         <div class="pic">
-                            <img src="{{asset('assets/img/kindergarten/'.$value->img)}}"
+                            <img src="{{asset('assets/img/worker/'.$value->img)}}"
                                  class="img-fluid" alt="">
                         </div>
                         <div class="member-info">

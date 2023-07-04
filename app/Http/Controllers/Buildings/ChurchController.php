@@ -13,8 +13,8 @@ class ChurchController extends Controller
     public function index()
     {
 
-        $church = Church::all();
-        $images = Images::where('gallery_id', '=', 11)->get();
+        $church = Church::first();
+        $images = Images::where('gallery_id', 11)->orderBy('main_image', 'desc')->get();
         return view('buildings.church', compact('church', 'images'));
     }
 }

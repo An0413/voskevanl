@@ -57,7 +57,7 @@ class AdminBuildingsController extends Controller
         $buildings = Buildings::where('id', $buildings_id)->first();
         $data = $request->validated();
 
-        $data['status'] = 3;
+        $data['status'] = 2;
         if ($request->file('img')) {
             $imagePath = $request->file('img')->store('public/assets/img/buildings');
             $path_arr = explode('/', $imagePath);
