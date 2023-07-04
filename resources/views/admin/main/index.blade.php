@@ -91,10 +91,10 @@
                                 <tr>
                                     <td>{{$key+1}}</td>
                                     <th scope="col">{{$value->name}}</th>
-                                    <th scope="col">{{$value->content}}</th>
+                                    <th scope="col">{!! $value->content !!}</th>
                                     <td>
                                         @php
-                                            $user_info = App\Helper::getUserInfo($value['user_id']);
+                                            $user_info = App\Helper::getUserInfo($value->user_id);
                                         @endphp
                                         {{$user_info['name'] . ' ' . $user_info['lastname']}}
                                     </td>
@@ -143,7 +143,7 @@
                                     </td>
                                     <td>
                                         @php
-                                            $user_info = App\Helper::getUserInfo($value['user_id']);
+                                            $user_info = App\Helper::getUserInfo($value->user_id);
                                         @endphp
                                         {{$user_info['name'] . ' ' . $user_info['lastname']}}
                                     </td>

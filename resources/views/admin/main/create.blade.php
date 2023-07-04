@@ -123,7 +123,7 @@
                                         <div class="form-group">
                                             <label for="description">Տեղեկություն</label>
                                             <textarea class="form-control" rows="5" style="height: 180px;"
-                                                      name="content" id="description" required></textarea>
+                                                      name="content" id="description"></textarea>
                                         </div>
                                         <div class="card-footer">
                                             <button type="submit" class="btn btn-primary">Հաստատել</button>

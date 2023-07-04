@@ -49,13 +49,13 @@ class GalleryController extends Controller
 
         DB::table('gallery')
             ->where('id', $gallery_id)
-            ->update(['status' => 2]);
+            ->update(['status' => 2, 'src' => $imageName]);
 
 
         if ($images['gallery_id'] == 6){
             return redirect()->route('admin_history');
         }
-        return redirect(route('worker_info', $images['menu_id']));
+        return redirect()->back();
     }
 
     public function delete($gallery_id)
