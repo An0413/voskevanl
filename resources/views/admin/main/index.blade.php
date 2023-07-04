@@ -95,7 +95,7 @@
                                 <tr>
                                     <td>{{$key+1}}</td>
                                     <th scope="col">{{$value->name}}</th>
-                                    <th scope="col">{{$value->content}}</th>
+                                    <th scope="col">{!! $value->content !!}</th>
                                     <td>
                                         @php
                                             $user_info = App\Helper::getUserInfo($value->user_id);

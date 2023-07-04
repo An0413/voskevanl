@@ -49,7 +49,7 @@ class GalleryController extends Controller
 
         DB::table('gallery')
             ->where('id', $gallery_id)
-            ->update(['status' => 2]);
+            ->update(['status' => 2, 'src' => $imageName]);
 
 
         if ($images['gallery_id'] == 6){

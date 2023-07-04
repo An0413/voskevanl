@@ -70,7 +70,7 @@ class LoginController extends Controller
         auth()->login($user);
         $admin_info = Helper::getAdmin();
 
-        return redirect()->route('admin', 'admin_info');
+        return redirect()->route('admin', compact('admin_info'));
     }
 
     public function get_workers(Request $request)
