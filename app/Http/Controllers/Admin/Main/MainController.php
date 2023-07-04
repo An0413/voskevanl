@@ -20,30 +20,25 @@ use Illuminate\Support\Facades\DB;
 use App\Helper;
 
 
-
-
-
-
-
 class MainController extends Controller
 {
     public function index($worker_id)
     {
-        if (!Auth::user()){
+        if (!Auth::user()) {
             return redirect('admin/login');
         }
-        $worker = Worker::where('worker_id',  $worker_id)->where('status', 1)->get();
-        $images = Images::where('gallery_id',  $worker_id)->get();
+        $worker = Worker::where('worker_id', $worker_id)->where('status', '>', 0)->get();
+        $images = Images::where('gallery_id', $worker_id)->get();
 
         $info = Main_info::where('menu_id', $worker_id)->get();
         $admin_info = Helper::getAdmin();
 
-        return view('admin.main.show', compact('worker', 'images', 'info', 'worker_id','admin_info'));
+        return view('admin.main.show', compact('worker', 'images', 'info', 'worker_id', 'admin_info'));
     }
 
     public function edit_worker($worker_id)
     {
-        if (!Auth::user()){
+        if (!Auth::user()) {
             return redirect('admin/login');
         }
         $worker = Worker::where('id', $worker_id)->first();
@@ -51,12 +46,12 @@ class MainController extends Controller
 
         $admin_info = Helper::getAdmin();
 
-        return view('admin.main.edit', compact('worker', 'worker_positions','admin_info'));
+        return view('admin.main.edit', compact('worker', 'worker_positions', 'admin_info'));
     }
 
     public function update($worker_id, UpdateWorkerRequest $request)
     {
-        if (!Auth::user()){
+        if (!Auth::user()) {
             return redirect('admin/login');
         }
         $worker = Worker::where('id', $worker_id)->first();
@@ -79,7 +74,7 @@ class MainController extends Controller
 
     public function delete($worker_id)
     {
-        if (!Auth::user()){
+        if (!Auth::user()) {
             return redirect('admin/login');
         }
         $worker = Worker::where('id', $worker_id)->first();
@@ -91,8 +86,9 @@ class MainController extends Controller
         return redirect()->route('worker_info', $worker->worker_id);
     }
 
-    public function create($area, $tab){
-        if (!Auth::user()){
+    public function create($area, $tab)
+    {
+        if (!Auth::user()) {
             return redirect('admin/login');
         }
 
@@ -101,12 +97,12 @@ class MainController extends Controller
         $admin_info = Helper::getAdmin();
 
 
-        return view('admin.main.create', compact(['worker_positions', 'tab', 'area','admin_info']));
+        return view('admin.main.create', compact(['worker_positions', 'tab', 'area', 'admin_info']));
     }
 
     public function store(StoreWorkerRequest $request, $worker_id)
     {
-        if (!Auth::user()){
+        if (!Auth::user()) {
             return redirect('admin/login');
         }
         $data = $request->validated();
@@ -123,7 +119,7 @@ class MainController extends Controller
 
     public function storeInfo(StoreInfoRequest $request, $worker_id, $tab)
     {
-        if (!Auth::user()){
+        if (!Auth::user()) {
             return redirect('admin/login');
         }
         $data = $request->validated();
@@ -135,8 +131,9 @@ class MainController extends Controller
         return redirect()->route('worker_info', $worker_id);
     }
 
-    public function createGallery($area, $tab){
-        if (!Auth::user()){
+    public function createGallery($area, $tab)
+    {
+        if (!Auth::user()) {
             return redirect('admin/login');
         }
 
@@ -146,7 +143,7 @@ class MainController extends Controller
 
     public function storeGallery(StoreGalleryRequest $request, $worker_id, $tab)
     {
-        if (!Auth::user()){
+        if (!Auth::user()) {
             return redirect('admin/login');
         }
         $data = $request->validated();
@@ -159,7 +156,7 @@ class MainController extends Controller
         $data['src'] = $imageName;
         unset($data['image']);
         DB::table('gallery')->insert($data);
-        return redirect()->route('admin_history');
+        return redirect()->back();
     }
 
 }

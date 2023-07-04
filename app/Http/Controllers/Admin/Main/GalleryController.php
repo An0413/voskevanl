@@ -41,7 +41,7 @@ class GalleryController extends Controller
         $data = $request->validated();
 
         $imagePath = $request->file('img')->store('public/assets/img/gallery');
-        $path_arr = explode('/', $imagePath);
+        $path_arr = explode('/', $imagePath);s
         $imageName = end($path_arr);
         $request->img->move(public_path('assets/img/gallery'), $imageName);
         $data['src'] = $imageName;
@@ -55,7 +55,7 @@ class GalleryController extends Controller
         if ($images['gallery_id'] == 6){
             return redirect()->route('admin_history');
         }
-        return redirect(route('worker_info', $images['menu_id']));
+        return redirect()->back();
     }
 
     public function delete($gallery_id)

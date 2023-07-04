@@ -67,7 +67,7 @@ class AdminNewsController extends Controller
         $news = News::where('id', $news_id)->first();
         $data = $request->validated();
 
-        $data['status'] = 3;
+        $data['status'] = 2;
         if ($request->file('img')) {
             $imagePath = $request->file('img')->store('public/assets/img/news');
             $path_arr = explode('/', $imagePath);
