@@ -32,7 +32,7 @@ class MainController extends Controller
         if (!Auth::user()){
             return redirect('admin/login');
         }
-        $worker = Worker::where('worker_id',  $worker_id)->where('status', 1)->get();
+        $worker = Worker::where('worker_id',  $worker_id)->get();
         $images = Images::where('gallery_id',  $worker_id)->get();
 
         $info = Main_info::where('menu_id', $worker_id)->get();
@@ -117,6 +117,7 @@ class MainController extends Controller
         $imageName = end($path_arr);
         $request->img->move(public_path('assets/img/worker'), $imageName);
         $data['img'] = $imageName;
+        $data['status'] = 2;
         DB::table('workers')->insert($data);
         return redirect()->route('worker_info', $worker_id);
     }
@@ -129,7 +130,7 @@ class MainController extends Controller
         $data = $request->validated();
         $data['menu_id'] = $worker_id;
         $data['user_id'] = Auth::user()->id;
-        $data['status'] = 1;
+        $data['status'] = 2;
         $data['edit_user_id'] = 0;
         DB::table('main_infos')->insert($data);
         return redirect()->route('worker_info', $worker_id);
@@ -157,6 +158,7 @@ class MainController extends Controller
         $imageName = end($path_arr);
         $request->image->move(public_path('assets/img/gallery'), $imageName);
         $data['src'] = $imageName;
+        $data['status'] = 2;
         unset($data['image']);
         DB::table('gallery')->insert($data);
         return redirect()->route('admin_history');
