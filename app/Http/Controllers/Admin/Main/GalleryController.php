@@ -67,7 +67,7 @@ class GalleryController extends Controller
 
         DB::table('gallery')
             ->where('id', $gallery_id)
-            ->update(['status' => 3]);
+            ->update(['status' => 3,'edit_user_id' => Auth::user()->id]);
 
 
         return redirect()->back();

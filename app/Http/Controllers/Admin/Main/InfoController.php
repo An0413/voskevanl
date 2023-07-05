@@ -55,7 +55,7 @@ class InfoController extends Controller
         $info = Main_info::where('id', $info_id)->first();
         DB::table('main_infos')
             ->where('id', $info_id)
-            ->update(['status' => 3]);
+            ->update(['status' => 3,'edit_user_id' => Auth::user()->id]);
 
         return redirect(route('worker_info',  $info['menu_id']));
     }
