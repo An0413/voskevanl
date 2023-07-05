@@ -60,7 +60,8 @@ class AdminHistoryController extends Controller
         }
         $history = History::where('id', $history_id)->first();
         $data = $request->validated();
-        $data['history_status'] = 3;
+        $data['history_status'] = 2;
+        $data['edit_user_id'] = Auth::user()->id;
         if ($request->file('image')) {
             $imagePath = $request->file('image')->store('public/assets/img/history');
             $path_arr = explode('/', $imagePath);
