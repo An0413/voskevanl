@@ -149,7 +149,6 @@ class IndexaController extends Controller
         $info = DB::table($tables[$table_id])->where('id', $id)->first();
 
         if ($info->status === 3) {
-//            ջնջելը մերժելը նշանակում է, որ ինքը կերևա
             $update_status = 1;
         } elseif ($info->status === 2) {
             $update_status = 4;
@@ -157,7 +156,7 @@ class IndexaController extends Controller
 
         DB::table($tables[$table_id])->where('id', $id)->update(['status' => $update_status]);
 
-        $user = Helper::getUserInfo($info->user_id);
+        $user = Helper::getUserInfo($info->edit_user_id);
         $insert_array = array(
             'name' => 'Admin',
             'email' => 'Admin',
