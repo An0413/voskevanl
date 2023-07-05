@@ -1,11 +1,14 @@
 @extends('admin.layouts.main')
 @section('content')
-
+@php
+$green =['','unread'];
+@endphp
     <div class="content-wrapper">
         <div class="content-header">
             <div class="container-fluid">
                 <ul class="nav nav-tabs justify-content-center text-muted">
-                    <li style="margin-left: 70px" class="active"><a data-toggle="tab" href="#user">Հաղորդագրություններ</a>
+                    <li style="margin-left: 70px" class="active"><a data-toggle="tab"
+                                                                    href="#user">Հաղորդագրություններ</a>
                     </li>
                 </ul>
                 <div class="tab-content">
@@ -18,7 +21,7 @@
                                 </div>
                                 <table class="table mt-3" id="workers_table">
                                     <thead class="thead-dark">
-                                    <tr>
+                                    <tr style="vertical-align: middle">
                                         <th scope="col" class="w_20">Հ/հ</th>
                                         <th scope="col">Անուն</th>
                                         <th scope="col">Էլ․ հասցե</th>
@@ -29,7 +32,7 @@
                                     </thead>
                                     <tbody>
                                     @foreach($message as $key=>$value)
-                                        <tr>
+                                        <tr class="{{$green[$value->status]}}">
                                             <td>{{$key+1}}</td>
                                             <td class="name">{{$value->name}}</td>
                                             <td>{{$value->email}}</td>

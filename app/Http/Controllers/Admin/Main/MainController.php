@@ -22,12 +22,16 @@ use App\Helper;
 
 class MainController extends Controller
 {
-    public function index($worker_id)
+    public function index($worker_id = 0)
     {
         if (!Auth::user()) {
             return redirect('admin/login');
         }
 
+        $admin_info = Helper::getAdmin();
+        if($admin_info['role'] != 1) {
+            $worker_id = $admin_info['worker_id'];
+        }
 
         $worker = Worker::where('worker_id',  $worker_id)->get();
         $images = Images::where('gallery_id',  $worker_id)->get();

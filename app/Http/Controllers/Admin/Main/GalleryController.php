@@ -41,7 +41,7 @@ class GalleryController extends Controller
         $data = $request->validated();
 
         $imagePath = $request->file('img')->store('public/assets/img/gallery');
-        $path_arr = explode('/', $imagePath);s
+        $path_arr = explode('/', $imagePath);
         $imageName = end($path_arr);
         $request->img->move(public_path('assets/img/gallery'), $imageName);
         $data['src'] = $imageName;
@@ -70,7 +70,7 @@ class GalleryController extends Controller
             ->update(['status' => 3]);
 
 
-        return redirect()->route('admin_history');
+        return redirect()->back();
     }
 
 }
