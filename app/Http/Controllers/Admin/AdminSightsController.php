@@ -62,7 +62,8 @@ class AdminSightsController extends Controller
         }
         $sights = Sights::where('id', $sights_id)->first();
         $data = $request->validated();
-        $data['status'] = 3;
+        $data['status'] = 2;
+        $data['edit_user_id'] = Auth::user()->id;
         if ($request->file('image')) {
             $imagePath = $request->file('image')->store('public/assets/img/sights');
             $path_arr = explode('/', $imagePath);
