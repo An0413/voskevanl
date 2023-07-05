@@ -87,7 +87,7 @@ class MainController extends Controller
         $worker = Worker::where('id', $worker_id)->first();
         DB::table('workers')
             ->where('id', $worker_id)
-            ->update(['status' => 3]);
+            ->update(['status' => 3,'edit_user_id' => Auth::user()->id]);
 
 
         return redirect()->route('worker_info', $worker->worker_id);
