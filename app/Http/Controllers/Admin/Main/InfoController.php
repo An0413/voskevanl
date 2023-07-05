@@ -40,7 +40,7 @@ class InfoController extends Controller
         $data = $request->validated();
         DB::table('main_infos')
             ->where('id', $info_id)
-            ->update(['status' => 2, 'edit_user_id' => Auth::user()->id]);
+            ->update(['status' => 2, 'edit_user_id' => Auth::user()->id, 'name' =>$data['name'],'seq'=>$data['seq'],'content' =>$data['content']]);
 
 
 
