@@ -130,7 +130,7 @@ Route::group(['namespase' => 'Admin', 'prefix' => 'admin'], function (){
     Route::post('/church/update/{church_id}', [AdminChurchController::class, 'update'])->where('church_id', '[0-9]+')->name('church_update');
     Route::delete('/church/delete/{church_id}', [AdminChurchController::class, 'delete'])->where('church_id', '[0-9]+')->name('church_delete');
 
-    Route::get('/info/{id}', [MainController::class, 'index'])->where('id', '[0-9]+')->name('worker_info');
+    Route::get('/info/{worker_id}', [MainController::class, 'index'])->where('worker_id', '[0-9]+')->name('worker_info');
     Route::get('/create/{id}/{tab}', [MainController::class, 'create'])->where('id', '[0-9]+')->where('tab', '[a-zA-Z]+')->name('worker_create');
     Route::post('/worker/store/{id}', [MainController::class, 'store'])->where('id', '[0-9]+')->name('worker_store');
     Route::post('/info/store/{id}/{tab}', [MainController::class, 'storeInfo'])->where('id', '[0-9]+')->where('tab', '[a-zA-Z]+')->name('info_store');
@@ -146,7 +146,7 @@ Route::group(['namespase' => 'Admin', 'prefix' => 'admin'], function (){
 
     Route::get('/gallery/edit/{gallery_id}', [GalleryController::class, 'edit'])->where('gallery_id', '[0-9]+')->name('gallery_edit');
     Route::post('/gallery/update/{gallery_id}', [GalleryController::class, 'update'])->where('gallery_id', '[0-9]+')->name('gallery_update');
-    Route::delete('/gallery/delete/{gallery_id}', [GalleryController::class, 'delete'])->where('gallery_id', '[0-9]+')->name('gallery_delete');
+    Route::get('/gallery/delete/{gallery_id}', [GalleryController::class, 'delete'])->where('gallery_id', '[0-9]+')->name('gallery_delete');
 
     Route::get('/register', [LoginController::class, 'register'])->name('register');
     Route::post('/register_user', [LoginController::class, 'registerUser'])->name('register_user');

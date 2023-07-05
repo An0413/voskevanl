@@ -1821,10 +1821,6 @@ p {
     color: white;
 }
 
-#workers_table td {
-    vertical-align: initial;
-}
-
 .w_20 {
     width: 50px;
 }
@@ -1971,4 +1967,8 @@ form .card-footer{
     width:95%;
     height: 350px;
     object-fit: cover;
+}
+.unread{
+    background-color: #86c998;
+    vertical-align: center!important;
 }

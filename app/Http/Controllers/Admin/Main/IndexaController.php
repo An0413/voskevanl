@@ -21,7 +21,7 @@ use Illuminate\Support\Facades\DB;
 
 class IndexaController extends Controller
 {
-    public function index($worker_id)
+    public function index()
     {
 
         $admin_info = Helper::getAdmin();
@@ -31,6 +31,7 @@ class IndexaController extends Controller
         }
         $positions = [];
         if ($admin_info['role'] === 1) {
+            $worker_id = $admin_info['worker_id'];
             $worker = DB::table('workers')->whereIn('status', [2, 3])->get();
 
             $images = DB::table('gallery')->whereIn('status', [2, 3])->get();;
@@ -47,10 +48,12 @@ class IndexaController extends Controller
             foreach ($positions_arr as $item) {
                 $positions[$item['id']] = $item['title'];
             }
+            return view('admin.main.index', compact('worker', 'admin_info', 'images', 'info', 'worker_id', 'news', 'positions', 'sights', 'sights_galleries'));
+        } else {
+            return redirect()->route('worker_info', $admin_info['worker_id']);
         }
 
 
-        return view('admin.main.index', compact('worker', 'admin_info', 'images', 'info', 'worker_id', 'news','positions', 'sights', 'sights_galleries'));
     }
 
     public function worker($worker_id)
@@ -99,7 +102,7 @@ class IndexaController extends Controller
 
         $admin_info = Helper::getAdmin();
 
-        $images = Images::where('id', $worker_id)->whereIn('status', [2,3])->first();
+        $images = Images::where('id', $worker_id)->whereIn('status', [2, 3])->first();
 
         return view('admin.main.galleryshow', compact('worker_id', 'admin_info', 'images'));
     }
@@ -109,7 +112,7 @@ class IndexaController extends Controller
 
         $admin_info = Helper::getAdmin();
 
-        $images = SightsGallery::where('id', $sight_id)->whereIn('status', [2,3])->first();
+        $images = SightsGallery::where('id', $sight_id)->whereIn('status', [2, 3])->first();
 
         return view('admin.main.sightsgalleryshow', compact('sight_id', 'admin_info', 'images'));
     }
@@ -134,7 +137,8 @@ class IndexaController extends Controller
         return view('admin.main.sightsshow', compact('id', 'admin_info', 'sights'));
     }
 
-    public function refuse(Request $request, $id, $table_id){
+    public function refuse(Request $request, $id, $table_id)
+    {
         $data = $request->validate([
             'message' => 'required',
         ]);
@@ -147,7 +151,7 @@ class IndexaController extends Controller
         if ($info->status === 3) {
 //            ջնջելը մերժելը նշանակում է, որ ինքը կերևա
             $update_status = 1;
-        }elseif ($info->status === 2){
+        } elseif ($info->status === 2) {
             $update_status = 4;
         }
 
