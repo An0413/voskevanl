@@ -70,7 +70,7 @@ class GalleryController extends Controller
             ->update(['status' => 3]);
 
 
-        return redirect()->route('admin_history');
+        return redirect()->back();
     }
 
 }

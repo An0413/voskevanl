@@ -36,6 +36,7 @@
 
                                     <td>{{$value->gallery_status->status }}</td>
 
+                                    @if($value->user_id == $admin_info['user'])
                                     <td style="width: 15px">
                                         @if($value->status == 1)
                                             <a href="{{route('sights_gallery_edit', $value->id)}}"><i
@@ -53,6 +54,10 @@
                                             </form>
                                         @endif
                                     </td>
+                                    @else
+                                    <td></td>
+                                    <td></td>
+                                    @endif
                                 </tr>
                             @endforeach
                             </tbody>

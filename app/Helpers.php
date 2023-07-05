@@ -19,6 +19,7 @@ class Helper
                 header("Location: login");
             }
             $admin = Worker::where('id', $admin_info['worker_id'])->first()->toArray();
+            $admin_info['user'] = $admin_info['id'];
             if (!$admin) {
                 header("Location: login");
             }

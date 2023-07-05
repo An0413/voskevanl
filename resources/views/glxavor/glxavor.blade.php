@@ -215,7 +215,7 @@
                     <div class="form-group mt-3">
 
                         <select class="form-select" id="message_to" name="message_to" required>
-                            <option value="">Ընտրել հասցեատիրջը</option>
+                            <option value="">Ընտրել հասցեատիրոջը</option>
                             @php
                                 $user = \App\Models\Role::all();
                             @endphp
