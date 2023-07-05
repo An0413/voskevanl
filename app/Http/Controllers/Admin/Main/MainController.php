@@ -29,12 +29,12 @@ class MainController extends Controller
         }
 
         $admin_info = Helper::getAdmin();
-        if($admin_info['role'] != 1) {
+        if ($admin_info['role'] != 1) {
             $worker_id = $admin_info['worker_id'];
         }
 
-        $worker = Worker::where('worker_id',  $worker_id)->get();
-        $images = Images::where('gallery_id',  $worker_id)->get();
+        $worker = Worker::where('worker_id', $worker_id)->get();
+        $images = Images::where('gallery_id', $worker_id)->get();
 
 
         $info = Main_info::where('menu_id', $worker_id)->get();
@@ -73,7 +73,11 @@ class MainController extends Controller
 
         DB::table('workers')
             ->where('id', $worker_id)
-            ->update(['status' => 2, 'edit_user_id' => Auth::user()->id]);
+            ->update(['status' => 2, 'edit_user_id' => Auth::user()->id, 'seq' => $data['seq'], 'name' => $data['name'], 'lastname' => $data['lastname'],
+                'position' => $data['position'], 'img' => $data['img'],
+                'fb_link' => $data['fb_link'], 'mail_link' => $data['mail_link'],
+                'in_link' => $data['in_link'], 'insta_link' => $data['insta_link'],
+            ]);
 
 
         return redirect()->route('worker_info', $worker->worker_id);
@@ -87,7 +91,7 @@ class MainController extends Controller
         $worker = Worker::where('id', $worker_id)->first();
         DB::table('workers')
             ->where('id', $worker_id)
-            ->update(['status' => 3,'edit_user_id' => Auth::user()->id]);
+            ->update(['status' => 3, 'edit_user_id' => Auth::user()->id]);
 
 
         return redirect()->route('worker_info', $worker->worker_id);
