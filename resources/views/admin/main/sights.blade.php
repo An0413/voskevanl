@@ -5,7 +5,8 @@
         <div class="content-header">
             <div class="container-fluid">
                 <ul class="nav nav-tabs justify-content-center text-muted">
-                    <li style="margin-left: 70px" class="active"><a data-toggle="tab" href="#user">Տեսարժան վայրեր</a></li>
+                    <li style="margin-left: 70px" class="active"><a data-toggle="tab" href="#user">Տեսարժան վայրեր</a>
+                    </li>
                 </ul>
                 <div class="tab-content">
                     <div id="user" class="tab-pane fade in active show">
@@ -39,21 +40,23 @@
                                             <td>{{$key+1}}</td>
                                             <td scope="row">
                                                 <img src="{{asset('assets/img/sights/'. $value->image)}}"
-                                                                 style="width: 90px; height: 90px; object-fit: cover">
+                                                     style="width: 90px; height: 90px; object-fit: cover">
                                             </td>
                                             <td>{{$value->name}}</td>
                                             <td>{{substr($value['description'], 0, 1000) . "..."}}</td>
                                             <td>{{$value->sights_status->status}}</td>
                                             <td>
                                                 <a href="{{route('sights_gallery', $value->id)}}">
-                                                    <i class="nav-icon fas fa-image text-primary" style="margin-left: 20px"></i>
+                                                    <i class="nav-icon fas fa-image text-primary"
+                                                       style="margin-left: 20px"></i>
                                                 </a>
                                             </td>
+                                            @if($value->user_id == $admin_info['user'])
                                             <td>
-                                                @if($value->status == 1)
-                                                    <a href="{{route('sights_edit', $value->id)}}"><i
-                                                            class="nav-icon fas fa-edit text-primary"></i></a>
-                                                @endif
+                                                    @if($value->status == 1)
+                                                        <a href="{{route('sights_edit', $value->id)}}"><i
+                                                                class="nav-icon fas fa-edit text-primary"></i></a>
+                                                    @endif
                                             </td>
                                             <td>
                                                 @if($value->status == 1)
@@ -68,6 +71,11 @@
                                                     </form>
                                                 @endif
                                             </td>
+                                            @else
+                                                <td></td>
+                                                <td></td>
+                                            @endif
+
                                         </tr>
                                     @endforeach
                                     </tbody>
