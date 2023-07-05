@@ -17,10 +17,10 @@ class CarateController extends Controller
     public function __invoke()
     {
 
-        $images = Images::where('gallery_id', '=', 15)->where('main_image', '=', 0)->get();
-        $imagesg = Images::where('main_image', '=', 1)->where('gallery_id', '=', 15)->get();
-        $worker = Worker::where('worker_id', '=', 15)->get();
-        $info = Main_info::where('menu_id', '=', 15 )->get();
+        $images = Images::where('gallery_id', '=', 15)->where('main_image', '=', 0)->where('status', '=', 1)->get();
+        $imagesg = Images::where('main_image', '=', 1)->where('gallery_id', '=', 15)->where('status', '=', 1)->get();
+        $worker = Worker::where('worker_id', '=', 15)->where('status', '=', 1)->get();
+        $info = Main_info::where('menu_id', '=', 15 )->where('status', '=', 1)->get();
 
         return view('buildings.culture.carate', compact('worker', 'imagesg', 'images', 'info'));
     }
