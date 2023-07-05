@@ -13,10 +13,10 @@ class KinderController extends Controller
 {
     public function __invoke()
     {
-        $imagesg = Images::where('gallery_id', '=', 9)->where('main_image', '=', 1)->get();
-        $images = Images::where('gallery_id', '=', 9)->where('main_image', '=', 0)->get();
-        $info = Main_info::where('menu_id', '=', 9)->get();
-        $worker = Worker::where('worker_id', '=', 9)->get();
+        $imagesg = Images::where('gallery_id', '=', 9)->where('main_image', '=', 1)->where('status', '=', 1)->get();
+        $images = Images::where('gallery_id', '=', 9)->where('main_image', '=', 0)->where('status', '=', 1)->get();
+        $info = Main_info::where('menu_id', '=', 9)->where('status', '=', 1)->get();
+        $worker = Worker::where('worker_id', '=', 9)->where('status', '=', 1)->get();
 
         return view('buildings.kindergarten', compact('worker', 'images', 'imagesg', 'info'));
     }

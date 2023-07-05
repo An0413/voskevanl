@@ -28,7 +28,7 @@ class InfoController extends Controller
         $admin_info = Helper::getAdmin();
 
 
-        return view('admin.main.editi', compact('info',admin_info));
+        return view('admin.main.editi', compact('info','admin_info'));
     }
 
     public function update($info_id, UpdateInfoRequest $request)

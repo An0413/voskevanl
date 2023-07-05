@@ -14,9 +14,9 @@ class AmbulanceController extends Controller
 {
     public function __invoke()
     {
-        $ambulance = Main_info::where('menu_id', '=', 10)->get();
-        $worker = Worker::where('worker_id', '=', 10)->get();
-        $images = Images::where('gallery_id', '=', 10)->get();
+        $ambulance = Main_info::where('menu_id', '=', 10)->where('status', '=', 1)->get();
+        $worker = Worker::where('worker_id', '=', 10)->where('status', '=', 1)->get();
+        $images = Images::where('gallery_id', '=', 10)->where('status', '=', 1)->get();
         return view('buildings.ambulance', compact('ambulance', 'worker', 'images'));
     }
 }

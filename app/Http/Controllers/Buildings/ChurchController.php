@@ -14,7 +14,7 @@ class ChurchController extends Controller
     {
 
         $church = Church::first();
-        $images = Images::where('gallery_id', 11)->orderBy('main_image', 'desc')->get();
+        $images = Images::where('gallery_id', 11)->orderBy('main_image', 'desc')->where('status', '=', 1)->get();
         return view('buildings.church', compact('church', 'images'));
     }
 }
