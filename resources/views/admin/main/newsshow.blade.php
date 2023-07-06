@@ -30,7 +30,7 @@
                                 <div class="col-4">
                                     <div class="card-body w-100">
                                         <div class="form-group">
-                                            <label for="name">Նկարագրություն - {{$news->description}}</label>
+                                            <label for="name">Նկարագրություն - {!! $news->description !!}</label>
                                         </div>
                                     </div>
                                 </div>

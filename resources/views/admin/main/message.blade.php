@@ -83,16 +83,17 @@ $green =['','unread'];
     <script>
         $('.view_message').on('click', function (e) {
             // jqueryov gnal tvyal toxic merel uma uxarkvel, ev text@ u dnel sender u message_text classnerov elementneri mej hamapatasxanabar
-            let user = $(this).parent().parent().find('.name').text();
-            let namak = $(this).parent().parent().find('.message').html();
+            let user = $(this).parents('tr').find('.name').text();
+            let namak = $(this).parents('tr').find('.message').html();
 
-            $('.sender').text('name') === user;
-            $('.message_text').text('namak') === namak;
+            $('.sender').text(user);
+            $('.message_text').html(namak);
 
             e.preventDefault();
             let message = $(this).data('value');
             if ($(this).data('status') == 1) {
                 $(this).data('status', 0);
+                $(this).parents('tr').removeClass('unread');
 
                 $.ajax({
                     type: 'POST',

@@ -35,12 +35,12 @@
                             <td>{{$value->short_description}}</td>
                             <td>{{$value->news_status->status }}</td>
                             <td>
-                                @if($value->status == 1)
+                                @if($value->status == 1 || $value->status == 4)
                                     <a href="{{route('news_edit', $value->id)}}"><i
                                             class="nav-icon fas fa-edit text-primary"></i></a></td>
                             @endif
                             <td>
-                                @if($value->status == 1)
+                                @if($value->status == 1 || $value->status == 4)
                                     <form action="{{route('news_delete', $value->id)}}" method="post">
                                         @csrf
                                         @method('delete')

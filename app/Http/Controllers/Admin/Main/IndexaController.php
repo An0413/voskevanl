@@ -153,7 +153,7 @@ class IndexaController extends Controller
         } elseif ($info->status === 2) {
             $update_status = 4;
         }
-        
+
         DB::table($tables[$table_id])->where('id', $id)->update(['status' => $update_status]);
 
         $user = Helper::getUserInfo($info->edit_user_id);

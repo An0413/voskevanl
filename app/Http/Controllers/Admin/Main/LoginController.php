@@ -50,6 +50,10 @@ class LoginController extends Controller
         if (!Auth::user()){
             return redirect('admin/login');
         }
+        $user_info = Helper::getAdmin();
+        if ($user_info['role'] != 1) {
+            return redirect()->back();
+        }
         $roles = Role::all();
         $worker = Worker::all();
         $admin_info = Helper::getAdmin();

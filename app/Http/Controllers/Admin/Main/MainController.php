@@ -117,7 +117,8 @@ class MainController extends Controller
             return redirect('admin/login');
         }
         $data = $request->validated();
-
+        $data['user_id'] = Auth::user()->id;
+        $data['edit_user_id'] = Auth::user()->id;
         $data['worker_id'] = $worker_id;
         $imagePath = $request->file('img')->store('public/assets/img/worker');
         $path_arr = explode('/', $imagePath);
@@ -138,7 +139,7 @@ class MainController extends Controller
         $data['menu_id'] = $worker_id;
         $data['user_id'] = Auth::user()->id;
         $data['status'] = 2;
-        $data['edit_user_id'] = 0;
+        $data['edit_user_id'] = Auth::user()->id;
         DB::table('main_infos')->insert($data);
         return redirect()->route('worker_info', $worker_id);
     }
@@ -161,6 +162,7 @@ class MainController extends Controller
         $data = $request->validated();
         $data['gallery_id'] = $worker_id;
         $data['user_id'] = Auth::user()->id;
+        $data['edit_user_id'] = Auth::user()->id;
         $imagePath = $request->file('image')->store('public/assets/img/gallery');
         $path_arr = explode('/', $imagePath);
         $imageName = end($path_arr);
