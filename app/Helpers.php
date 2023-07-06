@@ -2,9 +2,11 @@
 
 namespace App;
 
+use App\Models\Messages;
 use App\Models\User;
 use App\Models\Worker;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class Helper
 {
@@ -62,6 +64,15 @@ class Helper
 
         return $res;
     }
+
+    public static function countMessage()
+    {
+        $user_role = self::getAdmin()['role'];
+        $count = DB::table('messages')->where('status', 1)->where('message_to', $user_role)->count();
+        return $count;
+    }
+
 }
+
 
 ?>

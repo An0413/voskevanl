@@ -1958,9 +1958,9 @@ form .card-footer{
     object-fit: cover;
     border-radius: 50%;
 }
-.guitar_main_image{
+.{
     width: 80%;
-    height: 70%;
+    height: 70%;guitar_main_image
     object-fit: cover;
 }
 .guitar_worker_img{
@@ -1971,4 +1971,7 @@ form .card-footer{
 .unread{
     background-color: #86c998;
     vertical-align: center!important;
+}
+.message_to{
+    color: red;
 }
