@@ -87,14 +87,17 @@ $green =['','unread'];
             let namak = $(this).parents('tr').find('.message').html();
 
             $('.sender').text(user);
-            $('.message_text').html(namak);
+            $('.message_text').html (namak);
 
             e.preventDefault();
             let message = $(this).data('value');
             if ($(this).data('status') == 1) {
                 $(this).data('status', 0);
                 $(this).parents('tr').removeClass('unread');
-
+                $('.count_messages').text($('.count_messages').text() - 1);
+                if ( $('.count_messages').text() == 0) {
+                    $('sup.message_to').hide();
+                }
                 $.ajax({
                     type: 'POST',
                     url: '/change_message_status',

@@ -49,8 +49,15 @@
             </li>
         </ul>
         <form class="d-flex">
+            @php
+            $count_messages = \App\Helper::countMessage();
+            @endphp
             <a class="nav-link" href="{{route('admin_message')}}" >
-                <button class="logout_btn" type="button"><i class="bx bx-envelope"></i></button>
+                <button class="logout_btn" type="button"><i class="bx bx-envelope"></i>
+                    @if($count_messages)
+                    <sup class="message_to"><b>(<span class="count_messages">{{ $count_messages }}</span>)</b></sup>
+                    @endif
+                </button>
             </a>
                 <a class="nav-link" href="{{route('admin_logout')}}" role="button">
                     <button class="logout_btn" type="button">Ելք</button>
