@@ -61,3 +61,4 @@ class InfoController extends Controller
     }
 
 }
+

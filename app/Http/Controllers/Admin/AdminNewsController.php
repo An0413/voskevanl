@@ -113,6 +113,7 @@ class AdminNewsController extends Controller
         }
         $data = $request->validated();
         $data['user_id'] = Auth::user()->id;
+        $data['edit_user_id'] = Auth::user()->id;
         $data['status'] = 2;
         $data['url'] = '';
         $imagePath = $request->file('img')->store('public/assets/img/news');

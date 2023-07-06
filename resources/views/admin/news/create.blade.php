@@ -20,7 +20,7 @@
                     <input type="text" class="form-control"  name="short_description">
                 </div>
                 <div>
-                <input type="file" id="image" name="img"><br><br>
+                <input type="file" id="image" name="img" required><br><br>
                 </div>
                 <button type="submit" class="btn btn-primary">Ավելացնել</button>
             </form>

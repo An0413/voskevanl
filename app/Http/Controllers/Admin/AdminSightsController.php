@@ -109,6 +109,7 @@ class AdminSightsController extends Controller
         $data['seq'] = 1;
         $data['status'] = 2;
         $data['user_id'] = Auth::user()->id;
+        $data['edit_user_id'] = Auth::user()->id;
         $data['image'] = '';
         if ($request->file('image')) {
             $imagePath = $request->file('image')->store('public/assets/img/sights');
@@ -203,6 +204,7 @@ class AdminSightsController extends Controller
         $data['seq'] = 1;
         $data['sight_id'] = $sight_id;
         $data['user_id'] = Auth::user()->id;
+        $data['edit_user_id'] = Auth::user()->id;
         $data['status'] = 2;
         $imagePath = $request->file('image')->store('public/assets/img/sights');
         $path_arr = explode('/', $imagePath);
