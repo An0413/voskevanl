@@ -19,7 +19,7 @@
                                 </div>
                                 <div class="col-6">
                                     <div class="form-group">
-                                        <label for="insta">Տեղեկություն - {{$info->content}}</label>
+                                        <label for="insta">Տեղեկություն -{!! $info->content !!}</label>
                                     </div>
                                     <div class="form-group">
                                         @php
