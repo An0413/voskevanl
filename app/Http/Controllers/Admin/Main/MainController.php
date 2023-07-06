@@ -74,7 +74,7 @@ class MainController extends Controller
         DB::table('workers')
             ->where('id', $worker_id)
             ->update(['status' => 2, 'edit_user_id' => Auth::user()->id, 'seq' => $data['seq'], 'name' => $data['name'], 'lastname' => $data['lastname'],
-                'position' => $data['position'], 'img' => $data['img'],
+                'position' => $data['position'],
                 'fb_link' => $data['fb_link'], 'mail_link' => $data['mail_link'],
                 'in_link' => $data['in_link'], 'insta_link' => $data['insta_link'],
             ]);
@@ -150,7 +150,7 @@ class MainController extends Controller
             return redirect('admin/login');
         }
 
-        return view('admin.main.createGallery', compact(['tab', 'area']));
+        return view('admin.main.create', compact(['tab', 'area']));
 
     }
 
@@ -171,7 +171,7 @@ class MainController extends Controller
         $data['status'] = 2;
         unset($data['image']);
         DB::table('gallery')->insert($data);
-        return redirect()->back();
+        return redirect()->route('worker_info', $worker_id);
     }
 
 }
