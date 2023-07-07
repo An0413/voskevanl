@@ -7,7 +7,19 @@
 
 
 </div>
+<div class="row mt-5 n_p p-5 cta">
+    <div data-aos="zoom-in">
+        @foreach($ambulance as $value)
+            <h3 class="text-center">{{$value->name}}</h3>
+            <br>
+            <p class="text-center">{!! $value->content !!}</p>
+        @endforeach
+        <div class="text-center">
+            <a class="cta-btn" href="#portfolio">Տեսնել ավելին</a>
+        </div>
+    </div>
 
+</div>
 <div>
     <h3 class="patm mt-5">Լուսանկարներ</h3>
 </div>
@@ -38,7 +50,7 @@
         </div>
         <div class="row">
             @foreach ($worker as $value)
-                <div class="col-lg-4 col-md-6 mt-5"  data-aos="fade-up">
+                <div class="col-lg-4 col-md-6 mt-5" data-aos="fade-up">
                     <div class="member aos-init aos-animate" {{--data-aos-delay="300"--}}>
                         <div class="pic">
                             <img src="{{asset('assets/img/worker/'.$value->img)}}"

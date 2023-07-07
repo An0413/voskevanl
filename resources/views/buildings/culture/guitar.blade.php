@@ -62,7 +62,7 @@
                 </div>
                 <p style="text-indent: 3%; padding: 1%;"><?php echo $value['content'] ?></p>
                 @endforeach
-                <a class="cta-btn" href="#portfolio">Կարդալ ավելին</a>
+                <a class="cta-btn" href="#portfolio">Տեսնել ավելին</a>
             </div>
         </div>
     </section>

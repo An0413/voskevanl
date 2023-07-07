@@ -86,26 +86,70 @@
     </section>
 
 
-    <div class="row" id="about">
-        <h2 class="text-center mt-5">Մեր մասին</h2>
-        <div class="col-4">
-            @foreach($imagesg as $value)
-                <img src="{{asset('assets/img/gallery/'  .$value['src'])}}" class="w-100">
+
+    <section id="cta" class="cta mt-5">
+        <div data-aos="zoom-in">
+            @foreach($info as $value)
+                @if($value->seq > 1)
+                    <div class="text-center">
+                        <h3>{{$value->name}}</h3>
+                        <p>{{$value->content}}</p>
+                        <a class="cta-btn" href="#about">Կարդալ ավելին</a>
+                    </div>
+                @endif
             @endforeach
         </div>
-        @foreach($info as $value)
-            @if($value->seq > 1)
-                <div class="col-4" style="margin-top: 4%">
-                    <p class="justifity">{{$value->content}}</p>
-                </div>
-            @endif
-        @endforeach
-        <div class="col-4 mt-5">
-            @foreach($imagesg1 as $value)
-                <img src="{{asset('assets/img/gallery/'  .$value['src'])}}" class="w-100">
-            @endforeach
+
+    </section>
+
+    <section id="portfolio" class="portfolio">
+        <div class="container">
+
+            <div class="section-title aos-init aos-animate" data-aos="fade-in" data-aos-delay="100">
+                <h2>ԼՈՒՍԱՆԿԱՐՆԵՐ</h2>
+            </div>
+
+            <div class="row portfolio-container aos-init aos-animate" data-aos="fade-up"
+                 style="position: relative; height: 1025.96px;">
+
+                @foreach ($imagesg as $value)
+                    <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+                        <div class="portfolio-wrap">
+                            <img src="{{asset('assets/img/gallery/'. $value['src'])}}" class="img-fluid">
+                            <div class="portfolio-links">
+                                <a href="{{asset('assets/img/gallery/'. $value['src'])}}"
+                                   data-gallery="portfolioGallery"
+                                   class="portfolio-lightbox"><i class="bx bx-plus"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+
         </div>
-    </div>
+    </section>
+
+
+    {{--    <div class="row" id="about">--}}
+{{--        <h2 class="text-center mt-5">Մեր մասին</h2>--}}
+{{--        <div class="col-4">--}}
+{{--            @foreach($imagesg as $value)--}}
+{{--                <img src="{{asset('assets/img/gallery/'  .$value['src'])}}" class="w-100">--}}
+{{--            @endforeach--}}
+{{--        </div>--}}
+{{--        @foreach($info as $value)--}}
+{{--            @if($value->seq > 1)--}}
+{{--                <div class="col-4" style="margin-top: 4%">--}}
+{{--                    <p class="justifity">{{$value->content}}</p>--}}
+{{--                </div>--}}
+{{--            @endif--}}
+{{--        @endforeach--}}
+{{--        <div class="col-4 mt-5">--}}
+{{--            @foreach($imagesg1 as $value)--}}
+{{--                <img src="{{asset('assets/img/gallery/'  .$value['src'])}}" class="w-100">--}}
+{{--            @endforeach--}}
+{{--        </div>--}}
+{{--    </div>--}}
 </div>
 @include('layouts.footer')
 

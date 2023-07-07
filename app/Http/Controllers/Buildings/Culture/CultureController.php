@@ -19,7 +19,7 @@ class CultureController extends Controller
         $worker = Worker::where('worker_id', '=', 2)->where('status', '=', 1)->get();
         $culturem = Culturex::all();
         $images = Images::where('gallery_id', '=', 2)->where('status', '=', 1)->get();
-        $info = Main_info::where('menu_id', '=', 2)->where('status', '=', 1)->get();
+        $info = Main_info::where('menu_id', '=', 2)->where('status', '=', 1)->orderBy('seq','desc')->get();
 
         return view('buildings.culture.culture', compact('worker', 'culturem', 'images', 'info'));
     }

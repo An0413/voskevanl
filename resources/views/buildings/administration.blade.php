@@ -12,7 +12,7 @@
                 <br>
                 <p>{{ $value->content }}</p>
             @endforeach
-
+                <a class="cta-btn" href="#portfolio">Տեսնել ավելին</a>
         </div>
 
         <div class="col-6">
