@@ -19,7 +19,7 @@ class GlxavorController extends Controller
     {
         $news = News::where('status', 1)->orderBy('id', 'desc')->limit(6)->get();
         $worker = Worker::where('worker_id', '=', 5)->where('status', '=', 1)->get();
-        $images = Images::where('gallery_id', '=', 1)->where('status', '=', 1)->get();
+        $images = Images::where('gallery_id', '=', 1)->where('status', '=', 1)->limit(9)->get();
         $users = Helper::getUsers();
         return view('glxavor.glxavor', compact('images', 'worker', 'news', 'users'));
     }
