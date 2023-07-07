@@ -33,11 +33,11 @@ class MainController extends Controller
             $worker_id = $admin_info['worker_id'];
         }
 
-        $worker = Worker::where('worker_id', $worker_id)->get();
-        $images = Images::where('gallery_id', $worker_id)->get();
+        $worker = Worker::where('worker_id', $worker_id)->where('status', '>', 0)->get();
+        $images = Images::where('gallery_id', $worker_id)->where('status', '>', 0)->get();
 
 
-        $info = Main_info::where('menu_id', $worker_id)->get();
+        $info = Main_info::where('menu_id', $worker_id)->where('status', '>', 0)->get();
         $admin_info = Helper::getAdmin();
 
         return view('admin.main.show', compact('worker', 'images', 'info', 'worker_id', 'admin_info'));
@@ -90,7 +90,7 @@ class MainController extends Controller
         if ($data['img']){
             $up_data['img'] = $data['img'];
         }
-        
+
         DB::table('workers')
             ->where('id', $worker_id)
             ->update($up_data);

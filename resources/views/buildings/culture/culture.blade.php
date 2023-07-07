@@ -11,11 +11,12 @@
                     @foreach($info as $value)
                         <div class="text-center">
                             <h3>{{$value->name}}</h3>
-                            <p>{{$value->content}}</p>
-                            <a class="cta-btn" href="#portfolio">Կարդալ ավելին</a>
+                            <p>{!! $value->content !!}</p>
                         </div>
                     @endforeach
-                    @foreach ($images as $value)
+                    <div class="text-center">
+                        <a class="cta-btn" href="#portfolio">Տեսնել ավելին</a>
+                    </div> @foreach ($images as $value)
                         <img src="{{asset('assets/img/gallery/'. $value['src'])}}" alt="karuyc"
                              style="width: 90%; margin-left: 5%; margin-top: 2%">
                     @endforeach

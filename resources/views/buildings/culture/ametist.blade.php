@@ -67,7 +67,7 @@
                 <?php
                 }
                 ?>
-                <a class="cta-btn" href="#portfolio">Կարդալ ավելին</a>
+                <a class="cta-btn" href="#portfolio">Տեսնել ավելին</a>
             </div>
         </div>
     </section>

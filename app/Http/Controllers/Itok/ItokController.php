@@ -17,12 +17,11 @@ class ItokController extends Controller
     {
 
         $imagesg = Images::where('gallery_id', '=', 5)->where('main_image', '=', 0)->where('status', '=', 1)->get();
-        $imagesg1 = Images::where('gallery_id', '=', 50)->where('status', '=', 1)->get();
         $images0 = Images::where('gallery_id', '=', 5)->where('main_image', '=', 1)->where('status', '=', 1)->get();
-        $worker = Worker::where('worker_id', '=', 5)->where('status', '=', 1)->get();
-        $info = Main_info::where('menu_id', '=', 5)->where('status', '=', 1)->get();
+        $worker = Worker::where('worker_id', '=', 5)->where('status', '=', 1)->orderBy('seq','desc')->get();
+        $info = Main_info::where('menu_id', '=', 5)->where('status', '=', 1)->orderBy('seq','desc')->get();
         $services = Services::all();
 
-        return view('itok.itok', compact('worker',  'imagesg', 'imagesg1', 'images0', 'services', 'info'));
+        return view('itok.itok', compact('worker',  'imagesg', 'images0', 'services', 'info'));
     }
 }

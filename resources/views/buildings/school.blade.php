@@ -18,7 +18,7 @@
                 <?php
                 }
                 ?>
-                <a class="cta-btn" href="#portfolio">Կարդալ ավելին</a>
+                <a class="cta-btn" href="#portfolio">Տեսնել ավելին</a>
             </div>
             @foreach ($imagesg as $value)
                 <img src="{{asset('assets/img/gallery/'. $value['src'])}}"

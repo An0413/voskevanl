@@ -115,11 +115,10 @@
             <h3 class="text-light">ՈՍԿԵՎԱՆ</h3>
             <p class="text-light"> Դու իմ սրբություն, իմ ոսկե հանգրվան,
                 Իմ քաղցր ծննդավայր, անգին Ոսկեվան:</p>
-            {{--            <a class="cta-btn" href="#">Call To Action</a>--}}
         </div>
 
     </div>
-</section><!-- End Cta Section -->
+</section>
 
 <section id="team" class="team">
     <h3 class="patm mt-5">Մեր թիմը</h3>

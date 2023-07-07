@@ -15,8 +15,8 @@ class SchoolController extends Controller
     {
         $images = Images::where('gallery_id', '=', 8)->where('main_image', '=', 0)->where('status', '=', 1)->get();
         $imagesg = Images::where('main_image', '=', 1)->where('gallery_id', '=', 8)->where('status', '=', 1)->get();
-        $info = Main_info::where('menu_id', '=', 8)->where('status', '=', 1)->get();
-        $worker = Worker::where('worker_id', '=', 8)->where('status', '=', 1)->get();
+        $info = Main_info::where('menu_id', '=', 8)->where('status', '=', 1)->orderBy('seq','desc')->get();
+        $worker = Worker::where('worker_id', '=', 8)->where('status', '=', 1)->orderBy('seq','desc')->get();
 
         return view('buildings.school', compact( 'worker','images','imagesg', 'info'));
     }

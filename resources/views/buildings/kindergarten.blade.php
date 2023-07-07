@@ -8,10 +8,12 @@
             @foreach($info as $value)
             <div class="text-center">
                 <h3>{{$value->name}}</h3>
-                <p>{{$value->content}}</p>
-                <a class="cta-btn" href="#team">Կարդալ ավելին</a>
+                <p>{!! $value->content !!}</p>
             </div>
             @endforeach
+                <div class="text-center">
+                    <a class="cta-btn" href="#portfolio">Տեսնել ավելին</a>
+                </div>
                 @foreach($imagesg as $value)
                     <img src="{{asset('assets/img/gallery/'. $value['src'])}}"
                          style="width: 80%; margin-left: 10%; margin-top: 2%">
