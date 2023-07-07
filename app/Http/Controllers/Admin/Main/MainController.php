@@ -65,19 +65,36 @@ class MainController extends Controller
         $data = $request->validated();
         if (isset($data['img'])) {
             if ($data['img']) {
-//                unset($data['img']);
-            } else {
 
+                $imagePath = $request->file('img')->store('public/assets/img/worker');
+                $path_arr = explode('/', $imagePath);
+                $imageName = end($path_arr);
+                $request->img->move(public_path('assets/img/worker'), $imageName);
+                $data['img'] = $imageName;
+            } else {
+                $data['img'] = '';
             }
+        } else {
+            $data['img'] = '';
         }
 
+        $up_data = ['status' => 2, 'edit_user_id' => Auth::user()->id,
+            'seq' => $data['seq'],
+            'name' => $data['name'],
+            'lastname' => $data['lastname'],
+            'position' => $data['position'],
+            'fb_link' => $data['fb_link'],
+            'mail_link' => $data['mail_link'],
+            'in_link' => $data['in_link'],
+            'insta_link' => $data['insta_link'],
+        ];
+        if ($data['img']){
+            $up_data['img'] = $data['img'];
+        }
+        
         DB::table('workers')
             ->where('id', $worker_id)
-            ->update(['status' => 2, 'edit_user_id' => Auth::user()->id, 'seq' => $data['seq'], 'name' => $data['name'], 'lastname' => $data['lastname'],
-                'position' => $data['position'],'img' => $data['img'],
-                'fb_link' => $data['fb_link'], 'mail_link' => $data['mail_link'],
-                'in_link' => $data['in_link'], 'insta_link' => $data['insta_link'],
-            ]);
+            ->update($up_data);
 
 
         return redirect()->route('worker_info', $worker->worker_id);
@@ -150,7 +167,11 @@ class MainController extends Controller
             return redirect('admin/login');
         }
 
-        return view('admin.main.create', compact(['tab', 'area']));
+        $admin_info = Helper::getAdmin();
+        return view('admin.main.createGallery', compact(['tab', 'area'], 'admin_info'));
+
+
+        //       return view('admin.main.create', compact(['tab', 'area']));
 
     }
 
