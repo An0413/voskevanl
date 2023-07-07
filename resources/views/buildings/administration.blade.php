@@ -44,18 +44,6 @@
         </div>
     </section><!-- End Portfolio Section -->
 
-    <section id="cta" class="cta">
-        <div class="container" data-aos="zoom-in">
-
-            <div class="text-center" style="height: 200px">
-                @foreach($administration as $value)
-                <h3>{{ $value->title }}</h3>
-                <p>{{ $value->content }}</p>
-                @endforeach
-            </div>
-
-        </div>
-    </section><!-- End Cta Section -->
     <section id="team" class="team">
         <h3 class="patm mt-5"> Ոսկեվանի գյուղապետարանի աշխատակազմը</h3>
         <div class="row">
