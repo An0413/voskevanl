@@ -150,7 +150,11 @@ class MainController extends Controller
             return redirect('admin/login');
         }
 
-        return view('admin.main.create', compact(['tab', 'area']));
+        $admin_info = Helper::getAdmin();
+        return view('admin.main.createGallery', compact(['tab', 'area'], 'admin_info'));
+
+      
+ //       return view('admin.main.create', compact(['tab', 'area']));
 
     }
 
