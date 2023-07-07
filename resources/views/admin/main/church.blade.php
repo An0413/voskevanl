@@ -43,13 +43,13 @@
                                             <td>{{substr($value->description, 0, 1400) . "..."}}</td>
                                             <td>{{$value->church_status->status}}</td>
                                             <td>
-                                                @if($value->status == 1)
+                                                @if($value->status == 1 || $value->status == 4)
                                                     <a href="{{route('church_edit', $value->id)}}"><i
                                                             class="nav-icon fas fa-edit text-primary"></i></a>
                                                 @endif
                                             </td>
                                             <td>
-                                                @if($value->status == 1)
+                                                @if($value->status == 1 || $value->status == 4)
                                                     <form action="{{route('church_delete', $value->id)}}"
                                                           method="post">
                                                         @csrf

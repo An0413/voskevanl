@@ -38,13 +38,13 @@
 
                                     @if($value->user_id == $admin_info['user'])
                                     <td style="width: 15px">
-                                        @if($value->status == 1)
+                                        @if($value->status == 1 || $value->status == 4)
                                             <a href="{{route('sights_gallery_edit', $value->id)}}"><i
                                                     class="nav-icon fas fa-edit text-primary"></i></a>
                                         @endif
                                     </td>
                                     <td style="width: 15px">
-                                        @if($value->status == 1)
+                                        @if($value->status == 1 || $value->status == 4)
                                             <form action="{{route('sights_gallery_delete', $value->id)}}" method="post">
                                                 @csrf
                                                 @method('delete')

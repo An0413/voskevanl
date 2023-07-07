@@ -149,8 +149,8 @@ class MainController extends Controller
         if (!Auth::user()) {
             return redirect('admin/login');
         }
-
-        return view('admin.main.createGallery', compact(['tab', 'area']));
+        $admin_info = Helper::getAdmin();
+        return view('admin.main.createGallery', compact(['tab', 'area'], 'admin_info'));
 
     }
 

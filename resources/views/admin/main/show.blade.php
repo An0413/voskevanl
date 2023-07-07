@@ -19,8 +19,7 @@
                     <li style="margin-left: 70px"><a data-toggle="tab" href="#image">Լուսանկարներ</a></li>
                 </ul>
                 <div class="tab-content">
-                    <div id="user" class="tab-pane fade in active show">
-                        <div class="row mt-3">
+                    <div id="user" class="tab-pane fade in active show"><div class="row mt-3">
                             <div class="col-11"><h3>Աշխատակիցներ</h3></div>
                             <div class="col-1 mt-1">
                                 <button class="btn-success add_new"><a
@@ -123,7 +122,7 @@
                                     <td scope="row"><img src="{{asset('assets/img/gallery/'. $value->src)}}"
                                                          style="width: 90px; height: 90px; object-fit: cover"></td>
                                     <td>{{$status[$value->status]}}</td>
-                                @if($value->status === 1)
+                                @if($value->status === 1 || $value->status == 4)
                                         <td style="width: 15px"><a href="{{route('gallery_edit', $value->id)}}"><i
                                                     class="nav-icon fas fa-edit text-primary"></i></a></td>
                                         <td style="width: 15px"><a href="{{route('gallery_delete', $value->id)}}"><i
