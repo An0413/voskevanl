@@ -65,7 +65,7 @@ class MainController extends Controller
         $data = $request->validated();
         if (isset($data['img'])) {
             if ($data['img']) {
-                unset($data['img']);
+//                unset($data['img']);
             } else {
 
             }
@@ -74,7 +74,7 @@ class MainController extends Controller
         DB::table('workers')
             ->where('id', $worker_id)
             ->update(['status' => 2, 'edit_user_id' => Auth::user()->id, 'seq' => $data['seq'], 'name' => $data['name'], 'lastname' => $data['lastname'],
-                'position' => $data['position'],
+                'position' => $data['position'],'img' => $data['img'],
                 'fb_link' => $data['fb_link'], 'mail_link' => $data['mail_link'],
                 'in_link' => $data['in_link'], 'insta_link' => $data['insta_link'],
             ]);

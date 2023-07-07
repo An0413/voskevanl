@@ -7,7 +7,17 @@
 
 
 </div>
+<div class="row mt-5 n_p p-5 cta">
+    <div data-aos="zoom-in">
+        @foreach($ambulance as $value)
+            <h3 class="text-center">{{$value->name}}</h3>
+            <br>
+            <p class="text-center">{{$value->content}}</p>
+        @endforeach
 
+    </div>
+
+</div>
 <div>
     <h3 class="patm mt-5">Լուսանկարներ</h3>
 </div>
