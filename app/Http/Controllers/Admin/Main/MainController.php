@@ -90,7 +90,7 @@ class MainController extends Controller
         if ($data['img']){
             $up_data['img'] = $data['img'];
         }
-        
+
         DB::table('workers')
             ->where('id', $worker_id)
             ->update($up_data);

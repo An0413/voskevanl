@@ -124,7 +124,7 @@
                             <div class="col-1 mt-1">
                             </div>
                         </div>
-                        <table class="table mt-3 w-50" id="workers_table">
+                        <table class="table mt-3 " id="workers_table">
                             <thead class="thead-dark">
                             <tr>
                                 <th scope="col">Հ/հ</th>

@@ -81,7 +81,7 @@
                             <div class="col-11"><h3>Լուսանկարներ</h3></div>
                             <div class="col-1 mt-1">
                                 <button class="btn-success add_new"><a
-                                        href="{{route('gallery_create', [$worker_id, 'img'])}}">+Ավելացնել</a>
+                                        href="{{route('gallery_create', [$worker_id, 'image'])}}">+Ավելացնել</a>
                                 </button>
                             </div>
                         </div>

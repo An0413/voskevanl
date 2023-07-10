@@ -14,8 +14,8 @@ class SightsController extends Controller
 {
     public function __invoke()
     {
-
-        $sights = Sights::all();
-        return view('sights.sights', compact('sights'));
+        $count_per_page = 6;
+        $sights = Sights::where('status', 1)->orderBy('id', 'desc')->paginate($count_per_page);
+        return view('sights.sights', compact('sights', 'count_per_page'));
     }
 }
