@@ -58,6 +58,28 @@
         </div>
         @endforeach
     </div>
+    @if(ceil($sights->total()/$count_per_page) > 1)
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-end">
+                <li class="page-item {{$sights->currentPage() == 1 ? 'hidden' : ''}}">
+                    <a class="page-link" href="{{ $sights->previousPageUrl() }}" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                        <span class="sr-only"></span>
+                    </a>
+                </li>
+                @for($i = 1; $i <= ceil($sights->total()/$count_per_page); $i++)
+                    <li class="page-item"><a class="page-link {{$sights->currentPage() == $i ? 'active_page' : ''}}"
+                                             href="{{$sights->url($i)}}">{{$i}}</a></li>
+                @endfor
+                <li class="page-item {{$sights->currentPage() == ceil($sights->total()/$count_per_page) ? 'hidden' : ''}}">
+                    <a class="page-link" href="{{ $sights->nextPageUrl() }}" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                        <span class="sr-only"></span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    @endif
 </section><!-- End Portfolio Section -->
 
 @include('layouts.footer')

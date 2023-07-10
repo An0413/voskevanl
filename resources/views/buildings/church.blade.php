@@ -2,7 +2,7 @@
 
 @yield('header')
 
-<div class="container" style="margin-top: 10%">
+<div class="container" style="margin-top: 7%">
     <h1 class="text-center">{{$church->title}}</h1>
 
     @foreach($images as $value)

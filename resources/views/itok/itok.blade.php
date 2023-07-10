@@ -38,7 +38,7 @@
                     <div class="text-center">
                         <h3>{{$value->name}}</h3>
                         <p>{{$value->content}}</p>
-                        <a class="cta-btn" href="#about">Կարդալ ավելին</a>
+                        <a class="cta-btn" href="https://www.facebook.com/ITOKLLC" target="_blank"><i class="bi bi-facebook"></i></a>
                     </div>
                 @endif
             @endforeach

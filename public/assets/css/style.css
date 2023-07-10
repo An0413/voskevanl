@@ -1935,7 +1935,7 @@ form .card-footer{
 #carouselExampleIndicatorsLeft .carousel-item img{
     height: 100%;
     width: 100%;
-    object-fit: cover;
+    object-fit: contain;
 }
 
 #carouselExampleIndicatorsLeft .slider button .thumb_img{
