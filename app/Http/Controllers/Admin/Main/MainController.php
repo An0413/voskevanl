@@ -33,7 +33,7 @@ class MainController extends Controller
             $worker_id = $admin_info['worker_id'];
         }
 
-        $worker = Worker::where('worker_id', $worker_id)->where('status', '>', 0)->get();
+        $worker = Worker::where('worker_id', $worker_id)->where('status', '>', 0)->orderBy('seq', 'asc')->get();
         $images = Images::where('gallery_id', $worker_id)->where('status', '>', 0)->get();
 
 
