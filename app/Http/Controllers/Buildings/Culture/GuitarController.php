@@ -19,7 +19,7 @@ class GuitarController extends Controller
     {
         $images = Images::where('gallery_id', '=', 14)->where('main_image', '=', 0)->where('status', '=', 1)->get();
         $imagesg = Images::where('gallery_id', '=', 14)->where('main_image', '=', 1)->where('status', '=', 1)->get();
-        $worker = Worker::where('worker_id', '=', 14)->where('status', '=', 1)->get();
+        $worker = Worker::where('worker_id', '=', 14)->where('status', '=', 1)->orderBy('seq', 'asc')->get();
         $info = Main_info::where('menu_id', '=', 14 )->where('status', '=', 1)->orderBy('seq','desc')->get();
 
         return view('buildings.culture.guitar', compact( 'images', 'imagesg','worker', 'info'));

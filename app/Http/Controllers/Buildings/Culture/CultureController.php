@@ -16,7 +16,7 @@ class CultureController extends Controller
 {
     public function __invoke()
     {
-        $worker = Worker::where('worker_id', '=', 2)->where('status', '=', 1)->get();
+        $worker = Worker::where('worker_id', '=', 2)->where('status', '=', 1)->orderBy('seq', 'asc')->get();
         $culturem = Culturex::all();
         $images = Images::where('gallery_id', '=', 2)->where('status', '=', 1)->get();
         $info = Main_info::where('menu_id', '=', 2)->where('status', '=', 1)->orderBy('seq','desc')->get();
