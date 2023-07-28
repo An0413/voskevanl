@@ -54,14 +54,16 @@
                     <div class="member aos-init aos-animate" {{--data-aos-delay="300"--}}>
                         <div class="pic">
                             <img src="{{asset('assets/img/worker/'.$value->img)}}"
-                                 class="img-fluid" alt="">
+                                 class="img-fluid" alt="" style="width: 80%; height: 450px;">
                         </div>
                         <div class="member-info">
                             <h4>{{$value->name}}  {{$value->lastname}}</h4>
                             <span>{{$value->positions->title}}</span>
                             <div class="social">
                                 @if($value->mail_link)
+
                                     <a href="" data-toggle="tooltip" data-placement="bottom" title="{{$value->mail_link}}" target="_blank"><i class="bx bx-envelope"></i></a>
+
                                 @endif
                                 @if($value->fb_link)
                                     <a href="{{$value->fb_link}}" target="_blank"><i class="bi bi-facebook"></i></a>
