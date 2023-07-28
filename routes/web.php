@@ -1,4 +1,4 @@
-<?php
+    <?php
 
 use App\Http\Controllers\Admin\AdminBuildingsController;
 use App\Http\Controllers\Admin\AdminMessageController;

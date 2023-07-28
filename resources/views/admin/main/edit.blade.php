@@ -80,7 +80,7 @@
                                 <div class="form-group">
                                     <div class="form-group">
                                         <label for="email">Email</label>
-                                        <input type="url" id="email" class="form-control" value="{{$worker->mail_link}}"
+                                        <input type="email" id="email" class="form-control" value="{{$worker->mail_link}}"
                                                name="mail_link">
                                     </div>
                                     <div class="form-group">

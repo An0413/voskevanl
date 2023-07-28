@@ -16,7 +16,7 @@
                     <textarea class="form-control" rows="5" id="comment" name="description"></textarea>
                 </div>
                 <div>
-                <input type="file" id="image" name="image"><br><br>
+                <input type="file" id="image" name="img"><br><br>
                 </div>
                 <button type="submit" class="btn btn-primary">Ավելացնել</button>
             </form>
