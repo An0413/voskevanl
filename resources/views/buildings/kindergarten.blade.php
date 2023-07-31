@@ -39,7 +39,7 @@
                                 <div class="social">
                                     @if($value->mail_link)
 
-                                        <a href="" data-toggle="tooltip" data-placement="bottom" title="{{$value->mail_link}}" target="_blank"><i class="bx bx-envelope"></i></a>
+                                        <a href="#" data-toggle="tooltip" data-placement="bottom" title="{{$value->mail_link}}" ><i class="bx bx-envelope"></i></a>
 
                                     @endif
                                     @if($value->fb_link)
