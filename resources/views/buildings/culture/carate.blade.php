@@ -13,7 +13,7 @@
             @endforeach
         </div>
         <div class="col-4 mt-5">
-            <h3>Ոսկեվանի կարատեի խմբակ</h3><br><br>
+            <h3 style="font-size: 27px;line-height: 1.5">Ոսկեվանի թեքվանդոյի խմբակ</h3><br><br>
             <h4>Մարզիչ՝ Սասուն Եգանյան</h4>
         </div>
         <div class="col-4">
