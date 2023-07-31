@@ -1976,3 +1976,8 @@ form .card-footer{
     color: red;
 }
 
+.pic img{
+    width: 80%;
+    height: 450px;
+    object-fit: cover;
+}
