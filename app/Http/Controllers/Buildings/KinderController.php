@@ -15,8 +15,8 @@ class KinderController extends Controller
     {
         $imagesg = Images::where('gallery_id', '=', 9)->where('main_image', '=', 1)->where('status', '=', 1)->get();
         $images = Images::where('gallery_id', '=', 9)->where('main_image', '=', 0)->where('status', '=', 1)->get();
-        $info = Main_info::where('menu_id', '=', 9)->where('status', '=', 1)->orderBy('seq','desc')->get();
-        $worker = Worker::where('worker_id', '=', 9)->where('status', '=', 1)->orderBy('seq','desc')->get();
+        $info = Main_info::where('menu_id', '=', 9)->where('status', '=', 1)->orderBy('seq','asc')->get();
+        $worker = Worker::where('worker_id', '=', 9)->where('status', '=', 1)->orderBy('seq', 'asc')->get();
 
         return view('buildings.kindergarten', compact('worker', 'images', 'imagesg', 'info'));
     }

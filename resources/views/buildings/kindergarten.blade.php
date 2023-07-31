@@ -38,7 +38,9 @@
                                 <span>{{$value->positions->title}}</span>
                                 <div class="social">
                                     @if($value->mail_link)
-                                        <a href="{{$value->mail_link}}" target="_blank"><i class="bx bx-envelope"></i></a>
+
+                                        <a href="" data-toggle="tooltip" data-placement="bottom" title="{{$value->mail_link}}" target="_blank"><i class="bx bx-envelope"></i></a>
+
                                     @endif
                                     @if($value->fb_link)
                                         <a href="{{$value->fb_link}}" target="_blank"><i class="bi bi-facebook"></i></a>

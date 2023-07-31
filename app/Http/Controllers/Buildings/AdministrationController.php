@@ -14,7 +14,7 @@ class AdministrationController extends Controller
     public function __invoke()
     {
         $administration = Main_info::where('menu_id', '=', 7)->where('status', '=', 1)->orderBy('seq','desc')->get();
-        $worker = Worker::where('worker_id', '=', 7)->where('status', '=', 1)->get();
+        $worker = Worker::where('worker_id', '=', 7)->where('status', '=', 1)->orderBy('seq', 'asc')->get();
         $images = Images::where('gallery_id', '=', 7)->where('status', '=', 1)->get();
         return view('buildings.administration', compact('administration', 'worker', 'images'));
     }
