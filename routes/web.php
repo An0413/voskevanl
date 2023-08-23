@@ -3,7 +3,9 @@
 use App\Http\Controllers\Admin\AdminBuildingsController;
 use App\Http\Controllers\Admin\AdminMessageController;
 use App\Http\Controllers\Admin\AdminSightsController;
-use App\Http\Controllers\Admin\Main\IndexaController;
+use App\Http\Controllers\Admin\EverydayAdminController;
+    use App\Http\Controllers\Admin\EverydayGalleryController;
+    use App\Http\Controllers\Admin\Main\IndexaController;
 use App\Http\Controllers\Admin\Main\MainController;
 use App\Http\Controllers\Admin\Main\InfoController;
 use App\Http\Controllers\Admin\Main\GalleryController;
@@ -12,16 +14,18 @@ use App\Http\Controllers\Buildings\AdministrationController;
 
 use App\Http\Controllers\Buildings\SportsschoolController;
 use App\Http\Controllers\Buildings\AmbulanceController;
-use App\Http\Controllers\Itok\ItokController;
-use App\Http\Controllers\Main\IndexController;
+use App\Http\Controllers\Everyday\EverydayController;
+    use App\Http\Controllers\Itok\ItokController;
+    use App\Http\Controllers\Main\IndexController;
 use App\Http\Controllers\News\NewsController;
 use App\Http\Controllers\Admin\AdminNewsController;
 use App\Http\Controllers\Admin\AdminChurchController;
 use App\Http\Controllers\Glxavor\GlxavorController;
 use App\Http\Controllers\History\HistoryController;
 use App\Http\Controllers\Admin\AdminHistoryController;
-use App\Http\Controllers\News\NewsiController;
-use App\Http\Controllers\Sights\SightsController;
+use App\Http\Controllers\Everyday\LifeReadController;
+    use App\Http\Controllers\News\NewsiController;
+    use App\Http\Controllers\Sights\SightsController;
 use App\Http\Controllers\Sights\SightsiController;
 use Illuminate\Support\Facades\Route;
 
@@ -72,6 +76,11 @@ Route::group(['namespase' => 'Itok', 'prefix' => 'itok'], function () {
     Route::get('/', ItokController::class)->name('itok.itok');
 });
 
+Route::group(['namespase' => 'Everyday', 'prefix' => 'everyday_life'], function () {
+    Route::get('/', EverydayController::class)->name('everyday.ife');
+    Route::get('/{news_id}', LifeReadController::class)->where('news_id', '[0-9]+');
+});
+
 Route::group(['namespase' => 'History', 'prefix' => 'history'], function () {
     Route::get('/', HistoryController::class)->name('history.history');
 });
@@ -107,6 +116,19 @@ Route::group(['namespase' => 'Admin', 'prefix' => 'admin'], function (){
     Route::post('/refuse/{id}/{table_id}',  [IndexaController::class, 'refuse'])->where('id', '[0-9]+')->where('table_id', '[0-9]+')->name('refuse');
     Route::get('/refuse',  [IndexaController::class, 'refuse'])->name('refuse_sample');
     Route::get('/news',  [AdminNewsController::class, 'index'])->name('admin_news');
+    Route::get('/everyday',  [EverydayAdminController::class, 'index'])->name('admin_everyday');
+
+    Route::get('/everyday/create', [EverydayAdminController::class, 'create'])->name('everyday_create');
+    Route::post('/everyday/store', [EverydayAdminController::class, 'store'])->name('everyday_store');
+    Route::get('/everyday/edit/{news_id}', [EverydayAdminController::class, 'edit'])->where('news_id', '[0-9]+')->name('everyday_edit');
+    Route::post('/everyday/update/{news_id}', [EverydayAdminController::class, 'update'])->where('news_id', '[0-9]+')->name('everyday_update');
+    Route::delete('/everyday/delete/{news_id}', [EverydayAdminController::class, 'delete'])->where('news_id', '[0-9]+')->name('everyday_delete');
+
+    Route::get('/everyday/gallery/create', [EverydayAdminController::class, 'create_gallery'])->name('everyday_gallery_create');
+    Route::post('/everyday/gallery/store', [EverydayAdminController::class, 'store_gallery'])->name('everyday_gallery_store');
+    Route::get('/everyday/gallery/edit/{id}', [EverydayAdminController::class, 'edit_gallery'])->where('id', '[0-9]+')->name('everyday_gallery_edit');
+    Route::post('/everyday/gallery/update/{id}', [EverydayAdminController::class, 'update_gallery'])->where('id', '[0-9]+')->name('everyday_gallery_update');
+    Route::get('/everyday/gallery/delete/{id}', [EverydayAdminController::class, 'delete_gallery'])->where('id', '[0-9]+')->name('everyday_gallery_delete');
 
     Route::get('/history/create', [AdminHistoryController::class, 'create'])->name('history_create');
     Route::post('/history/store', [AdminHistoryController::class, 'store'])->name('history_store');

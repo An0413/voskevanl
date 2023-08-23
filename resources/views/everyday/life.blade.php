@@ -1,0 +1,135 @@
+@include('layouts.header')
+
+@yield('header')
+
+<h1 class="text-center" style="margin-top: 5%">ԱՌՕՐՅԱՆ ՈՍԿԵՎԱՆՈՒՄ</h1>
+
+<div id="demo" class="carousel slide mt48" data-bs-ride="carousel">
+
+    <!-- Indicators/dots -->
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
+        <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
+        <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
+    </div>
+
+    <!-- The slideshow/carousel -->
+    <div class="carousel-inner">
+        @foreach($everydayfoto as $value)
+            <div class="carousel-item active">
+                <div class="glxavor" data-aos="fade-up">
+                </div>
+                <img src="{{asset('assets/img/gallery/' .$value->src)}}" alt="Los Angeles"
+                     class="d-block object_fit_cover"
+                     style="width:100vw; height: 100vh">
+
+                <div class="carousel-caption">
+                </div>
+            </div>
+        @endforeach
+        {{--        <div class="carousel-item">--}}
+        {{--            <div class="glxavor" data-aos="fade-up">--}}
+        {{--                <h1 class="text-light">ԲԱՐԻ ԳԱԼՈՒՍՏ ՈՍԿԵՎԱՆ</h1>--}}
+        {{--            </div>--}}
+        {{--            <img src="{{asset('assets/img/glxavor/voskevan1.jpg')}}" alt="Chicago" class="d-block object_fit_cover"--}}
+        {{--                 style="min-width:100vw; height: 100vh">--}}
+        {{--            <div class="carousel-caption">--}}
+        {{--            </div>--}}
+        {{--        </div>--}}
+        {{--        <div class="carousel-item">--}}
+        {{--            <div class="glxavor" data-aos="fade-up">--}}
+        {{--                <h1 class="text-light">ԲԱՐԻ ԳԱԼՈՒՍՏ ՈՍԿԵՎԱՆ</h1>--}}
+        {{--            </div>--}}
+        {{--            <img src="{{asset('assets/img/glxavor/voskevan2.jpg')}}" alt="New York" class="d-block object_fit_cover"--}}
+        {{--                 style="min-width:100vw; height: 100vh">--}}
+        {{--            <div class="carousel-caption">--}}
+        {{--            </div>--}}
+        {{--        </div>--}}
+    </div>
+
+    <!-- Left and right controls/icons -->
+    <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
+        <span class="carousel-control-next-icon"></span>
+    </button>
+</div>
+<div class="container" style="margin-top: 7%">
+    <div class="row mt-5">
+        @foreach($news as $value)
+            <div class="col-3 ">
+                <div class="card border-0 mb-4">
+                    <div class="backgroundEffect"></div>
+                    <div class="pic"><img src="{{asset('assets/img/news/' .$value->img)}}">
+                        <div class="date"><span class="day">{{$value->add_date}}</span></div>
+                    </div>
+                    <div class="content"><p class="h-1 mt-4 news_title">{{$value->title}}</p>
+                        <p class="text-muted mt-3  news_p">{{$value->short_description}}</p>
+                        <div class="d-flex align-items-center justify-content-between mt-3 pb-3">
+                            <div class="btn btn-primary"><a href="/news/{{$value->id}}"
+                                                            class="text-muted news_read_more">Կարդալ
+                                    ավելին</a><span class="fas fa-arrow-right"></span></div>
+                            <div class="d-flex align-items-center justify-content-center foot">
+                                <p class="admin">{{$users[$value->user_id]['workers']['name'].' '.$users[$value->user_id]['workers']['lastname']}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @endforeach
+    </div>
+    @if(ceil($news->total()/$count_per_page) > 1)
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-end">
+                <li class="page-item {{$news->currentPage() == 1 ? 'hidden' : ''}}">
+                    <a class="page-link" href="{{ $news->previousPageUrl() }}" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                        <span class="sr-only"></span>
+                    </a>
+                </li>
+                @for($i = 1; $i <= ceil($news->total()/$count_per_page); $i++)
+                    <li class="page-item"><a class="page-link {{$news->currentPage() == $i ? 'active_page' : ''}}"
+                                             href="{{$news->url($i)}}">{{$i}}</a></li>
+                @endfor
+                <li class="page-item {{$news->currentPage() == ceil($news->total()/$count_per_page) ? 'hidden' : ''}}">
+                    <a class="page-link" href="{{ $news->nextPageUrl() }}" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                        <span class="sr-only"></span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    @endif
+
+
+    <section id="portfolio" class="portfolio">
+        <div class="container">
+
+            <div class="section-title aos-init aos-animate" data-aos="fade-in" data-aos-delay="100">
+                <h2>ԼՈՒՍԱՆԿԱՐՆԵՐ</h2>
+            </div>
+
+            <div class="row portfolio-container aos-init aos-animate" data-aos="fade-up" style="position: relative; height: 1025.96px;">
+
+                @foreach ($images as $value)
+                    <div class="col-lg-4 col-md-6 portfolio-item filter-app" style="position: absolute; left: 0px; top: 0px;">
+                        <div class="portfolio-wrap">
+                            <img src="{{asset('assets/img/gallery/'. $value['src'])}}" class="img-fluid">
+                            <div class="portfolio-links">
+                                <a href="{{asset('assets/img/gallery/'. $value['src'])}}" data-gallery="portfolioGallery" class="portfolio-lightbox"><i class="bx bx-plus"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+
+            </div>
+
+        </div>
+    </section>
+
+</div>
+
+@include('layouts.footer')
+
+@yield('footer')

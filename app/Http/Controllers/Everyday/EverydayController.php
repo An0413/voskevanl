@@ -1,0 +1,31 @@
+<?php
+
+namespace App\Http\Controllers\Everyday;
+
+use App\Helper;
+use App\Http\Controllers\Controller;
+use App\Models\Everyday;
+use App\Models\Everyday_news;
+use App\Models\Images;
+use App\Models\Itok;
+use App\Models\Main_info;
+use App\Models\News;
+use App\Models\Services;
+use App\Models\Worker;
+use Illuminate\Http\Request;
+use App\Models\Buildings;
+
+class EverydayController extends Controller
+{
+    public function __invoke()
+    {
+        $count_per_page = 4;
+        $everydayfoto = Everyday::where('main_image', 1)->where('status', 1)->get();
+        $news = Everyday_news::where('status', 1)->orderBy('id', 'desc')->paginate($count_per_page);
+        $users = Helper::getUsers();
+        $images = Everyday::where('main_image', 0)->where('status', 1)->get();
+
+
+        return view('everyday.life', compact('everydayfoto','news','users','count_per_page','images'));
+    }
+}
