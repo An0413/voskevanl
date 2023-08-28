@@ -23,7 +23,7 @@
                     <div class="card-header">
                     </div>
                     <div class="row">
-                        <div class="col-4">
+                        <div class="col-4 ml-4">
                                 <div class="form-group">
                                     <label for="exampleInputFile">Լուսանկար</label>
                                     <div class="input-group">

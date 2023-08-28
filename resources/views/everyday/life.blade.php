@@ -67,7 +67,7 @@
                     <div class="content"><p class="h-1 mt-4 news_title">{{$value->title}}</p>
                         <p class="text-muted mt-3  news_p">{{$value->short_description}}</p>
                         <div class="d-flex align-items-center justify-content-between mt-3 pb-3">
-                            <div class="btn btn-primary"><a href="/news/{{$value->id}}"
+                            <div class="btn btn-primary"><a href="{{route('everyday.news', $value->id)}}"
                                                             class="text-muted news_read_more">Կարդալ
                                     ավելին</a><span class="fas fa-arrow-right"></span></div>
                             <div class="d-flex align-items-center justify-content-center foot">
@@ -103,30 +103,6 @@
     @endif
 
 
-    <section id="portfolio" class="portfolio">
-        <div class="container">
-
-            <div class="section-title aos-init aos-animate" data-aos="fade-in" data-aos-delay="100">
-                <h2>ԼՈՒՍԱՆԿԱՐՆԵՐ</h2>
-            </div>
-
-            <div class="row portfolio-container aos-init aos-animate" data-aos="fade-up" style="position: relative; height: 1025.96px;">
-
-                @foreach ($images as $value)
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-app" style="position: absolute; left: 0px; top: 0px;">
-                        <div class="portfolio-wrap">
-                            <img src="{{asset('assets/img/gallery/'. $value['src'])}}" class="img-fluid">
-                            <div class="portfolio-links">
-                                <a href="{{asset('assets/img/gallery/'. $value['src'])}}" data-gallery="portfolioGallery" class="portfolio-lightbox"><i class="bx bx-plus"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                @endforeach
-
-            </div>
-
-        </div>
-    </section>
 
 </div>
 

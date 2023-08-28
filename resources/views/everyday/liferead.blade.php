@@ -4,18 +4,18 @@
 
 
 <div class="container-fluid" style="margin-top: 7%">
-    <h1 class="text-center">ՆՈՐՈՒԹՅՈՒՆՆԵՐ</h1>
+    @foreach($news as $value)
+    <h1 class="text-center">{{$value->title}}</h1>
     <section id="about" class="about">
         <div class="container" data-aos="fade-up">
 
             <div class="row no-gutters">
                 <div class="content col-xl-9 d-flex align-items-stretch aos-init aos-animate">
-                    @foreach($news as $value)
                         <div class="row newsstyle">
                             <div class="col-8 mt-5">
-                                <h1 class="text-center" style="color:white;">{{$value->title}}</h1><br>
+
                                 <p>{{$value->description}}</p>
-                                <p class="mt-5">Հեղինակ՝
+                                <p class="mt-5">Նյութը տեղադրեց՝
                                     <span>{{$users[$value->user_id]['workers']['name'].' '.$users[$value->user_id]['workers']['lastname']}}</span></p>
                             </div>
                             <div class="col-4 mt-5">
@@ -33,7 +33,7 @@
                             </div>
                             <div class="col-8">
                                 <p class="news_f">{{$value->title}}</p>
-                                <div class="btn news_but"><a href="/news/{{$value->id}}" class="text-muted news_f">Կարդալ
+                                <div class="btn news_but"><a href="{{route('everyday.news', $value->id)}}" class="text-muted news_f">Կարդալ
                                         ավելին</a><span class="fas fa-arrow-right"></span></div>
                             </div>
                         </div>

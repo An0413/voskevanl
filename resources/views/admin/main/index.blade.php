@@ -18,6 +18,7 @@
                     <li style="margin-left: 70px"><a class="{{count($news) ? 'text-warning' : ''}}" data-toggle="tab" href="#news">Նորություններ</a></li>
                     <li style="margin-left: 70px"><a data-toggle="tab" class="{{count($sights) ? 'text-warning' : ''}}" href="#sights">Տեսարժան վայրեր</a></li>
                     <li style="margin-left: 70px"><a data-toggle="tab" class="{{count($sights_galleries) ? 'text-warning' : ''}}" href="#sights_galleries">Տ/վ լուսանկարներ</a>
+                    <li style="margin-left: 70px"><a data-toggle="tab" class="{{count($everyday_news) ? 'text-warning' : ''}}" href="#everyday">Առօրյան</a>
                     </li>
                 </ul>
                 <div class="tab-content">
@@ -288,6 +289,49 @@
                                     <td><a href="" class="refuse text-danger text-bold" data-bs-toggle="modal"
                                            data-bs-target="#refuse_modal" data-row="{{$value->id}}"
                                            data-action="5">X</a></td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                    <div id="everyday" class="tab-pane fade">
+                        <div class="row mt-3">
+                            <div class="col-11"><h3>Նորություններ</h3></div>
+                            <div class="col-1 mt-1">
+                            </div>
+                        </div>
+                        <table class="table mt-3" id="workers_table">
+                            <thead class="thead-dark">
+                            <tr>
+                                <th scope="col" class="w_20">Հ/հ</th>
+                                <th scope="col">Լուսանկար</th>
+                                <th scope="col">Վերնագիր</th>
+                                <th scope="col">Կարճ նկարագրություն</th>
+                                <th scope="col">Գործողություն</th>
+                                <th scope="col">Տեսնել</th>
+                                <th scope="col">Հաստատել</th>
+                                <th scope="col">Մերժել</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @foreach($everyday_news as $key=>$value)
+                                <tr>
+                                    <td>{{$key+1}}</td>
+                                    <td scope="row"><img src="{{asset('assets/img/news/'. $value->img)}}"
+                                                         style="width: 90px; height: 90px; object-fit: cover"></td>
+                                    <td>{{$value->title}}</td>
+                                    <td>{{$value->short_description}}</td>
+                                    <td>{{$status[$value->status]}}</td>
+                                    <td style="width: 15px"><a href="{{route('news_show', $value->id)}}"><i
+                                                class="nav-icon fas fa-eye text-primary"></i></a></td>
+                                    <td class="text-center">
+                                        <a href="{{route('submit', [$value->id, 6])}}" class="confirm">
+                                            <i class="nav-icon fas fa-check text-success"></i>
+                                        </a>
+                                    </td>
+                                    <td><a href="" class="refuse text-danger text-bold" data-bs-toggle="modal"
+                                           data-bs-target="#refuse_modal" data-row="{{$value->id}}"
+                                           data-action="6">X</a></td>
                                 </tr>
                             @endforeach
                             </tbody>

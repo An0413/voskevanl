@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin\Main;
 
 use App\Http\Controllers\Controller;
+use App\Models\Everyday_news;
 use App\Models\Images;
 use App\Models\Main_info;
 use App\Models\News;
@@ -40,6 +41,8 @@ class IndexaController extends Controller
 
             $news = DB::table('news')->whereIn('status', [2, 3])->get();
 
+            $everyday_news = DB::table('everyday_news')->whereIn('status', [2, 3])->get();
+
             $sights = DB::table('sights')->whereIn('status', [2, 3])->get();
 
             $sights_galleries = DB::table('sights_galleries')->whereIn('status', [2, 3])->get();
@@ -48,7 +51,7 @@ class IndexaController extends Controller
             foreach ($positions_arr as $item) {
                 $positions[$item['id']] = $item['title'];
             }
-            return view('admin.main.index', compact('worker', 'admin_info', 'images', 'info', 'worker_id', 'news', 'positions', 'sights', 'sights_galleries'));
+            return view('admin.main.index', compact('worker', 'admin_info', 'images', 'info', 'worker_id', 'news', 'positions', 'sights', 'sights_galleries','everyday_news'));
         } else {
             return redirect()->route('worker_info', $admin_info['worker_id']);
         }
@@ -69,7 +72,7 @@ class IndexaController extends Controller
     {
         $update_status = 1;
 
-        $tables = ['workers', 'main_infos', 'gallery', 'news', 'sights', 'sights_galleries'];
+        $tables = ['workers', 'main_infos', 'gallery', 'news', 'sights', 'sights_galleries','everyday_news'];
 
         $info = DB::table($tables[$table_id])->where('id', $id)->first();
 
@@ -122,6 +125,16 @@ class IndexaController extends Controller
         return view('admin.main.newsshow', compact('id', 'admin_info', 'news'));
     }
 
+//    public function everyday_news($id)
+//    {
+//
+//        $admin_info = Helper::getAdmin();
+//
+//        $news = Everyday_news::where('id', $id)->first();
+//
+//        return view('admin.main.index', compact('id', 'admin_info', 'news'));
+//    }
+
     public function sights($id)
     {
 
@@ -139,8 +152,7 @@ class IndexaController extends Controller
         ]);
         $message = $data['message'];
 
-        $tables = ['workers', 'main_infos', 'gallery', 'news', 'sights', 'sights_galleries'];
-
+        $tables = ['workers', 'main_infos', 'gallery', 'news', 'sights', 'sights_galleries', 'everyday_news'];
         $info = DB::table($tables[$table_id])->where('id', $id)->first();
 
         if ($info->status === 3) {

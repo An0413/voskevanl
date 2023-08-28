@@ -30,21 +30,8 @@
                                                 <div class="card-footer">
                                                     <img src="" id="img" width="100px" height="100px"
                                                          class="create_img">
-                                                    <button type="submit" class="btn btn-primary">Հաստատել</button>
                                                 </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-4">
-                                    <div class="card-body w-100">
-                                        <div class="form-group">
-                                            <div class="form-group">
-                                                <label>Նկարի դիրքը</label>
-                                                <select class="form-control" name="main_image">
-                                                    <option value="1">Գլխավոր</option>
-                                                    <option value="0" selected>Պատկերասրահ</option>
-                                                </select>
+                                                <button type="submit" class="btn btn-primary">Հաստատել</button>
                                             </div>
                                         </div>
                                     </div>
