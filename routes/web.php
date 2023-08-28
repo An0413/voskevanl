@@ -78,7 +78,7 @@ Route::group(['namespase' => 'Itok', 'prefix' => 'itok'], function () {
 
 Route::group(['namespase' => 'Everyday', 'prefix' => 'everyday_life'], function () {
     Route::get('/', EverydayController::class)->name('everyday.ife');
-    Route::get('/{news_id}', LifeReadController::class)->where('news_id', '[0-9]+');
+    Route::get('/{news_id}', LifeReadController::class)->where('news_id', '[0-9]+')->name('everyday.news');
 });
 
 Route::group(['namespase' => 'History', 'prefix' => 'history'], function () {

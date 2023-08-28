@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\StoreGalleryRequest;
+use App\Http\Requests\Admin\StoreeverydayGalleryRequest;
 use App\Http\Requests\Admin\StoreRequest;
 use App\Http\Requests\Admin\UpdateRequest;
 use App\Http\Requests\Main\UpdateGalleryRequest;
@@ -191,7 +191,7 @@ class EverydayAdminController extends Controller
 
     }
 
-    public function store_gallery(StoreGalleryRequest $request){
+    public function store_gallery(StoreeverydayGalleryRequest $request){
         if (!Auth::user()) {
             return redirect('admin/login');
         }
