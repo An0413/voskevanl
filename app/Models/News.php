@@ -28,4 +28,8 @@ class News extends Model
     public function news_status(){
         return $this->hasOne(Status::class, 'status_id', 'status');
     }
+
+    public function comments(){
+        return $this->hasOne(Comments::class, 'news_id', 'comments');
+    }
 }
