@@ -20,6 +20,7 @@
                         <th scope="col">Լուսանկար</th>
                         <th scope="col">Վերնագիր</th>
                         <th scope="col">Կարճ նկարագրություն</th>
+                        <th scope="col">Մեկնաբանություններ</th>
                         <th scope="col">Ստատուս</th>
                         <th scope="col">Խմբագրել</th>
                         <th scope="col">Ջնջել</th>
@@ -32,6 +33,7 @@
                             <td scope="row"><img src="{{asset('assets/img/news/'. $value->img)}}"
                                                  style="width: 90px; height: 90px; object-fit: cover"></td>
                             <td>{{$value->title}}</td>
+                            <td>{{$value->short_description}}</td>
                             <td>{{$value->short_description}}</td>
                             <td>{{$value->news_status->status }}</td>
                             <td>

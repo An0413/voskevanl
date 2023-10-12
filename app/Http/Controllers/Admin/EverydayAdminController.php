@@ -33,7 +33,7 @@ class EverydayAdminController extends Controller
             return redirect('admin/login');
         }
         $user_id = auth()->user()->getAuthIdentifier();
-        $news = Everyday_news::where('user_id', $user_id)->orderBy('id', 'desc')->get();
+        $news = Everyday_news::orderBy('id', 'desc')->get();
         $admin_info = Helper::getAdmin();
         $images = Everyday::all();
 

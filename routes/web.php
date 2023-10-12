@@ -1,11 +1,11 @@
-    <?php
+<?php
 
 use App\Http\Controllers\Admin\AdminBuildingsController;
 use App\Http\Controllers\Admin\AdminMessageController;
 use App\Http\Controllers\Admin\AdminSightsController;
 use App\Http\Controllers\Admin\EverydayAdminController;
-    use App\Http\Controllers\Admin\EverydayGalleryController;
-    use App\Http\Controllers\Admin\Main\IndexaController;
+use App\Http\Controllers\Admin\EverydayGalleryController;
+use App\Http\Controllers\Admin\Main\IndexaController;
 use App\Http\Controllers\Admin\Main\MainController;
 use App\Http\Controllers\Admin\Main\InfoController;
 use App\Http\Controllers\Admin\Main\GalleryController;
@@ -14,9 +14,10 @@ use App\Http\Controllers\Buildings\AdministrationController;
 
 use App\Http\Controllers\Buildings\SportsschoolController;
 use App\Http\Controllers\Buildings\AmbulanceController;
+use App\Http\Controllers\News\CommentsController;
 use App\Http\Controllers\Everyday\EverydayController;
-    use App\Http\Controllers\Itok\ItokController;
-    use App\Http\Controllers\Main\IndexController;
+use App\Http\Controllers\Itok\ItokController;
+use App\Http\Controllers\Main\IndexController;
 use App\Http\Controllers\News\NewsController;
 use App\Http\Controllers\Admin\AdminNewsController;
 use App\Http\Controllers\Admin\AdminChurchController;
@@ -24,8 +25,8 @@ use App\Http\Controllers\Glxavor\GlxavorController;
 use App\Http\Controllers\History\HistoryController;
 use App\Http\Controllers\Admin\AdminHistoryController;
 use App\Http\Controllers\Everyday\LifeReadController;
-    use App\Http\Controllers\News\NewsiController;
-    use App\Http\Controllers\Sights\SightsController;
+use App\Http\Controllers\News\NewsiController;
+use App\Http\Controllers\Sights\SightsController;
 use App\Http\Controllers\Sights\SightsiController;
 use Illuminate\Support\Facades\Route;
 
@@ -95,28 +96,34 @@ Route::group(['namespase' => 'Glxavor'], function () {
 
 Route::group(['namespase' => 'News', 'prefix' => 'news'], function () {
     Route::get('/', NewsController::class)->name('news.news');
-    Route::get('/{news_id}', NewsiController::class)->where('news_id', '[0-9]+');
+    Route::get('/{news_id}', NewsiController::class)->where('news_id', '[0-9]+')->name('news.newsi');
+
+    Route::post('/comment', [CommentsController::class, 'store'])->where('news_id', '[0-9]+')->name('comment_store');
+
 });
 
 Route::post('/message_to_user', [GlxavorController::class, 'email_to_user'])->name('message_to_user');
 
 Route::post('/get_workers', [LoginController::class, 'get_workers']);
-Route::post('/change_message_status',  [AdminMessageController::class, 'change_status']);
+Route::post('/change_message_status', [AdminMessageController::class, 'change_status']);
 
-Route::group(['namespase' => 'Admin', 'prefix' => 'admin'], function (){
-    Route::get('/{worker_id}',  [IndexaController::class, 'index'])->where('worker_id', '[0-9]+')->name('admin');
-    Route::post('/confirm_worker/{worker_id}',  [IndexaController::class, 'changestatus'])->where('worker_id', '[0-9]+')->name('confirm_worker');
-    Route::get('/{worker_id}/worker',  [IndexaController::class, 'worker'])->where('worker_id', '[0-9]+')->name('workered');
-    Route::get('/{worker_id}/info',  [IndexaController::class, 'info'])->where('worker_id', '[0-9]+')->name('info_show');
-    Route::get('/{worker_id}/gallery',  [IndexaController::class, 'gallery'])->where('worker_id', '[0-9]+')->name('gallery_show');
-    Route::get('/{worker_id}/sights_gallery',  [IndexaController::class, 'sights_gallery'])->where('worker_id', '[0-9]+')->name('sights_gallery_show');
-    Route::get('/{worker_id}/news',  [IndexaController::class, 'news'])->where('worker_id', '[0-9]+')->name('news_show');
-    Route::get('/{worker_id}/sights',  [IndexaController::class, 'sights'])->where('worker_id', '[0-9]+')->name('sights_show');
-    Route::get('/submit/{id}/{table_id}',  [IndexaController::class, 'submit'])->where('id', '[0-9]+')->where('table_id', '[0-9]+')->name('submit');
-    Route::post('/refuse/{id}/{table_id}',  [IndexaController::class, 'refuse'])->where('id', '[0-9]+')->where('table_id', '[0-9]+')->name('refuse');
-    Route::get('/refuse',  [IndexaController::class, 'refuse'])->name('refuse_sample');
-    Route::get('/news',  [AdminNewsController::class, 'index'])->name('admin_news');
-    Route::get('/everyday',  [EverydayAdminController::class, 'index'])->name('admin_everyday');
+
+
+
+Route::group(['namespase' => 'Admin', 'prefix' => 'admin'], function () {
+    Route::get('/{worker_id}', [IndexaController::class, 'index'])->where('worker_id', '[0-9]+')->name('admin');
+    Route::post('/confirm_worker/{worker_id}', [IndexaController::class, 'changestatus'])->where('worker_id', '[0-9]+')->name('confirm_worker');
+    Route::get('/{worker_id}/worker', [IndexaController::class, 'worker'])->where('worker_id', '[0-9]+')->name('workered');
+    Route::get('/{worker_id}/info', [IndexaController::class, 'info'])->where('worker_id', '[0-9]+')->name('info_show');
+    Route::get('/{worker_id}/gallery', [IndexaController::class, 'gallery'])->where('worker_id', '[0-9]+')->name('gallery_show');
+    Route::get('/{worker_id}/sights_gallery', [IndexaController::class, 'sights_gallery'])->where('worker_id', '[0-9]+')->name('sights_gallery_show');
+    Route::get('/{worker_id}/news', [IndexaController::class, 'news'])->where('worker_id', '[0-9]+')->name('news_show');
+    Route::get('/{worker_id}/sights', [IndexaController::class, 'sights'])->where('worker_id', '[0-9]+')->name('sights_show');
+    Route::get('/submit/{id}/{table_id}', [IndexaController::class, 'submit'])->where('id', '[0-9]+')->where('table_id', '[0-9]+')->name('submit');
+    Route::post('/refuse/{id}/{table_id}', [IndexaController::class, 'refuse'])->where('id', '[0-9]+')->where('table_id', '[0-9]+')->name('refuse');
+    Route::get('/refuse', [IndexaController::class, 'refuse'])->name('refuse_sample');
+    Route::get('/news', [AdminNewsController::class, 'index'])->name('admin_news');
+    Route::get('/everyday', [EverydayAdminController::class, 'index'])->name('admin_everyday');
 
     Route::get('/everyday/create', [EverydayAdminController::class, 'create'])->name('everyday_create');
     Route::post('/everyday/store', [EverydayAdminController::class, 'store'])->name('everyday_store');
@@ -189,7 +196,7 @@ Route::group(['namespase' => 'Admin', 'prefix' => 'admin'], function (){
     Route::get('/sights/create', [AdminSightsController::class, 'create'])->name('sights_create');
     Route::post('/sights/store', [AdminSightsController::class, 'store'])->name('sights_store');
 
-  Route::get('/sights/show/', [AdminSightsController::class, 'index'])->name('admin_sights');
+    Route::get('/sights/show/', [AdminSightsController::class, 'index'])->name('admin_sights');
 
     Route::get('/sights/gallery/{id}', [AdminSightsController::class, 'gallery'])->where('id', '[0-9]+')->name('sights_gallery');
     Route::get('/sights/gallery_create/{id}', [AdminSightsController::class, 'gallery_create'])->where('id', '[0-9]+')->name('sights_gallery_create');
