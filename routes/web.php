@@ -98,7 +98,7 @@ Route::group(['namespase' => 'News', 'prefix' => 'news'], function () {
     Route::get('/', NewsController::class)->name('news.news');
     Route::get('/{news_id}', NewsiController::class)->where('news_id', '[0-9]+')->name('news.newsi');
 
-    Route::post('/comment', [CommentsController::class, 'store'])->where('news_id', '[0-9]+')->name('comment_store');
+    Route::post('/comment', [CommentsController::class, 'store'])->name('comment_store');
 
 });
 

@@ -11,7 +11,6 @@ class CommentsController extends Controller
 {
     public function store(StoreCommentRequest $request)
     {
-        dd(1);
         $data = $request->validated();
 
         $data['status'] = 2;

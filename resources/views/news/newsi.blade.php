@@ -95,6 +95,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <form action="{{route('comment_store')}}" method="POST" enctype="multipart/form-data">
+                @csrf
                 <div class="modal-body">
                     <label for="first_name" class="form-label">Անուն</label>
                     <input type="text" class="form-control" id="first_name" required>
