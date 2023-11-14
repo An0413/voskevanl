@@ -5,13 +5,15 @@ namespace App\Http\Controllers\News;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Main\StoreCommentRequest;
 use App\Models\Comments;
+use App\Models\Main_info;
+use App\Models\News;
 
 
 class CommentsController extends Controller
 {
-    public function store(StoreCommentRequest $request)
+    public function store(StoreCommentRequest $request, $news_id)
     {
-        dd(1);
+
         $data = $request->validated();
 
         $data['status'] = 2;
@@ -19,6 +21,6 @@ class CommentsController extends Controller
 
         Comments::create($data);
 
-        return json_encode(['ok' => 'Շնորհակալություն']);
+        return redirect()->back();
     }
 }
