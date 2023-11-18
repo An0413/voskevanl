@@ -102,7 +102,7 @@
                     <label for="last_name" class="form-label">Ազգանուն</label>
                     <input type="text" class="form-control" id="last_name" name="last_name" required>
                     <label for="comment" class="form-label">Մեկնաբանություն</label><br>
-                    <textarea name="comment" cols="52" required></textarea>
+                    <textarea name="comment" cols="52" rows="4" required></textarea>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Փակել</button>

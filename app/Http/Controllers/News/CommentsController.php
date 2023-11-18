@@ -16,7 +16,7 @@ class CommentsController extends Controller
 
         $data = $request->validated();
 
-        $data['status'] = 2;
+        $data['status'] = 1;
         $data['news_id'] = $news_id;
 
         Comments::create($data);
