@@ -32,7 +32,7 @@
                             <td>{{$value->com_status->status}}</td>
                             <td>
                                 @if($value->status == 1 || $value->status == 4)
-                                    <form action="{{route('comment_delete', $value->id)}}" method="post">
+                                    <form action="{{route('commentevery_delete', $value->id)}}" method="post">
                                         @csrf
                                         @method('delete')
                                         <button type="submit" class="border-0 bg-transparent">

@@ -19,6 +19,6 @@ class LifeReadController extends Controller
         $recent_news = Everyday_news::where('id', '!=', $news_id)->where('status', 1)->orderBy('id', 'desc')->limit(5)->get();
         $users = Helper::getUsers();
         $comments = EverydayComments::where('news_id', $news_id)->where('status',1)->get();
-        return view('everyday.liferead', compact('news', 'recent_news', 'users', 'comments'));
+        return view('everyday.liferead', compact('news', 'recent_news', 'users', 'comments','news_id'));
     }
 }

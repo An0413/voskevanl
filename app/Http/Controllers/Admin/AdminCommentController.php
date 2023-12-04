@@ -7,6 +7,8 @@ use App\Http\Requests\Admin\StoreRequest;
 use App\Http\Requests\Admin\UpdateRequest;
 use App\Http\Requests\Main\UpdateWorkerRequest;
 use App\Models\Comments;
+use App\Models\Everyday_news;
+use App\Models\EverydayComments;
 use App\Models\Images;
 use App\Models\Itok;
 use App\Models\Main_info;
@@ -21,19 +23,19 @@ use function Sodium\compare;
 use App\Helper;
 
 
-class AdminCommentsController extends Controller
+class AdminCommentController extends Controller
 {
     public function index($news_id)
     {
         if (!Auth::user()){
             return redirect('admin/login');
         }
-        $comments = Comments::where('news_id', $news_id)->orderBy('id', 'desc')->get();
+        $comments = EverydayComments::where('news_id', $news_id)->orderBy('id', 'desc')->get();
         $user_id = auth()->user()->getAuthIdentifier();
-        $news = News::where('user_id', $user_id)->orderBy('id', 'desc')->get();
+        $news = Everyday_news::where('user_id', $user_id)->orderBy('id', 'desc')->get();
         $admin_info = Helper::getAdmin();
 
-        return view('admin.news.comments', compact('user_id', 'news','admin_info', 'comments'));
+        return view('admin.everyday.comments', compact('user_id', 'news','admin_info', 'comments'));
     }
 
     public function delete($news_id)
@@ -41,12 +43,12 @@ class AdminCommentsController extends Controller
         if (!Auth::user()){
             return redirect('admin/login');
         }
-        $comments = Comments::where('id', $news_id)->first();
-        DB::table('comments')
+        $comments = EverydayComments::where('id', $news_id)->first();
+        DB::table('everyday_comments')
             ->where('id', $news_id)
             ->update(['status' => 0]);
 
-        return redirect()->route('news_list', $comments->news_id);
+        return redirect()->route('admin_everyday', $comments->news_id);
     }
 
 

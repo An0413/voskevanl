@@ -35,6 +35,7 @@
                                 <th scope="col">Լուսանկար</th>
                                 <th scope="col">Վերնագիր</th>
                                 <th scope="col">Կարճ նկարագրություն</th>
+                                <th scope="col">Մեկնաբանություններ</th>
                                 <th scope="col">Ստատուս</th>
                                 <th scope="col">Խմբագրել</th>
                                 <th scope="col">Ջնջել</th>
@@ -48,6 +49,7 @@
                                                          style="width: 90px; height: 90px; object-fit: cover"></td>
                                     <td>{{$value->title}}</td>
                                     <td>{{$value->short_description}}</td>
+                                    <td><button type="button" class="news_button"><a href="{{ route('newsevery_comment', $value->id)}}" style="color: black">Տեսնել բոլորը</a></button></td>
                                     <td>{{$value->news_status->status}}</td>
                                     <td>
                                         @if($value->status == 1 || $value->status == 4)
@@ -89,20 +91,20 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($images as $key=>$value)
-                                <tr>
-                                    <td>{{$key+1}}</td>
-                                    <td scope="row"><img src="{{asset('assets/img/gallery/'. $value->src)}}"
-                                                         style="width: 90px; height: 90px; object-fit: cover"></td>
-                                    <td>{{$status[$value->status]}}</td>
-                                    @if($value->status === 1 || $value->status == 4)
-                                        <td style="width: 15px"><a href="{{route('everyday_gallery_edit', $value->id)}}"><i
-                                                    class="nav-icon fas fa-edit text-primary"></i></a></td>
-                                        <td style="width: 15px"><a href="{{route('everyday_gallery_delete', $value->id)}}"><i
-                                                    class="nav-icon fas fa-trash text-danger"></i></a></td>
-                                    @endif
-                                </tr>
-                            @endforeach
+{{--                            @foreach($images as $key=>$value)--}}
+{{--                                <tr>--}}
+{{--                                    <td>{{$key+1}}</td>--}}
+{{--                                    <td scope="row"><img src="{{asset('assets/img/gallery/'. $value->src)}}"--}}
+{{--                                                         style="width: 90px; height: 90px; object-fit: cover"></td>--}}
+{{--                                    <td>{{$status[$value->status]}}</td>--}}
+{{--                                    @if($value->status === 1 || $value->status == 4)--}}
+{{--                                        <td style="width: 15px"><a href="{{route('everyday_gallery_edit', $value->id)}}"><i--}}
+{{--                                                    class="nav-icon fas fa-edit text-primary"></i></a></td>--}}
+{{--                                        <td style="width: 15px"><a href="{{route('everyday_gallery_delete', $value->id)}}"><i--}}
+{{--                                                    class="nav-icon fas fa-trash text-danger"></i></a></td>--}}
+{{--                                    @endif--}}
+{{--                                </tr>--}}
+{{--                            @endforeach--}}
                             </tbody>
                         </table>
                     </div>
