@@ -15,7 +15,6 @@
             <div class="section-title aos-init aos-animate" data-aos="fade-in" data-aos-delay="100">
                 <h2>ՄԵՐ ԾԱՌԱՅՈՒԹՅՈՒՆՆԵՐԸ</h2>
             </div>
-
             <div class="row">
                 @foreach($services as $value)
                     <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
