@@ -34,7 +34,7 @@
                                                  style="width: 90px; height: 90px; object-fit: cover"></td>
                             <td>{{$value->title}}</td>
                             <td>{{$value->short_description}}</td>
-                            <td>{{$value->short_description}}</td>
+                            <td><button type="button" class="news_button"><a href="{{ route('news_comment', $value->id)}}" style="color: black">Տեսնել բոլորը</a></button></td>
                             <td>{{$value->news_status->status }}</td>
                             <td>
                                 @if($value->status == 1 || $value->status == 4)

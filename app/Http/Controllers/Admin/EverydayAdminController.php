@@ -35,9 +35,8 @@ class EverydayAdminController extends Controller
         $user_id = auth()->user()->getAuthIdentifier();
         $news = Everyday_news::orderBy('id', 'desc')->get();
         $admin_info = Helper::getAdmin();
-        $images = Everyday::all();
 
-        return view('admin.everyday.show', compact('user_id', 'news','admin_info','images'));
+        return view('admin.everyday.show', compact('user_id', 'news','admin_info',));
     }
 
 

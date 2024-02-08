@@ -20,11 +20,10 @@ class EverydayController extends Controller
     public function __invoke()
     {
         $count_per_page = 4;
-        $everydayfoto = Everyday::where('status', 1)->get();
         $news = Everyday_news::where('status', 1)->orderBy('id', 'desc')->paginate($count_per_page);
         $users = Helper::getUsers();
 
 
-        return view('everyday.life', compact('everydayfoto','news','users','count_per_page'));
+        return view('everyday.life', compact('news','users','count_per_page'));
     }
 }

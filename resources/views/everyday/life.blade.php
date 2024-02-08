@@ -14,38 +14,7 @@
     </div>
 
     <!-- The slideshow/carousel -->
-    <div class="carousel-inner">
-        @foreach($everydayfoto as $value)
-            <div class="carousel-item active">
-                <div class="glxavor" data-aos="fade-up">
-                </div>
-                <img src="{{asset('assets/img/gallery/' .$value->src)}}" alt="Los Angeles"
-                     class="d-block object_fit_cover"
-                     style="width:100vw; height: 100vh">
 
-                <div class="carousel-caption">
-                </div>
-            </div>
-        @endforeach
-        {{--        <div class="carousel-item">--}}
-        {{--            <div class="glxavor" data-aos="fade-up">--}}
-        {{--                <h1 class="text-light">ԲԱՐԻ ԳԱԼՈՒՍՏ ՈՍԿԵՎԱՆ</h1>--}}
-        {{--            </div>--}}
-        {{--            <img src="{{asset('assets/img/glxavor/voskevan1.jpg')}}" alt="Chicago" class="d-block object_fit_cover"--}}
-        {{--                 style="min-width:100vw; height: 100vh">--}}
-        {{--            <div class="carousel-caption">--}}
-        {{--            </div>--}}
-        {{--        </div>--}}
-        {{--        <div class="carousel-item">--}}
-        {{--            <div class="glxavor" data-aos="fade-up">--}}
-        {{--                <h1 class="text-light">ԲԱՐԻ ԳԱԼՈՒՍՏ ՈՍԿԵՎԱՆ</h1>--}}
-        {{--            </div>--}}
-        {{--            <img src="{{asset('assets/img/glxavor/voskevan2.jpg')}}" alt="New York" class="d-block object_fit_cover"--}}
-        {{--                 style="min-width:100vw; height: 100vh">--}}
-        {{--            <div class="carousel-caption">--}}
-        {{--            </div>--}}
-        {{--        </div>--}}
-    </div>
 
     <!-- Left and right controls/icons -->
     <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
@@ -61,7 +30,7 @@
             <div class="col-3 ">
                 <div class="card border-0 mb-4">
                     <div class="backgroundEffect"></div>
-                    <div class="pic"><img src="{{asset('assets/img/news/' .$value->img)}}">
+                    <div class="pic"><img src="{{asset('assets/img/gallery/' .$value->img)}}">
                         <div class="date"><span class="day">{{$value->add_date}}</span></div>
                     </div>
                     <div class="content"><p class="h-1 mt-4 news_title">{{$value->title}}</p>

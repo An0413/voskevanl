@@ -94,14 +94,15 @@
                 <h5 class="modal-title" id="exampleModalLabel">Խնդրում ենք լրացնել</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form action="{{route('comment_store')}}" method="POST" enctype="multipart/form-data">
+            <form action="{{route('comment_store', $news_id)}}" method="POST" enctype="multipart/form-data">
+                @csrf
                 <div class="modal-body">
                     <label for="first_name" class="form-label">Անուն</label>
-                    <input type="text" class="form-control" id="first_name" required>
+                    <input type="text" class="form-control" id="first_name" name="first_name" required>
                     <label for="last_name" class="form-label">Ազգանուն</label>
-                    <input type="text" class="form-control" id="last_name" required>
+                    <input type="text" class="form-control" id="last_name" name="last_name" required>
                     <label for="comment" class="form-label">Մեկնաբանություն</label><br>
-                    <textarea name="comment" cols="52" required></textarea>
+                    <textarea name="comment" cols="52" rows="4" required></textarea>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Փակել</button>

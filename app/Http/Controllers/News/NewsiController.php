@@ -18,7 +18,7 @@ class NewsiController extends Controller
         $recent_news = News::where('id', '!=', $news_id)->where('status', 1)->orderBy('id', 'desc')->limit(5)->get();
         $users = Helper::getUsers();
         $comments = Comments::where('news_id', $news_id)->where('status',1)->get();
-        return view('news.newsi', compact('news', 'recent_news', 'users', 'comments'));
+        return view('news.newsi', compact('news', 'recent_news', 'users', 'comments','news_id'));
     }
 
     public function user(UserRequest $request){

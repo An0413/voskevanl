@@ -4,7 +4,8 @@ use App\Http\Controllers\Admin\AdminBuildingsController;
 use App\Http\Controllers\Admin\AdminMessageController;
 use App\Http\Controllers\Admin\AdminSightsController;
 use App\Http\Controllers\Admin\EverydayAdminController;
-use App\Http\Controllers\Admin\EverydayGalleryController;
+use App\Http\Controllers\Admin\AdminCommentsController;
+use App\Http\Controllers\Admin\AdminCommentController;
 use App\Http\Controllers\Admin\Main\IndexaController;
 use App\Http\Controllers\Admin\Main\MainController;
 use App\Http\Controllers\Admin\Main\InfoController;
@@ -15,6 +16,7 @@ use App\Http\Controllers\Buildings\AdministrationController;
 use App\Http\Controllers\Buildings\SportsschoolController;
 use App\Http\Controllers\Buildings\AmbulanceController;
 use App\Http\Controllers\News\CommentsController;
+use App\Http\Controllers\Everyday\CommentController;
 use App\Http\Controllers\Everyday\EverydayController;
 use App\Http\Controllers\Itok\ItokController;
 use App\Http\Controllers\Main\IndexController;
@@ -80,6 +82,9 @@ Route::group(['namespase' => 'Itok', 'prefix' => 'itok'], function () {
 Route::group(['namespase' => 'Everyday', 'prefix' => 'everyday_life'], function () {
     Route::get('/', EverydayController::class)->name('everyday.ife');
     Route::get('/{news_id}', LifeReadController::class)->where('news_id', '[0-9]+')->name('everyday.news');
+
+    Route::post('/comment/{news_id}', [CommentController::class, 'store'])->where('news_id', '[0-9]+')->name('commentevery_store');
+
 });
 
 Route::group(['namespase' => 'History', 'prefix' => 'history'], function () {
@@ -98,7 +103,7 @@ Route::group(['namespase' => 'News', 'prefix' => 'news'], function () {
     Route::get('/', NewsController::class)->name('news.news');
     Route::get('/{news_id}', NewsiController::class)->where('news_id', '[0-9]+')->name('news.newsi');
 
-    Route::post('/comment', [CommentsController::class, 'store'])->where('news_id', '[0-9]+')->name('comment_store');
+    Route::post('/comment/{news_id}', [CommentsController::class, 'store'])->where('news_id', '[0-9]+')->name('comment_store');
 
 });
 
@@ -136,6 +141,10 @@ Route::group(['namespase' => 'Admin', 'prefix' => 'admin'], function () {
     Route::get('/everyday/gallery/edit/{id}', [EverydayAdminController::class, 'edit_gallery'])->where('id', '[0-9]+')->name('everyday_gallery_edit');
     Route::post('/everyday/gallery/update/{id}', [EverydayAdminController::class, 'update_gallery'])->where('id', '[0-9]+')->name('everyday_gallery_update');
     Route::get('/everyday/gallery/delete/{id}', [EverydayAdminController::class, 'delete_gallery'])->where('id', '[0-9]+')->name('everyday_gallery_delete');
+
+    Route::get('/everyday/show/comment/{news_id}', [AdminCommentController::class, 'index'])->where('news_id', '[0-9]+')->name('newsevery_comment');
+    Route::delete('/everyday/comment/delete/{news_id}', [AdminCommentController::class, 'delete'])->where('news_id', '[0-9]+')->name('commentevery_delete');
+
 
     Route::get('/history/create', [AdminHistoryController::class, 'create'])->name('history_create');
     Route::post('/history/store', [AdminHistoryController::class, 'store'])->name('history_store');
@@ -192,6 +201,9 @@ Route::group(['namespase' => 'Admin', 'prefix' => 'admin'], function () {
     Route::get('/news/edit/{news_id}', [AdminNewsController::class, 'edit'])->where('news_id', '[0-9]+')->name('news_edit');
     Route::post('/news/update/{news_id}', [AdminNewsController::class, 'update'])->where('news_id', '[0-9]+')->name('news_update');
     Route::delete('/news/delete/{news_id}', [AdminNewsController::class, 'delete'])->where('news_id', '[0-9]+')->name('news_delete');
+
+    Route::get('/news/show/comment/{news_id}', [AdminCommentsController::class, 'index'])->where('news_id', '[0-9]+')->name('news_comment');
+    Route::delete('/news/comment/delete/{news_id}', [AdminCommentsController::class, 'delete'])->where('news_id', '[0-9]+')->name('comment_delete');
 
     Route::get('/sights/create', [AdminSightsController::class, 'create'])->name('sights_create');
     Route::post('/sights/store', [AdminSightsController::class, 'store'])->name('sights_store');
